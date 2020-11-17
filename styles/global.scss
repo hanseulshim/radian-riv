@@ -5,6 +5,11 @@ body {
   font-weight: 400;
   font-size: 20px;
   line-height: 25px;
+  height: 100vh;
+}
+
+#__next {
+  height: 100%;
 }
 
 *,
