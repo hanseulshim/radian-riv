@@ -8,6 +8,9 @@ describe('Header', () => {
   beforeAll(() => {
     app = shallow(<Header />)
   })
+  it('Header has a div with id header', () => {
+    expect(app.find('#header').prop('id')).toEqual('header')
+  })
   it('Header has a logo', () => {
     expect(app.find('img').prop('src')).toEqual('/header-logo.svg')
   })
