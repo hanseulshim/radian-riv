@@ -1,0 +1,20 @@
+<svg width="15px" height="16px" viewBox="0 0 15 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>UI Icon/asleep/$ui-05</title>
+    <desc>Created with Sketch.</desc>
+
+    <defs>
+        <symbol id="asset" viewBox="0 0 15 16">
+            <g id="3.-Brand-Style" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="UI-Icons" transform="translate(-574.000000, -237.000000)" fill="currentColor">
+                    <g id="UI-Icon/asleep/$ui-05" transform="translate(574.000000, 237.000000)">
+                        <path d="M8,15 C4.14,15 1,11.859 1,8 C1,4.437 3.676,1.487 7.124,1.055 C6.495,2.226 6.16,3.538 6.16,4.887 C6.16,8.922 9.111,12.281 12.969,12.92 C11.669,14.23 9.882,15 8,15 L8,15 Z M13.959,12.018 C10.174,11.839 7.16,8.716 7.16,4.887 C7.16,3.366 7.608,2.005 8.42,0.848 L8.473,0.767 C8.521,0.689 8.557,0.603 8.557,0.505 C8.557,0.236 8.345,0.021 8.08,0.006 C8.066,0.005 8.052,0.003 8.038,0.003 C8.025,0.003 8.013,0 8,0 C3.582,0 0,3.582 0,8 C0,12.418 3.582,16 8,16 C10.58,16 12.815,14.792 14.33,12.878 C14.332,12.875 14.335,12.873 14.337,12.869 C14.43,12.77 14.481,12.655 14.481,12.52 C14.481,12.254 14.274,12.043 14.014,12.022 L13.959,12.018 Z" id="Fill-1" />
+                    </g>
+                </g>
+            </g>
+        </symbol>
+    </defs>
+    <g>
+        <use xlink:href="#asset" />
+    </g>
+</svg>

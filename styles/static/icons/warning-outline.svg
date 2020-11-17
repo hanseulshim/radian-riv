@@ -1,0 +1,24 @@
+<svg width="16px" height="15px" viewBox="0 0 16 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>UI Icon/Icon/warning/$ui-05</title>
+    <desc>Created with Sketch.</desc>
+
+    <defs>
+        <symbol id="asset" viewBox="0 0 16 15">
+            <g id="3.-Brand-Style" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="UI-Icons" transform="translate(-451.000000, -537.000000)" fill="currentColor">
+                    <g id="UI-Icon/warning--outline/$ui-05" transform="translate(451.000000, 537.000000)">
+                        <g id="warning--outline">
+                            <rect id="Rectangle-9" x="7.5" y="5" width="1" height="5" />
+                            <circle id="Oval-10" cx="8" cy="12" r="1" />
+                            <path d="M0.495695805,15 C0.12128988,15 -0.117582088,14.596902 0.0596919315,14.2642406 L7.52095001,0.262909075 C7.70724581,-0.0866819983 8.20387106,-0.0878841192 8.39182792,0.260801046 L15.9391703,14.2621326 C16.1185253,14.5948602 15.8797496,15 15.5042962,15 L0.495695805,15 Z M1.32378314,14.0013316 L14.6716787,14.0013316 L7.95945143,1.54925034 L1.32378314,14.0013316 Z" id="Path-30" fill-rule="nonzero" />
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </symbol>
+    </defs>
+    <g>
+        <use xlink:href="#asset" />
+    </g>
+</svg>

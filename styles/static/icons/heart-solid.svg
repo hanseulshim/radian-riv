@@ -1,0 +1,20 @@
+<svg width="16px" height="14px" viewBox="0 0 16 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>UI Icon/favorite--solid/$ui-05</title>
+    <desc>Created with Sketch.</desc>
+
+    <defs>
+        <symbol id="asset" viewBox="0 0 16 14">
+            <g id="3.-Brand-Style" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="UI-Icons" transform="translate(-636.000000, -358.000000)" fill="currentColor">
+                    <g id="UI-Icon/favorite--solid/$ui-05" transform="translate(636.000000, 358.000000)">
+                        <path d="M1.4881,7.7221 C0.5751,6.9131 0.0001,5.7321 0.0001,4.4161 C0.0001,1.9771 1.9771,0.0001 4.4161,0.0001 C5.8911,0.0001 7.1981,0.7231 8.0001,1.8351 C8.8021,0.7231 10.1081,0.0001 11.5841,0.0001 C14.0231,0.0001 16.0001,1.9771 16.0001,4.4161 C16.0001,5.7671 15.3931,6.9771 14.4371,7.7871 L7.9811,13.8691 L1.4881,7.7221 Z" id="heart" />
+                    </g>
+                </g>
+            </g>
+        </symbol>
+    </defs>
+    <g>
+        <use xlink:href="#asset" />
+    </g>
+</svg>

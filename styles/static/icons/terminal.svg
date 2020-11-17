@@ -1,0 +1,21 @@
+<svg width="16px" height="15px" viewBox="0 0 16 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>UI Icon/terminal/$ui-05</title>
+    <desc>Created with Sketch.</desc>
+
+    <defs>
+        <symbol id="asset" viewBox="0 0 16 15">
+            <g id="3.-Brand-Style" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="UI-Icons" transform="translate(-86.000000, -537.000000)" fill="currentColor" fill-rule="nonzero">
+                    <g id="UI-Icon/terminal/$ui-05" transform="translate(86.000000, 537.000000)">
+                        <path d="M16.0002173,4.50000005 L16.0002173,1 C16.0002173,0.44771525 15.552502,0 15.0002173,0 L1.00021726,0 C0.44793251,0 0.000217260221,0.44771525 0.000217260221,1 L0.000217260221,4.50695233 L0,4.00695237 L1.00021726,4.00651776 L1.00021726,1 L15.0002173,1 L15.0002173,4.00043447 L1.00021726,4.00651776 Z M15.0002173,5.00043466 L15.0002173,15 L1.00021726,15 L1.00021726,5.00651786 L15.0002173,5.00043466 Z" id="window" />
+                        <polygon id="mini-chevron" points="3.02041897 8.35355339 3.72752575 7.64644661 6.02041185 9.93933271 3.72752575 12.2322188 3.02041897 11.525112 4.60619829 9.93933271" />
+                    </g>
+                </g>
+            </g>
+        </symbol>
+    </defs>
+    <g>
+        <use xlink:href="#asset" />
+    </g>
+</svg>

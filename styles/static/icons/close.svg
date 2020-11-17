@@ -1,0 +1,20 @@
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>UI Icon/Icon/close--outline/$ui-05</title>
+    <desc>Created with Sketch.</desc>
+
+    <defs>
+        <symbol id="asset" viewBox="0 0 16 16">
+            <g id="3.-Brand-Style" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="UI-Icons" transform="translate(-757.000000, -298.000000)" fill="currentColor">
+                    <g id="UI-Icon/close--outline/$ui-05" transform="translate(757.000000, 298.000000)">
+                        <path d="M8,6.58578644 L10.1213203,4.46446609 L11.5355339,5.87867966 L9.41421356,8 L11.5355339,10.1213203 L10.1213203,11.5355339 L8,9.41421356 L5.87867966,11.5355339 L4.46446609,10.1213203 L6.58578644,8 L4.46446609,5.87867966 L5.87867966,4.46446609 L8,6.58578644 Z" id="x" />
+                    </g>
+                </g>
+            </g>
+        </symbol>
+    </defs>
+    <g>
+        <use xlink:href="#asset" />
+    </g>
+</svg>

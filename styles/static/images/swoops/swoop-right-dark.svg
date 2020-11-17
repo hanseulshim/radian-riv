@@ -1,0 +1,14 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 2500 900">
+    <defs>
+        <style>.cls-1{fill:none;}.cls-2{clip-path:url(#clip-path);}.cls-3{fill:#002B49;fill-rule:evenodd;}</style>
+        <clipPath id="clip-path">
+            <rect class="cls-1" width="2500" height="900" transform="translate(2500 900) rotate(-180)"/>
+        </clipPath>
+    </defs>
+    <title>Illustration Right - Extended copy</title>
+    <g class="cls-2">
+        <path class="cls-3"
+              d="M-456.34-479.53,625-1041c68.29-35.54,168.8-25.73,256.62,25L1573.28-616.5l1.75,1L2760.06,69c55.77,32.21,95.82,81.42,107.16,131.76,11.49,50.44-7.61,93.73-51.14,116.45L1734.76,878.77c-68.26,35.48-168.84,25.63-256.58-25L786.39,454.13l-1.61-.91-1185-684.5C-456-263.49-496-312.64-507.4-363S-499.85-456.87-456.34-479.53Z"/>
+    </g>
+</svg>

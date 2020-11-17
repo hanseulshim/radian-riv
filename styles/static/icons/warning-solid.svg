@@ -1,0 +1,20 @@
+<svg width="16px" height="15px" viewBox="0 0 16 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>UI Icon/Glyph/warning/$ui-05</title>
+    <desc>Created with Sketch.</desc>
+
+    <defs>
+        <symbol id="asset" viewBox="0 0 16 15">
+            <g id="3.-Brand-Style" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="UI-Icons" transform="translate(-514.000000, -537.000000)" fill="currentColor" fill-rule="nonzero">
+                    <g id="UI-Icon/warning--solid/$ui-05" transform="translate(514.000000, 537.000000)">
+                        <path d="M0.750967658,15 C0.193431143,15 -0.169190645,14.4499365 0.0801472652,13.9824279 L7.33014727,0.388677941 C7.60654047,-0.129559314 8.39539485,-0.129559314 8.67178805,0.388677941 L15.9217881,13.9824279 C16.171126,14.4499365 15.8085042,15 15.2509677,15 L0.750967658,15 Z M7.25096766,5.625 L7.25096766,10.3125 L8.75096766,10.3125 L8.75096766,5.625 L7.25096766,5.625 Z M8.00096766,12.65625 C8.41518122,12.65625 8.75096766,12.3414502 8.75096766,11.953125 C8.75096766,11.5647998 8.41518122,11.25 8.00096766,11.25 C7.5867541,11.25 7.25096766,11.5647998 7.25096766,11.953125 C7.25096766,12.3414502 7.5867541,12.65625 8.00096766,12.65625 Z" id="warning" />
+                    </g>
+                </g>
+            </g>
+        </symbol>
+    </defs>
+    <g>
+        <use xlink:href="#asset" />
+    </g>
+</svg>

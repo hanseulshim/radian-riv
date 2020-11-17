@@ -1,0 +1,19 @@
+<svg id="Layer_1" data-name="Layer 1" width="16px" height="16px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>UI Icon/Glyph/youtube/$ui-05</title>
+    <!-- <style>.cls-1{fill:#002b49;}.cls-2{fill:#fff;fill-rule:evenodd;}</style> -->
+    <defs>
+        <symbol id="asset" viewBox="0 0 48 48">
+            <g id="3.-Brand-Style" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="UI-Icons" stroke="currentColor">
+                    <g id="UI-Icon/youtube/$ui-05">
+                        <circle fill="currentColor" class="cls-1" cx="24" cy="24" r="23.67"/>
+                        <path fill="white" class="cls-2" d="M21.63,20.45v7.1l7.1-3.62ZM24,14.53h0s5.46,0,9.1.28A3.61,3.61,0,0,1,35.72,16a6,6,0,0,1,1,2.67c.16,1.44.24,2.9.26,4.35V25c0,1.45-.1,2.91-.26,4.35a6,6,0,0,1-1,2.68,3.7,3.7,0,0,1-2.61,1.14c-3.64.27-9.11.28-9.11.28s-6.77-.07-8.85-.27a4.38,4.38,0,0,1-2.87-1.15,6,6,0,0,1-1-2.68C11.08,27.93,11,26.47,11,25V23c0-1.45.1-2.91.26-4.35a6,6,0,0,1,1-2.67,3.61,3.61,0,0,1,2.61-1.14c3.64-.28,9.1-.28,9.1-.28Z"/>
+                    </g>
+                </g>
+            </g>
+        </symbol>
+    </defs>
+    <g>
+        <use xlink:href="#asset" />
+    </g>
+</svg>

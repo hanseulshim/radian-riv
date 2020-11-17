@@ -1,0 +1,19 @@
+<svg width="1000px" height="1000px"
+     viewBox="0 0 1000 1000"
+     version="1.1"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>Nest Background Template</title>
+
+    <circle
+        cx="500" cy="500" r="480"
+        fill="#ccf"
+    />
+    <circle cx="500" cy="500" r="300"
+            stroke-width="10"
+            stroke="#099"
+            fill="#fff"
+    />
+
+</svg>

@@ -1,0 +1,21 @@
+<svg width="42px" height="12px" viewBox="0 0 42 12" version="1.1" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <symbol id="asset" viewBox="0 0 42 12">
+            <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round"
+               stroke-linejoin="round">
+                <g id="Radian-/-Component-/-Text-Input-/-Open-/-Button" transform="translate(-211.000000, -25.000000)"
+                   stroke="black" stroke-width="1.5">
+                    <g id="Group-8" transform="translate(212.000000, 26.000000)">
+                        <path d="M0,5 L40,5" id="Line-3"></path>
+                        <polyline id="Path-3" points="35 0 40 5 35 10"></polyline>
+                    </g>
+                </g>
+            </g>
+        </symbol>
+    </defs>
+    <g>
+        <use xlink:href="#asset"></use>
+    </g>
+
+</svg>

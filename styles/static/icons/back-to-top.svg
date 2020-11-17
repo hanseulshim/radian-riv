@@ -1,0 +1,21 @@
+<svg width="11px" height="16px" viewBox="0 0 11 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>UI Icon/back-to-top/$ui-05</title>
+    <desc>Created with Sketch.</desc>
+
+    <defs>
+        <symbol id="asset" viewBox="0 0 11 16">
+            <g id="3.-Brand-Style" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="UI-Icons" transform="translate(-759.000000, -238.000000)" fill="currentColor" fill-rule="nonzero">
+                    <g id="UI-Icon/back-to-top/$ui-05" transform="translate(759.000000, 238.000000)">
+                        <polygon id="Path-14" points="0 1 0 0 11 0 11 1" />
+                        <path d="M5.00080234,4.98391773 L0.861439051,9.35716295 L0.135178738,8.66974316 L5.50170303,3 L10.8648213,8.67285481 L10.1381549,9.35984535 L6.00080234,4.98354794 L6.00080234,16 L5.00080234,16 L5.00080234,4.98391773 Z" id="Combined-Shape" />
+                    </g>
+                </g>
+            </g>
+        </symbol>
+    </defs>
+    <g>
+        <use xlink:href="#asset" />
+    </g>
+</svg>

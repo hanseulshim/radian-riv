@@ -1,0 +1,21 @@
+<svg width="15px" height="16px" viewBox="0 0 15 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>UI Icon/power/$ui-05</title>
+    <desc>Created with Sketch.</desc>
+
+    <defs>
+        <symbol id="asset" viewBox="0 0 15 16">
+            <g id="3.-Brand-Style" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="UI-Icons" transform="translate(-269.000000, -477.000000)" fill="currentColor">
+                    <g id="UI-Icon/power/$ui-05" transform="translate(269.000000, 477.000000)">
+                        <rect id="Rectangle-12" fill-rule="evenodd" x="7" y="4.4408921e-16" width="1" height="8" />
+                        <path d="M0.469115276,11.1277178 C0.165782692,10.3130221 0,9.43137301 0,8.51100327 C0,4.36886764 3.35786438,1.01100327 7.5,1.01100327 C11.6421356,1.01100327 15,4.36886764 15,8.51100327 C15,12.6531389 11.6421356,16.0110033 7.5,16.0110033 C6.62874378,16.0110033 5.51050043,15.7395714 5.0277752,15.5677262 L5.36314786,14.6256407 C5.90052942,14.8169429 6.8754263,15.0110033 7.5,15.0110033 C11.0898509,15.0110033 14,12.1008541 14,8.51100327 C14,4.92115239 11.0898509,2.01100327 7.5,2.01100327 C3.91014913,2.01100327 1,4.92115239 1,8.51100327 C1,9.29588315 1.13870817,10.0601818 1.40626567,10.7787921 L0.469115276,11.1277178 Z" id="Oval-14" fill-rule="nonzero" transform="translate(7.500000, 8.511003) rotate(136.000000) translate(-7.500000, -8.511003) " />
+                    </g>
+                </g>
+            </g>
+        </symbol>
+    </defs>
+    <g>
+        <use xlink:href="#asset" />
+    </g>
+</svg>

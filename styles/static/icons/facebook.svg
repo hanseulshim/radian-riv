@@ -1,0 +1,19 @@
+<svg id="Layer_1" data-name="Layer 1" width="16px" height="16px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>UI Icon/Glyph/facebook/$ui-05</title>
+    <style>.cls-1{fill:#002b49;}.cls-2{fill:#fff;fill-rule:evenodd;}</style>
+    <defs>
+        <symbol id="asset" viewBox="0 0 48 48">
+            <g id="3.-Brand-Style" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="UI-Icons" stroke="currentColor">
+                    <g id="UI-Icon/facebook/$ui-05">
+                        <circle fill="currentColor" class="cls-1" cx="24" cy="24" r="23.67"/>
+                        <path fill="white" class="cls-2" d="M25.17,35.83H20.44V24.59H18.08V20.72h2.36V18.39c0-3.16,1.33-5,5.12-5h3.15v3.88h-2c-1.47,0-1.57.54-1.57,1.55v1.94h3.57l-.41,3.87H25.16V35.83Z"/>
+                    </g>
+                </g>
+            </g>
+        </symbol>
+    </defs>
+    <g>
+        <use xlink:href="#asset" />
+    </g>
+</svg>

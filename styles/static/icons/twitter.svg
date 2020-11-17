@@ -1,0 +1,19 @@
+<svg id="Layer_1" data-name="Layer 1" width="16px" height="16px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>UI Icon/Glyph/twitter/$ui-05</title>
+    <!-- <style>.cls-1{fill:#002b49;}.cls-2{fill:#fff;fill-rule:evenodd;}</style> -->
+    <defs>
+        <symbol id="asset" viewBox="0 0 48 48">
+            <g id="3.-Brand-Style" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="UI-Icons" stroke="currentColor">
+                    <g id="UI-Icon/twitter/$ui-05">
+                        <circle fill="currentColor" class="cls-1" cx="24" cy="24" r="23.67"/>
+                        <path fill="white" class="cls-2" d="M34.23,18.71a4.81,4.81,0,0,0,2.13-2.64,10,10,0,0,1-3.08,1.16,4.9,4.9,0,0,0-3.55-1.51A4.79,4.79,0,0,0,25,21.58a13.85,13.85,0,0,1-10-5,4.7,4.7,0,0,0-.66,2.4,4.77,4.77,0,0,0,2.16,4,5,5,0,0,1-2.2-.59v.05a4.8,4.8,0,0,0,3.9,4.69,4.94,4.94,0,0,1-1.28.17A4.63,4.63,0,0,1,16,27.2a4.84,4.84,0,0,0,4.54,3.32,9.8,9.8,0,0,1-6,2.05,8.92,8.92,0,0,1-1.16-.07,13.87,13.87,0,0,0,7.44,2.15,13.61,13.61,0,0,0,13.82-13.6c0-.21,0-.41,0-.62A9.67,9.67,0,0,0,37,18,9.76,9.76,0,0,1,34.23,18.71Z"/>
+                    </g>
+                </g>
+            </g>
+        </symbol>
+    </defs>
+    <g>
+        <use xlink:href="#asset" />
+    </g>
+</svg>

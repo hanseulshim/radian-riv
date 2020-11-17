@@ -1,0 +1,20 @@
+<svg width="12px" height="7px" viewBox="0 0 12 7" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>UI Icon/Icon/chevron--up/$ui-05</title>
+    <desc>Created with Sketch.</desc>
+
+    <defs>
+        <symbol id="asset" viewBox="0 0 12 7">
+            <g id="3.-Brand-Style" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="UI-Icons" transform="translate(-637.000000, -300.000000)" fill="currentColor" fill-rule="nonzero">
+                    <g id="UI-Icon/chevron--up/$ui-05" transform="translate(637.000000, 300.000000)">
+                        <polygon id="chevron" points="5.99408113 1.44972267 0.726461685 6.99971556 -5.79924997e-13 6.31479463 5.99350948 2.93098879e-14 11.996192 6.31451019 11.2702706 7" />
+                    </g>
+                </g>
+            </g>
+        </symbol>
+    </defs>
+    <g>
+        <use xlink:href="#asset" />
+    </g>
+</svg>

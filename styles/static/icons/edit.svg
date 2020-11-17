@@ -1,0 +1,21 @@
+<svg width="16px" height="17px" viewBox="0 0 16 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>UI Icon/Glyph/edit/$ui-05</title>
+    <desc>Created with Sketch.</desc>
+
+    <defs>
+        <symbol id="asset" viewBox="0 0 16 17">
+            <g id="3.-Brand-Style" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="UI-Icons" transform="translate(-329.000000, -357.000000)" fill="currentColor" fill-rule="nonzero">
+                    <g id="UI-Icon/edit/$ui-05" transform="translate(329.000000, 357.000000)">
+                        <path d="M7.92572798,3.38803896 L1.00199753,9.72757266 L1.00199753,12.0074526 L3.30623854,12.0074526 L10.2321641,5.69097138 L7.92572798,3.38803896 Z M8.66400508,2.71205474 L10.9718396,5.01638339 L12.4234573,3.69250024 L10.1147108,1.38375376 L8.66400508,2.71205474 Z M0.00199752679,9.28733261 L9.43940417,0.646216685 C9.8341134,0.284811445 10.4433938,0.298223195 10.8218176,0.676646981 L13.1305641,2.98539346 C13.5210884,3.37591775 13.5210884,4.00908273 13.1305641,4.39960702 C13.1197237,4.41044738 13.1086355,4.42103702 13.0973082,4.43136755 L3.69376146,13.0074526 L0.00199752679,13.0074526 L0.00199752679,9.28733261 Z" id="Combined-Shape" />
+                        <polygon id="Path-16" points="0 16.0208666 0 15.0208666 16 15.0208666 16 16.0208666" />
+                    </g>
+                </g>
+            </g>
+        </symbol>
+    </defs>
+    <g>
+        <use xlink:href="#asset" />
+    </g>
+</svg>

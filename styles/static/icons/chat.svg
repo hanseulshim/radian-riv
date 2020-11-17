@@ -1,0 +1,22 @@
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>UI Icon/chat/$ui-05</title>
+    <desc>Created with Sketch.</desc>
+
+    <defs>
+        <symbol id="asset" viewBox="0 0 16 16">
+            <g id="3.-Brand-Style" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="UI-Icons" transform="translate(-208.000000, -298.000000)" fill="currentColor" fill-rule="nonzero">
+                    <g id="UI-Icon/chat/$ui-05" transform="translate(208.000000, 298.000000)">
+                        <polygon id="Path-46" points="3.00259111 8.03108704 2.99740889 7.03110046 8.99740889 7.00000671 9.00259111 7.99999329" />
+                        <polygon id="Path-46" points="3 5 3 4 13 4 13 5" />
+                        <path d="M11.7124093,12 L7.85987221,15.9940735 L7.14012779,15.2998344 L11.2875907,11 L14,11 C14.5522847,11 15,10.5522847 15,10 L15,2 C15,1.44771525 14.5522847,1 14,1 L2,1 C1.44771525,1 1,1.44771525 1,2 L1,10 C1,10.5522847 1.44771525,11 2,11 L7.50203125,11 L7.50203125,12 L2,12 C0.8954305,12 -2.22044605e-16,11.1045695 -2.22044605e-16,10 L-2.22044605e-16,2 C-2.22044605e-16,0.8954305 0.8954305,-7.10542736e-15 2,-7.10542736e-15 L14,-7.10542736e-15 C15.1045695,-7.10542736e-15 16,0.8954305 16,2 L16,10 C16,11.1045695 15.1045695,12 14,12 L11.7124093,12 Z" id="Path-43" />
+                    </g>
+                </g>
+            </g>
+        </symbol>
+    </defs>
+    <g>
+        <use xlink:href="#asset" />
+    </g>
+</svg>

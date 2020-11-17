@@ -1,0 +1,21 @@
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>UI Icon/minimize/$ui-05</title>
+    <desc>Created with Sketch.</desc>
+
+    <defs>
+        <symbol id="asset" viewBox="0 0 16 16">
+            <g id="3.-Brand-Style" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="UI-Icons" transform="translate(-634.000000, -417.000000)" fill="currentColor" fill-rule="nonzero">
+                    <g id="UI-Icon/minimize/$ui-05" transform="translate(634.000000, 417.000000)">
+                        <path d="M5.00197146,11.7086245 L0.707106781,16.0034892 L-1.38555833e-13,15.2963824 L4.27336908,11.0230134 L1.99847586,10.9999104 L2.00863096,9.99996198 L6.00082009,10.0405051 L6.00355329,13.999591 L5.00355353,14.0002814 L5.00197146,11.7086245 Z" id="Combined-Shape" />
+                        <path d="M11.7103438,5.00027787 L14.0035533,5.00027787 L14.0035533,6.00027787 L10.0062866,6.00027787 L10.0035533,2.00061955 L11.0035533,1.9999362 L11.005119,4.29128916 L15.2965354,1.99596877e-14 L16.0036422,0.707106781 L11.7103438,5.00027787 Z" id="Combined-Shape" />
+                    </g>
+                </g>
+            </g>
+        </symbol>
+    </defs>
+    <g>
+        <use xlink:href="#asset" />
+    </g>
+</svg>

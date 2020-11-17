@@ -1,0 +1,21 @@
+<svg id="Layer_1" data-name="Layer 1" width="16px" height="16px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>UI Icon/Glyph/linkedin/$ui-05</title>
+    <!-- <style>.cls-1{fill:#002b49;}.cls-2{fill:#fff;fill-rule:evenodd;}</style> -->
+    <defs>
+        <symbol id="asset" viewBox="0 0 48 48">
+            <g id="3.-Brand-Style" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="UI-Icons" stroke="currentColor">
+                    <g id="UI-Icon/linkedin/$ui-05">
+                        <path fill="currentColor" class="cls-1" d="M24,.33A23.67,23.67,0,1,1,.33,24,23.67,23.67,0,0,1,24,.33ZM38.65,35.27V22.9c0-6.79-4.06-7.91-6-7.91a10.27,10.27,0,0,0-6,1.93V15h-6V35.27h6V22.73a3.57,3.57,0,0,1,3.7-2.5c1.87,0,2.31,1,2.31,2.5V35.27Zm-20.28,0V15H12.73V35.27Zm0-24.23a2.82,2.82,0,1,0-2.82,2.82A2.82,2.82,0,0,0,18.37,11Z"/>
+                        <path class="cls-2" d="M38.65,22.9V35.27h-6V22.73c0-1.47-.44-2.5-2.31-2.5a3.57,3.57,0,0,0-3.7,2.5V35.27h-6V15h6v1.94a10.27,10.27,0,0,1,6-1.93C34.59,15,38.65,16.11,38.65,22.9Z"/>
+                        <rect class="cls-2" x="12.73" y="14.98" width="5.64" height="20.29"/>
+                        <circle class="cls-2" cx="15.55" cy="11.04" r="2.82"/>
+                    </g>
+                </g>
+            </g>
+        </symbol>
+    </defs>
+    <g>
+        <use xlink:href="#asset" />
+    </g>
+</svg>
