@@ -1,13 +1,5 @@
-import Header from 'components/Header'
-import Footer from 'components/Footer'
-
 const Home: React.FC = () => {
-  return (
-    <div>
-      <Header />
-      <Footer />
-    </div>
-  )
+  return <div>test</div>
 }
 
 export default Home

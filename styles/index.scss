@@ -1,9 +1,10 @@
-@import './bootstrap.radian.css';
-
-$prussian-blue: #002b49;
-$white: #ffffff;
+@import './font.scss';
+@import './variables.scss';
 
 .primary-background {
   background: $prussian-blue;
   color: $white;
 }
+
+@import './global.scss';
+@import './Layout.scss';

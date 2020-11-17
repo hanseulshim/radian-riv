@@ -1,23 +1,8 @@
 import * as React from 'react'
-import styled from 'styled-components'
-
-const FooterContainer = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 2em 10%;
-  justify-content: space-between;
-  font-size: 0.75em;
-  img {
-    flex: 1;
-  }
-  span {
-    flex: 3;
-  }
-`
 
 const Footer: React.FC = () => {
   return (
-    <FooterContainer>
+    <div id="footer">
       <img src="/footer-logo.svg" alt="logo" />
       <span>
         © 2020 Red Bell Real Estate, LLC. All rights reserved. Ownership and use
@@ -28,9 +13,9 @@ const Footer: React.FC = () => {
         provided “as-is” and without warranty or covenant of any kind including
         any warranty as to its accuracy, marketability or fitness for a
         particular purpose or usage. Any use not expressly authorized by such
-        agreement, including reliance on this report, is prohibited.
+        agreement, including reliance on this report, is prohibited. 💩
       </span>
-    </FooterContainer>
+    </div>
   )
 }
 
