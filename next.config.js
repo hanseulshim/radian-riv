@@ -1,3 +1,4 @@
+/* eslint-disable */
 const isAlpha = process.env.NODE_ENV === 'alpha'
 
 module.exports = {
