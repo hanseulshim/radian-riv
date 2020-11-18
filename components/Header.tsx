@@ -4,7 +4,7 @@ const Header: React.FC = () => {
   return (
     <div id="header">
       <div className="header-spacer">
-        <img src="/header-logo.svg" alt="logo" />
+        <img src={`${process.env.baseUrl}/header-logo.svg`} alt="logo" />
       </div>
       <div className="header-spacer primary-background">
         <h2>Radian Interactive Value</h2>
