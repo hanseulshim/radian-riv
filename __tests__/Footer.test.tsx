@@ -16,7 +16,4 @@ describe('Footer', () => {
       '2020 Red Bell Real Estate, LLC. All rights reserved.'
     )
   })
-  it('Footer has an image', () => {
-    expect(app.find('img').prop('src')).toEqual('/footer-logo.svg')
-  })
 })
