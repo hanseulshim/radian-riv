@@ -1,5 +1,10 @@
 @import './font.scss';
 @import './variables.scss';
+@import './global.scss';
+@import './layout.scss';
+
+// Page styles
+@import './pages/login/index.scss';
 
 :root {
   --white: #ffffff;
@@ -10,6 +15,3 @@
   background: $prussian-blue;
   color: $white;
 }
-
-@import './global.scss';
-@import './layout.scss';
