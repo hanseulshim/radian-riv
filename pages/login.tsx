@@ -1,10 +1,11 @@
 import { withoutAuth } from 'components/auth/AuthRoute'
-import LoginForm from 'components/LoginForm'
+import LoginForm from 'components/login/LoginForm'
+import styles from './styles/login.module.scss'
 
 const Login: React.FC = () => {
   return (
-    <div className="container">
-      <div className="description">
+    <div className={styles.container}>
+      <div className={styles.description}>
         <h2>Welcome to Radian Interactive Value</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nisl, ipsum,

@@ -1,0 +1,11 @@
+.container {
+  height: 100%;
+  background: url('/house.png') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.description {
+  color: var(--white);
+  display: inline-block;
+  width: 50%;
+}
