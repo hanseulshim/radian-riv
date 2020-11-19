@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
         provided “as-is” and without warranty or covenant of any kind including
         any warranty as to its accuracy, marketability or fitness for a
         particular purpose or usage. Any use not expressly authorized by such
-        agreement, including reliance on this report, is prohibited. 💩
+        agreement, including reliance on this report, is prohibited.
       </span>
     </div>
   )
