@@ -11,6 +11,7 @@ const Layout: React.FC = (props: Props) => {
   return (
     <div id="layout">
       <Head>
+        <title>Radian RIV</title>
         <link
           rel="icon"
           type="image/x-icon"
