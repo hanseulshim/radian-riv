@@ -4,7 +4,7 @@ import LoginForm from 'components/login/LoginForm'
 const Login: React.FC = () => {
   return (
     <div id="login-page">
-      <div>
+      <div className="description">
         <h2>Welcome to Radian Interactive Value</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nisl, ipsum,
