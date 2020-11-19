@@ -14,7 +14,11 @@ const Header: React.FC = () => {
           <span>
             Hello {user.name_first} {user.name_last}
           </span>
-          <img id="profile" alt="profile" src="/profile.svg" />
+          <img
+            id="profile"
+            alt="profile"
+            src={`${process.env.baseUrl}/footer-logo.svg`}
+          />
         </div>
       </div>
       <div className="header-spacer primary-background">
