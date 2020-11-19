@@ -17,7 +17,7 @@ const Header: React.FC = () => {
           <img
             id="profile"
             alt="profile"
-            src={`${process.env.baseUrl}/footer-logo.svg`}
+            src={`${process.env.baseUrl}/profile.svg`}
           />
         </div>
       </div>
