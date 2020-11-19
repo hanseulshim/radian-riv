@@ -9,20 +9,32 @@
 }
 
 #header {
+  img {
+    width: 150px;
+  }
   .header-spacer {
-    padding: 10px 1em;
+    padding: 10px 1em 0 1em;
+    &.primary-background {
+      padding-bottom: 10px;
+    }
   }
 }
 
 #footer {
-  display: flex;
-  align-items: center;
   padding: 2em 10%;
-  justify-content: space-between;
   font-size: 0.6em;
   line-height: 0.75em;
   color: #668092;
+  display: flex;
+  align-items: center;
   img {
+    display: inline-block;
     margin-right: 10%;
+  }
+
+  span {
+    display: inline-block;
+    width: 800px;
+    min-width: 800px;
   }
 }
