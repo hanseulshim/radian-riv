@@ -1,10 +1,17 @@
 @import './font.scss';
 @import './variables.scss';
+@import './global.scss';
+@import './layout.scss';
+
+// Page styles
+@import './pages/login/index.scss';
+
+:root {
+  --white: #ffffff;
+  --prussian-blue: #002b49;
+}
 
 .primary-background {
   background: $prussian-blue;
   color: $white;
 }
-
-@import './global.scss';
-@import './layout.scss';

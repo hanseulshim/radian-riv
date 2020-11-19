@@ -1,0 +1,16 @@
+@import 'login-form.scss';
+
+#login-page {
+  background: url('/house.png') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10%;
+
+  .description {
+    color: var(--white);
+    width: 400px;
+    display: inline-block;
+  }
+}
