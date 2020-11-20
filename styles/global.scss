@@ -48,6 +48,56 @@ h6 {
 
 form {
   background-color: var(--white);
-  border-radius: 3px;
-  padding: 1em;
+  border-radius: 5px;
+  padding: 2em;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+button {
+  outline: none;
+}
+
+input::placeholder {
+  color: var(--prussian-blue);
+}
+
+input {
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid var(--prussian-blue);
+  color: var(--prussian-blue);
+  font-size: 0.75em;
+}
+
+.btn {
+  padding: 10px 0px;
+  border-radius: 20px;
+  border: none;
+  font-size: 0.75em;
+  width: 180px;
+  font-weight: bold;
+  cursor: pointer;
+  &.btn-primary {
+    color: var(--white);
+    background-color: var(--prussian-blue);
+  }
+  &.btn-secondary {
+    color: var(--prussian-blue);
+  }
+  &.btn-small {
+    padding: 2px 0;
+    background-color: var(--white);
+    border: 2px solid var(--prussian-blue);
+  }
+}
+
+a {
+  color: var(--oracle);
+  text-decoration: none;
+  cursor: pointer;
+  :visited {
+    color: inherit;
+  }
 }

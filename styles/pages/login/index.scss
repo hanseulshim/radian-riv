@@ -11,6 +11,9 @@
   .description {
     color: var(--white);
     width: 400px;
-    display: inline-block;
+    margin-right: 10%;
+    h2 {
+      margin-bottom: 10%;
+    }
   }
 }
