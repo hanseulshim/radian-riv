@@ -29,12 +29,14 @@
   align-items: center;
   img {
     display: inline-block;
-    margin-right: 10%;
+    margin-right: 50px;
   }
 
   span {
     display: inline-block;
     width: 800px;
     min-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

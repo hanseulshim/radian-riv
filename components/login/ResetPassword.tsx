@@ -5,7 +5,7 @@ interface Props {
 const ResetPassword: React.FC<Props> = ({ closeModal }) => {
   return (
     <div className="reset-password modal-container">
-      <form>
+      <form onSubmit={() => alert('Password Reset!')}>
         <h2>Reset Password</h2>
         <img
           src={'/images/icon_x.svg'}

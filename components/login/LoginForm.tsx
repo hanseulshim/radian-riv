@@ -5,7 +5,7 @@ interface Props {
 const LoginForm: React.FC<Props> = ({ showPasswordModal }) => {
   return (
     <div className="login-form">
-      <form>
+      <form onSubmit={() => alert('Logged in!')}>
         <div className="input-group">
           <input
             type="email"
