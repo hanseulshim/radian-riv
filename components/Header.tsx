@@ -3,23 +3,25 @@ import { useAuth } from 'components/auth/AuthProvider'
 
 const Header: React.FC = () => {
   const {
-    auth: { user }
+    auth: { user, token }
   } = useAuth()
 
   return (
     <div id="header">
       <div className="header-spacer header-row">
         <img src={`${process.env.baseUrl}/images/header-logo.svg`} alt="logo" />
-        <div className="profile-row">
-          <span>
-            Hello {user.name_first} {user.name_last}
-          </span>
-          <img
-            id="profile"
-            alt="profile"
-            src={`${process.env.baseUrl}/images/profile.svg`}
-          />
-        </div>
+        {token && (
+          <div className="profile-row">
+            <span>
+              Hello {user.name_first} {user.name_last}
+            </span>
+            <img
+              id="profile"
+              alt="profile"
+              src={`${process.env.baseUrl}/images/profile.svg`}
+            />
+          </div>
+        )}
       </div>
       <div className="header-spacer primary-background">
         <h2>Radian Interactive Value</h2>
