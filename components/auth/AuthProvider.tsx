@@ -95,7 +95,11 @@ export const AuthProvider = ({
 
   useEffect(() => {
     const initializeAuth = async (): Promise<void> => {
-      Cookies.set('auth', testAuth)
+      if (process.env.auth) {
+        Cookies.set('auth', testAuth)
+      } else {
+        Cookies.remove('auth')
+      }
       const authCookies = Cookies.get('auth')
       if (authCookies) {
         setAuth(JSON.parse(authCookies))

@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:auth": "NODE_ENV=auth next dev",
     "build": "next build && next export",
     "start": "next start",
     "deploy:alpha": "NODE_ENV=alpha yarn build && aws s3 sync  ./out s3://alpha.boostlabs/radian-riv --profile boost && aws cloudfront create-invalidation --distribution-id E39HJLG88JXDDO --paths '/radian-riv/*'",
