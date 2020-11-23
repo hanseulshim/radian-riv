@@ -1,7 +1,9 @@
 @import 'login-form.scss';
+@import 'reset-password.scss';
+@import 'register.scss';
 
 #login-page {
-  background: url('/house.png') no-repeat center center fixed;
+  background: url('/images/house.png') no-repeat center center fixed;
   background-size: cover;
   display: flex;
   align-items: center;
@@ -11,6 +13,9 @@
   .description {
     color: var(--white);
     width: 400px;
-    display: inline-block;
+    margin-right: 10%;
+    h2 {
+      margin-bottom: 10%;
+    }
   }
 }

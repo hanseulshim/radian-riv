@@ -1,5 +1,4 @@
 @import './font.scss';
-@import './variables.scss';
 @import './global.scss';
 @import './layout.scss';
 
@@ -9,9 +8,11 @@
 :root {
   --white: #ffffff;
   --prussian-blue: #002b49;
+  --oracle: #387469;
+  --red: #ef442e;
 }
 
 .primary-background {
-  background: $prussian-blue;
-  color: $white;
+  background: var(--prussian-blue);
+  color: var(--white);
 }

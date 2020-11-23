@@ -1,0 +1,48 @@
+#login-page {
+  .register {
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      width: 600px;
+
+      h2 {
+        color: var(--prussian-blue);
+      }
+      .form-group {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .input-group {
+        width: 45%;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        input {
+          width: 100%;
+        }
+      }
+
+      button {
+        margin: 10% 0;
+      }
+      .close-form {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 15px;
+        cursor: pointer;
+      }
+      p {
+        color: var(--red);
+        font-size: 0.65em;
+        margin-top: 0;
+        span {
+          color: var(--oracle);
+          font-size: inherit;
+        }
+      }
+    }
+  }
+}

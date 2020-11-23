@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Messina, Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
   font-weight: 400;
   font-size: 20px;
   line-height: 25px;
@@ -48,6 +49,89 @@ h6 {
 
 form {
   background-color: var(--white);
-  border-radius: 3px;
-  padding: 1em;
+  border-radius: 5px;
+  padding: 2em;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+button {
+  outline: none;
+}
+
+input::placeholder {
+  color: var(--prussian-blue);
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 10px;
+  label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 0.6em;
+    color: var(--prussian-blue);
+    display: none;
+  }
+  input:focus + label {
+    display: block;
+    top: 0;
+  }
+
+  input {
+    padding: 20px 10px 2px 0px;
+    border: none;
+    border-bottom: 1px solid var(--prussian-blue);
+    color: var(--prussian-blue);
+    font-size: 0.75em;
+    margin-top: 5px;
+    &:invalid {
+      border-bottom: 2px solid red;
+    }
+  }
+}
+
+a {
+  color: var(--oracle);
+  text-decoration: none;
+  cursor: pointer;
+  :visited {
+    color: inherit;
+  }
+}
+
+.btn {
+  padding: 10px 0px;
+  border-radius: 20px;
+  border: none;
+  font-size: 0.75em;
+  min-width: 180px;
+  font-weight: bold;
+  cursor: pointer;
+  &.btn-primary {
+    color: var(--white);
+    background-color: var(--prussian-blue);
+  }
+  &.btn-secondary {
+    color: var(--prussian-blue);
+  }
+  &.btn-small {
+    padding: 2px 0;
+    background-color: var(--white);
+    border: 2px solid var(--prussian-blue);
+  }
+}
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 43, 73, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

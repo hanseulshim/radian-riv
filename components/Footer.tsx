@@ -3,7 +3,7 @@ import * as React from 'react'
 const Footer: React.FC = () => {
   return (
     <div id="footer">
-      <img src={`${process.env.baseUrl}/footer-logo.svg`} alt="logo" />
+      <img src={`${process.env.baseUrl}/images/footer-logo.svg`} alt="logo" />
       <span>
         © 2020 Red Bell Real Estate, LLC. All rights reserved. Ownership and use
         of this report is governed by the legal agreement between RedBell and

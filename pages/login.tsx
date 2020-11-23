@@ -1,7 +1,19 @@
 import { withoutAuth } from 'components/auth/AuthRoute'
 import LoginForm from 'components/login/LoginForm'
+import ResetPassword from 'components/login/ResetPassword'
+import Register from 'components/login/Register'
+import { useState } from 'react'
 
 const Login: React.FC = () => {
+  const [passwordModal, setPasswordModal] = useState(false)
+  const [registerModal, setRegisterModal] = useState(false)
+
+  const togglePasswordModal = () => {
+    setPasswordModal(!passwordModal)
+  }
+  const toggleRegisterModal = () => {
+    setRegisterModal(!registerModal)
+  }
   return (
     <div id="login-page">
       <div className="description">
@@ -16,7 +28,12 @@ const Login: React.FC = () => {
           lobortis. Turpis mus egestas pharetra facilisis arcu posuere semper.
         </p>
       </div>
-      <LoginForm />
+      <LoginForm
+        showPasswordModal={togglePasswordModal}
+        showRegisterModal={toggleRegisterModal}
+      />
+      {passwordModal && <ResetPassword closeModal={togglePasswordModal} />}
+      {registerModal && <Register closeModal={toggleRegisterModal} />}
     </div>
   )
 }
