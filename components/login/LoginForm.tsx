@@ -1,8 +1,12 @@
 interface Props {
   showPasswordModal: () => void
+  showRegisterModal: () => void
 }
 
-const LoginForm: React.FC<Props> = ({ showPasswordModal }) => {
+const LoginForm: React.FC<Props> = ({
+  showPasswordModal,
+  showRegisterModal
+}) => {
   const onLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     alert('Logged in!')
@@ -36,7 +40,10 @@ const LoginForm: React.FC<Props> = ({ showPasswordModal }) => {
           Forgot Password
         </a>
         <span>or</span>
-        <button className="btn btn-secondary btn-small register">
+        <button
+          className="btn btn-secondary btn-small register"
+          onClick={showRegisterModal}
+        >
           Register for free
         </button>
       </form>

@@ -35,7 +35,7 @@ const ResetPassword: React.FC<Props> = ({ closeModal }) => {
           />
           <label htmlFor="email">Email on file</label>
         </div>
-        <button className="btn btn-primary login" type="submit">
+        <button className="btn btn-primary " type="submit">
           Reset Password
         </button>
         <p>
