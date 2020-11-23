@@ -9,7 +9,7 @@ const Header: React.FC = () => {
   return (
     <div id="header">
       <div className="header-spacer header-row">
-        <img src={`${process.env.baseUrl}/header-logo.svg`} alt="logo" />
+        <img src={`${process.env.baseUrl}/images/header-logo.svg`} alt="logo" />
         <div className="profile-row">
           <span>
             Hello {user.name_first} {user.name_last}
@@ -17,7 +17,7 @@ const Header: React.FC = () => {
           <img
             id="profile"
             alt="profile"
-            src={`${process.env.baseUrl}/profile.svg`}
+            src={`${process.env.baseUrl}/images/profile.svg`}
           />
         </div>
       </div>
