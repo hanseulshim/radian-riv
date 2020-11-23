@@ -3,9 +3,14 @@ interface Props {
 }
 
 const ResetPassword: React.FC<Props> = ({ closeModal }) => {
+  const onReset = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    alert('Password Reset!')
+  }
+
   return (
     <div className="reset-password modal-container">
-      <form onSubmit={() => alert('Password Reset!')}>
+      <form onSubmit={e => onReset(e)}>
         <h2>Reset Password</h2>
         <img
           src={'/images/icon_x.svg'}

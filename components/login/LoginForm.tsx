@@ -3,9 +3,14 @@ interface Props {
 }
 
 const LoginForm: React.FC<Props> = ({ showPasswordModal }) => {
+  const onLogin = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    alert('Logged in!')
+  }
+
   return (
     <div className="login-form">
-      <form onSubmit={() => alert('Logged in!')}>
+      <form onSubmit={e => onLogin(e)}>
         <div className="input-group">
           <input
             type="email"
