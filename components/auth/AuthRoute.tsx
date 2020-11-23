@@ -17,7 +17,7 @@ const withAuthRedirect = <CP, IP = CP>({
     if (isLoading) {
       return <p>Loading...</p>
     }
-    if (typeof window !== 'undefined' && expectedAuth !== !!auth) {
+    if (typeof window !== 'undefined' && expectedAuth !== !!auth.token) {
       router.push(location)
       return <></>
     }
