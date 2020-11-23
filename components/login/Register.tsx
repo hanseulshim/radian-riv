@@ -15,7 +15,7 @@ const Register: React.FC<Props> = ({ closeModal }) => {
       <form onSubmit={e => onRegister(e)}>
         <h2>Create a New Account</h2>
         <img
-          src={'/images/icon_x.svg'}
+          src={`${process.env.baseUrl}/images/icon_x.svg`}
           className={'close-form'}
           onClick={closeModal}
         />
