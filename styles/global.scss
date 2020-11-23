@@ -107,7 +107,7 @@ a {
   border-radius: 20px;
   border: none;
   font-size: 0.75em;
-  width: 180px;
+  min-width: 180px;
   font-weight: bold;
   cursor: pointer;
   &.btn-primary {

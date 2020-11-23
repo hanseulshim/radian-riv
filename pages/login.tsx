@@ -24,7 +24,7 @@ const Login: React.FC = () => {
         </p>
       </div>
       <LoginForm showPasswordModal={toggleModal} />
-      {passwordModal && <ResetPassword />}
+      {passwordModal && <ResetPassword closeModal={toggleModal} />}
     </div>
   )
 }
