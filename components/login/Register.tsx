@@ -1,3 +1,5 @@
+import TermsOfUse from './TermsOfUse'
+
 interface Props {
   closeModal: () => void
 }
@@ -69,7 +71,7 @@ const Register: React.FC<Props> = ({ closeModal }) => {
           </div>
         </div>
         <h5>Terms of Use:</h5>
-
+        <TermsOfUse />
         <button className="btn btn-primary" type="submit">
           Agree
         </button>
