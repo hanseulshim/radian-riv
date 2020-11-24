@@ -3,12 +3,18 @@
 @import 'register.scss';
 
 #login-page {
-  background: url('/images/house.png') no-repeat center center fixed;
-  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10%;
+  padding: 10% 15%;
+  position: relative;
+
+  .background-image {
+    position: absolute;
+    z-index: -5;
+    width: 100%;
+    height: 105%;
+  }
 
   .description {
     color: var(--white);

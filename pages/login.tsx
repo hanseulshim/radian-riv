@@ -16,6 +16,11 @@ const Login: React.FC = () => {
   }
   return (
     <div id="login-page">
+      <img
+        src={`${process.env.baseUrl}/images/house.png`}
+        alt="RIV-Background"
+        className="background-image"
+      />
       <div className="description">
         <h2>Welcome to Radian Interactive Value</h2>
         <p>
