@@ -7,6 +7,7 @@ body {
   font-size: 20px;
   line-height: 25px;
   height: 100vh;
+  color: var(--prussian-blue);
 }
 
 #__next {
@@ -16,7 +17,7 @@ body {
 *,
 *:before,
 *:after {
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 h1,
@@ -47,10 +48,41 @@ h6 {
   line-height: 1.2em;
 }
 
-form {
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: var(--white);
-  border-radius: 5px;
-  padding: 2em;
+  border-radius: 10px;
+  padding: 1em 3em;
+  position: relative;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin: 0 1em;
+  }
+
+  .close-form {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    width: 15px;
+    cursor: pointer;
+  }
 }
 
 input:focus,
@@ -65,6 +97,7 @@ input::placeholder {
 }
 
 .input-group {
+  width: 100%;
   position: relative;
   margin-bottom: 10px;
   label {
@@ -74,13 +107,31 @@ input::placeholder {
     font-size: 0.6em;
     color: var(--prussian-blue);
     display: none;
+    height: 14px;
+
+    &.input-label {
+      top: 0;
+      display: block;
+    }
+  }
+  .required-field {
+    color: var(--red);
+    &.placeholder {
+      position: absolute;
+      top: 20px;
+      left: 0;
+    }
   }
   input:focus + label {
     display: block;
     top: 0;
   }
+  input:focus::placeholder {
+    opacity: 0;
+  }
 
   input {
+    width: 100%;
     padding: 20px 10px 2px 0px;
     border: none;
     border-bottom: 1px solid var(--prussian-blue);
@@ -117,11 +168,21 @@ a {
   &.btn-secondary {
     color: var(--prussian-blue);
   }
+  &.btn-link {
+    font-weight: normal;
+    background: none;
+    color: var(--oracle);
+  }
   &.btn-small {
     padding: 2px 0;
     background-color: var(--white);
     border: 2px solid var(--prussian-blue);
   }
+}
+
+.info {
+  color: var(--red);
+  font-size: 0.6em;
 }
 
 .modal-container {

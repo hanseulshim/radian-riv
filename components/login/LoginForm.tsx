@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import Input from 'components/common/Input'
 interface Props {
   showPasswordModal: () => void
   showRegisterModal: () => void
@@ -7,46 +9,41 @@ const LoginForm: React.FC<Props> = ({
   showPasswordModal,
   showRegisterModal
 }) => {
+  const [login, setLogin] = useState({ username: '', pwd: '' })
+
   const onLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     alert('Logged in!')
   }
 
   return (
-    <div className="login-form">
-      <form onSubmit={e => onLogin(e)}>
-        <div className="input-group">
-          <input
-            type="email"
-            placeholder="Username..."
-            name="Username"
-            required
-          />
-          <label htmlFor="Username">Username</label>
-        </div>
-        <div className="input-group">
-          <input
-            type="password"
-            placeholder="Password..."
-            name="Password"
-            required
-          />
-          <label htmlFor="Password">Password</label>
-        </div>
-        <button className="btn btn-primary login" type="submit">
+    <div className="login-form form">
+      <form onSubmit={onLogin}>
+        <Input
+          label="Login"
+          value={login.username}
+          onChange={e => setLogin({ ...login, username: e.target.value })}
+        />
+        <Input
+          label="Password"
+          type="password"
+          value={login.pwd}
+          onChange={e => setLogin({ ...login, pwd: e.target.value })}
+        />
+        <button className="btn btn-primary login-button" type="submit">
           Login
         </button>
-        <a href="#" onClick={() => showPasswordModal()}>
-          Forgot Password
-        </a>
-        <span>or</span>
-        <button
-          className="btn btn-secondary btn-small register"
-          onClick={showRegisterModal}
-        >
-          Register for free
-        </button>
       </form>
+      <button className="btn btn-link" onClick={() => showPasswordModal()}>
+        Forgot Password
+      </button>
+      <span>or</span>
+      <button
+        className="btn btn-secondary btn-small"
+        onClick={showRegisterModal}
+      >
+        Register for free
+      </button>
     </div>
   )
 }

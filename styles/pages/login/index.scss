@@ -1,12 +1,12 @@
-@import 'login-form.scss';
-@import 'reset-password.scss';
-@import 'register.scss';
-
 #login-page {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 10%;
+
+  .btn {
+    margin: 20px 0;
+  }
 
   .description {
     color: var(--white);
@@ -15,5 +15,31 @@
     h2 {
       margin-bottom: 10%;
     }
+  }
+
+  .login-form {
+    .login-button {
+      margin-top: 50px;
+    }
+    .btn-link {
+      margin: 0;
+    }
+  }
+
+  .register {
+    form {
+      width: 600px;
+    }
+  }
+
+  .reset-password {
+    form {
+      width: 350px;
+    }
+  }
+
+  .terms-of-use {
+    text-align: center;
+    margin-top: 1em;
   }
 }
