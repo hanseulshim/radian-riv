@@ -13,9 +13,25 @@
     width: 150px;
   }
   .header-spacer {
-    padding: 10px 1em 0 1em;
+    padding: 10px 1em 0em 1em;
     &.primary-background {
       padding-bottom: 10px;
+    }
+  }
+  .header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+
+    .profile-row {
+      display: flex;
+      align-items: center;
+      #profile {
+        width: 25px;
+        height: 25px;
+        margin-left: 1em;
+      }
     }
   }
 }

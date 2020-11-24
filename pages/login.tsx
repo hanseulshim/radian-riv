@@ -15,7 +15,13 @@ const Login: React.FC = () => {
     setRegisterModal(!registerModal)
   }
   return (
-    <div id="login-page">
+    <div
+      id="login-page"
+      style={{
+        background: `url(${process.env.baseUrl}/images/house.png) no-repeat center center fixed`,
+        backgroundSize: 'cover'
+      }}
+    >
       <div className="description">
         <h2>Welcome to Radian Interactive Value</h2>
         <p>

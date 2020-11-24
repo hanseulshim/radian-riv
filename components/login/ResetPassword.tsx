@@ -1,8 +1,16 @@
+import { useState } from 'react'
+import Input from 'components/common/Input'
+
 interface Props {
   closeModal: () => void
 }
 
 const ResetPassword: React.FC<Props> = ({ closeModal }) => {
+  const [resetPassword, setResetPassword] = useState({
+    username: '',
+    email: ''
+  })
+
   const onReset = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     alert('Password Reset!')
@@ -10,45 +18,44 @@ const ResetPassword: React.FC<Props> = ({ closeModal }) => {
 
   return (
     <div className="reset-password modal-container">
-      <form onSubmit={e => onReset(e)}>
+      <div className="form">
         <h2>Reset Password</h2>
         <img
-          src={'/images/icon_x.svg'}
+          src={`${process.env.baseUrl}/images/icon_x.svg`}
           className={'close-form'}
           onClick={closeModal}
         />
-        <div className="input-group">
-          <input
-            type="text"
-            placeholder="Username..."
-            name="username"
+        <form onSubmit={e => onReset(e)}>
+          <Input
+            label="User Name"
+            value={resetPassword.username}
+            onChange={e =>
+              setResetPassword({ ...resetPassword, username: e.target.value })
+            }
             required
           />
-          <label htmlFor="Username">Username</label>
-        </div>
-        <div className="input-group">
-          <input
-            type="email"
-            placeholder="Email on file..."
-            name="email"
+          <Input
+            label="Email on file"
+            value={resetPassword.username}
+            onChange={e =>
+              setResetPassword({ ...resetPassword, username: e.target.value })
+            }
             required
           />
-          <label htmlFor="email">Email on file</label>
-        </div>
-        <button className="btn btn-primary " type="submit">
-          Reset Password
-        </button>
-        <p>
-          For security purposes you are required to reset your password every
-          120 days.
-        </p>
-        <p>
-          {' '}
-          If you do not receive an email with instructions on how to reset your
-          password, please send an email to
-          <span> vow@redbellre.com</span>
-        </p>
-      </form>
+          <button className="btn btn-primary" type="submit">
+            Reset Password
+          </button>
+          <p className="info">
+            For security purposes you are required to reset your password every
+            120 days.
+          </p>
+          <p className="info">
+            If you do not receive an email with instructions on how to reset
+            your password, please send an email to{' '}
+            <a href="mailto:vow@redbellre.com">vow@redbellre.com</a>
+          </p>
+        </form>
+      </div>
     </div>
   )
 }
