@@ -70,7 +70,6 @@ const Register: React.FC<Props> = ({ closeModal }) => {
             <label htmlFor="confirmEmail">Confirm Email</label>
           </div>
         </div>
-        <h5>Terms of Use:</h5>
         <TermsOfUse />
         <button className="btn btn-primary" type="submit">
           Agree
