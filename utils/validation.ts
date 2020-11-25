@@ -10,8 +10,6 @@ export const validateForm = (form: any): any => {
     if (key === 'username') {
       if (form[key].length === 0) {
         errorObj[key] = `Username can't be empty`
-      } else if (!form[key].match(emailValidation)) {
-        errorObj[key] = `Username must be valid`
       }
     } else if (key === 'pwd') {
       if (form[key].length === 0) {
