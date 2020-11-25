@@ -6,6 +6,7 @@ interface Props {
   type?: string
   required?: boolean
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  error: string
 }
 
 const Input: React.FC<Props> = ({
@@ -13,12 +14,14 @@ const Input: React.FC<Props> = ({
   label,
   type = 'text',
   required = false,
-  onChange
+  onChange,
+  error
 }) => {
   const [focus, setFocus] = useState(false)
   return (
     <div className="input-group">
       <input
+        className={error ? 'error-input' : null}
         type={type}
         placeholder={`${required ? '   ' : ''}${label}...`}
         name={label}
@@ -34,6 +37,7 @@ const Input: React.FC<Props> = ({
         {required && <span className="required-field">* </span>}
         {label}
       </label>
+      <span className="error-message">{error}</span>
     </div>
   )
 }

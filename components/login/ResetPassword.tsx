@@ -1,19 +1,43 @@
 import { useState } from 'react'
 import Input from 'components/common/Input'
+import { validateForm } from 'utils/validation'
 
 interface Props {
   closeModal: () => void
 }
 
+const defaultState = {
+  username: '',
+  email: ''
+}
+
 const ResetPassword: React.FC<Props> = ({ closeModal }) => {
-  const [resetPassword, setResetPassword] = useState({
-    username: '',
-    email: ''
-  })
+  const [resetPassword, setResetPassword] = useState({ ...defaultState })
+  const [error, setError] = useState({ ...defaultState })
 
   const onReset = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    alert('Password Reset!')
+    const errorCopy = { ...defaultState }
+    const errorObj = validateForm(resetPassword)
+    const errorArr = Object.keys(errorObj)
+    if (errorArr.length) {
+      errorArr.forEach(key => {
+        errorCopy[key] = errorObj[key]
+      })
+    } else {
+      alert('Password reset!')
+    }
+    setError(errorCopy)
+  }
+
+  const handleInput = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    key = 'string'
+  ) => {
+    if (error[key]) {
+      setError({ ...error, [key]: '' })
+    }
+    setResetPassword({ ...resetPassword, [key]: e.target.value })
   }
 
   return (
@@ -29,17 +53,15 @@ const ResetPassword: React.FC<Props> = ({ closeModal }) => {
           <Input
             label="User Name"
             value={resetPassword.username}
-            onChange={e =>
-              setResetPassword({ ...resetPassword, username: e.target.value })
-            }
+            error={error.username}
+            onChange={e => handleInput(e, 'username')}
             required
           />
           <Input
             label="Email on file"
             value={resetPassword.email}
-            onChange={e =>
-              setResetPassword({ ...resetPassword, email: e.target.value })
-            }
+            error={error.email}
+            onChange={e => handleInput(e, 'email')}
             required
           />
           <button className="btn btn-primary" type="submit">
