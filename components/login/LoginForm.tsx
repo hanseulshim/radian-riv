@@ -1,34 +1,61 @@
 import { useState } from 'react'
 import Input from 'components/common/Input'
+import { validateForm } from 'utils/validation'
+
 interface Props {
   showPasswordModal: () => void
   showRegisterModal: () => void
 }
 
+const defaultState = { username: '', pwd: '' }
+
 const LoginForm: React.FC<Props> = ({
   showPasswordModal,
   showRegisterModal
 }) => {
-  const [login, setLogin] = useState({ username: '', pwd: '' })
+  const [login, setLogin] = useState({ ...defaultState })
+  const [error, setError] = useState({ ...defaultState })
 
   const onLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    alert('Logged in!')
+    const errorCopy = { ...defaultState }
+    const errorObj = validateForm(login)
+    const errorArr = Object.keys(errorObj)
+    if (errorArr.length) {
+      errorArr.forEach(key => {
+        errorCopy[key] = errorObj[key]
+      })
+    } else {
+      alert('Logged in!')
+    }
+    setError(errorCopy)
+  }
+
+  const handleInput = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    key = 'string'
+  ) => {
+    if (error[key]) {
+      setError({ ...error, [key]: '' })
+    }
+    setLogin({ ...login, [key]: e.target.value })
   }
 
   return (
     <div className="login-form form">
       <form onSubmit={onLogin}>
         <Input
-          label="Login"
+          label="Username"
           value={login.username}
-          onChange={e => setLogin({ ...login, username: e.target.value })}
+          error={error.username}
+          onChange={e => handleInput(e, 'username')}
         />
         <Input
           label="Password"
           type="password"
           value={login.pwd}
-          onChange={e => setLogin({ ...login, pwd: e.target.value })}
+          error={error.pwd}
+          onChange={e => handleInput(e, 'pwd')}
         />
         <button className="btn btn-primary login-button" type="submit">
           Login

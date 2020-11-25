@@ -1,25 +1,49 @@
 import { useState } from 'react'
 import Input from 'components/common/Input'
+import { validateForm } from 'utils/validation'
 import TermsOfUse from './TermsOfUse'
 
 interface Props {
   closeModal: () => void
 }
 
+const defaultState = {
+  name_first: '',
+  name_last: '',
+  username: '',
+  email: '',
+  confirm_email: '',
+  phone_mobile: '',
+  terms_accepted: true
+}
+
 const Register: React.FC<Props> = ({ closeModal }) => {
-  const [register, setRegister] = useState({
-    name_first: '',
-    name_last: '',
-    username: '',
-    email: '',
-    confirm_email: '',
-    phone_mobile: '',
-    terms_accepted: true
-  })
+  const [register, setRegister] = useState({ ...defaultState })
+  const [error, setError] = useState({ ...defaultState })
+
+  const handleInput = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    key = 'string'
+  ) => {
+    if (error[key]) {
+      setError({ ...error, [key]: '' })
+    }
+    setRegister({ ...register, [key]: e.target.value })
+  }
 
   const onRegister = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    alert('Registration Complete!')
+    const errorCopy = { ...defaultState }
+    const errorObj = validateForm(register)
+    const errorArr = Object.keys(errorObj)
+    if (errorArr.length) {
+      errorArr.forEach(key => {
+        errorCopy[key] = errorObj[key]
+      })
+    } else {
+      alert('Registration Complete!')
+    }
+    setError(errorCopy)
   }
 
   return (
@@ -37,25 +61,22 @@ const Register: React.FC<Props> = ({ closeModal }) => {
               <Input
                 label="First Name"
                 value={register.name_first}
-                onChange={e =>
-                  setRegister({ ...register, name_first: e.target.value })
-                }
+                error={error.name_first}
+                onChange={e => handleInput(e, 'name_first')}
                 required
               />
               <Input
                 label="Last Name"
                 value={register.name_last}
-                onChange={e =>
-                  setRegister({ ...register, name_last: e.target.value })
-                }
+                error={error.name_last}
+                onChange={e => handleInput(e, 'name_last')}
                 required
               />
               <Input
                 label="User Name"
                 value={register.username}
-                onChange={e =>
-                  setRegister({ ...register, username: e.target.value })
-                }
+                error={error.username}
+                onChange={e => handleInput(e, 'username')}
                 required
               />
             </div>
@@ -63,24 +84,21 @@ const Register: React.FC<Props> = ({ closeModal }) => {
               <Input
                 label="Phone"
                 value={register.phone_mobile}
-                onChange={e =>
-                  setRegister({ ...register, phone_mobile: e.target.value })
-                }
+                error={error.phone_mobile}
+                onChange={e => handleInput(e, 'phone_mobile')}
               />
               <Input
                 label="Email"
                 value={register.email}
-                onChange={e =>
-                  setRegister({ ...register, email: e.target.value })
-                }
+                error={error.email}
+                onChange={e => handleInput(e, 'email')}
                 required
               />
               <Input
                 label="Confirm Email"
                 value={register.confirm_email}
-                onChange={e =>
-                  setRegister({ ...register, confirm_email: e.target.value })
-                }
+                error={error.confirm_email}
+                onChange={e => handleInput(e, 'confirm_email')}
                 required
               />
             </div>
