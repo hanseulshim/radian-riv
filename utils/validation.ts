@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 
 const emailValidation = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/gm
+const phoneValidation = /^[(]?[0-9]{3}[)]?[-\s]?[0-9]{3}[-\s]?[0-9]{4}$/gim
 
 export const validateForm = (form: any): any => {
   const errorObj = {}
@@ -37,6 +38,14 @@ export const validateForm = (form: any): any => {
         errorObj[key] = `Confirm Email must be valid`
       } else if (form[key] !== form.email) {
         errorObj[key] = `Confirm Email must match email`
+      }
+    } else if (
+      key === 'phone_home' ||
+      key === 'phone_mobile' ||
+      key === 'phone_office'
+    ) {
+      if (!form[key].match(phoneValidation)) {
+        errorObj[key] = 'Must be a valid phone number format'
       }
     }
   })
