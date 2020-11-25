@@ -49,7 +49,7 @@ const Register: React.FC<Props> = ({ closeModal }) => {
   return (
     <div className="register modal-container">
       <div className="form">
-        <h3>Create a New Account</h3>
+        <h3 className="form-title">Create a New Account</h3>
         <img
           src={`${process.env.baseUrl}/images/icon_x.svg`}
           className={'close-form'}

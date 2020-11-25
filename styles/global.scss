@@ -58,6 +58,10 @@ h6 {
   padding: 1em 3em;
   position: relative;
 
+  .form-title {
+    margin: 1em 0 1em 0;
+  }
+
   form {
     display: flex;
     flex-direction: column;

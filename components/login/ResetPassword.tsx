@@ -43,7 +43,7 @@ const ResetPassword: React.FC<Props> = ({ closeModal }) => {
   return (
     <div className="reset-password modal-container">
       <div className="form">
-        <h2>Reset Password</h2>
+        <h3 className="form-title">Reset Password</h3>
         <img
           src={`${process.env.baseUrl}/images/icon_x.svg`}
           className={'close-form'}
