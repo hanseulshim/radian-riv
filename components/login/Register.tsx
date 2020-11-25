@@ -14,7 +14,7 @@ const defaultState = {
   email: '',
   confirm_email: '',
   phone_mobile: '',
-  terms_accepted: true
+  terms_accepted: false
 }
 
 const Register: React.FC<Props> = ({ closeModal }) => {
