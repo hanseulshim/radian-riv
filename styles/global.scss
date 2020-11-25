@@ -6,6 +6,7 @@ body {
   font-weight: 400;
   font-size: 20px;
   line-height: 25px;
+  min-height: 100vh;
   height: 100vh;
   color: var(--prussian-blue);
 }
@@ -154,6 +155,15 @@ input::placeholder {
   }
 }
 
+.checkbox {
+  font-size: 0.75em;
+  display: flex;
+  align-items: center;
+  input {
+    margin-right: 5px;
+  }
+}
+
 a {
   color: var(--oracle);
   text-decoration: none;
@@ -187,6 +197,10 @@ a {
     padding: 2px 0;
     background-color: var(--white);
     border: 2px solid var(--prussian-blue);
+  }
+  &:disabled {
+    background-color: var(--gray);
+    cursor: not-allowed;
   }
 }
 
