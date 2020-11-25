@@ -96,11 +96,7 @@ const Register: React.FC<Props> = ({ closeModal }) => {
             />
             I have read and agree to the Terms Of Use
           </label>
-          <button
-            className="btn btn-primary"
-            type="submit"
-            disabled={!register.terms_accepted}
-          >
+          <button className="btn btn-primary" type="submit">
             Agree
           </button>
         </form>

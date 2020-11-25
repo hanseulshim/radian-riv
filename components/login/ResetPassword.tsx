@@ -36,9 +36,9 @@ const ResetPassword: React.FC<Props> = ({ closeModal }) => {
           />
           <Input
             label="Email on file"
-            value={resetPassword.username}
+            value={resetPassword.email}
             onChange={e =>
-              setResetPassword({ ...resetPassword, username: e.target.value })
+              setResetPassword({ ...resetPassword, email: e.target.value })
             }
             required
           />
