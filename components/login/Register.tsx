@@ -14,7 +14,7 @@ const Register: React.FC<Props> = ({ closeModal }) => {
     email: '',
     confirm_email: '',
     phone_mobile: '',
-    terms_accepted: true
+    terms_accepted: false
   })
 
   const onRegister = (e: React.FormEvent<HTMLFormElement>) => {
@@ -25,7 +25,7 @@ const Register: React.FC<Props> = ({ closeModal }) => {
   return (
     <div className="register modal-container">
       <div className="form">
-        <h2>Create a New Account</h2>
+        <h3>Create a New Account</h3>
         <img
           src={`${process.env.baseUrl}/images/icon_x.svg`}
           className={'close-form'}
@@ -86,7 +86,21 @@ const Register: React.FC<Props> = ({ closeModal }) => {
             </div>
           </div>
           <TermsOfUse />
-          <button className="btn btn-primary" type="submit">
+          <label htmlFor="terms_accepted" className="checkbox">
+            <input
+              type="checkbox"
+              value={register.terms_accepted ? 'checked' : 'unchecked'}
+              onChange={e =>
+                setRegister({ ...register, terms_accepted: e.target.checked })
+              }
+            />
+            I have read and agree to the Terms Of Use
+          </label>
+          <button
+            className="btn btn-primary"
+            type="submit"
+            disabled={!register.terms_accepted}
+          >
             Agree
           </button>
         </form>
