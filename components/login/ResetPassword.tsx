@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Input from 'components/common/Input'
 import { validateForm } from 'utils/validation'
+import { submitResetPassword } from 'utils/api'
 
 interface Props {
   closeModal: () => void
@@ -14,9 +15,12 @@ const defaultState = {
 const ResetPassword: React.FC<Props> = ({ closeModal }) => {
   const [resetPassword, setResetPassword] = useState({ ...defaultState })
   const [error, setError] = useState({ ...defaultState })
+  const [errorMessage, setErrorMessage] = useState('')
+  const [successMessage, setSuccessMessage] = useState('')
 
   const onReset = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setErrorMessage('')
     const errorCopy = { ...defaultState }
     const errorObj = validateForm(resetPassword)
     const errorArr = Object.keys(errorObj)
@@ -25,7 +29,15 @@ const ResetPassword: React.FC<Props> = ({ closeModal }) => {
         errorCopy[key] = errorObj[key]
       })
     } else {
-      alert('Password reset!')
+      try {
+        const message = submitResetPassword(resetPassword)
+        setSuccessMessage(message)
+        setTimeout(() => {
+          closeModal()
+        }, 3000)
+      } catch (e) {
+        setErrorMessage(e.message)
+      }
     }
     setError(errorCopy)
   }
@@ -64,6 +76,11 @@ const ResetPassword: React.FC<Props> = ({ closeModal }) => {
             onChange={e => handleInput(e, 'email')}
             required
           />
+          <span
+            className={successMessage ? 'success-message' : 'error-message'}
+          >
+            {successMessage || errorMessage}
+          </span>
           <button className="btn btn-primary" type="submit">
             Reset Password
           </button>

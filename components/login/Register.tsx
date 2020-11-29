@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Input from 'components/common/Input'
 import { validateForm } from 'utils/validation'
 import TermsOfUse from './TermsOfUse'
+import { submitRegister } from 'utils/api'
 
 interface Props {
   closeModal: () => void
@@ -20,6 +21,8 @@ const defaultState = {
 const Register: React.FC<Props> = ({ closeModal }) => {
   const [register, setRegister] = useState({ ...defaultState })
   const [error, setError] = useState({ ...defaultState })
+  const [errorMessage, setErrorMessage] = useState('')
+  const [successMessage, setSuccessMessage] = useState('')
 
   const handleInput = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -33,6 +36,7 @@ const Register: React.FC<Props> = ({ closeModal }) => {
 
   const onRegister = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setErrorMessage('')
     const errorCopy = { ...defaultState }
     const errorObj = validateForm(register)
     const errorArr = Object.keys(errorObj)
@@ -41,7 +45,15 @@ const Register: React.FC<Props> = ({ closeModal }) => {
         errorCopy[key] = errorObj[key]
       })
     } else {
-      alert('Registration Complete!')
+      try {
+        const message = submitRegister(register)
+        setSuccessMessage(message)
+        setTimeout(() => {
+          closeModal()
+        }, 3000)
+      } catch (e) {
+        setErrorMessage(e.message)
+      }
     }
     setError(errorCopy)
   }
@@ -114,6 +126,11 @@ const Register: React.FC<Props> = ({ closeModal }) => {
             />
             I have read and agree to the Terms Of Use
           </label>
+          <span
+            className={successMessage ? 'success-message' : 'error-message'}
+          >
+            {successMessage || errorMessage}
+          </span>
           <button
             className="btn btn-primary"
             type="submit"

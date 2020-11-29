@@ -38,3 +38,35 @@ export const submitLogin = (form: Login): AuthType => {
 
   return testAuth
 }
+
+interface ResetPassword {
+  username: string
+  email: string
+}
+
+export const submitResetPassword = (form: ResetPassword): string => {
+  if (form.username === 'error') {
+    throw new Error('Error in username')
+  } else if (form.email === 'error@boostlabs.com') {
+    throw new Error('Error in email')
+  }
+
+  return 'Password reset!'
+}
+
+interface Register {
+  name_first: string
+  name_last: string
+  username: string
+  email: string
+  confirm_email: string
+  phone_mobile: string
+}
+
+export const submitRegister = (form: Register): string => {
+  if (form.name_first === 'error') {
+    throw new Error('Error in registering user')
+  }
+
+  return 'User created!'
+}
