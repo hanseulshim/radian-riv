@@ -7,6 +7,7 @@ type Props = {
   closeModal: () => void
 }
 
+//TODO #8 add in CSS animations for modal open/close
 const Modal: React.FC<Props> = ({ children, title, closeModal, width }) => {
   const handleClick = e => {
     if (e.target.className === 'modal-container') {
