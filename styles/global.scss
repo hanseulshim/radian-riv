@@ -88,6 +88,15 @@ h6 {
     width: 15px;
     cursor: pointer;
   }
+
+  .error-message {
+    font-size: 0.6em;
+    color: var(--red);
+    display: block;
+    margin-top: 5px;
+    height: 0.6em;
+    width: 100%;
+  }
 }
 
 input:focus,
@@ -129,13 +138,6 @@ input::placeholder {
   }
   input.error-input {
     border-bottom: 1px solid var(--red);
-  }
-  .error-message {
-    font-size: 0.6em;
-    color: var(--red);
-    display: block;
-    margin-top: 5px;
-    height: 0.6em;
   }
   input:focus + label {
     display: block;

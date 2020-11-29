@@ -1,7 +1,6 @@
 /* eslint-disable */
 const isAlpha = process.env.NODE_ENV === 'alpha'
 const isBeta = process.env.NODE_ENV === 'beta'
-const isAuth = process.env.NODE_ENV === 'auth'
 
 module.exports = {
   // Use the CDN in production and localhost for development.
@@ -12,7 +11,6 @@ module.exports = {
     : '',
   basePath: isAlpha || isBeta ? '/radian-riv' : '',
   env: {
-    baseUrl: isAlpha || isBeta ? '/radian-riv' : '',
-    auth: isAuth
+    baseUrl: isAlpha || isBeta ? '/radian-riv' : ''
   }
 }
