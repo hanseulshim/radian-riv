@@ -36,6 +36,7 @@
         width: 100%;
         padding: 5px 20px;
         position: relative;
+        margin-bottom: 5px;
         &.active:before {
           content: '';
           position: absolute;
@@ -49,6 +50,18 @@
           bottom: -5px;
           right: 22%;
           width: 10px;
+        }
+      }
+      .subroute-link {
+        padding: 5px 20px;
+        color: inherit;
+        font-size: 0.75em;
+        width: 100%;
+        &:hover {
+          background-color: #133e5a;
+        }
+        &.active {
+          background-color: #133e5a;
         }
       }
     }
