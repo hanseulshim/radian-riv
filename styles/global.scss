@@ -169,7 +169,7 @@ input::placeholder {
 }
 
 a {
-  color: var(--oracle);
+  color: inherit;
   text-decoration: none;
   cursor: pointer;
   :visited {

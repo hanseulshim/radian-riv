@@ -2,12 +2,18 @@ import * as React from 'react'
 import Head from 'next/head'
 import Header from './Header'
 import Footer from './Footer'
+import { useAuth } from 'components/auth/AuthProvider'
+import Sidebar from 'components/sidebar'
 
 type Props = {
   children: React.ReactNode
 }
 
 const Layout: React.FC = (props: Props) => {
+  const {
+    auth: { token }
+  } = useAuth()
+
   return (
     <div id="layout">
       <Head>
@@ -19,7 +25,10 @@ const Layout: React.FC = (props: Props) => {
         />
       </Head>
       <Header />
-      <div id="main">{props.children}</div>
+      <div id="main">
+        {token && <Sidebar />}
+        {props.children}
+      </div>
       <Footer />
     </div>
   )
