@@ -63,7 +63,6 @@ interface Register {
   name_last: string
   username: string
   email: string
-  confirm_email: string
   phone_mobile: string
 }
 
