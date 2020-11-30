@@ -4,9 +4,13 @@ import { useRouter } from 'next/router'
 
 const routes = [
   {
-    label: 'User Profile',
-    link: '/user-profile',
+    label: 'My Account',
+    link: '/my-account',
     subroutes: [
+      {
+        label: 'User Profile',
+        link: '/user-profile'
+      },
       {
         label: 'Change Password',
         link: '/change-password'
@@ -44,7 +48,12 @@ const Sidebar: React.FC = () => {
         const activeRoute = router.pathname.includes(route.link)
         return (
           <>
-            <Link href={route.link} key={route.label}>
+            <Link
+              href={`${route.link}${
+                route.subroutes ? route.subroutes[0].link : ''
+              }`}
+              key={route.label}
+            >
               <a
                 className={`
                 route-link ${activeRoute && ' active'}
