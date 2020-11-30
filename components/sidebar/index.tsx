@@ -10,6 +10,14 @@ const routes = [
       {
         label: 'Change Password',
         link: '/change-password'
+      },
+      {
+        label: 'Change Security Questions',
+        link: '/change-security-questions'
+      },
+      {
+        label: 'Change Filter Defaults',
+        link: '/change-filter-defaults'
       }
     ]
   }
