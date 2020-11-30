@@ -15,6 +15,12 @@ export const validateForm = (form: any, reqFields: any = {}): any => {
       if (form[key].length === 0) {
         errorObj[key] = `Password can't be empty`
       }
+    } else if (key === 'confirmPwd') {
+      if (form[key].length === 0) {
+        errorObj[key] = `Password can't be empty`
+      } else if (form[key] !== form.pwd) {
+        errorObj[key] = `Confirm password must match password`
+      }
     } else if (key === 'name_first') {
       if (reqFields[key] && form[key].length === 0) {
         errorObj[key] = `First Name can't be empty`

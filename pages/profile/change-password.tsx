@@ -56,12 +56,14 @@ const ChangePassword: React.FC = () => {
           <div className="form-group">
             <Input
               label="New Password"
+              type="password"
               value={changePassword.pwd}
               error={error.pwd}
               onChange={e => handleInput(e, 'pwd')}
             />
             <Input
               label="Confirm Password"
+              type="password"
               value={changePassword.confirmPwd}
               error={error.confirmPwd}
               onChange={e => handleInput(e, 'confirmPwd')}
