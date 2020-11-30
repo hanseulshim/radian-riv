@@ -80,6 +80,13 @@ const Sidebar: React.FC = () => {
                         router.pathname.includes(subroute.link) && ' active'
                       }`}
                     >
+                      {router.pathname.includes(subroute.link) && (
+                        <img
+                          src={`${process.env.baseUrl}/images/nav_circle_icon.svg`}
+                          alt="logo"
+                        />
+                      )}
+
                       {subroute.label}
                     </a>
                   </Link>

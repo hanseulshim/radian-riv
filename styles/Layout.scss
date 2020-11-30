@@ -34,7 +34,7 @@
       .route-link {
         color: inherit;
         width: 100%;
-        padding: 5px 20px;
+        padding: 5px 30px;
         position: relative;
         margin-bottom: 5px;
         &.active:before {
@@ -47,21 +47,30 @@
         }
         .label-icon {
           position: absolute;
-          bottom: -5px;
+          bottom: -4px;
           right: 22%;
-          width: 10px;
+          width: 8px;
         }
       }
       .subroute-link {
-        padding: 5px 20px;
+        padding: 5px 30px;
         color: inherit;
         font-size: 0.75em;
         width: 100%;
-        &:hover {
-          background-color: #133e5a;
+        position: relative;
+        &:hover:before {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          width: 30%;
+          height: 1px;
+          border-bottom: 1px solid var(--robins-egg);
         }
-        &.active {
-          background-color: #133e5a;
+        img {
+          position: absolute;
+          left: 5%;
+          top: 40%;
+          width: 8px;
         }
       }
     }
