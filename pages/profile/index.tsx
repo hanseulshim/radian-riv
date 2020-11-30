@@ -51,16 +51,16 @@ const Profile: React.FC = () => {
   }
 
   return (
-    <div className="container user-profile">
-      <h1>User Profile</h1>
+    <div className="container profile">
+      <h1>Profile</h1>
       <div className="info-container">
         <div>
           <span className="bold">Username:</span>
-          <span>kingalls@boostlabs.com</span>
+          <span>{profile.username}</span>
         </div>
         <div>
           <span className="bold">Email:</span>
-          <span>kingalls@boostlabs.com</span>
+          <span>{profile.email}</span>
         </div>
       </div>
       <div className="form">

@@ -1,6 +1,9 @@
-.user-profile {
+.profile,
+.change-password {
   background: var(--nebula);
-
+}
+.profile,
+.change-password {
   .info-container {
     margin: 1em 0;
 
@@ -23,6 +26,22 @@
       text-align: center;
       margin-bottom: 1em;
       height: 1em;
+    }
+  }
+}
+
+.change-password {
+  .form {
+    margin-top: 1em;
+    width: 1200px;
+    flex-direction: row;
+
+    form {
+      width: 300px;
+    }
+
+    .password-requirements {
+      margin-left: 1em;
     }
   }
 }

@@ -174,7 +174,7 @@ input::placeholder {
     border: none;
     border-bottom: 1px solid var(--prussian-blue);
     color: var(--prussian-blue);
-    font-size: 0.75em;
+    font-size: 1em;
     margin-top: 5px;
     &:invalid {
       border-bottom: 2px solid red;
