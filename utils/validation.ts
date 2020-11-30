@@ -4,7 +4,7 @@
 const emailValidation = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/gm
 const phoneValidation = /^[(]?[0-9]{3}[)]?[-\s]?[0-9]{3}[-\s]?[0-9]{4}$/gim
 
-export const validateForm = (form: any): any => {
+export const validateForm = (form: any, reqFields: any = {}): any => {
   const errorObj = {}
   Object.keys(form).forEach(key => {
     if (key === 'username') {
@@ -16,11 +16,11 @@ export const validateForm = (form: any): any => {
         errorObj[key] = `Password can't be empty`
       }
     } else if (key === 'name_first') {
-      if (form[key].length === 0) {
+      if (reqFields[key] && form[key].length === 0) {
         errorObj[key] = `First Name can't be empty`
       }
     } else if (key === 'name_last') {
-      if (form[key].length === 0) {
+      if (reqFields[key] && form[key].length === 0) {
         errorObj[key] = `Last Name can't be empty`
       }
     } else if (key === 'email') {
@@ -42,7 +42,7 @@ export const validateForm = (form: any): any => {
       key === 'phone_mobile' ||
       key === 'phone_office'
     ) {
-      if (!form[key].match(phoneValidation)) {
+      if (form[key] && !form[key].match(phoneValidation)) {
         errorObj[key] = 'Must be a valid phone number format'
       }
     }

@@ -4,6 +4,7 @@
 
 // Page styles
 @import './pages/login/index.scss';
+@import './pages/profile/index.scss';
 
 :root {
   --white: #ffffff;
@@ -11,6 +12,7 @@
   --oracle: #387469;
   --red: #ef442e;
   --gray: #8b8886;
+  --nebula: #cddcda;
 }
 
 .primary-background {

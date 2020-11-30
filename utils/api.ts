@@ -1,23 +1,27 @@
 import { AuthType } from 'components/auth/AuthProvider'
+import Cookies from 'js-cookie'
 
 //TODO #7 remove once API is set in place
 const testAuth = {
   user: {
     userid_ssid: '16252-5',
     roleid: 0,
-    clientcode: 'string',
+    clientcode: 'client',
     departmentid: 0,
-    username: 'string',
-    email: 'string',
-    name_last: 'Doe',
-    name_first: 'John',
-    address: 'string',
-    city: 'string',
-    state: 'string',
-    zip: 'string',
+    username: 'kingalls@boostlabs.com',
+    email: 'kingalls@boostlabs.com',
+    name_last: 'Ingalls',
+    name_middle: 'Nivek',
+    name_first: 'Kevin',
+    address: '123 Fake Street',
+    city: 'Atlanta',
+    state: 'GA',
+    zip: '55555',
     phone_home: '215-555-1872',
     phone_mobile: '484-555-0980',
-    title: 'string'
+    phone_office: '123-555-0980',
+    phone_fax: '242-555-0980',
+    title: 'AVE User'
   },
   token: 'bcf62b2c-c739-42aa-958d-7a9930ca7fff',
   redirect: 'string',
@@ -69,4 +73,35 @@ export const submitRegister = (form: Register): string => {
   }
 
   return 'User created!'
+}
+
+interface Profile {
+  userid_ssid: string
+  roleid: number
+  clientcode: string
+  departmentid: number
+  username: string
+  email: string
+  name_last: string
+  name_middle: string
+  name_first: string
+  address: string
+  city: string
+  state: string
+  zip: string
+  phone_home: string
+  phone_mobile: string
+  phone_office: string
+  phone_fax: string
+  title: string
+}
+
+export const submitProfile = (form: Profile): string => {
+  if (form.name_first === 'error') {
+    throw new Error('Error in updating user')
+  }
+  const authCookies = Cookies.get('auth')
+  const auth = JSON.parse(authCookies)
+  Cookies.set('auth', { ...auth, user: { ...form } })
+  return 'Profile updated!'
 }

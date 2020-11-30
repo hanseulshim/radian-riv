@@ -1,0 +1,28 @@
+.user-profile {
+  background: var(--nebula);
+
+  .info-container {
+    margin: 1em 0;
+
+    .bold {
+      width: 120px;
+      display: inline-block;
+    }
+  }
+
+  .form {
+    width: 700px;
+    padding: 2em 3em;
+
+    .error-input-message {
+      height: 1.5em;
+    }
+
+    .error-message,
+    .success-message {
+      text-align: center;
+      margin-bottom: 1em;
+      height: 1em;
+    }
+  }
+}

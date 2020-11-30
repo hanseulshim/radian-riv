@@ -22,6 +22,7 @@ const ResetPassword: React.FC<Props> = ({ closeModal }) => {
   const onReset = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setErrorMessage('')
+    setSuccessMessage('')
     const errorCopy = { ...defaultState }
     const errorObj = validateForm(resetPassword)
     const errorArr = Object.keys(errorObj)

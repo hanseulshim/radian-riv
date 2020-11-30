@@ -10,6 +10,7 @@ export const defaultAuth = {
     username: '',
     email: '',
     name_last: '',
+    name_middle: '',
     name_first: '',
     address: '',
     city: '',
@@ -17,6 +18,8 @@ export const defaultAuth = {
     zip: '',
     phone_home: '',
     phone_mobile: '',
+    phone_office: '',
+    phone_fax: '',
     title: ''
   },
   token: '',
@@ -34,6 +37,7 @@ export type AuthType = {
     username: string
     email: string
     name_last: string
+    name_middle: string
     name_first: string
     address: string
     city: string
@@ -41,6 +45,8 @@ export type AuthType = {
     zip: string
     phone_home: string
     phone_mobile: string
+    phone_office: string
+    phone_fax: string
     title: string
   }
   token: string
