@@ -11,7 +11,7 @@ const UserProfile: React.FC = () => {
     <div>
       <p>User profile</p>
       <Select
-        placeholder="Select"
+        placeholder="Select ..."
         options={['one hundred million pesos', 'two', 'three']}
         onChange={onChange}
         value={value}
