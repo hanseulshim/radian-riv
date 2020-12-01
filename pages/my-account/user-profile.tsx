@@ -2,10 +2,15 @@ import { withAuth } from 'components/auth/AuthRoute'
 import Select from 'components/common/Select'
 import { useState } from 'react'
 
+interface item {
+  label: string
+  value: number | string
+}
+
 const UserProfile: React.FC = () => {
-  const [value, setValue] = useState<string | number>('')
-  const onChange = (option: string | number) => {
-    setValue(option)
+  const [value, setValue] = useState<item>(null)
+  const onChange = (item: item) => {
+    setValue(item)
   }
   return (
     <div>

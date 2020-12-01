@@ -6,10 +6,10 @@ interface item {
 }
 interface Props {
   options: item[]
-  value: string | number
+  value: item
   placeholder: string
   label: string
-  onChange?: (e: string | number) => void
+  onChange?: (e: item) => void
 }
 
 const Select: React.FC<Props> = ({
@@ -25,9 +25,9 @@ const Select: React.FC<Props> = ({
     setOpen(!open)
   }
 
-  const onSelect = (value: string | number) => {
+  const onSelect = (item: item) => {
     toggleOpen()
-    onChange(value)
+    onChange(item)
   }
   return (
     <>
@@ -41,11 +41,11 @@ const Select: React.FC<Props> = ({
             />
           </span>
         )}
-        {value && (
+        {value !== null && (
           <>
             <span className="field-label">{label}</span>
             <span className="selected-value">
-              {value}
+              {value.label}
               <img
                 src={`${process.env.baseUrl}/images/select_down_arrow.svg`}
                 className={'select-dropdown-arrow'}
@@ -57,7 +57,7 @@ const Select: React.FC<Props> = ({
           <ul>
             {options.map(option => {
               return (
-                <li onClick={() => onSelect(option.value)} key={option.label}>
+                <li onClick={() => onSelect(option)} key={option.label}>
                   {option.label}
                 </li>
               )
