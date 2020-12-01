@@ -74,12 +74,6 @@ const Profile: React.FC = () => {
                 onChange={e => handleInput(e, 'name_first')}
               />
               <Input
-                label="Middle Name"
-                value={profile.name_middle}
-                error={error.name_middle}
-                onChange={e => handleInput(e, 'name_middle')}
-              />
-              <Input
                 label="Last Name"
                 value={profile.name_last}
                 error={error.name_last}
@@ -119,19 +113,13 @@ const Profile: React.FC = () => {
                   onChange={e => handleInput(e, 'zip')}
                 />
               </div>
+            </div>
+            <div className="form-group">
               <Input
                 label="Department"
                 value={profile.clientcode}
                 error={error.clientcode}
                 onChange={e => handleInput(e, 'clientcode')}
-              />
-            </div>
-            <div className="form-group">
-              <Input
-                label="Office Phone"
-                value={profile.phone_office}
-                error={error.phone_office}
-                onChange={e => handleInput(e, 'phone_office')}
               />
               <Input
                 label="Cell Phone"
@@ -144,12 +132,6 @@ const Profile: React.FC = () => {
                 value={profile.phone_home}
                 error={error.phone_home}
                 onChange={e => handleInput(e, 'phone_home')}
-              />
-              <Input
-                label="Fax Phone"
-                value={profile.phone_fax}
-                error={error.phone_fax}
-                onChange={e => handleInput(e, 'phone_fax')}
               />
             </div>
           </div>
