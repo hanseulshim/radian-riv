@@ -35,13 +35,14 @@
     margin-top: 1em;
     width: 1200px;
     flex-direction: row;
+    align-items: flex-start;
 
     form {
       width: 300px;
     }
 
     .password-requirements {
-      margin-left: 1em;
+      margin-left: 2em;
     }
 
     .error-message,

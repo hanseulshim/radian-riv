@@ -1,15 +1,16 @@
 import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { route } from 'next/dist/next-server/server/router'
 
 const routes = [
   {
     label: 'My Account',
-    link: '/my-account',
+    link: '/profile',
     subroutes: [
       {
-        label: 'User Profile',
-        link: '/user-profile'
+        label: 'Profile',
+        link: ''
       },
       {
         label: 'Change Password',
@@ -28,73 +29,57 @@ const routes = [
 ]
 
 const Sidebar: React.FC = () => {
-  const router = useRouter()
+  const { pathname } = useRouter()
+  const activeRoute = routes.find(
+    route => pathname !== '/' && pathname.includes(route.link)
+  )
+  console.log(activeRoute, pathname)
   return (
     <div id="sidebar">
-      {router.pathname !== '/' && (
-        <div className="go-back">
-          <Link href="/">
-            <a>
-              <img
-                src={`${process.env.baseUrl}/images/icon_arrow_left_white.svg`}
-                alt="back"
-              />
-              <span>Back</span>
-            </a>
-          </Link>
-        </div>
+      {pathname !== '/' && (
+        <Link href="/">
+          <a className="go-back">
+            <img
+              src={`${process.env.baseUrl}/images/icon_arrow_left_white.svg`}
+              alt="back"
+            />
+            <div>Back</div>
+          </a>
+        </Link>
       )}
-      {routes.map(route => {
-        const activeRoute = router.pathname.includes(route.link)
-        return (
-          <>
-            <Link
-              href={`${route.link}${
-                route.subroutes ? route.subroutes[0].link : ''
-              }`}
-              key={route.label}
-            >
-              <a
-                className={`
-                route-link ${activeRoute && ' active'}
-              `}
-              >
-                {route.label}
-                {activeRoute && (
-                  <img
-                    src={`${process.env.baseUrl}/images/nav_circle_icon.svg`}
-                    className="label-icon"
-                  />
-                )}
-              </a>
-            </Link>
-            {activeRoute &&
-              route.subroutes.map(subroute => {
-                return (
-                  <Link
-                    href={`${route.link}${subroute.link}`}
-                    key={subroute.label}
-                  >
-                    <a
-                      className={`subroute-link ${
-                        router.pathname.includes(subroute.link) && ' active'
-                      }`}
-                    >
-                      {router.pathname.includes(subroute.link) && (
-                        <img
-                          src={`${process.env.baseUrl}/images/nav_circle_icon.svg`}
-                          alt="logo"
-                        />
-                      )}
-
-                      <span>{subroute.label}</span>
-                    </a>
-                  </Link>
-                )
-              })}
-          </>
-        )
-      })}
+      {pathname === '/' &&
+        routes.map(route => (
+          <Link href={route.link} key={route.label}>
+            <a className="route-link">{route.label}</a>
+          </Link>
+        ))}
+      {activeRoute && (
+        <>
+          <div className="route-link active">
+            {activeRoute.label}
+            <img
+              src={`${process.env.baseUrl}/images/nav_circle_icon.svg`}
+              className="label-icon"
+            />
+          </div>
+          {activeRoute.subroutes.map(subroute => {
+            const path = `${activeRoute.link}${subroute.link}`
+            return (
+              <Link href={path} key={subroute.label}>
+                <a className="subroute-link">
+                  <span>{subroute.label}</span>
+                  {path === pathname && (
+                    <img
+                      src={`${process.env.baseUrl}/images/nav_circle_icon.svg`}
+                      className="label-icon"
+                    />
+                  )}
+                </a>
+              </Link>
+            )
+          })}
+        </>
+      )}
     </div>
   )
 }
