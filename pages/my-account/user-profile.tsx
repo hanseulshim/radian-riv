@@ -3,8 +3,8 @@ import Select from 'components/common/Select'
 import { useState } from 'react'
 
 const UserProfile: React.FC = () => {
-  const [value, setValue] = useState('')
-  const onChange = (option: string) => {
+  const [value, setValue] = useState<string | number>('')
+  const onChange = (option: string | number) => {
     setValue(option)
   }
   return (
@@ -12,7 +12,16 @@ const UserProfile: React.FC = () => {
       <p>User profile</p>
       <Select
         placeholder="Select ..."
-        options={['one hundred million pesos', 'two', 'three']}
+        options={[
+          {
+            label: 'one',
+            value: 1
+          },
+          {
+            label: 'two',
+            value: 2
+          }
+        ]}
         onChange={onChange}
         value={value}
         label="Field Label"

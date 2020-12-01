@@ -87,7 +87,7 @@ const Sidebar: React.FC = () => {
                         />
                       )}
 
-                      {subroute.label}
+                      <span>{subroute.label}</span>
                     </a>
                   </Link>
                 )

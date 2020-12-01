@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 
+interface item {
+  label: string
+  value: string | number
+}
 interface Props {
-  options: string[]
-  value: string
+  options: item[]
+  value: string | number
   placeholder: string
   label: string
-  onChange?: (e: string) => void
+  onChange?: (e: string | number) => void
 }
 
 const Select: React.FC<Props> = ({
@@ -21,9 +25,9 @@ const Select: React.FC<Props> = ({
     setOpen(!open)
   }
 
-  const onSelect = (option: string) => {
+  const onSelect = (value: string | number) => {
     toggleOpen()
-    onChange(option)
+    onChange(value)
   }
   return (
     <>
@@ -53,8 +57,8 @@ const Select: React.FC<Props> = ({
           <ul>
             {options.map(option => {
               return (
-                <li onClick={() => onSelect(option)} key={option}>
-                  {option}
+                <li onClick={() => onSelect(option.value)} key={option.label}>
+                  {option.label}
                 </li>
               )
             })}

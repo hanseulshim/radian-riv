@@ -58,13 +58,10 @@
         font-size: 0.75em;
         width: 100%;
         position: relative;
-        &:hover:before {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          width: 30%;
-          height: 1px;
-          border-bottom: 1px solid var(--robins-egg);
+        &:hover {
+          span {
+            border-bottom: 1px solid var(--robins-egg);
+          }
         }
         img {
           position: absolute;
