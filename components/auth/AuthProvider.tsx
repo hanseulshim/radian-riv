@@ -25,24 +25,26 @@ export const defaultAuth = {
   message: ''
 }
 
+export type User = {
+  userid_ssid: string
+  roleid: number
+  clientcode: string
+  departmentid: number
+  username: string
+  email: string
+  name_last: string
+  name_first: string
+  address: string
+  city: string
+  state: string
+  zip: string
+  phone_home: string
+  phone_mobile: string
+  title: string
+}
+
 export type AuthType = {
-  user: {
-    userid_ssid: string
-    roleid: number
-    clientcode: string
-    departmentid: number
-    username: string
-    email: string
-    name_last: string
-    name_first: string
-    address: string
-    city: string
-    state: string
-    zip: string
-    phone_home: string
-    phone_mobile: string
-    title: string
-  }
+  user: User
   token: string
   redirect: string
   status: number

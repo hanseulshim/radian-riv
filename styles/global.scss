@@ -35,6 +35,13 @@ span {
   line-height: 1.25em;
 }
 
+h1 {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 42px;
+  line-height: 120%;
+}
+
 h2 {
   font-style: normal;
   font-weight: bold;
@@ -47,6 +54,10 @@ h6 {
   font-weight: normal;
   font-size: 1.2em;
   line-height: 1.2em;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 .form {
@@ -79,6 +90,7 @@ h6 {
     display: flex;
     flex-direction: column;
     flex: 1;
+    width: 100%;
     margin: 0 1em;
   }
 
@@ -90,7 +102,8 @@ h6 {
     cursor: pointer;
   }
 
-  .error-message {
+  .error-message,
+  .error-input-message {
     font-size: 0.6em;
     color: var(--red);
     display: block;
@@ -162,7 +175,7 @@ input::placeholder {
     border: none;
     border-bottom: 1px solid var(--prussian-blue);
     color: var(--prussian-blue);
-    font-size: 0.75em;
+    font-size: 1em;
     margin-top: 5px;
     &:invalid {
       border-bottom: 2px solid red;

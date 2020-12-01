@@ -19,6 +19,11 @@ const defaultState = {
   terms_accepted: false
 }
 
+const reqFields = {
+  name_first: true,
+  name_last: true
+}
+
 const Register: React.FC<Props> = ({ closeModal }) => {
   const [register, setRegister] = useState({ ...defaultState })
   const [error, setError] = useState({ ...defaultState })
@@ -38,8 +43,9 @@ const Register: React.FC<Props> = ({ closeModal }) => {
   const onRegister = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setErrorMessage('')
+    setSuccessMessage('')
     const errorCopy = { ...defaultState }
-    const errorObj = validateForm(register)
+    const errorObj = validateForm(register, reqFields)
     const errorArr = Object.keys(errorObj)
     if (errorArr.length) {
       errorArr.forEach(key => {
@@ -47,7 +53,13 @@ const Register: React.FC<Props> = ({ closeModal }) => {
       })
     } else {
       try {
-        const message = submitRegister(register)
+        const message = submitRegister({
+          name_first: register.name_first,
+          name_last: register.name_last,
+          username: register.username,
+          email: register.email,
+          phone_mobile: register.phone_mobile
+        })
         setSuccessMessage(message)
         setTimeout(() => {
           closeModal()

@@ -13,7 +13,7 @@ const Header: React.FC = () => {
   const logout = () => {
     Cookies.remove('auth')
     setAuth(defaultAuth)
-    router.push('login')
+    router.push('/login')
   }
 
   return (
