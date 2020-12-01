@@ -31,7 +31,7 @@ const LoginForm: React.FC<Props> = ({
     } else {
       try {
         submitLogin(login)
-        window.location.href = '/'
+        window.location.href = `${process.env.rootUrl}`
       } catch (e) {
         setErrorMessage(e.message)
       }

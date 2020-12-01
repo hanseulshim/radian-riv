@@ -11,6 +11,11 @@ module.exports = {
     : '',
   basePath: isAlpha || isBeta ? '/radian-riv' : '',
   env: {
-    baseUrl: isAlpha || isBeta ? '/radian-riv' : ''
+    baseUrl: isAlpha || isBeta ? '/radian-riv' : '',
+    rootUrl: isAlpha
+      ? 'https://alpha.boostlabs.com/radian-riv/'
+      : isBeta
+      ? 'https://beta.boostlabs.com/radian-riv/'
+      : ''
   }
 }
