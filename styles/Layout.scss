@@ -38,10 +38,18 @@
           font-size: 0.6em;
         }
       }
-      .route-link {
+      .route-link,
+      .subroute-link {
         width: 100%;
         padding: 5px 30px;
         position: relative;
+        &:hover {
+          span {
+            border-bottom: 1px solid var(--robins-egg);
+          }
+        }
+      }
+      .route-link {
         margin-bottom: 5px;
         &.active:before {
           content: '';
@@ -59,15 +67,7 @@
         }
       }
       .subroute-link {
-        padding: 5px 30px;
         font-size: 0.75em;
-        width: 100%;
-        position: relative;
-        &:hover {
-          span {
-            border-bottom: 1px solid var(--robins-egg);
-          }
-        }
         img {
           position: absolute;
           left: 5%;

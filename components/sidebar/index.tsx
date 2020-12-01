@@ -1,7 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { route } from 'next/dist/next-server/server/router'
 
 const routes = [
   {
@@ -50,7 +49,9 @@ const Sidebar: React.FC = () => {
       {pathname === '/' &&
         routes.map(route => (
           <Link href={route.link} key={route.label}>
-            <a className="route-link">{route.label}</a>
+            <a className="route-link">
+              <span>{route.label}</span>
+            </a>
           </Link>
         ))}
       {activeRoute && (
