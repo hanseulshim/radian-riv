@@ -35,7 +35,8 @@
 .change-password {
   .form {
     margin-top: 1em;
-    width: 1200px;
+    max-width: 900px;
+    width: 100%;
     flex-direction: row;
     align-items: flex-start;
 
