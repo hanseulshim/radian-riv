@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { withAuth } from 'components/auth/AuthRoute'
 import Input from 'components/common/Input'
 import { validateForm } from 'utils/validation'
-import { submitProfile } from 'utils/api'
+import { useAuth } from 'components/auth/AuthProvider'
+import { submitChangePassword } from 'utils/api'
 
 const defaultState = {
   pwd: '',
@@ -10,6 +11,9 @@ const defaultState = {
 }
 
 const ChangePassword: React.FC = () => {
+  const {
+    auth: { user }
+  } = useAuth()
   const [changePassword, setChangePassword] = useState({ ...defaultState })
   const [error, setError] = useState({ ...defaultState })
   const [errorMessage, setErrorMessage] = useState('')
@@ -38,9 +42,11 @@ const ChangePassword: React.FC = () => {
       })
     } else {
       try {
-        console.log('done')
-        // const message = submitProfile(changePassword)
-        // setSuccessMessage(message)
+        const message = submitChangePassword({
+          pwd: changePassword.pwd,
+          userid_ssid: user.userid_ssid
+        })
+        setSuccessMessage(message)
       } catch (e) {
         setErrorMessage(e.message)
       }
@@ -80,16 +86,15 @@ const ChangePassword: React.FC = () => {
         </form>
         <div className="password-requirements">
           <h3>Password Requirements:</h3>
-          <div>**Password must be at least 8 characters(s) long</div>
-          <div>**Password must contain an uppercase character</div>
-          <div>**Password must contain an lowercase character</div>
-          <div>**Password must contain a numeric character</div>
+          <div>* Password must be at least 8 characters(s) long</div>
+          <div>* Password must contain an uppercase character</div>
+          <div>* Password must contain a lowercase character</div>
+          <div>* Password must contain a numeric character</div>
           <div>
-            **Password must contain a special character (example: !,@,#,$)
+            * Password must contain a special character (example: !,@,#,$)
           </div>
-          <div>**New password and confirm password must match</div>
           <div>
-            **Password must NOT have been used within the last 25 passwords
+            * Password must NOT have been used within the last 25 passwords
           </div>
         </div>
       </div>

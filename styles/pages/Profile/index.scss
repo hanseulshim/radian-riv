@@ -43,5 +43,10 @@
     .password-requirements {
       margin-left: 1em;
     }
+
+    .error-message,
+    .success-message {
+      height: 2em;
+    }
   }
 }
