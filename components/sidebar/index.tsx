@@ -32,7 +32,6 @@ const Sidebar: React.FC = () => {
   const activeRoute = routes.find(
     route => pathname !== '/' && pathname.includes(route.link)
   )
-  console.log(activeRoute, pathname)
   return (
     <div id="sidebar">
       {pathname !== '/' && (
