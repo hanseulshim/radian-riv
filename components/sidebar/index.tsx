@@ -13,15 +13,15 @@ const routes = [
       },
       {
         label: 'Change Password',
-        link: '/change-password'
+        link: '/password'
       },
       {
         label: 'Change Security Questions',
-        link: '/change-security-questions'
+        link: '/security-questions'
       },
       {
         label: 'Change Filter Defaults',
-        link: '/change-filter-defaults'
+        link: '/filter-defaults'
       }
     ]
   }
