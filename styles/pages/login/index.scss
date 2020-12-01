@@ -4,6 +4,7 @@
   justify-content: center;
   padding: 10% 15%;
   position: relative;
+  flex: 1;
 
   .background-image {
     position: absolute;
@@ -26,11 +27,26 @@
   }
 
   .login-form {
+    box-shadow: var(--box-shadow);
     .login-button {
       margin-top: 50px;
     }
     .btn-link {
       margin: 0;
+    }
+  }
+
+  .register {
+    box-shadow: var(--box-shadow);
+    form {
+      width: 600px;
+    }
+  }
+
+  .reset-password {
+    box-shadow: var(--box-shadow);
+    form {
+      width: 350px;
     }
   }
 
