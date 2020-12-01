@@ -53,7 +53,13 @@ const Register: React.FC<Props> = ({ closeModal }) => {
       })
     } else {
       try {
-        const message = submitRegister(register)
+        const message = submitRegister({
+          name_first: register.name_first,
+          name_last: register.name_last,
+          username: register.username,
+          email: register.email,
+          phone_mobile: register.phone_mobile
+        })
         setSuccessMessage(message)
         setTimeout(() => {
           closeModal()

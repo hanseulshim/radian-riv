@@ -51,16 +51,16 @@ const Profile: React.FC = () => {
   }
 
   return (
-    <div className="container user-profile">
-      <h1>User Profile</h1>
+    <div className="container profile">
+      <h1>Profile</h1>
       <div className="info-container">
         <div>
           <span className="bold">Username:</span>
-          <span>kingalls@boostlabs.com</span>
+          <span>{profile.username}</span>
         </div>
         <div>
           <span className="bold">Email:</span>
-          <span>kingalls@boostlabs.com</span>
+          <span>{profile.email}</span>
         </div>
       </div>
       <div className="form">
@@ -72,12 +72,6 @@ const Profile: React.FC = () => {
                 value={profile.name_first}
                 error={error.name_first}
                 onChange={e => handleInput(e, 'name_first')}
-              />
-              <Input
-                label="Middle Name"
-                value={profile.name_middle}
-                error={error.name_middle}
-                onChange={e => handleInput(e, 'name_middle')}
               />
               <Input
                 label="Last Name"
@@ -119,19 +113,13 @@ const Profile: React.FC = () => {
                   onChange={e => handleInput(e, 'zip')}
                 />
               </div>
+            </div>
+            <div className="form-group">
               <Input
                 label="Department"
                 value={profile.clientcode}
                 error={error.clientcode}
                 onChange={e => handleInput(e, 'clientcode')}
-              />
-            </div>
-            <div className="form-group">
-              <Input
-                label="Office Phone"
-                value={profile.phone_office}
-                error={error.phone_office}
-                onChange={e => handleInput(e, 'phone_office')}
               />
               <Input
                 label="Cell Phone"
@@ -144,12 +132,6 @@ const Profile: React.FC = () => {
                 value={profile.phone_home}
                 error={error.phone_home}
                 onChange={e => handleInput(e, 'phone_home')}
-              />
-              <Input
-                label="Fax Phone"
-                value={profile.phone_fax}
-                error={error.phone_fax}
-                onChange={e => handleInput(e, 'phone_fax')}
               />
             </div>
           </div>
