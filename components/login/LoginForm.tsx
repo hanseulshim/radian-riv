@@ -2,7 +2,6 @@ import { useState } from 'react'
 import Input from 'components/common/Input'
 import { validateForm } from 'utils/validation'
 import { submitLogin } from 'utils/api'
-import Cookie from 'js-cookie'
 
 interface Props {
   showPasswordModal: () => void
@@ -31,8 +30,7 @@ const LoginForm: React.FC<Props> = ({
       })
     } else {
       try {
-        const auth = submitLogin(login)
-        Cookie.set('auth', auth)
+        submitLogin(login)
         window.location.href = '/'
       } catch (e) {
         setErrorMessage(e.message)

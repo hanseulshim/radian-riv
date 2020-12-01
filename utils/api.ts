@@ -1,4 +1,4 @@
-import { AuthType, User } from 'components/auth/AuthProvider'
+import { User } from 'components/auth/AuthProvider'
 import Cookies from 'js-cookie'
 
 //TODO #7 remove once API is set in place
@@ -30,14 +30,14 @@ interface Login {
   username: string
   pwd: string
 }
-export const submitLogin = (form: Login): AuthType => {
+export const submitLogin = (form: Login): void => {
   if (form.username !== 'test') {
     throw new Error('Username is not valid')
   } else if (form.pwd !== 'test') {
     throw new Error('Password is not valid')
   }
 
-  return testAuth
+  Cookies.set('auth', testAuth)
 }
 
 interface ResetPassword {
