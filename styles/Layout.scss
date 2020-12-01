@@ -11,8 +11,14 @@
     flex: 1;
     display: flex;
 
+    .container {
+      padding: 3em 2em;
+      flex: 1;
+      height: 100%;
+    }
+
     #sidebar {
-      width: 250px;
+      width: 310px;
       height: 100%;
       background-color: var(--prussian-blue);
       color: var(--white);
@@ -22,20 +28,28 @@
       .go-back {
         display: flex;
         align-items: center;
-        padding: 5px 20px;
+        padding: 5px 30px;
+        cursor: pointer;
         img {
-          width: 10px;
+          width: 20px;
           margin-right: 5px;
         }
-        span {
-          font-size: 0.5em;
+        div {
+          font-size: 0.6em;
         }
       }
-      .route-link {
-        color: inherit;
+      .route-link,
+      .subroute-link {
         width: 100%;
         padding: 5px 30px;
         position: relative;
+        &:hover {
+          span {
+            border-bottom: 1px solid var(--robins-egg);
+          }
+        }
+      }
+      .route-link {
         margin-bottom: 5px;
         &.active:before {
           content: '';
@@ -53,16 +67,7 @@
         }
       }
       .subroute-link {
-        padding: 5px 30px;
-        color: inherit;
         font-size: 0.75em;
-        width: 100%;
-        position: relative;
-        &:hover {
-          span {
-            border-bottom: 1px solid var(--robins-egg);
-          }
-        }
         img {
           position: absolute;
           left: 5%;
@@ -97,6 +102,7 @@
         width: 25px;
         height: 25px;
         margin-left: 1em;
+        cursor: pointer;
       }
     }
   }

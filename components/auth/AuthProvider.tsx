@@ -1,31 +1,7 @@
 import React, { useState, useEffect, createContext, useContext } from 'react'
 import Cookies from 'js-cookie'
 
-const testAuth = {
-  user: {
-    userid_ssid: '16252-5',
-    roleid: 0,
-    clientcode: 'string',
-    departmentid: 0,
-    username: 'string',
-    email: 'string',
-    name_last: 'Doe',
-    name_first: 'John',
-    address: 'string',
-    city: 'string',
-    state: 'string',
-    zip: 'string',
-    phone_home: '215-555-1872',
-    phone_mobile: '484-555-0980',
-    title: 'string'
-  },
-  token: 'bcf62b2c-c739-42aa-958d-7a9930ca7fff',
-  redirect: 'string',
-  status: 0,
-  message: 'string'
-}
-
-const defaultAuth = {
+export const defaultAuth = {
   user: {
     userid_ssid: '',
     roleid: 0,
@@ -49,24 +25,26 @@ const defaultAuth = {
   message: ''
 }
 
-type AuthType = {
-  user: {
-    userid_ssid: string
-    roleid: number
-    clientcode: string
-    departmentid: number
-    username: string
-    email: string
-    name_last: string
-    name_first: string
-    address: string
-    city: string
-    state: string
-    zip: string
-    phone_home: string
-    phone_mobile: string
-    title: string
-  }
+export type User = {
+  userid_ssid: string
+  roleid: number
+  clientcode: string
+  departmentid: number
+  username: string
+  email: string
+  name_last: string
+  name_first: string
+  address: string
+  city: string
+  state: string
+  zip: string
+  phone_home: string
+  phone_mobile: string
+  title: string
+}
+
+export type AuthType = {
+  user: User
   token: string
   redirect: string
   status: number
@@ -95,11 +73,6 @@ export const AuthProvider = ({
 
   useEffect(() => {
     const initializeAuth = async (): Promise<void> => {
-      if (process.env.auth) {
-        Cookies.set('auth', testAuth)
-      } else {
-        Cookies.remove('auth')
-      }
       const authCookies = Cookies.get('auth')
       if (authCookies) {
         setAuth(JSON.parse(authCookies))

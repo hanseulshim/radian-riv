@@ -37,7 +37,7 @@ const Input: React.FC<Props> = ({
         {required && <span className="required-field">* </span>}
         {label}
       </label>
-      <span className="error-message">{error}</span>
+      <span className="error-input-message">{error}</span>
     </div>
   )
 }

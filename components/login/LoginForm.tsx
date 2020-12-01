@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Input from 'components/common/Input'
 import { validateForm } from 'utils/validation'
+import { submitLogin } from 'utils/api'
 
 interface Props {
   showPasswordModal: () => void
@@ -15,9 +16,11 @@ const LoginForm: React.FC<Props> = ({
 }) => {
   const [login, setLogin] = useState({ ...defaultState })
   const [error, setError] = useState({ ...defaultState })
+  const [errorMessage, setErrorMessage] = useState('')
 
   const onLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setErrorMessage('')
     const errorCopy = { ...defaultState }
     const errorObj = validateForm(login)
     const errorArr = Object.keys(errorObj)
@@ -26,7 +29,12 @@ const LoginForm: React.FC<Props> = ({
         errorCopy[key] = errorObj[key]
       })
     } else {
-      alert('Logged in!')
+      try {
+        submitLogin(login)
+        window.location.href = '/'
+      } catch (e) {
+        setErrorMessage(e.message)
+      }
     }
     setError(errorCopy)
   }
@@ -57,6 +65,7 @@ const LoginForm: React.FC<Props> = ({
           error={error.pwd}
           onChange={e => handleInput(e, 'pwd')}
         />
+        <span className="error-message">{errorMessage}</span>
         <button className="btn btn-primary login-button" type="submit">
           Login
         </button>
