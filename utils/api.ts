@@ -103,3 +103,41 @@ export const submitChangePassword = (form: ChangePassword): string => {
   }
   return 'Password Changed'
 }
+
+interface Question {
+  questionid: number
+  question_text: string
+}
+export const getSecurityQuestions = (): Question[] => {
+  return [
+    { questionid: 0, question_text: 'Question 1' },
+    { questionid: 1, question_text: 'Question 2' },
+    { questionid: 2, question_text: 'Question 3' },
+    { questionid: 3, question_text: 'Question 4' },
+    { questionid: 4, question_text: 'Question 5' }
+  ]
+}
+
+interface SecurityQuestions {
+  userid_ssid: string
+  question1id: number
+  answer1: string
+  question2id: number
+  answer2: string
+  question3id: number
+  answer3: string
+}
+
+export const setSecurityQuestions = (form: SecurityQuestions): string => {
+  if (
+    form.question1id === null ||
+    form.question2id === null ||
+    form.question3id === null
+  ) {
+    throw new Error(`Questions can't be blank`)
+  }
+  if (form.answer1 === 'error') {
+    throw new Error('Error with security question')
+  }
+  return 'Security quesitons set'
+}

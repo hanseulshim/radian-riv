@@ -7,9 +7,9 @@ interface item {
 interface Props {
   options: item[]
   value: item
-  placeholder: string
-  label: string
-  onChange?: (e: item) => void
+  placeholder?: string
+  label?: string
+  onChange?: (e: any) => void
 }
 
 const Select: React.FC<Props> = ({
@@ -34,7 +34,7 @@ const Select: React.FC<Props> = ({
       <div className={`custom-select`} onClick={toggleOpen}>
         {!value && (
           <span className="placeholder">
-            {placeholder}{' '}
+            <span>{placeholder}</span>
             <img
               src={`${process.env.baseUrl}/images/select_down_arrow.svg`}
               className={'select-dropdown-arrow'}
@@ -43,7 +43,7 @@ const Select: React.FC<Props> = ({
         )}
         {value !== null && (
           <>
-            <span className="field-label">{label}</span>
+            {label && <span className="field-label">{label}</span>}
             <span className="selected-value">
               {value.label}
               <img

@@ -51,6 +51,10 @@ export const validateForm = (form: any, reqFields: any = {}): any => {
       if (form[key] && !form[key].match(phoneValidation)) {
         errorObj[key] = 'Must be a valid phone number format'
       }
+    } else if (key === 'answer1' || key === 'answer2' || key === 'answer3') {
+      if (form[key].length === 0) {
+        errorObj[key] = `Answer can't be blank`
+      }
     }
   })
   return errorObj
