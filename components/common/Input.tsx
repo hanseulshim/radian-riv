@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 interface Props {
   value: string
-  label: string
+  label?: string
   type?: string
   required?: boolean
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
@@ -23,7 +23,7 @@ const Input: React.FC<Props> = ({
       <input
         className={error ? 'error-input' : null}
         type={type}
-        placeholder={`${required ? '   ' : ''}${label}...`}
+        placeholder={label && `${required ? '   ' : ''}${label}...`}
         name={label}
         value={value}
         onChange={onChange}
@@ -33,10 +33,12 @@ const Input: React.FC<Props> = ({
       {required && !focus && !value && (
         <span className="placeholder required-field">*</span>
       )}
-      <label className={value ? 'input-label' : null} htmlFor={label}>
-        {required && <span className="required-field">* </span>}
-        {label}
-      </label>
+      {label && (
+        <label className={value ? 'input-label' : null} htmlFor={label}>
+          {required && <span className="required-field">* </span>}
+          {label}
+        </label>
+      )}
       <span className="error-input-message">{error}</span>
     </div>
   )
