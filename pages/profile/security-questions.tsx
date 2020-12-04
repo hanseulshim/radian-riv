@@ -63,7 +63,6 @@ const SecurityQuestions: React.FC = () => {
     const errorCopy = { ...defaultAnswerState }
     const errorObj = validateForm(answers)
     const errorArr = Object.keys(errorObj)
-    console.log(errorObj)
 
     if (errorArr.length) {
       errorArr.forEach(key => {
