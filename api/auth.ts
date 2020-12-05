@@ -1,43 +1,13 @@
-import { User } from 'components/auth/AuthProvider'
 import Cookies from 'js-cookie'
-
-//TODO #7 remove once API is set in place
-const testAuth = {
-  user: {
-    userid_ssid: '16252-5',
-    roleid: 0,
-    clientcode: 'client',
-    departmentid: 0,
-    username: 'kingalls@boostlabs.com',
-    email: 'kingalls@boostlabs.com',
-    name_last: 'Ingalls',
-    name_first: 'Kevin',
-    address: '123 Fake Street',
-    city: 'Atlanta',
-    state: 'GA',
-    zip: '55555',
-    phone_home: '215-555-1872',
-    phone_mobile: '484-555-0980',
-    title: 'AVE User'
-  },
-  token: 'bcf62b2c-c739-42aa-958d-7a9930ca7fff',
-  redirect: 'string',
-  status: 0,
-  message: 'string'
-}
+import { handleApi } from './index'
 
 interface Login {
   username: string
   pwd: string
 }
-export const submitLogin = (form: Login): void => {
-  if (form.username !== 'test') {
-    throw new Error('Username is not valid')
-  } else if (form.pwd !== 'test') {
-    throw new Error('Password is not valid')
-  }
-
-  Cookies.set('auth', testAuth)
+export const submitLogin = async (form: Login): Promise<void> => {
+  const auth = await handleApi('/auth/login', form)
+  Cookies.set('auth', auth)
 }
 
 interface ResetPassword {
@@ -63,22 +33,30 @@ interface Register {
   phone_mobile: string
 }
 
-export const submitRegister = (form: Register): string => {
-  if (form.name_first === 'error') {
-    throw new Error('Error in registering user')
-  }
-
-  return 'User created!'
+export const submitRegister = async (form: Register): Promise<string> => {
+  const message = await handleApi('/auth/register', form)
+  return message
 }
 
-export const submitProfile = (form: User): string => {
-  if (form.name_first === 'error') {
-    throw new Error('Error in updating user')
-  }
+interface Profile {
+  name_first: string
+  name_last: string
+  title: string
+  address: string
+  city: string
+  state: string
+  zip: string
+  department: string
+  phone_mobile: string
+  phone_home: string
+}
+
+export const submitProfile = async (form: Profile): Promise<string> => {
+  const message = await handleApi('/user/update', form)
   const authCookies = Cookies.get('auth')
   const auth = JSON.parse(authCookies)
   Cookies.set('auth', { ...auth, user: { ...form } })
-  return 'Profile updated!'
+  return message
 }
 
 interface ChangePassword {
@@ -86,7 +64,9 @@ interface ChangePassword {
   pwd: string
 }
 
-export const submitChangePassword = (form: ChangePassword): string => {
+export const submitChangePassword = async (
+  form: ChangePassword
+): Promise<string> => {
   const { pwd } = form
   if (pwd.length < 8) {
     throw new Error('Password must be at least 8 characters(s) long')
@@ -101,21 +81,17 @@ export const submitChangePassword = (form: ChangePassword): string => {
       'Password must contain a special character (example: !,@,#,$)'
     )
   }
-  return 'Password Changed'
+  const message = await handleApi('/auth/pwdchange', form)
+  return message
 }
 
 interface Question {
   questionid: number
   question_text: string
 }
-export const getSecurityQuestions = (): Question[] => {
-  return [
-    { questionid: 0, question_text: 'Question 1' },
-    { questionid: 1, question_text: 'Question 2' },
-    { questionid: 2, question_text: 'Question 3' },
-    { questionid: 3, question_text: 'Question 4' },
-    { questionid: 4, question_text: 'Question 5' }
-  ]
+export const getSecurityQuestions = async (): Promise<Question[]> => {
+  const questions = await handleApi('/auth/questions')
+  return questions
 }
 
 interface SecurityQuestions {
@@ -128,7 +104,9 @@ interface SecurityQuestions {
   answer3: string
 }
 
-export const setSecurityQuestions = (form: SecurityQuestions): string => {
+export const setSecurityQuestions = async (
+  form: SecurityQuestions
+): Promise<string> => {
   if (
     form.question1id === null ||
     form.question2id === null ||
@@ -139,5 +117,6 @@ export const setSecurityQuestions = (form: SecurityQuestions): string => {
   if (form.answer1 === 'error') {
     throw new Error('Error with security question')
   }
-  return 'Security quesitons set'
+  const message = await handleApi('/auth/questionsset', form)
+  return message
 }

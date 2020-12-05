@@ -83,6 +83,7 @@ h6 {
   .form-row {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
   }
 
@@ -276,8 +277,9 @@ a {
   .field-label {
     position: absolute;
     left: 0;
-    top: 0;
-    font-size: 0.5em;
+    top: -5px;
+    font-size: 0.6em;
+    height: 14px;
   }
 
   ul {
@@ -291,6 +293,8 @@ a {
     box-shadow: var(--box-shadow);
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    max-height: 300px;
+    overflow: auto;
     li {
       padding: 5px;
       cursor: pointer;

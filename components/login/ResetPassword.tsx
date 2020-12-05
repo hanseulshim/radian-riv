@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Input from 'components/common/Input'
 import { validateForm } from 'utils/validation'
-import { submitResetPassword } from 'utils/api'
+import { submitResetPassword } from 'api'
 import Modal from 'components/common/Modal'
 
 interface Props {
@@ -56,7 +56,7 @@ const ResetPassword: React.FC<Props> = ({ closeModal }) => {
 
   return (
     <Modal closeModal={closeModal} title="Reset Password" width={450}>
-      <form className="reset-password" onSubmit={e => onReset(e)}>
+      <form className="reset-password" onSubmit={onReset}>
         <Input
           label="User Name"
           value={resetPassword.username}

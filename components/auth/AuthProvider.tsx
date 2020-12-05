@@ -6,7 +6,7 @@ export const defaultAuth = {
     userid_ssid: '',
     roleid: 0,
     clientcode: '',
-    departmentid: 0,
+    departmentid: '',
     username: '',
     email: '',
     name_last: '',
@@ -29,7 +29,7 @@ export type User = {
   userid_ssid: string
   roleid: number
   clientcode: string
-  departmentid: number
+  department: string
   username: string
   email: string
   name_last: string

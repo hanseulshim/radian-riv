@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { getSecurityQuestions } from 'utils/api'
+import { getSecurityQuestions } from 'api'
 import { withAuth } from 'components/auth/AuthRoute'
 import Select from 'components/common/Select'
 import Input from 'components/common/Input'
-import { setSecurityQuestions } from 'utils/api'
+import { setSecurityQuestions } from 'api'
 import { validateForm } from 'utils/validation'
 import { useAuth } from 'components/auth/AuthProvider'
 
@@ -31,32 +31,35 @@ const SecurityQuestions: React.FC = () => {
   const [successMessage, setSuccessMessage] = useState('')
 
   useEffect(() => {
-    const securityQuestions = getSecurityQuestions()
-    const mappedQuestions = securityQuestions.map(
-      ({ questionid, question_text }) => ({
-        label: question_text,
-        value: questionid
-      })
-    )
-    setQuestionList(mappedQuestions)
-    if (mappedQuestions.length > 2) {
-      setQuestions({
-        question3: mappedQuestions[2],
-        question2: mappedQuestions[1],
-        question1: mappedQuestions[0]
-      })
-    } else if (mappedQuestions.length > 1) {
-      setQuestions({
-        ...questions,
-        question2: mappedQuestions[1],
-        question1: mappedQuestions[0]
-      })
-    } else if (mappedQuestions.length) {
-      setQuestions({ ...questions, question1: mappedQuestions[0] })
+    const securityQuestionFetch = async () => {
+      const securityQuestions = await getSecurityQuestions()
+      const mappedQuestions = securityQuestions.map(
+        ({ questionid, question_text }) => ({
+          label: question_text,
+          value: questionid
+        })
+      )
+      setQuestionList(mappedQuestions)
+      if (mappedQuestions.length > 2) {
+        setQuestions({
+          question3: mappedQuestions[2],
+          question2: mappedQuestions[1],
+          question1: mappedQuestions[0]
+        })
+      } else if (mappedQuestions.length > 1) {
+        setQuestions({
+          ...questions,
+          question2: mappedQuestions[1],
+          question1: mappedQuestions[0]
+        })
+      } else if (mappedQuestions.length) {
+        setQuestions({ ...questions, question1: mappedQuestions[0] })
+      }
     }
+    securityQuestionFetch()
   }, [])
 
-  const submitQuestions = (e: React.FormEvent<HTMLFormElement>) => {
+  const submitQuestions = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setErrorMessage('')
     setSuccessMessage('')
@@ -79,7 +82,7 @@ const SecurityQuestions: React.FC = () => {
           question3id: questions.question3 ? questions.question3.value : null,
           answer3: answers.answer3
         }
-        const message = setSecurityQuestions(form)
+        const message = await setSecurityQuestions(form)
         setSuccessMessage(message)
       } catch (e) {
         setErrorMessage(e.message)
