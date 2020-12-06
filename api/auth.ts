@@ -15,14 +15,38 @@ interface ResetPassword {
   email: string
 }
 
-export const submitResetPassword = (form: ResetPassword): string => {
-  if (form.username === 'error') {
-    throw new Error('Error in username')
-  } else if (form.email === 'error@boostlabs.com') {
-    throw new Error('Error in email')
-  }
+export const submitResetPassword = async (
+  form: ResetPassword
+): Promise<string> => {
+  const data = await handleApi('/auth/reset', form)
+  return data
+}
 
-  return 'Password reset!'
+interface Question {
+  questionid: number
+  question_text: string
+}
+
+interface UserQuestion {
+  userid_ssid: string
+}
+
+export const getUserQuestion = async (
+  form: UserQuestion
+): Promise<Question> => {
+  const data = await handleApi('/auth/question', form)
+  return data
+}
+
+interface Answer {
+  userid_ssid: string
+  question_id: number
+  answer: string
+}
+
+export const submitAnswer = async (form: Answer): Promise<string> => {
+  const data = await handleApi('/auth/answer', form)
+  return data
 }
 
 interface Register {
@@ -34,8 +58,8 @@ interface Register {
 }
 
 export const submitRegister = async (form: Register): Promise<string> => {
-  const message = await handleApi('/auth/register', form)
-  return message
+  const data = await handleApi('/auth/register', form)
+  return data
 }
 
 interface Profile {
@@ -52,11 +76,11 @@ interface Profile {
 }
 
 export const submitProfile = async (form: Profile): Promise<string> => {
-  const message = await handleApi('/user/update', form)
+  const data = await handleApi('/user/update', form)
   const authCookies = Cookies.get('auth')
   const auth = JSON.parse(authCookies)
   Cookies.set('auth', { ...auth, user: { ...form } })
-  return message
+  return data
 }
 
 interface ChangePassword {
@@ -81,8 +105,8 @@ export const submitChangePassword = async (
       'Password must contain a special character (example: !,@,#,$)'
     )
   }
-  const message = await handleApi('/auth/pwdchange', form)
-  return message
+  const data = await handleApi('/auth/pwdchange', form)
+  return data
 }
 
 interface Question {
@@ -117,6 +141,6 @@ export const setSecurityQuestions = async (
   if (form.answer1 === 'error') {
     throw new Error('Error with security question')
   }
-  const message = await handleApi('/auth/questionsset', form)
-  return message
+  const data = await handleApi('/auth/questionsset', form)
+  return data
 }

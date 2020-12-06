@@ -5,6 +5,6 @@ interface State {
   name: string
 }
 export const getStates = async (): Promise<State[]> => {
-  const message = await handleApi('/utility/states')
-  return message
+  const data = await handleApi('/utility/states')
+  return data
 }
