@@ -1,20 +1,55 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { withAuth } from 'components/auth/AuthRoute'
 import Input from 'components/common/Input'
 import { validateForm } from 'utils/validation'
-import { submitProfile } from 'utils/api'
+import { submitProfile, getStates } from 'api'
 import Cookies from 'js-cookie'
-import { useAuth, defaultAuth } from 'components/auth/AuthProvider'
+import { useAuth } from 'components/auth/AuthProvider'
+import Select from 'components/common/Select'
+
+interface State {
+  label: string
+  value: string
+}
+
+const defaultState = {
+  name_first: '',
+  name_last: '',
+  title: '',
+  address: '',
+  city: '',
+  state: '',
+  zip: '',
+  department: '',
+  phone_mobile: '',
+  phone_home: ''
+}
 
 const Profile: React.FC = () => {
   const {
     auth: { user },
     setAuth
   } = useAuth()
-  const [profile, setProfile] = useState({ ...user })
-  const [error, setError] = useState({ ...defaultAuth.user })
+  const [profile, setProfile] = useState({
+    name_first: user.name_first,
+    name_last: user.name_last,
+    title: user.title,
+    address: user.address,
+    city: user.city,
+    state: user.state,
+    zip: user.zip,
+    department: user.department,
+    phone_mobile: user.phone_mobile,
+    phone_home: user.phone_home
+  })
+  const [error, setError] = useState({ ...defaultState })
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
+  const [states, setStates] = useState<State[]>([])
+  const [selectedState, setSelectedState] = useState({
+    label: user.state,
+    value: user.state
+  })
 
   const handleInput = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -26,11 +61,11 @@ const Profile: React.FC = () => {
     setProfile({ ...profile, [key]: e.target.value })
   }
 
-  const onUpdate = (e: React.FormEvent<HTMLFormElement>) => {
+  const onUpdate = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setErrorMessage('')
     setSuccessMessage('')
-    const errorCopy = { ...defaultAuth.user }
+    const errorCopy = { ...defaultState }
     const errorObj = validateForm(profile)
     const errorArr = Object.keys(errorObj)
     if (errorArr.length) {
@@ -39,7 +74,10 @@ const Profile: React.FC = () => {
       })
     } else {
       try {
-        const message = submitProfile(profile)
+        const message = await submitProfile({
+          ...profile,
+          state: selectedState.label
+        })
         setSuccessMessage(message)
         const authCookies = Cookies.get('auth')
         setAuth(JSON.parse(authCookies))
@@ -50,21 +88,29 @@ const Profile: React.FC = () => {
     setError(errorCopy)
   }
 
+  useEffect(() => {
+    const stateFetch = async () => {
+      const states = await getStates()
+      setStates(states.map(state => ({ label: state.code, value: state.code })))
+    }
+    stateFetch()
+  }, [])
+
   return (
     <div className="container profile">
       <h1>Profile</h1>
       <div className="info-container">
         <div>
           <span className="bold">Username:</span>
-          <span>{profile.username}</span>
+          <span>{user.username}</span>
         </div>
         <div>
           <span className="bold">Email:</span>
-          <span>{profile.email}</span>
+          <span>{user.email}</span>
         </div>
       </div>
       <div className="form">
-        <form onSubmit={e => onUpdate(e)}>
+        <form onSubmit={onUpdate}>
           <div className="form-row">
             <div className="form-group">
               <Input
@@ -100,12 +146,14 @@ const Profile: React.FC = () => {
                 onChange={e => handleInput(e, 'city')}
               />
               <div className="form-row">
-                <Input
-                  label="State"
-                  value={profile.state}
-                  error={error.state}
-                  onChange={e => handleInput(e, 'state')}
-                />
+                <div className="select-container">
+                  <Select
+                    label="State"
+                    options={states}
+                    value={selectedState}
+                    onChange={state => setSelectedState(state)}
+                  />
+                </div>
                 <Input
                   label="Zip"
                   value={profile.zip}
@@ -117,8 +165,8 @@ const Profile: React.FC = () => {
             <div className="form-group">
               <Input
                 label="Department"
-                value={profile.clientcode}
-                error={error.clientcode}
+                value={profile.department}
+                error={error.department}
                 onChange={e => handleInput(e, 'clientcode')}
               />
               <Input

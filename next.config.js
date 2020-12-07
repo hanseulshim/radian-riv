@@ -16,6 +16,7 @@ module.exports = {
       ? 'https://alpha.boostlabs.com/radian-riv/'
       : isBeta
       ? 'https://beta.boostlabs.com/radian-riv/'
-      : ''
+      : '',
+    api: 'https://v585kzqbv4.execute-api.us-east-2.amazonaws.com/dev'
   }
 }

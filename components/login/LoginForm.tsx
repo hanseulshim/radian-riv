@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Input from 'components/common/Input'
 import { validateForm } from 'utils/validation'
-import { submitLogin } from 'utils/api'
+import { submitLogin } from 'api'
 
 interface Props {
   showPasswordModal: () => void
@@ -18,7 +18,7 @@ const LoginForm: React.FC<Props> = ({
   const [error, setError] = useState({ ...defaultState })
   const [errorMessage, setErrorMessage] = useState('')
 
-  const onLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  const onLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setErrorMessage('')
     const errorCopy = { ...defaultState }
@@ -30,7 +30,7 @@ const LoginForm: React.FC<Props> = ({
       })
     } else {
       try {
-        submitLogin(login)
+        await submitLogin(login)
         window.location.href = `${process.env.rootUrl}`
       } catch (e) {
         setErrorMessage(e.message)
