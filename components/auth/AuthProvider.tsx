@@ -6,7 +6,6 @@ export const defaultAuth = {
     userid_ssid: '',
     roleid: 0,
     clientcode: '',
-    departmentid: '',
     username: '',
     email: '',
     name_last: '',
