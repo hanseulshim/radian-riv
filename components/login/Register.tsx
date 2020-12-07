@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Input from 'components/common/Input'
 import { validateForm } from 'utils/validation'
 import TermsOfUse from './TermsOfUse'
-import { submitRegister } from 'utils/api'
+import { submitRegister } from 'api'
 import Modal from 'components/common/Modal'
 
 interface Props {
@@ -40,7 +40,7 @@ const Register: React.FC<Props> = ({ closeModal }) => {
     setRegister({ ...register, [key]: e.target.value })
   }
 
-  const onRegister = (e: React.FormEvent<HTMLFormElement>) => {
+  const onRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setErrorMessage('')
     setSuccessMessage('')
@@ -53,7 +53,7 @@ const Register: React.FC<Props> = ({ closeModal }) => {
       })
     } else {
       try {
-        const message = submitRegister({
+        const message = await submitRegister({
           name_first: register.name_first,
           name_last: register.name_last,
           username: register.username,
@@ -61,9 +61,6 @@ const Register: React.FC<Props> = ({ closeModal }) => {
           phone_mobile: register.phone_mobile
         })
         setSuccessMessage(message)
-        setTimeout(() => {
-          closeModal()
-        }, 3000)
       } catch (e) {
         setErrorMessage(e.message)
       }
@@ -73,7 +70,7 @@ const Register: React.FC<Props> = ({ closeModal }) => {
 
   return (
     <Modal closeModal={closeModal} title="Create a New Account" width={800}>
-      <form onSubmit={e => onRegister(e)}>
+      <form onSubmit={onRegister}>
         <div className="form-row">
           <div className="form-group">
             <Input

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Input from 'components/common/Input'
 import { validateForm } from 'utils/validation'
-import { submitResetPassword } from 'utils/api'
+import { submitResetPassword, getUserQuestion, submitAnswer } from 'api'
 import Modal from 'components/common/Modal'
 
 interface Props {
@@ -18,11 +18,14 @@ const ResetPassword: React.FC<Props> = ({ closeModal }) => {
   const [error, setError] = useState({ ...defaultState })
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
+  const [question, setQuestion] = useState(null)
+  const [answer, setAnswer] = useState('')
+  const [answerError, setAnswerError] = useState('')
+  const [userId, setUserId] = useState('')
 
-  const onReset = (e: React.FormEvent<HTMLFormElement>) => {
+  const onReset = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setErrorMessage('')
-    setSuccessMessage('')
     const errorCopy = { ...defaultState }
     const errorObj = validateForm(resetPassword)
     const errorArr = Object.keys(errorObj)
@@ -32,16 +35,38 @@ const ResetPassword: React.FC<Props> = ({ closeModal }) => {
       })
     } else {
       try {
-        const message = submitResetPassword(resetPassword)
-        setSuccessMessage(message)
-        setTimeout(() => {
-          closeModal()
-        }, 3000)
+        const userid_ssid = await submitResetPassword(resetPassword)
+        const userPayload = {
+          userid_ssid
+        }
+        const questionResponse = await getUserQuestion(userPayload)
+        setUserId(userid_ssid)
+        setQuestion(questionResponse)
       } catch (e) {
         setErrorMessage(e.message)
       }
     }
     setError(errorCopy)
+  }
+
+  const onAnswer = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setErrorMessage('')
+    setSuccessMessage('')
+    if (answer.length === 0) {
+      setAnswerError('Answer cannot be empty')
+    } else {
+      try {
+        const message = await submitAnswer({
+          userid_ssid: userId,
+          question_id: question.question_id,
+          answer
+        })
+        setSuccessMessage(message)
+      } catch (e) {
+        setErrorMessage(e.message)
+      }
+    }
   }
 
   const handleInput = (
@@ -54,39 +79,70 @@ const ResetPassword: React.FC<Props> = ({ closeModal }) => {
     setResetPassword({ ...resetPassword, [key]: e.target.value })
   }
 
+  const updateAnswer = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAnswerError('')
+    setAnswer(e.target.value)
+  }
+
   return (
-    <Modal closeModal={closeModal} title="Reset Password" width={450}>
-      <form className="reset-password" onSubmit={e => onReset(e)}>
-        <Input
-          label="User Name"
-          value={resetPassword.username}
-          error={error.username}
-          onChange={e => handleInput(e, 'username')}
-          required
-        />
-        <Input
-          label="Email on file"
-          value={resetPassword.email}
-          error={error.email}
-          onChange={e => handleInput(e, 'email')}
-          required
-        />
-        <span className={successMessage ? 'success-message' : 'error-message'}>
-          {successMessage || errorMessage}
-        </span>
-        <button className="btn btn-primary" type="submit">
-          Reset Password
-        </button>
-        <p className="info">
-          For security purposes you are required to reset your password every
-          120 days.
-        </p>
-        <p className="info">
-          If you do not receive an email with instructions on how to reset your
-          password, please send an email to{' '}
-          <a href="mailto:vow@redbellre.com">vow@redbellre.com</a>
-        </p>
-      </form>
+    <Modal
+      closeModal={closeModal}
+      title={question === null ? 'Reset Password' : 'Security Question'}
+      width={500}
+    >
+      {question === null ? (
+        <form className="reset-password" onSubmit={onReset}>
+          <Input
+            label="User Name"
+            value={resetPassword.username}
+            error={error.username}
+            onChange={e => handleInput(e, 'username')}
+            required
+          />
+          <Input
+            label="Email on file"
+            value={resetPassword.email}
+            error={error.email}
+            onChange={e => handleInput(e, 'email')}
+            required
+          />
+          <span
+            className={successMessage ? 'success-message' : 'error-message'}
+          >
+            {successMessage || errorMessage}
+          </span>
+          <button className="btn btn-primary" type="submit">
+            Reset Password
+          </button>
+          <p className="info">
+            For security purposes you are required to reset your password every
+            120 days.
+          </p>
+          <p className="info">
+            If you do not receive an email with instructions on how to reset
+            your password, please send an email to{' '}
+            <a href="mailto:vow@redbellre.com">vow@redbellre.com</a>
+          </p>
+        </form>
+      ) : (
+        <form className="reset-password" onSubmit={onAnswer}>
+          <div className="question">{question.question_text}</div>
+          <Input
+            label="Answer"
+            value={answer}
+            error={answerError}
+            onChange={updateAnswer}
+          />
+          <span
+            className={successMessage ? 'success-message' : 'error-message'}
+          >
+            {successMessage || errorMessage}
+          </span>
+          <button className="btn btn-primary" type="submit">
+            Reset Password
+          </button>
+        </form>
+      )}
     </Modal>
   )
 }

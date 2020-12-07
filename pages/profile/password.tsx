@@ -3,7 +3,7 @@ import { withAuth } from 'components/auth/AuthRoute'
 import Input from 'components/common/Input'
 import { validateForm } from 'utils/validation'
 import { useAuth } from 'components/auth/AuthProvider'
-import { submitChangePassword } from 'utils/api'
+import { submitChangePassword } from 'api'
 
 const defaultState = {
   pwd: '',
@@ -29,7 +29,7 @@ const ChangePassword: React.FC = () => {
     setChangePassword({ ...changePassword, [key]: e.target.value })
   }
 
-  const onUpdate = (e: React.FormEvent<HTMLFormElement>) => {
+  const onUpdate = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setErrorMessage('')
     setSuccessMessage('')
@@ -42,7 +42,7 @@ const ChangePassword: React.FC = () => {
       })
     } else {
       try {
-        const message = submitChangePassword({
+        const message = await submitChangePassword({
           pwd: changePassword.pwd,
           userid_ssid: user.userid_ssid
         })
@@ -58,7 +58,7 @@ const ChangePassword: React.FC = () => {
     <div className="container change-password">
       <h1>Change Password</h1>
       <div className="form">
-        <form onSubmit={e => onUpdate(e)}>
+        <form onSubmit={onUpdate}>
           <div className="form-group">
             <Input
               label="New Password"
