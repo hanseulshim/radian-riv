@@ -81,3 +81,26 @@
     }
   }
 }
+
+.filter-defaults {
+  .form {
+    margin-top: 1em;
+    width: 100%;
+    h3 {
+      margin-bottom: 0.5em;
+    }
+    .filter-defaults-container {
+      display: flex;
+      width: 100%;
+      .filter-defaults-column {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        padding: 20px;
+        > * {
+          margin: 10px 0;
+        }
+      }
+    }
+  }
+}

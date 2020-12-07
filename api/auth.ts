@@ -1,5 +1,6 @@
 import Cookies from 'js-cookie'
 import { handleApi } from './index'
+import { squareFootages, timeIntervals, compTypes } from 'utils/constants'
 
 interface Login {
   username: string
@@ -142,5 +143,69 @@ export const setSecurityQuestions = async (
     throw new Error('Error with security question')
   }
   const data = await handleApi('/auth/questionsset', form)
+  return data
+}
+
+interface filterItem {
+  label: string
+  value: string | number
+}
+
+interface FilterDefaults {
+  sqFt?: filterItem
+  min?: number
+  max?: number
+  percent?: number
+  retail: boolean
+  distressed: boolean
+  timeGoingBack: filterItem
+  onlySubdivisionComps: boolean
+  restrictComps: filterItem
+}
+export const getFilterDefaults = async (): Promise<FilterDefaults> => {
+  // const defaults = await handleApi('/auth/getFilterDefaults')
+  const defaults = {
+    sqFt: {
+      label: '1,000 Sq Ft',
+      value: 1
+    },
+    min: null,
+    max: null,
+    percent: null,
+    retail: true,
+    distressed: true,
+    timeGoingBack: {
+      label: '3 months',
+      value: 1
+    },
+    onlySubdivisionComps: false,
+    restrictComps: {
+      label: 'Single Family',
+      value: 2
+    }
+  }
+  return defaults
+}
+
+export const setFilterDefaults = async (
+  form: FilterDefaults
+): Promise<string> => {
+  const data = await handleApi('/auth/setFilterDefaults', form)
+  return data
+}
+
+interface DefaultFilterOptions {
+  squareFootages: filterItem[]
+  timeIntervals: filterItem[]
+  compTypes: filterItem[]
+}
+export const getFilterDefaultOptions = async (): Promise<DefaultFilterOptions> => {
+  // const data = await handleApi('/utility/squarefootages')
+  // return data
+  const data = {
+    squareFootages,
+    timeIntervals,
+    compTypes
+  }
   return data
 }

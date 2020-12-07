@@ -189,7 +189,9 @@ input::placeholder {
   display: flex;
   align-items: center;
   input {
-    margin-right: 5px;
+    margin: 0 5px;
+  }
+  label {
   }
 }
 
