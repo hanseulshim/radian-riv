@@ -123,6 +123,7 @@ const FilterDefaults: React.FC = () => {
     setFilterDefaultState({ ...filterDefaults, [key]: e.target.checked })
   }
 
+  const squareFootSelected = !!filterDefaults.sqFt
   return (
     <div className="container filter-defaults">
       <h1>AVE Filter Defaults</h1>
@@ -136,6 +137,7 @@ const FilterDefaults: React.FC = () => {
                 onChange={item => handleSelect(item, 'sqFt')}
                 label="Sq Ft"
                 placeholder="Select Square Footage"
+                disabled={!squareFootSelected}
               />
               <Input
                 value={filterDefaults.min}
@@ -143,6 +145,7 @@ const FilterDefaults: React.FC = () => {
                 onChange={e => handleInput(e, 'min')}
                 label="Min"
                 type="number"
+                disabled={squareFootSelected}
               />
               <Input
                 value={filterDefaults.max}
@@ -150,6 +153,7 @@ const FilterDefaults: React.FC = () => {
                 onChange={e => handleInput(e, 'max')}
                 label="Max"
                 type="number"
+                disabled={squareFootSelected}
               />
               <Input
                 value={filterDefaults.percent}
@@ -157,6 +161,7 @@ const FilterDefaults: React.FC = () => {
                 onChange={e => handleInput(e, 'percent')}
                 label="%"
                 type="number"
+                disabled={squareFootSelected}
               />
             </div>
             <div className="filter-defaults-column">

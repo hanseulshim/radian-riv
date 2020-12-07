@@ -181,6 +181,10 @@ input::placeholder {
     &:invalid {
       border-bottom: 2px solid red;
     }
+    &:disabled {
+      color: var(--gray);
+      cursor: not-allowed;
+    }
   }
 }
 
@@ -257,6 +261,11 @@ a {
   padding-top: 15px;
   cursor: pointer;
   position: relative;
+
+  &.disabled {
+    color: var(--gray);
+    cursor: not-allowed;
+  }
 
   .placeholder {
     display: flex;

@@ -7,6 +7,7 @@ interface Props {
   required?: boolean
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   error: string
+  disabled?: boolean
 }
 
 const Input: React.FC<Props> = ({
@@ -15,7 +16,8 @@ const Input: React.FC<Props> = ({
   type = 'text',
   required = false,
   onChange,
-  error
+  error,
+  disabled = false
 }) => {
   const [focus, setFocus] = useState(false)
   return (
@@ -29,6 +31,7 @@ const Input: React.FC<Props> = ({
         onChange={onChange}
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}
+        disabled={disabled}
       />
       {required && !focus && !value && (
         <span className="placeholder required-field">*</span>

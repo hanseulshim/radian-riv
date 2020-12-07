@@ -10,6 +10,7 @@ interface Props {
   placeholder?: string
   label?: string
   onChange?: (e: any) => void
+  disabled?: boolean
 }
 
 const Select: React.FC<Props> = ({
@@ -17,12 +18,15 @@ const Select: React.FC<Props> = ({
   value,
   placeholder,
   label,
-  onChange
+  onChange,
+  disabled = false
 }) => {
   const [open, setOpen] = useState(false)
 
   const toggleOpen = () => {
-    setOpen(!open)
+    if (!disabled) {
+      setOpen(!open)
+    }
   }
 
   const onSelect = (item: item) => {
@@ -31,7 +35,10 @@ const Select: React.FC<Props> = ({
   }
   return (
     <>
-      <div className={`custom-select`} onClick={toggleOpen}>
+      <div
+        className={`custom-select ${disabled && ' disabled'}`}
+        onClick={toggleOpen}
+      >
         {!value && (
           <span className="placeholder">
             <span>{placeholder}</span>
