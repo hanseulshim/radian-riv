@@ -118,6 +118,31 @@ export const getSecurityQuestions = (): Question[] => {
   ]
 }
 
+interface FilterDefaults {
+  sqFt: string
+  min: number
+  max: number
+  percent: number
+  retail: boolean
+  distressed: boolean
+  timeGoingBack: string
+  onlySubdividisonComps: boolean
+  restrictComps: string
+}
+export const getFilterDefaults = (): FilterDefaults => {
+  return {
+    sqFt: '2,000',
+    min: 0,
+    max: 10,
+    percent: 50,
+    retail: false,
+    distressed: true,
+    timeGoingBack: '3 months',
+    onlySubdividisonComps: false,
+    restrictComps: 'Single Family'
+  }
+}
+
 interface SecurityQuestions {
   userid_ssid: string
   question1id: number
