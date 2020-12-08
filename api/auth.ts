@@ -63,6 +63,7 @@ export const submitRegister = async (form: Register): Promise<string> => {
 }
 
 interface Profile {
+  userid_ssid: string
   name_first: string
   name_last: string
   title: string

@@ -76,7 +76,8 @@ const Profile: React.FC = () => {
       try {
         const message = await submitProfile({
           ...profile,
-          state: selectedState.label
+          state: selectedState.label,
+          userid_ssid: user.userid_ssid
         })
         setSuccessMessage(message)
         const authCookies = Cookies.get('auth')
