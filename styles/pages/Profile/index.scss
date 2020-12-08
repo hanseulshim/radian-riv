@@ -90,12 +90,11 @@
     }
     .filter-defaults-container {
       display: flex;
-      width: 100%;
       .filter-defaults-column {
         display: flex;
         flex-direction: column;
         flex: 1;
-        padding: 20px;
+        padding: 10px;
         > * {
           margin: 10px 0;
         }
