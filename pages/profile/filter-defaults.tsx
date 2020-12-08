@@ -6,6 +6,7 @@ import Input from 'components/common/Input'
 import { setFilterDefaults } from 'api'
 import { validateForm } from 'utils/validation'
 import { useAuth } from 'components/auth/AuthProvider'
+import { Checkbox } from 'components/common/Checkbox'
 
 const defaultFilterState = {
   sqFt: null,
@@ -123,7 +124,6 @@ const FilterDefaults: React.FC = () => {
     setFilterDefaultState({ ...filterDefaults, [key]: e.target.checked })
   }
 
-  const squareFootSelected = !!filterDefaults.sqFt
   return (
     <div className="container filter-defaults">
       <h1>AVE Filter Defaults</h1>
@@ -131,13 +131,13 @@ const FilterDefaults: React.FC = () => {
         <form onSubmit={submitDefaults}>
           <div className="filter-defaults-container">
             <div className="filter-defaults-column">
+              <div className="title">Square Footage</div>
               <Select
                 options={squareFootages}
                 value={filterDefaults.sqFt}
                 onChange={item => handleSelect(item, 'sqFt')}
                 label="Sq Ft"
                 placeholder="Select Square Footage"
-                disabled={!squareFootSelected}
               />
               <Input
                 value={filterDefaults.min}
@@ -145,7 +145,9 @@ const FilterDefaults: React.FC = () => {
                 onChange={e => handleInput(e, 'min')}
                 label="Min"
                 type="number"
-                disabled={squareFootSelected}
+                disabled={
+                  filterDefaults.sqFt && filterDefaults.sqFt.value !== 1
+                }
               />
               <Input
                 value={filterDefaults.max}
@@ -153,7 +155,9 @@ const FilterDefaults: React.FC = () => {
                 onChange={e => handleInput(e, 'max')}
                 label="Max"
                 type="number"
-                disabled={squareFootSelected}
+                disabled={
+                  filterDefaults.sqFt && filterDefaults.sqFt.value !== 1
+                }
               />
               <Input
                 value={filterDefaults.percent}
@@ -161,39 +165,31 @@ const FilterDefaults: React.FC = () => {
                 onChange={e => handleInput(e, 'percent')}
                 label="%"
                 type="number"
-                disabled={squareFootSelected}
+                disabled={
+                  filterDefaults.sqFt && filterDefaults.sqFt.value !== 2
+                }
               />
             </div>
             <div className="filter-defaults-column">
-              <div className="title">Comparable</div>
-              <div className="checkbox">
-                <label htmlFor="retail">Retail</label>
-                <input
-                  type="checkbox"
-                  checked={filterDefaults.retail}
-                  onChange={e => handleCheck(e, 'retail')}
-                />
-              </div>
-              <div className="checkbox">
-                <label htmlFor="distressed">Distressed</label>
-                <input
-                  type="checkbox"
-                  checked={filterDefaults.distressed}
-                  onChange={e => handleCheck(e, 'distressed')}
-                />
-              </div>
-              <div className="checkbox">
-                <label>
-                  Only include comps in subject&apos;s same subdivision
-                </label>
-                <input
-                  type="checkbox"
-                  checked={filterDefaults.onlySubdivisionComps}
-                  onChange={e => handleCheck(e, 'onlySubdivisionComps')}
-                />
-              </div>
+              <div className="title">Comparables</div>
+              <Checkbox
+                checked={filterDefaults.retail}
+                onChange={e => handleCheck(e, 'retail')}
+                label={'Retail'}
+              />
+              <Checkbox
+                label="Distressed"
+                checked={filterDefaults.distressed}
+                onChange={e => handleCheck(e, 'distressed')}
+              />
+              <Checkbox
+                label="Only include comps in subject's same subdivision"
+                checked={filterDefaults.onlySubdivisionComps}
+                onChange={e => handleCheck(e, 'onlySubdivisionComps')}
+              />
             </div>
             <div className="filter-defaults-column">
+              <div className="title">Time Going Back</div>
               <Select
                 options={timeIntervals}
                 value={filterDefaults.timeGoingBack}
@@ -201,6 +197,9 @@ const FilterDefaults: React.FC = () => {
                 label="Time Going Back"
                 placeholder="Time Going Back..."
               />
+            </div>
+            <div className="filter-defaults-column">
+              <div className="title">Restrict Comps</div>
               <Select
                 options={compTypes}
                 value={filterDefaults.restrictComps}

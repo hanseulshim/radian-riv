@@ -166,7 +166,7 @@ export const getFilterDefaults = async (): Promise<FilterDefaults> => {
   // const defaults = await handleApi('/auth/getFilterDefaults')
   const defaults = {
     sqFt: {
-      label: '1,000 Sq Ft',
+      label: 'By Min/Max',
       value: 1
     },
     min: null,

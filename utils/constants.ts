@@ -1,7 +1,6 @@
 export const squareFootages = [
-  { value: 1, label: '1,000 Square Feet' },
-  { value: 2, label: '2,000 Square Feet' },
-  { value: 3, label: '3,000 Square Feet' }
+  { value: 1, label: 'By Min/Max' },
+  { value: 2, label: 'By Variance' }
 ]
 
 export const timeIntervals = [
