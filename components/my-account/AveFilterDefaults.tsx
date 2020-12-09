@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { getFilterDefaults, getFilterDefaultOptions } from 'api'
+import {
+  getFilterDefaults,
+  getFilterDefaultsSquareFt,
+  getFilterDefaultsSquareFtPercent,
+  getFilterDefaultsTime,
+  getFilterDefaultsRestrict
+} from 'api'
 import Select from 'components/common/Select'
 import Input from 'components/common/Input'
 import { setFilterDefaults } from 'api'
@@ -8,15 +14,15 @@ import { useAuth } from 'components/auth/AuthProvider'
 import { Checkbox } from 'components/common/Checkbox'
 
 const defaultFilterState = {
-  sqFt: null,
-  min: null,
-  max: null,
-  percent: null,
-  retail: null,
-  distressed: null,
-  timeGoingBack: null,
-  onlySubdivisionComps: null,
-  restrictComps: null
+  sqft: null,
+  sqft_min: null,
+  sqft_max: null,
+  sqft_percent: null,
+  comparable_retail: null,
+  comparable_distressed: null,
+  time_going_back: null,
+  comps_subdivision: null,
+  restrict_comps: null
 }
 
 interface Option {
@@ -31,44 +37,47 @@ const AveFilterDefaults: React.FC = () => {
   const [filterDefaults, setFilterDefaultState] = useState({
     ...defaultFilterState
   })
-  const [squareFootages, setSquareFootages] = useState<Option[]>([])
-  const [variances, setVariances] = useState<Option[]>([])
-  const [timeIntervals, setTimeIntervals] = useState<Option[]>([])
-  const [compTypes, setCompTypes] = useState<Option[]>([])
+  const [squareFootageOptions, setSquareFootageOptions] = useState<Option[]>([])
+  const [percentOptions, setPercentOptions] = useState<Option[]>([])
+  const [timeOptions, setTimeOptions] = useState<Option[]>([])
+  const [restrictCompOptions, setRestrictCompOptions] = useState<Option[]>([])
   const [error, setError] = useState({ ...defaultFilterState })
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
 
   useEffect(() => {
-    const fetchDefaults = async () => {
+    const fetchUserDefaults = async () => {
       try {
-        const defaults = await getFilterDefaults()
+        const defaults = await getFilterDefaults(user.userid_ssid)
         setFilterDefaultState({
-          sqFt: defaults.sqFt || null,
-          min: defaults.min || null,
-          max: defaults.max || null,
-          percent: defaults.percent || null,
-          retail: defaults.retail,
-          distressed: defaults.distressed,
-          timeGoingBack: defaults.timeGoingBack,
-          onlySubdivisionComps: defaults.onlySubdivisionComps,
-          restrictComps: defaults.restrictComps
+          sqft: defaults.sqft || null,
+          sqft_min: defaults.sqft_min || null,
+          sqft_max: defaults.sqft_max || null,
+          sqft_percent: defaults.sqft_percent || null,
+          comparable_retail: defaults.comparable_retail,
+          comparable_distressed: defaults.comparable_distressed,
+          time_going_back: defaults.time_going_back,
+          comps_subdivision: defaults.comps_subdivision,
+          restrict_comps: defaults.restrict_comps
         })
       } catch (e) {
         setErrorMessage(e.message)
       }
     }
-    fetchDefaults()
+    fetchUserDefaults()
   }, [])
 
   useEffect(() => {
     const fetchFilterDefaultOptions = async () => {
       try {
-        const options = await getFilterDefaultOptions()
-        setSquareFootages(options.squareFootages)
-        setTimeIntervals(options.timeIntervals)
-        setCompTypes(options.compTypes)
-        setVariances(options.variances)
+        const sqFtOptions = await getFilterDefaultsSquareFt()
+        setSquareFootageOptions(sqFtOptions)
+        const sqFtPercentOptions = await getFilterDefaultsSquareFtPercent()
+        setPercentOptions(sqFtPercentOptions)
+        const timeOptions = await getFilterDefaultsTime()
+        setTimeOptions(timeOptions)
+        const restrictOptions = await getFilterDefaultsRestrict()
+        setRestrictCompOptions(restrictOptions)
       } catch (e) {
         setErrorMessage(e.message)
       }
@@ -103,12 +112,12 @@ const AveFilterDefaults: React.FC = () => {
     const stateCopy = { ...filterDefaults }
     stateCopy[selectedKey] = item
     // TODO why doesnt this clear the inputs?
-    if (selectedKey === 'sqFt' && item.value !== filterDefaults.sqFt) {
+    if (selectedKey === 'sqFt' && item.value !== filterDefaults.sqft) {
       if (item.value === 1) {
-        stateCopy.percent = null
+        stateCopy.sqft_percent = null
       } else {
-        stateCopy.min = null
-        stateCopy.max = null
+        stateCopy.sqft_min = null
+        stateCopy.sqft_max = null
       }
     }
     setFilterDefaultState(stateCopy)
@@ -147,67 +156,67 @@ const AveFilterDefaults: React.FC = () => {
             <div className="filter-defaults-column">
               <div className="title">Square Footage</div>
               <Select
-                options={squareFootages}
-                value={filterDefaults.sqFt}
+                options={squareFootageOptions}
+                value={filterDefaults.sqft}
                 onChange={item => handleSelect(item, 'sqFt')}
                 label="Sq Ft"
                 placeholder="Select Square Footage"
               />
               <Input
-                value={filterDefaults.min}
-                error={error.min}
-                onChange={e => handleInput(e, 'min')}
+                value={filterDefaults.sqft_min}
+                error={error.sqft_min}
+                onChange={e => handleInput(e, 'sqft_min')}
                 label="Min"
                 type="number"
                 disabled={
-                  filterDefaults.sqFt && filterDefaults.sqFt.value !== 1
+                  filterDefaults.sqft && filterDefaults.sqft.value !== 1
                 }
               />
               <Input
-                value={filterDefaults.max}
-                error={error.max}
-                onChange={e => handleInput(e, 'max')}
+                value={filterDefaults.sqft_max}
+                error={error.sqft_max}
+                onChange={e => handleInput(e, 'sqft_max')}
                 label="Max"
                 type="number"
                 disabled={
-                  filterDefaults.sqFt && filterDefaults.sqFt.value !== 1
+                  filterDefaults.sqft && filterDefaults.sqft.value !== 1
                 }
               />
               <Select
-                options={variances}
-                value={filterDefaults.percent}
-                onChange={e => handleSelect(e, 'percent')}
+                options={percentOptions}
+                value={filterDefaults.sqft_percent}
+                onChange={e => handleSelect(e, 'sqft_percent')}
                 label="%"
                 placeholder="Select variance"
                 disabled={
-                  filterDefaults.sqFt && filterDefaults.sqFt.value !== 2
+                  filterDefaults.sqft && filterDefaults.sqft.value !== 2
                 }
               />
             </div>
             <div className="filter-defaults-column">
               <div className="title">Comparables</div>
               <Checkbox
-                checked={filterDefaults.retail}
-                onChange={e => handleCheck(e, 'retail')}
                 label={'Retail'}
+                checked={filterDefaults.comparable_retail}
+                onChange={e => handleCheck(e, 'comparable_retail')}
               />
               <Checkbox
-                label="Distressed"
-                checked={filterDefaults.distressed}
-                onChange={e => handleCheck(e, 'distressed')}
+                label={'Distressed'}
+                checked={filterDefaults.comparable_distressed}
+                onChange={e => handleCheck(e, 'comparable_distressed')}
               />
               <Checkbox
                 label="Only include comps in subject's same subdivision"
-                checked={filterDefaults.onlySubdivisionComps}
-                onChange={e => handleCheck(e, 'onlySubdivisionComps')}
+                checked={filterDefaults.comps_subdivision}
+                onChange={e => handleCheck(e, 'comps_subdivision')}
               />
             </div>
             <div className="filter-defaults-column">
               <div className="title">Time Going Back</div>
               <Select
-                options={timeIntervals}
-                value={filterDefaults.timeGoingBack}
-                onChange={item => handleSelect(item, 'timeGoingBack')}
+                options={timeOptions}
+                value={filterDefaults.time_going_back}
+                onChange={item => handleSelect(item, 'time_going_back')}
                 label="Time Going Back"
                 placeholder="Time Going Back..."
               />
@@ -215,9 +224,9 @@ const AveFilterDefaults: React.FC = () => {
             <div className="filter-defaults-column">
               <div className="title">Restrict Comps</div>
               <Select
-                options={compTypes}
-                value={filterDefaults.restrictComps}
-                onChange={item => handleSelect(item, 'restrictComps')}
+                options={restrictCompOptions}
+                value={filterDefaults.restrict_comps}
+                onChange={item => handleSelect(item, 'restrict_comps')}
                 label="Restrict Comps"
                 placeholder="Restrict Comps"
               />
