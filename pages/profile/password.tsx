@@ -90,9 +90,7 @@ const ChangePassword: React.FC = () => {
           <div>* Password must contain an uppercase character</div>
           <div>* Password must contain a lowercase character</div>
           <div>* Password must contain a numeric character</div>
-          <div>
-            * Password must contain a special character (example: !,@,#,$)
-          </div>
+          <div>* Password must contain a special character (ex: !,@,#,$)</div>
           <div>
             * Password must NOT have been used within the last 25 passwords
           </div>
