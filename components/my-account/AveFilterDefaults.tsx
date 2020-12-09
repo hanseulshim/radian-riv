@@ -71,12 +71,12 @@ const AveFilterDefaults: React.FC = () => {
     const fetchFilterDefaultOptions = async () => {
       try {
         const sqFtOptions = await getFilterDefaultsSquareFt()
-        setSquareFootageOptions(sqFtOptions)
         const sqFtPercentOptions = await getFilterDefaultsSquareFtPercent()
-        setPercentOptions(sqFtPercentOptions)
         const timeOptions = await getFilterDefaultsTime()
-        setTimeOptions(timeOptions)
         const restrictOptions = await getFilterDefaultsRestrict()
+        setSquareFootageOptions(sqFtOptions)
+        setPercentOptions(sqFtPercentOptions)
+        setTimeOptions(timeOptions)
         setRestrictCompOptions(restrictOptions)
       } catch (e) {
         setErrorMessage(e.message)
