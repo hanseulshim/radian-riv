@@ -16,3 +16,11 @@ export const compTypes = [
   { value: 4, label: 'Condo' },
   { value: 5, label: 'Mobile/Manufactured' }
 ]
+
+export const variances = [
+  { value: 1, label: '5%' },
+  { value: 2, label: '10%' },
+  { value: 3, label: '15%' },
+  { value: 4, label: '20%' },
+  { value: 5, label: '25%' }
+]

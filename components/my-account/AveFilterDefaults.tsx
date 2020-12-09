@@ -32,6 +32,7 @@ const AveFilterDefaults: React.FC = () => {
     ...defaultFilterState
   })
   const [squareFootages, setSquareFootages] = useState<Option[]>([])
+  const [variances, setVariances] = useState<Option[]>([])
   const [timeIntervals, setTimeIntervals] = useState<Option[]>([])
   const [compTypes, setCompTypes] = useState<Option[]>([])
   const [error, setError] = useState({ ...defaultFilterState })
@@ -67,6 +68,7 @@ const AveFilterDefaults: React.FC = () => {
         setSquareFootages(options.squareFootages)
         setTimeIntervals(options.timeIntervals)
         setCompTypes(options.compTypes)
+        setVariances(options.variances)
       } catch (e) {
         setErrorMessage(e.message)
       }
@@ -100,6 +102,7 @@ const AveFilterDefaults: React.FC = () => {
   const handleSelect = (item: Option, selectedKey: string) => {
     const stateCopy = { ...filterDefaults }
     stateCopy[selectedKey] = item
+    // TODO why doesnt this clear the inputs?
     if (selectedKey === 'sqFt' && item.value !== filterDefaults.sqFt) {
       if (item.value === 1) {
         stateCopy.percent = null
@@ -170,12 +173,12 @@ const AveFilterDefaults: React.FC = () => {
                   filterDefaults.sqFt && filterDefaults.sqFt.value !== 1
                 }
               />
-              <Input
+              <Select
+                options={variances}
                 value={filterDefaults.percent}
-                error={error.percent}
-                onChange={e => handleInput(e, 'percent')}
+                onChange={e => handleSelect(e, 'percent')}
                 label="%"
-                type="number"
+                placeholder="Select variance"
                 disabled={
                   filterDefaults.sqFt && filterDefaults.sqFt.value !== 2
                 }

@@ -1,6 +1,11 @@
 import Cookies from 'js-cookie'
 import { handleApi } from './index'
-import { squareFootages, timeIntervals, compTypes } from 'utils/constants'
+import {
+  squareFootages,
+  timeIntervals,
+  compTypes,
+  variances
+} from 'utils/constants'
 
 interface Login {
   username: string
@@ -155,7 +160,7 @@ interface FilterDefaults {
   sqFt?: filterItem
   min?: number
   max?: number
-  percent?: number
+  percent?: filterItem
   retail: boolean
   distressed: boolean
   timeGoingBack: filterItem
@@ -169,8 +174,8 @@ export const getFilterDefaults = async (): Promise<FilterDefaults> => {
       label: 'By Min/Max',
       value: 1
     },
-    min: null,
-    max: null,
+    min: 25,
+    max: 75,
     percent: null,
     retail: true,
     distressed: true,
@@ -198,6 +203,7 @@ interface DefaultFilterOptions {
   squareFootages: filterItem[]
   timeIntervals: filterItem[]
   compTypes: filterItem[]
+  variances: filterItem[]
 }
 export const getFilterDefaultOptions = async (): Promise<DefaultFilterOptions> => {
   // const data = await handleApi('/utility/squarefootages')
@@ -205,7 +211,8 @@ export const getFilterDefaultOptions = async (): Promise<DefaultFilterOptions> =
   const data = {
     squareFootages,
     timeIntervals,
-    compTypes
+    compTypes,
+    variances
   }
   return data
 }
