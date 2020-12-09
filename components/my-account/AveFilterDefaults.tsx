@@ -136,7 +136,7 @@ const AveFilterDefaults: React.FC = () => {
   }
 
   return (
-    <div className="container filter-defaults">
+    <div>
       <h1>AVE Filter Defaults</h1>
       <div className="form">
         <form onSubmit={submitDefaults}>
