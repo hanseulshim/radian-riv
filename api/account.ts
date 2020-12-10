@@ -100,17 +100,30 @@ interface FilterDefaults {
   comps_subdivision: boolean
   restrict_comps: FilterDefaultOption
 }
+
+interface FilterDefaultSet {
+  sqft?: number
+  sqft_min?: number
+  sqft_max?: number
+  sqft_percent?: number
+  comparable_retail: boolean
+  comparable_distressed: boolean
+  time_going_back: number
+  comps_subdivision: boolean
+  restrict_comps: number
+}
+
 export const getFilterDefaults = async (
-  userid_ssid: string
+  userid: string
 ): Promise<FilterDefaults> => {
-  const defaults = await handleApi('/user/filterdefaults', userid_ssid)
+  const defaults = await handleApi(`/user/filter-defaults/${userid}`)
   return defaults
 }
 
 export const setFilterDefaults = async (
-  form: FilterDefaults
+  form: FilterDefaultSet
 ): Promise<string> => {
-  const data = await handleApi('/auth/setFilterDefaults', form)
+  const data = await handleApi('/user/filter-defaults-set', form)
   return data
 }
 
@@ -139,5 +152,40 @@ export const getFilterDefaultsRestrict = async (): Promise<
   FilterDefaultOption[]
 > => {
   const data = await handleApi('/utility/filterdefaultsrestrict')
+  return data
+}
+
+interface Department {
+  department_id: number
+}
+interface SubjectProperty {
+  property_id: number
+}
+
+export const getDefaultSearchDepartments = async (
+  form: UserId
+): Promise<FilterDefaultOption[]> => {
+  const data = await handleApi('/user/departments', form)
+  return data
+}
+
+export const setDefaultSearchDepartment = async (
+  form: Department
+): Promise<any> => {
+  const data = await handleApi('/user/departmentset', form)
+  return data
+}
+
+export const getSubjectPropertyDefaults = async (
+  form: UserId
+): Promise<FilterDefaultOption[]> => {
+  const data = await handleApi('/user/subjectproperties', form)
+  return data
+}
+
+export const setSubjectPropertyDefault = async (
+  form: SubjectProperty
+): Promise<any> => {
+  const data = await handleApi('/user/subjectpropertyset', form)
   return data
 }

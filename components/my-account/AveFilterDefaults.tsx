@@ -48,7 +48,8 @@ const AveFilterDefaults: React.FC = () => {
   useEffect(() => {
     const fetchUserDefaults = async () => {
       try {
-        const defaults = await getFilterDefaults(user.userid_ssid)
+        const { userid_ssid } = user
+        const defaults = await getFilterDefaults(userid_ssid)
         setFilterDefaultState({
           sqft: defaults.sqft || null,
           sqft_min: defaults.sqft_min || null,
@@ -99,7 +100,19 @@ const AveFilterDefaults: React.FC = () => {
       })
     } else {
       try {
-        const message = await setFilterDefaults(filterDefaults)
+        const {
+          sqft,
+          sqft_percent,
+          time_going_back,
+          restrict_comps
+        } = filterDefaults
+        const message = await setFilterDefaults({
+          ...filterDefaults,
+          sqft: sqft.value,
+          sqft_percent: sqft_percent.value,
+          time_going_back: time_going_back.value,
+          restrict_comps: restrict_comps.value
+        })
         setSuccessMessage(message)
       } catch (e) {
         setErrorMessage(e.message)
@@ -130,7 +143,6 @@ const AveFilterDefaults: React.FC = () => {
     if (error[key]) {
       setError({ ...error, [key]: '' })
     }
-    console.log('Im hit!')
     setFilterDefaultState({
       ...filterDefaults,
       [key]: parseInt(e.target.value)

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 interface Props {
-  value: string
+  value: string | number
   label?: string
   type?: string
   required?: boolean

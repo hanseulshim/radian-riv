@@ -1,26 +1,28 @@
 import React, { useEffect, useState } from 'react'
-import { getDefaultSearchDepartments } from 'api'
+import { getSubjectPropertyDefaults, setSubjectPropertyDefault } from 'api'
 import Select from 'components/common/Select'
 import { validateForm } from 'utils/validation'
 import { useAuth } from 'components/auth/AuthProvider'
-
-const defaultSearchState = {
-  department: null
-}
 
 interface Option {
   label: string
   value: number | string
 }
 
-const SearchDefaults: React.FC = () => {
+const defaultSearchState = {
+  property: null
+}
+
+const SubjectPropertyDefaults: React.FC = () => {
   const {
     auth: { user }
   } = useAuth()
-  const [searchDefaults, setSearchDefaults] = useState({
+  const [selectedDefault, setSelectedDefault] = useState({
     ...defaultSearchState
   })
-  const [departments, setDepartments] = useState<Option[]>([])
+  const [subjectPropertyDefaults, setSubjectPropertyDefaults] = useState<
+    Option[]
+  >([])
   const [error, setError] = useState({ ...defaultSearchState })
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
@@ -40,16 +42,16 @@ const SearchDefaults: React.FC = () => {
   }, [])
 
   useEffect(() => {
-    const fetchDepartments = async () => {
-      try {
-        const { userid_ssid } = user
-        const options = await getDefaultSearchDepartments({ userid_ssid })
-        setDepartments(options)
-      } catch (e) {
-        setErrorMessage(e.message)
-      }
-    }
-    fetchDepartments()
+    // const fetchSubjectPropertyDefaults = async () => {
+    //   try {
+    //     const { userid_ssid } = user
+    //     const options = await getSubjectPropertyDefaults({ userid_ssid })
+    //     setSubjectPropertyDefaults(options)
+    //   } catch (e) {
+    //     setErrorMessage(e.message)
+    //   }
+    // }
+    // fetchSubjectPropertyDefaults()
   }, [])
 
   const submitDefaults = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -75,20 +77,20 @@ const SearchDefaults: React.FC = () => {
   }
 
   const handleSelect = (item: Option, selectedKey: string) => {
-    const stateCopy = { ...searchDefaults }
+    const stateCopy = { ...selectedDefault }
     stateCopy[selectedKey] = item
-    setSearchDefaults(stateCopy)
+    setSelectedDefault(stateCopy)
   }
 
   return (
     <div>
-      <h1>Search Defaults</h1>
+      <h1>SUBJECT PROPERTY - AS COMPARABLE</h1>
       <div className="form">
         <form onSubmit={submitDefaults}>
-          <div className="search-defaults-container">
+          <div className="subject-property-defaults-container">
             <Select
-              options={departments}
-              value={searchDefaults.department}
+              options={subjectPropertyDefaults}
+              value={selectedDefault.property}
               onChange={item => handleSelect(item, 'department')}
               label="Department (Search)"
               placeholder="Select Department"
@@ -106,4 +108,4 @@ const SearchDefaults: React.FC = () => {
   )
 }
 
-export default SearchDefaults
+export default SubjectPropertyDefaults
