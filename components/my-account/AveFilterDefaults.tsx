@@ -114,9 +114,9 @@ const AveFilterDefaults: React.FC = () => {
         const message = await setFilterDefaults({
           ...filterDefaults,
           sqft: sqft.value,
-          sqft_min: parseInt(sqft_min),
-          sqft_max: parseInt(sqft_max),
-          sqft_percent: sqft_percent.value,
+          sqft_min: parseInt(sqft_min) || null,
+          sqft_max: parseInt(sqft_max) || null,
+          sqft_percent: sqft_percent ? sqft_percent.value : null,
           time_going_back: time_going_back.value,
           restrict_comps: restrict_comps.value
         })
@@ -130,12 +130,15 @@ const AveFilterDefaults: React.FC = () => {
 
   const handleSelect = (item: Option, selectedKey: string) => {
     const stateCopy = { ...filterDefaults }
-    console.log(item)
     stateCopy[selectedKey] = item
     if (selectedKey === 'sqft') {
       if (item.value === 1) {
         stateCopy.sqft_percent = null
+      } else if (item.value === 2) {
+        stateCopy.sqft_min = ''
+        stateCopy.sqft_max = ''
       } else {
+        stateCopy.sqft_percent = null
         stateCopy.sqft_min = ''
         stateCopy.sqft_max = ''
       }
