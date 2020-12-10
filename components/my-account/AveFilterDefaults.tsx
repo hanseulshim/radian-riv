@@ -15,13 +15,13 @@ import { Checkbox } from 'components/common/Checkbox'
 
 const defaultFilterState = {
   sqft: null,
-  sqft_min: null,
-  sqft_max: null,
+  sqft_min: '',
+  sqft_max: '',
   sqft_percent: null,
-  comparable_retail: null,
-  comparable_distressed: null,
+  comparable_retail: false,
+  comparable_distressed: false,
   time_going_back: null,
-  comps_subdivision: null,
+  comps_subdivision: false,
   restrict_comps: null
 }
 
@@ -52,8 +52,8 @@ const AveFilterDefaults: React.FC = () => {
         const defaults = await getFilterDefaults(userid_ssid)
         setFilterDefaultState({
           sqft: defaults.sqft || null,
-          sqft_min: defaults.sqft_min || null,
-          sqft_max: defaults.sqft_max || null,
+          sqft_min: defaults.sqft_min.toString() || '',
+          sqft_max: defaults.sqft_max.toString() || '',
           sqft_percent: defaults.sqft_percent || null,
           comparable_retail: defaults.comparable_retail,
           comparable_distressed: defaults.comparable_distressed,
@@ -71,14 +71,17 @@ const AveFilterDefaults: React.FC = () => {
   useEffect(() => {
     const fetchFilterDefaultOptions = async () => {
       try {
-        const sqFtOptions = await getFilterDefaultsSquareFt()
-        const sqFtPercentOptions = await getFilterDefaultsSquareFtPercent()
-        const timeOptions = await getFilterDefaultsTime()
-        const restrictOptions = await getFilterDefaultsRestrict()
-        setSquareFootageOptions(sqFtOptions)
-        setPercentOptions(sqFtPercentOptions)
-        setTimeOptions(timeOptions)
+        const { userid_ssid } = user
+        const sqftOptions = await getFilterDefaultsSquareFt(userid_ssid)
+        const sqftPercentOptions = await getFilterDefaultsSquareFtPercent(
+          userid_ssid
+        )
+        const restrictOptions = await getFilterDefaultsRestrict(userid_ssid)
+        const timeOptions = await getFilterDefaultsTime(userid_ssid)
+        setSquareFootageOptions(sqftOptions)
+        setPercentOptions(sqftPercentOptions)
         setRestrictCompOptions(restrictOptions)
+        setTimeOptions(timeOptions)
       } catch (e) {
         setErrorMessage(e.message)
       }
@@ -104,11 +107,15 @@ const AveFilterDefaults: React.FC = () => {
           sqft,
           sqft_percent,
           time_going_back,
-          restrict_comps
+          restrict_comps,
+          sqft_min,
+          sqft_max
         } = filterDefaults
         const message = await setFilterDefaults({
           ...filterDefaults,
           sqft: sqft.value,
+          sqft_min: parseInt(sqft_min),
+          sqft_max: parseInt(sqft_max),
           sqft_percent: sqft_percent.value,
           time_going_back: time_going_back.value,
           restrict_comps: restrict_comps.value
@@ -123,14 +130,14 @@ const AveFilterDefaults: React.FC = () => {
 
   const handleSelect = (item: Option, selectedKey: string) => {
     const stateCopy = { ...filterDefaults }
+    console.log(item)
     stateCopy[selectedKey] = item
-    // TODO why doesnt this clear the inputs?
-    if (selectedKey === 'sqFt' && item.value !== filterDefaults.sqft) {
+    if (selectedKey === 'sqft') {
       if (item.value === 1) {
         stateCopy.sqft_percent = null
       } else {
-        stateCopy.sqft_min = null
-        stateCopy.sqft_max = null
+        stateCopy.sqft_min = ''
+        stateCopy.sqft_max = ''
       }
     }
     setFilterDefaultState(stateCopy)
@@ -145,7 +152,7 @@ const AveFilterDefaults: React.FC = () => {
     }
     setFilterDefaultState({
       ...filterDefaults,
-      [key]: parseInt(e.target.value)
+      [key]: e.target.value
     })
   }
 
@@ -170,7 +177,7 @@ const AveFilterDefaults: React.FC = () => {
               <Select
                 options={squareFootageOptions}
                 value={filterDefaults.sqft}
-                onChange={item => handleSelect(item, 'sqFt')}
+                onChange={item => handleSelect(item, 'sqft')}
                 label="Sq Ft"
                 placeholder="Select Square Footage"
               />

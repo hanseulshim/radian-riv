@@ -84,7 +84,7 @@ const SubjectPropertyDefaults: React.FC = () => {
 
   return (
     <div>
-      <h1>SUBJECT PROPERTY - AS COMPARABLE</h1>
+      <h1>Subject Property - as comparable</h1>
       <div className="form">
         <form onSubmit={submitDefaults}>
           <div className="subject-property-defaults-container">

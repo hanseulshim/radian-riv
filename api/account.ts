@@ -127,31 +127,31 @@ export const setFilterDefaults = async (
   return data
 }
 
-export const getFilterDefaultsSquareFt = async (): Promise<
-  FilterDefaultOption[]
-> => {
-  const data = await handleApi('/utility/filterdefaultssqft')
+export const getFilterDefaultsSquareFt = async (
+  userid: string
+): Promise<FilterDefaultOption[]> => {
+  const data = await handleApi(`/user/filter-defaults-sqft/${userid}`)
   return data
 }
 
-export const getFilterDefaultsSquareFtPercent = async (): Promise<
-  FilterDefaultOption[]
-> => {
-  const data = await handleApi('/utility/filterdefaultssqftpercent')
+export const getFilterDefaultsSquareFtPercent = async (
+  userid: string
+): Promise<FilterDefaultOption[]> => {
+  const data = await handleApi(`/user/filter-defaults-sqft-percent/${userid}`)
   return data
 }
 
-export const getFilterDefaultsTime = async (): Promise<
-  FilterDefaultOption[]
-> => {
-  const data = await handleApi('/utility/filterdefaultstime')
+export const getFilterDefaultsRestrict = async (
+  userid: string
+): Promise<FilterDefaultOption[]> => {
+  const data = await handleApi(`/user/filter-defaults-restrict-comps/${userid}`)
   return data
 }
 
-export const getFilterDefaultsRestrict = async (): Promise<
-  FilterDefaultOption[]
-> => {
-  const data = await handleApi('/utility/filterdefaultsrestrict')
+export const getFilterDefaultsTime = async (
+  userid: string
+): Promise<FilterDefaultOption[]> => {
+  const data = await handleApi(`/user/filter-defaults-time/${userid}`)
   return data
 }
 

@@ -65,7 +65,7 @@ const Select: React.FC<Props> = ({
             {options.map(option => {
               return (
                 <li onClick={() => onSelect(option)} key={option.label}>
-                  {option.label}
+                  {option.label || '...'}
                 </li>
               )
             })}
