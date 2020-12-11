@@ -257,9 +257,17 @@ a {
   &.btn-primary {
     color: var(--white);
     background-color: var(--prussian-blue);
+    &:hover {
+      color: var(--prussian-blue);
+      background-color: var(--white);
+    }
   }
   &.btn-secondary {
     color: var(--prussian-blue);
+    &:hover {
+      color: var(--white);
+      background-color: var(--prussian-blue);
+    }
   }
   &.btn-link {
     font-weight: normal;
