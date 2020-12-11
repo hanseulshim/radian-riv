@@ -55,6 +55,34 @@
     .success-message {
       height: 2em;
     }
+
+    .pwd-label {
+      font-size: 0.6em;
+      color: var(--prussian-blue);
+      margin-bottom: 5px;
+    }
+
+    .pwd-strength {
+      text-align: center;
+      width: 100%;
+      background: var(--red);
+
+      &.strength-2 {
+        width: 25%;
+        background-color: #ffbf00;
+      }
+      &.strength-3 {
+        width: 50%;
+        background-color: #4bffff;
+      }
+      &.strength-4 {
+        width: 75%;
+        background-color: #e1ff3e;
+      }
+      &.strength-5 {
+        background-color: #4dcd00;
+      }
+    }
   }
 }
 

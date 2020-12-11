@@ -18,15 +18,58 @@ const ChangePassword: React.FC = () => {
   const [error, setError] = useState({ ...defaultState })
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
-
+  const [pwdStrength, setPwdStrength] = useState('Password not entered')
+  const [pwdClass, setPwdClass] = useState('strength-0')
   const handleInput = (
     e: React.ChangeEvent<HTMLInputElement>,
     key = 'string'
   ) => {
+    const pwd = e.target.value
+    let strength = 0
+    let label = 'Password not entered'
     if (error[key]) {
       setError({ ...error, [key]: '' })
     }
     setChangePassword({ ...changePassword, [key]: e.target.value })
+
+    if (key === 'pwd') {
+      if (pwd.length >= 8) {
+        strength++
+      }
+      if (/[A-Z]/.test(pwd)) {
+        strength++
+      }
+      if (/[a-z]/.test(pwd)) {
+        strength++
+      }
+      if (/[0-9]/.test(pwd)) {
+        strength++
+      }
+      if (/[!@#$]/.test(pwd)) {
+        strength++
+      }
+
+      switch (strength) {
+        case 1:
+          label = 'Very Weak'
+          break
+        case 2:
+          label = 'Weak'
+          break
+        case 3:
+          label = 'Better'
+          break
+        case 4:
+          label = 'Medium'
+          break
+        case 5:
+          label = 'Strong'
+          break
+      }
+
+      setPwdStrength(label)
+      setPwdClass(`strength-${strength}`)
+    }
   }
 
   const onUpdate = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -67,6 +110,8 @@ const ChangePassword: React.FC = () => {
               error={error.pwd}
               onChange={e => handleInput(e, 'pwd')}
             />
+            <span className="pwd-label">Password Strength:</span>
+            <div className={`${pwdClass} pwd-strength`}>{pwdStrength}</div>
             <Input
               label="Confirm Password"
               type="password"
