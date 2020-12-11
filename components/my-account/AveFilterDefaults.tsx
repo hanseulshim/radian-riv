@@ -9,7 +9,6 @@ import {
 import Select from 'components/common/Select'
 import Input from 'components/common/Input'
 import { setFilterDefaults } from 'api'
-import { validateForm } from 'utils/validation'
 import { useAuth } from 'components/auth/AuthProvider'
 import { Checkbox } from 'components/common/Checkbox'
 
@@ -41,7 +40,6 @@ const AveFilterDefaults: React.FC = () => {
   const [percentOptions, setPercentOptions] = useState<Option[]>([])
   const [timeOptions, setTimeOptions] = useState<Option[]>([])
   const [restrictCompOptions, setRestrictCompOptions] = useState<Option[]>([])
-  const [error, setError] = useState({ ...defaultFilterState })
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
 
@@ -93,48 +91,37 @@ const AveFilterDefaults: React.FC = () => {
     e.preventDefault()
     setErrorMessage('')
     setSuccessMessage('')
-    const errorCopy = { ...defaultFilterState }
-    const errorObj = validateForm(filterDefaults)
-    const errorArr = Object.keys(errorObj)
-
-    if (errorArr.length) {
-      errorArr.forEach(key => {
-        errorCopy[key] = errorObj[key]
+    try {
+      const {
+        sqft,
+        sqft_percent,
+        time_going_back,
+        restrict_comps,
+        sqft_min,
+        sqft_max
+      } = filterDefaults
+      const message = await setFilterDefaults({
+        ...filterDefaults,
+        sqft: sqft.value,
+        sqft_min: parseInt(sqft_min) || null,
+        sqft_max: parseInt(sqft_max) || null,
+        sqft_percent: sqft_percent ? sqft_percent.value : null,
+        time_going_back: time_going_back.value,
+        restrict_comps: restrict_comps.value
       })
-    } else {
-      try {
-        const {
-          sqft,
-          sqft_percent,
-          time_going_back,
-          restrict_comps,
-          sqft_min,
-          sqft_max
-        } = filterDefaults
-        const message = await setFilterDefaults({
-          ...filterDefaults,
-          sqft: sqft.value,
-          sqft_min: parseInt(sqft_min) || null,
-          sqft_max: parseInt(sqft_max) || null,
-          sqft_percent: sqft_percent ? sqft_percent.value : null,
-          time_going_back: time_going_back.value,
-          restrict_comps: restrict_comps.value
-        })
-        setSuccessMessage(message)
-      } catch (e) {
-        setErrorMessage(e.message)
-      }
+      setSuccessMessage(message)
+    } catch (e) {
+      setErrorMessage(e.message)
     }
-    setError(errorCopy)
   }
 
   const handleSelect = (item: Option, selectedKey: string) => {
     const stateCopy = { ...filterDefaults }
     stateCopy[selectedKey] = item
     if (selectedKey === 'sqft') {
-      if (item.value === 1) {
+      if (item.label && !item.label.toLowerCase().includes('min')) {
         stateCopy.sqft_percent = null
-      } else if (item.value === 2) {
+      } else if (item.label.toLowerCase().includes('min')) {
         stateCopy.sqft_min = ''
         stateCopy.sqft_max = ''
       } else {
@@ -150,9 +137,6 @@ const AveFilterDefaults: React.FC = () => {
     e: React.ChangeEvent<HTMLInputElement>,
     key = 'string'
   ) => {
-    if (error[key]) {
-      setError({ ...error, [key]: '' })
-    }
     setFilterDefaultState({
       ...filterDefaults,
       [key]: e.target.value
@@ -163,9 +147,6 @@ const AveFilterDefaults: React.FC = () => {
     e: React.ChangeEvent<HTMLInputElement>,
     key = 'string'
   ) => {
-    if (error[key]) {
-      setError({ ...error, [key]: '' })
-    }
     setFilterDefaultState({ ...filterDefaults, [key]: e.target.checked })
   }
 
@@ -186,7 +167,7 @@ const AveFilterDefaults: React.FC = () => {
               />
               <Input
                 value={filterDefaults.sqft_min}
-                error={error.sqft_min}
+                error={''}
                 onChange={e => handleInput(e, 'sqft_min')}
                 label="Min"
                 type="number"
@@ -196,7 +177,7 @@ const AveFilterDefaults: React.FC = () => {
               />
               <Input
                 value={filterDefaults.sqft_max}
-                error={error.sqft_max}
+                error={''}
                 onChange={e => handleInput(e, 'sqft_max')}
                 label="Max"
                 type="number"

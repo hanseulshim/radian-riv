@@ -5,7 +5,6 @@ import {
   setDefaultSearchDepartment
 } from 'api'
 import Select from 'components/common/Select'
-import { validateForm } from 'utils/validation'
 import { useAuth } from 'components/auth/AuthProvider'
 
 const defaultSearchState = {
@@ -25,7 +24,6 @@ const SearchDefaults: React.FC = () => {
     ...defaultSearchState
   })
   const [departments, setDepartments] = useState<Option[]>([])
-  const [error, setError] = useState({ ...defaultSearchState })
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
 
@@ -61,26 +59,16 @@ const SearchDefaults: React.FC = () => {
     e.preventDefault()
     setErrorMessage('')
     setSuccessMessage('')
-    const errorCopy = { ...defaultSearchState }
-    const errorObj = validateForm(searchDefaults)
-    const errorArr = Object.keys(errorObj)
-    if (errorArr.length) {
-      errorArr.forEach(key => {
-        errorCopy[key] = errorObj[key]
+    try {
+      const { userid_ssid } = user
+      const message = await setDefaultSearchDepartment({
+        userid_ssid,
+        department_id: searchDefaults.department.value
       })
-    } else {
-      try {
-        const { userid_ssid } = user
-        const message = await setDefaultSearchDepartment({
-          userid_ssid,
-          department_id: searchDefaults.department.value
-        })
-        setSuccessMessage(message)
-      } catch (e) {
-        setErrorMessage(e.message)
-      }
+      setSuccessMessage(message)
+    } catch (e) {
+      setErrorMessage(e.message)
     }
-    setError(errorCopy)
   }
 
   const handleSelect = (item: Option, selectedKey: string) => {

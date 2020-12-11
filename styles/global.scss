@@ -133,6 +133,11 @@ input::placeholder {
   color: var(--prussian-blue);
 }
 
+input:disabled {
+  background-color: var(--white);
+  -webkit-text-fill-color: var(--gray);
+}
+
 .input-group {
   width: 100%;
   position: relative;
@@ -182,7 +187,6 @@ input::placeholder {
       border-bottom: 2px solid red;
     }
     &:disabled {
-      color: var(--gray);
       cursor: not-allowed;
     }
   }

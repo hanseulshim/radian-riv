@@ -5,7 +5,6 @@ import {
   setSubjectPropertyDefault
 } from 'api'
 import Select from 'components/common/Select'
-import { validateForm } from 'utils/validation'
 import { useAuth } from 'components/auth/AuthProvider'
 
 interface Option {
@@ -27,7 +26,6 @@ const SubjectPropertyDefaults: React.FC = () => {
   const [subjectPropertyDefaults, setSubjectPropertyDefaults] = useState<
     Option[]
   >([])
-  const [error, setError] = useState({ ...defaultSubjectPropertyState })
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
 
@@ -62,26 +60,17 @@ const SubjectPropertyDefaults: React.FC = () => {
     e.preventDefault()
     setErrorMessage('')
     setSuccessMessage('')
-    const errorCopy = { ...defaultSubjectPropertyState }
-    const errorObj = validateForm(selectedDefault)
-    const errorArr = Object.keys(errorObj)
-    if (errorArr.length) {
-      errorArr.forEach(key => {
-        errorCopy[key] = errorObj[key]
+
+    try {
+      const { userid_ssid } = user
+      const message = await setSubjectPropertyDefault({
+        userid_ssid,
+        subject_property_id: selectedDefault.property.value
       })
-    } else {
-      try {
-        const { userid_ssid } = user
-        const message = await setSubjectPropertyDefault({
-          userid_ssid,
-          subject_property_id: selectedDefault.property.value
-        })
-        setSuccessMessage(message)
-      } catch (e) {
-        setErrorMessage(e.message)
-      }
+      setSuccessMessage(message)
+    } catch (e) {
+      setErrorMessage(e.message)
     }
-    setError(errorCopy)
   }
 
   const handleSelect = (item: Option, selectedKey: string) => {
