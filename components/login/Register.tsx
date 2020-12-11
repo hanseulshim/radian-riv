@@ -4,6 +4,7 @@ import { validateForm } from 'utils/validation'
 import TermsOfUse from './TermsOfUse'
 import { submitRegister } from 'api'
 import Modal from 'components/common/Modal'
+import { Checkbox } from 'components/common/Checkbox'
 
 interface Props {
   closeModal: () => void
@@ -119,16 +120,13 @@ const Register: React.FC<Props> = ({ closeModal }) => {
           </div>
         </div>
         <TermsOfUse />
-        <label htmlFor="terms_accepted" className="checkbox">
-          <input
-            type="checkbox"
-            value={register.terms_accepted ? 'checked' : 'unchecked'}
-            onChange={e =>
-              setRegister({ ...register, terms_accepted: e.target.checked })
-            }
-          />
-          I have read and agree to the Terms Of Use
-        </label>
+        <Checkbox
+          label="I have read and agree to the Terms Of Use"
+          checked={register.terms_accepted}
+          onChange={e =>
+            setRegister({ ...register, terms_accepted: e.target.checked })
+          }
+        />
         <span className={successMessage ? 'success-message' : 'error-message'}>
           {successMessage || errorMessage}
         </span>
