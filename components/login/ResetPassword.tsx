@@ -36,10 +36,7 @@ const ResetPassword: React.FC<Props> = ({ closeModal }) => {
     } else {
       try {
         const userid_ssid = await submitResetPassword(resetPassword)
-        const userPayload = {
-          userid_ssid
-        }
-        const questionResponse = await getUserQuestion(userPayload)
+        const questionResponse = await getUserQuestion(userid_ssid)
         setUserId(userid_ssid)
         setQuestion(questionResponse)
       } catch (e) {

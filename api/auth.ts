@@ -6,7 +6,12 @@ interface Login {
   pwd: string
 }
 export const submitLogin = async (form: Login): Promise<void> => {
-  const auth = await handleApi('/auth/login', form)
+  const { token, userid_ssid } = await handleApi('/auth/login', form)
+  const user = await handleApi(`/user/${userid_ssid}`)
+  const auth = {
+    token,
+    user
+  }
   Cookies.set('auth', auth)
 }
 
@@ -27,14 +32,10 @@ interface Question {
   question_text: string
 }
 
-interface UserQuestion {
-  userid_ssid: string
-}
-
 export const getUserQuestion = async (
-  form: UserQuestion
+  userid_ssid: string
 ): Promise<Question> => {
-  const data = await handleApi('/auth/question', form)
+  const data = await handleApi(`/auth/question/${userid_ssid}`)
   return data
 }
 
@@ -62,28 +63,6 @@ export const submitRegister = async (form: Register): Promise<string> => {
   return data
 }
 
-interface Profile {
-  userid_ssid: string
-  name_first: string
-  name_last: string
-  title: string
-  address: string
-  city: string
-  state: string
-  zip: string
-  department: string
-  phone_mobile: string
-  phone_home: string
-}
-
-export const submitProfile = async (form: Profile): Promise<string> => {
-  const data = await handleApi('/user/update', form)
-  const authCookies = Cookies.get('auth')
-  const auth = JSON.parse(authCookies)
-  Cookies.set('auth', { ...auth, user: { ...form } })
-  return data
-}
-
 interface ChangePassword {
   userid_ssid: string
   pwd: string
@@ -106,42 +85,6 @@ export const submitChangePassword = async (
       'Password must contain a special character (example: !,@,#,$)'
     )
   }
-  const data = await handleApi('/auth/pwdchange', form)
-  return data
-}
-
-interface Question {
-  questionid: number
-  question_text: string
-}
-export const getSecurityQuestions = async (): Promise<Question[]> => {
-  const questions = await handleApi('/auth/questions')
-  return questions
-}
-
-interface SecurityQuestions {
-  userid_ssid: string
-  question1id: number
-  answer1: string
-  question2id: number
-  answer2: string
-  question3id: number
-  answer3: string
-}
-
-export const setSecurityQuestions = async (
-  form: SecurityQuestions
-): Promise<string> => {
-  if (
-    form.question1id === null ||
-    form.question2id === null ||
-    form.question3id === null
-  ) {
-    throw new Error(`Questions can't be blank`)
-  }
-  if (form.answer1 === 'error') {
-    throw new Error('Error with security question')
-  }
-  const data = await handleApi('/auth/questionsset', form)
+  const data = await handleApi('/auth/pwd-change', form)
   return data
 }
