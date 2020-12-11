@@ -120,10 +120,10 @@ const AveFilterDefaults: React.FC = () => {
     stateCopy[selectedKey] = item
     if (selectedKey === 'sqft') {
       if (item.label && !item.label.toLowerCase().includes('min')) {
-        stateCopy.sqft_percent = null
-      } else if (item.label.toLowerCase().includes('min')) {
         stateCopy.sqft_min = ''
         stateCopy.sqft_max = ''
+      } else if (item.label.toLowerCase().includes('min')) {
+        stateCopy.sqft_percent = null
       } else {
         stateCopy.sqft_percent = null
         stateCopy.sqft_min = ''
