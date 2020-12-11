@@ -17,6 +17,6 @@ module.exports = {
       : isBeta
       ? 'https://beta.boostlabs.com/radian-riv/'
       : '',
-    api: 'https://v585kzqbv4.execute-api.us-east-2.amazonaws.com/dev'
+    api: 'https://virtserver.swaggerhub.com/BoostLabs/radian_riv/0.3.0'
   }
 }

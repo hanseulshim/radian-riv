@@ -1,4 +1,5 @@
 export * from './auth'
+export * from './user'
 export * from './utility'
 
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
