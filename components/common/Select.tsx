@@ -52,7 +52,7 @@ const Select: React.FC<Props> = ({
           <>
             {label && <span className="field-label">{label}</span>}
             <span className="selected-value">
-              {value.label}
+              <span>{value.label}</span>
               <img
                 src={`${process.env.baseUrl}/images/select_down_arrow.svg`}
                 className={'select-dropdown-arrow'}
