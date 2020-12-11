@@ -6,7 +6,12 @@ interface Login {
   pwd: string
 }
 export const submitLogin = async (form: Login): Promise<void> => {
-  const auth = await handleApi('/auth/login', form)
+  const { token, userid_ssid } = await handleApi('/auth/login', form)
+  const user = await handleApi(`/user/${userid_ssid}`)
+  const auth = {
+    token,
+    user
+  }
   Cookies.set('auth', auth)
 }
 
@@ -27,14 +32,10 @@ interface Question {
   question_text: string
 }
 
-interface UserQuestion {
-  userid_ssid: string
-}
-
 export const getUserQuestion = async (
-  form: UserQuestion
+  userid_ssid: string
 ): Promise<Question> => {
-  const data = await handleApi('/auth/question', form)
+  const data = await handleApi(`/auth/question/${userid_ssid}`)
   return data
 }
 

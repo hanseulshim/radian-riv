@@ -19,10 +19,7 @@ export const defaultAuth = {
     phone_mobile: '',
     title: ''
   },
-  token: '',
-  redirect: '',
-  status: 0,
-  message: ''
+  token: ''
 }
 
 export type User = {
@@ -46,9 +43,6 @@ export type User = {
 export type AuthType = {
   user: User
   token: string
-  redirect: string
-  status: number
-  message: string
 }
 type AuthContextType = {
   auth: AuthType

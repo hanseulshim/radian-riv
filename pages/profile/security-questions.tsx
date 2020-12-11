@@ -33,27 +33,21 @@ const SecurityQuestions: React.FC = () => {
   useEffect(() => {
     const securityQuestionFetch = async () => {
       const securityQuestions = await getSecurityQuestions()
-      const mappedQuestions = securityQuestions.map(
-        ({ questionid, question_text }) => ({
-          label: question_text,
-          value: questionid
-        })
-      )
-      setQuestionList(mappedQuestions)
-      if (mappedQuestions.length > 2) {
+      setQuestionList(securityQuestions)
+      if (securityQuestions.length > 2) {
         setQuestions({
-          question3: mappedQuestions[2],
-          question2: mappedQuestions[1],
-          question1: mappedQuestions[0]
+          question3: securityQuestions[2],
+          question2: securityQuestions[1],
+          question1: securityQuestions[0]
         })
-      } else if (mappedQuestions.length > 1) {
+      } else if (securityQuestions.length > 1) {
         setQuestions({
           ...questions,
-          question2: mappedQuestions[1],
-          question1: mappedQuestions[0]
+          question2: securityQuestions[1],
+          question1: securityQuestions[0]
         })
-      } else if (mappedQuestions.length) {
-        setQuestions({ ...questions, question1: mappedQuestions[0] })
+      } else if (securityQuestions.length) {
+        setQuestions({ ...questions, question1: securityQuestions[0] })
       }
     }
     securityQuestionFetch()
