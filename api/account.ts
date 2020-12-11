@@ -161,7 +161,7 @@ interface Department {
 }
 interface SubjectProperty {
   userid_ssid: string
-  department_id: number
+  subject_property_id: number
 }
 
 export const getDefaultSearchDepartments = async (

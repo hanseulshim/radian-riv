@@ -74,7 +74,7 @@ const SubjectPropertyDefaults: React.FC = () => {
         const { userid_ssid } = user
         const message = await setSubjectPropertyDefault({
           userid_ssid,
-          department_id: selectedDefault.property.value
+          subject_property_id: selectedDefault.property.value
         })
         setSuccessMessage(message)
       } catch (e) {
