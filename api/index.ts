@@ -30,5 +30,5 @@ export const handleApi = async (route: string, payload?: any) => {
   } else if (status !== 1) {
     throw new Error(message)
   }
-  return data
+  return data ? data : message
 }
