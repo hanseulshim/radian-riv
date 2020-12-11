@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { getDefaultSearchDepartments } from 'api'
+import {
+  getDefaultSearchDepartments,
+  getDefaultSearchDepartment,
+  setDefaultSearchDepartment
+} from 'api'
 import Select from 'components/common/Select'
 import { validateForm } from 'utils/validation'
 import { useAuth } from 'components/auth/AuthProvider'
@@ -26,24 +30,25 @@ const SearchDefaults: React.FC = () => {
   const [successMessage, setSuccessMessage] = useState('')
 
   useEffect(() => {
-    // const fetchDefaults = async () => {
-    //   try {
-    //     const defaults = await getSearchDefaults()
-    //     setSearchDefaults({
-    //       department: defaults.department || null
-    //     })
-    //   } catch (e) {
-    //     setErrorMessage(e.message)
-    //   }
-    // }
-    // fetchDefaults()
+    const fetchUserDefaults = async () => {
+      try {
+        const { userid_ssid } = user
+        const defaults = await getDefaultSearchDepartment(userid_ssid)
+        setSearchDefaults({
+          department: defaults
+        })
+      } catch (e) {
+        setErrorMessage(e.message)
+      }
+    }
+    fetchUserDefaults()
   }, [])
 
   useEffect(() => {
     const fetchDepartments = async () => {
       try {
         const { userid_ssid } = user
-        const options = await getDefaultSearchDepartments({ userid_ssid })
+        const options = await getDefaultSearchDepartments(userid_ssid)
         setDepartments(options)
       } catch (e) {
         setErrorMessage(e.message)
@@ -53,25 +58,29 @@ const SearchDefaults: React.FC = () => {
   }, [])
 
   const submitDefaults = async (e: React.FormEvent<HTMLFormElement>) => {
-    // e.preventDefault()
-    // setErrorMessage('')
-    // setSuccessMessage('')
-    // const errorCopy = { ...defaultSearchState }
-    // const errorObj = validateForm(searchDefaults)
-    // const errorArr = Object.keys(errorObj)
-    // if (errorArr.length) {
-    //   errorArr.forEach(key => {
-    //     errorCopy[key] = errorObj[key]
-    //   })
-    // } else {
-    //   try {
-    //     const message = await sendSearchDefaults(searchDefaults)
-    //     setSuccessMessage(message)
-    //   } catch (e) {
-    //     setErrorMessage(e.message)
-    //   }
-    // }
-    // setError(errorCopy)
+    e.preventDefault()
+    setErrorMessage('')
+    setSuccessMessage('')
+    const errorCopy = { ...defaultSearchState }
+    const errorObj = validateForm(searchDefaults)
+    const errorArr = Object.keys(errorObj)
+    if (errorArr.length) {
+      errorArr.forEach(key => {
+        errorCopy[key] = errorObj[key]
+      })
+    } else {
+      try {
+        const { userid_ssid } = user
+        const message = await setDefaultSearchDepartment({
+          userid_ssid,
+          department_id: searchDefaults.department.value
+        })
+        setSuccessMessage(message)
+      } catch (e) {
+        setErrorMessage(e.message)
+      }
+    }
+    setError(errorCopy)
   }
 
   const handleSelect = (item: Option, selectedKey: string) => {

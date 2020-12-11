@@ -156,36 +156,52 @@ export const getFilterDefaultsTime = async (
 }
 
 interface Department {
+  userid_ssid: string
   department_id: number
 }
 interface SubjectProperty {
-  property_id: number
+  userid_ssid: string
+  department_id: number
 }
 
 export const getDefaultSearchDepartments = async (
-  form: UserId
+  userid: string
 ): Promise<FilterDefaultOption[]> => {
-  const data = await handleApi('/user/departments', form)
+  const data = await handleApi(`/user/departments/${userid}`)
+  return data
+}
+
+export const getDefaultSearchDepartment = async (
+  userid: string
+): Promise<FilterDefaultOption[]> => {
+  const data = await handleApi(`/user/department/${userid}`)
   return data
 }
 
 export const setDefaultSearchDepartment = async (
   form: Department
 ): Promise<any> => {
-  const data = await handleApi('/user/departmentset', form)
+  const data = await handleApi('/user/department-set', form)
+  return data
+}
+
+export const getSubjectPropertyDefault = async (
+  userid: string
+): Promise<FilterDefaultOption[]> => {
+  const data = await handleApi(`/user/subject-property/${userid}`)
   return data
 }
 
 export const getSubjectPropertyDefaults = async (
-  form: UserId
+  userid: string
 ): Promise<FilterDefaultOption[]> => {
-  const data = await handleApi('/user/subjectproperties', form)
+  const data = await handleApi(`/user/subject-properties/${userid}`)
   return data
 }
 
 export const setSubjectPropertyDefault = async (
   form: SubjectProperty
 ): Promise<any> => {
-  const data = await handleApi('/user/subjectpropertyset', form)
+  const data = await handleApi('/user/subject-property-set', form)
   return data
 }
