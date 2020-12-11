@@ -202,6 +202,6 @@ export const getSubjectPropertyDefaults = async (
 export const setSubjectPropertyDefault = async (
   form: SubjectProperty
 ): Promise<any> => {
-  const data = await handleApi('/user/subject-property-set', form)
+  const data = await handleApi('/user/subject-properties-set', form)
   return data
 }
