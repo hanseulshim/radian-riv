@@ -1,6 +1,32 @@
 import Cookies from 'js-cookie'
 import { handleApi } from './index'
 
+interface ChangePassword {
+  userid_ssid: string
+  pwd: string
+}
+
+export const submitChangePassword = async (
+  form: ChangePassword
+): Promise<string> => {
+  const { pwd } = form
+  if (pwd.length < 8) {
+    throw new Error('Password must be at least 8 characters(s) long')
+  } else if (!/[A-Z]/.test(pwd)) {
+    throw new Error('Password must contain an uppercase character')
+  } else if (!/[a-z]/.test(pwd)) {
+    throw new Error('Password must contain a lowercase character')
+  } else if (!/[0-9]/.test(pwd)) {
+    throw new Error('Password must contain a numeric character')
+  } else if (!/[!@#$]/.test(pwd)) {
+    throw new Error(
+      'Password must contain a special character (example: !,@,#,$)'
+    )
+  }
+  const data = await handleApi('/user/pwd-change', form)
+  return data
+}
+
 interface Question {
   value: number
   label: string
