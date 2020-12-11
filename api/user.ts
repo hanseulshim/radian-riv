@@ -84,3 +84,125 @@ export const setSecurityQuestions = async (
   const data = await handleApi('/user/questions-set', form)
   return data
 }
+
+interface FilterDefaultOption {
+  label: string
+  value: string | number
+}
+
+interface FilterDefaults {
+  sqft?: FilterDefaultOption
+  sqft_min?: number
+  sqft_max?: number
+  sqft_percent?: FilterDefaultOption
+  comparable_retail: boolean
+  comparable_distressed: boolean
+  time_going_back: FilterDefaultOption
+  comps_subdivision: boolean
+  restrict_comps: FilterDefaultOption
+}
+
+interface FilterDefaultSet {
+  sqft?: number
+  sqft_min?: number
+  sqft_max?: number
+  sqft_percent?: number
+  comparable_retail: boolean
+  comparable_distressed: boolean
+  time_going_back: number
+  comps_subdivision: boolean
+  restrict_comps: number
+}
+
+export const getFilterDefaults = async (
+  userid: string
+): Promise<FilterDefaults> => {
+  const defaults = await handleApi(`/user/filter-defaults/${userid}`)
+  return defaults
+}
+
+export const setFilterDefaults = async (
+  form: FilterDefaultSet
+): Promise<string> => {
+  const data = await handleApi('/user/filter-defaults-set', form)
+  return data
+}
+
+export const getFilterDefaultsSquareFt = async (
+  userid: string
+): Promise<FilterDefaultOption[]> => {
+  const data = await handleApi(`/user/filter-defaults-sqft/${userid}`)
+  return data
+}
+
+export const getFilterDefaultsSquareFtPercent = async (
+  userid: string
+): Promise<FilterDefaultOption[]> => {
+  const data = await handleApi(`/user/filter-defaults-sqft-percent/${userid}`)
+  return data
+}
+
+export const getFilterDefaultsRestrict = async (
+  userid: string
+): Promise<FilterDefaultOption[]> => {
+  const data = await handleApi(`/user/filter-defaults-restrict-comps/${userid}`)
+  return data
+}
+
+export const getFilterDefaultsTime = async (
+  userid: string
+): Promise<FilterDefaultOption[]> => {
+  const data = await handleApi(`/user/filter-defaults-time/${userid}`)
+  return data
+}
+
+interface Department {
+  userid_ssid: string
+  department_id: number
+}
+interface SubjectProperty {
+  userid_ssid: string
+  subject_property_id: number
+}
+
+export const getDefaultSearchDepartments = async (
+  userid: string
+): Promise<FilterDefaultOption[]> => {
+  const data = await handleApi(`/user/departments/${userid}`)
+  return data
+}
+
+export const getDefaultSearchDepartment = async (
+  userid: string
+): Promise<FilterDefaultOption[]> => {
+  const data = await handleApi(`/user/department/${userid}`)
+  return data
+}
+
+export const setDefaultSearchDepartment = async (
+  form: Department
+): Promise<any> => {
+  const data = await handleApi('/user/department-set', form)
+  return data
+}
+
+export const getSubjectPropertyDefault = async (
+  userid: string
+): Promise<FilterDefaultOption[]> => {
+  const data = await handleApi(`/user/subject-property/${userid}`)
+  return data
+}
+
+export const getSubjectPropertyDefaults = async (
+  userid: string
+): Promise<FilterDefaultOption[]> => {
+  const data = await handleApi(`/user/subject-properties/${userid}`)
+  return data
+}
+
+export const setSubjectPropertyDefault = async (
+  form: SubjectProperty
+): Promise<any> => {
+  const data = await handleApi('/user/subject-properties-set', form)
+  return data
+}
