@@ -36,7 +36,7 @@ const Select: React.FC<Props> = ({
   return (
     <>
       <div
-        className={`custom-select ${disabled && ' disabled'}`}
+        className={`custom-select ${disabled ? ' disabled' : ''}`}
         onClick={toggleOpen}
       >
         {!value && (
