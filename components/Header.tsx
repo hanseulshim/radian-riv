@@ -36,7 +36,6 @@ const Header: React.FC = () => {
       </div>
       <div className="header-spacer primary-background">
         <h2>Radian Interactive Value</h2>
-        <h6 className="font-weight-normal">Need slogan to go here</h6>
       </div>
     </div>
   )
