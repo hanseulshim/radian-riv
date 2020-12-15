@@ -51,7 +51,7 @@ const LoginForm: React.FC<Props> = ({
 
   return (
     <div className="login-form form">
-      <form onSubmit={onLogin}>
+      <form className="login" onSubmit={onLogin}>
         <Input
           label="Username"
           value={login.username}

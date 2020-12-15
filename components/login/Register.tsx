@@ -71,7 +71,7 @@ const Register: React.FC<Props> = ({ closeModal }) => {
 
   return (
     <Modal closeModal={closeModal} title="Create a New Account" width={800}>
-      <form onSubmit={onRegister}>
+      <form className="register" onSubmit={onRegister}>
         <div className="form-row">
           <div className="form-group">
             <Input
