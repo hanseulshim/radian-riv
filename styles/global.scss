@@ -261,9 +261,11 @@ a {
   &.btn-primary {
     color: var(--white);
     background-color: var(--prussian-blue);
+    border: 1px solid var(--prussian-blue);
     &:hover {
       color: var(--prussian-blue);
       background-color: var(--white);
+      border: 1px solid var(--prussian-blue);
     }
   }
   &.btn-secondary {
