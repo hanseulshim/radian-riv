@@ -19,7 +19,7 @@ describe('Reset Password Flow', () => {
     })
 
     it('empty submit should show errors on input', () => {
-      cy.get('form.reset-password').submit()
+      cy.get('#reset-password').submit()
       cy.get('@username-error').should('not.be.empty')
       cy.get('@email-error').should('not.be.empty')
     })
@@ -30,14 +30,14 @@ describe('Reset Password Flow', () => {
       cy.get('@email-error').should('be.empty')
     })
     it('invalid email should trigger error', () => {
-      cy.get('form.reset-password').submit()
+      cy.get('#reset-password').submit()
       cy.get('@email-error').contains('Email must be valid')
     })
 
     it('valid email should push to security question', () => {
       cy.get('@email').clear()
       cy.get('@email').type('test@boostlabs.com')
-      cy.get('form.reset-password').submit()
+      cy.get('#reset-password').submit()
       cy.get('.modal-container').find('h3').contains('Security Question')
     })
   })
@@ -51,7 +51,7 @@ describe('Reset Password Flow', () => {
       cy.get('.question').should('not.be.empty')
     })
     it('security question should show error on empty submit', () => {
-      cy.get('form.reset-password').submit()
+      cy.get('#set-question').submit()
       cy.get('@answer-error').should('not.be.empty')
     })
     it('typing text should get rid of input errors', () => {
@@ -59,12 +59,12 @@ describe('Reset Password Flow', () => {
       cy.get('@answer-error').should('be.empty')
     })
     it('submitting answer should show success message', () => {
-      cy.get('form.reset-password').submit()
-      cy.get('form.reset-password > .success-message')
+      cy.get('#set-question').submit()
+      cy.get('#set-question > .alert-success')
     })
     it('should close modal', () => {
       cy.get('.close-form').click()
-      cy.get('form.reset-password').should('not.exist')
+      cy.get('#set-question').should('not.exist')
     })
   })
 })

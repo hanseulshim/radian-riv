@@ -20,7 +20,7 @@ describe('Login', () => {
   it('empty submit should show errors on input', () => {
     cy.get('@username-error').should('be.empty')
     cy.get('@password-error').should('be.empty')
-    cy.get('button.login-button').click()
+    cy.get('#login').submit()
     cy.get('@username-error').should('not.be.empty')
     cy.get('@password-error').should('not.be.empty')
   })
@@ -31,7 +31,7 @@ describe('Login', () => {
     cy.get('@password-error').should('be.empty')
   })
   it('clicking login should log user in', () => {
-    cy.get('button.login-button').click()
-    cy.url({ timeout: 3000 }).should('include', '/login')
+    cy.get('#login').submit()
+    cy.url().should('not.include', '/login')
   })
 })
