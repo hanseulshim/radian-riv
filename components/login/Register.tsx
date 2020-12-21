@@ -5,6 +5,7 @@ import TermsOfUse from './TermsOfUse'
 import { submitRegister } from 'api'
 import Modal from 'components/common/Modal'
 import { Checkbox } from 'components/common/Checkbox'
+import Form from 'components/common/Form'
 
 interface Props {
   closeModal: () => void
@@ -25,11 +26,10 @@ const reqFields = {
   name_last: true
 }
 
-const Register: React.FC<Props> = ({ closeModal }) => {
+export default function Register({ closeModal }: Props) {
   const [register, setRegister] = useState({ ...defaultState })
   const [error, setError] = useState({ ...defaultState })
-  const [errorMessage, setErrorMessage] = useState('')
-  const [successMessage, setSuccessMessage] = useState('')
+  const [alert, setAlert] = useState(null)
 
   const handleInput = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -41,10 +41,8 @@ const Register: React.FC<Props> = ({ closeModal }) => {
     setRegister({ ...register, [key]: e.target.value })
   }
 
-  const onRegister = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setErrorMessage('')
-    setSuccessMessage('')
+  const onRegister = async () => {
+    setAlert(null)
     const errorCopy = { ...defaultState }
     const errorObj = validateForm(register, reqFields)
     const errorArr = Object.keys(errorObj)
@@ -61,9 +59,9 @@ const Register: React.FC<Props> = ({ closeModal }) => {
           email: register.email,
           phone_mobile: register.phone_mobile
         })
-        setSuccessMessage(message)
+        setAlert({ type: 'success', message })
       } catch (e) {
-        setErrorMessage(e.message)
+        setAlert({ type: 'error', message: e.message })
       }
     }
     setError(errorCopy)
@@ -71,7 +69,7 @@ const Register: React.FC<Props> = ({ closeModal }) => {
 
   return (
     <Modal closeModal={closeModal} title="Create a New Account" width={800}>
-      <form className="register" onSubmit={onRegister}>
+      <Form id="register" onSubmit={onRegister} alert={alert}>
         <div className="form-row">
           <div className="form-group">
             <Input
@@ -127,9 +125,6 @@ const Register: React.FC<Props> = ({ closeModal }) => {
             setRegister({ ...register, terms_accepted: e.target.checked })
           }
         />
-        <span className={successMessage ? 'success-message' : 'error-message'}>
-          {successMessage || errorMessage}
-        </span>
         <button
           className="btn btn-primary"
           type="submit"
@@ -137,9 +132,7 @@ const Register: React.FC<Props> = ({ closeModal }) => {
         >
           Agree
         </button>
-      </form>
+      </Form>
     </Modal>
   )
 }
-
-export default Register
