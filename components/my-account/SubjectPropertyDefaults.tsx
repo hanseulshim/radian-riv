@@ -6,6 +6,7 @@ import {
 } from 'api'
 import Select from 'components/common/Select'
 import { useAuth } from 'components/auth/AuthProvider'
+import Form from 'components/common/Form'
 
 interface Option {
   label: string
@@ -16,7 +17,7 @@ const defaultSubjectPropertyState = {
   property: null
 }
 
-const SubjectPropertyDefaults: React.FC = () => {
+function SubjectPropertyDefaults() {
   const {
     auth: { user }
   } = useAuth()
@@ -26,8 +27,7 @@ const SubjectPropertyDefaults: React.FC = () => {
   const [subjectPropertyDefaults, setSubjectPropertyDefaults] = useState<
     Option[]
   >([])
-  const [errorMessage, setErrorMessage] = useState('')
-  const [successMessage, setSuccessMessage] = useState('')
+  const [alert, setAlert] = useState(null)
 
   useEffect(() => {
     const fetchUserDefault = async () => {
@@ -37,7 +37,7 @@ const SubjectPropertyDefaults: React.FC = () => {
         const subjectProperty = await getSubjectPropertyDefault(userid_ssid)
         setSelectedDefault({ property: subjectProperty })
       } catch (e) {
-        setErrorMessage(e.message)
+        setAlert({ type: 'error', message: e.message })
       }
     }
     fetchUserDefault()
@@ -50,26 +50,23 @@ const SubjectPropertyDefaults: React.FC = () => {
         const options = await getSubjectPropertyDefaults(userid_ssid)
         setSubjectPropertyDefaults(options)
       } catch (e) {
-        setErrorMessage(e.message)
+        setAlert({ type: 'error', message: e.message })
       }
     }
     fetchSubjectPropertyDefaults()
   }, [])
 
-  const submitDefaults = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setErrorMessage('')
-    setSuccessMessage('')
-
+  const submitDefaults = async () => {
+    setAlert(null)
     try {
       const { userid_ssid } = user
       const message = await setSubjectPropertyDefault({
         userid_ssid,
         subject_property_id: selectedDefault.property.value
       })
-      setSuccessMessage(message)
+      setAlert({ type: 'success', message })
     } catch (e) {
-      setErrorMessage(e.message)
+      setAlert({ type: 'error', message: e.message })
     }
   }
 
@@ -83,7 +80,11 @@ const SubjectPropertyDefaults: React.FC = () => {
     <div>
       <h1>Subject Property - as comparable</h1>
       <div className="form">
-        <form onSubmit={submitDefaults}>
+        <Form
+          id="subject-property-defaults"
+          onSubmit={submitDefaults}
+          alert={alert}
+        >
           <div className="subject-property-defaults-container">
             <p>
               Includes/Excludes Subject Property in Comparables Lists &
@@ -97,13 +98,8 @@ const SubjectPropertyDefaults: React.FC = () => {
               placeholder="Select..."
             />
           </div>
-          <span
-            className={successMessage ? 'success-message' : 'error-message'}
-          >
-            {successMessage || errorMessage}
-          </span>
           <button className="btn btn-secondary btn-small">Submit</button>
-        </form>
+        </Form>
       </div>
     </div>
   )
