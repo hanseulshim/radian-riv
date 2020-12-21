@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Input from 'components/common/Input'
 import { validateForm } from 'utils/validation'
 import { submitLogin } from 'api'
+import Form from 'components/common/Form'
 
 interface Props {
   showPasswordModal: () => void
@@ -10,17 +11,16 @@ interface Props {
 
 const defaultState = { username: '', pwd: '' }
 
-const LoginForm: React.FC<Props> = ({
+export default function LoginForm({
   showPasswordModal,
   showRegisterModal
-}) => {
+}: Props) {
   const [login, setLogin] = useState({ ...defaultState })
   const [error, setError] = useState({ ...defaultState })
-  const [errorMessage, setErrorMessage] = useState('')
+  const [alert, setAlert] = useState(null)
 
-  const onLogin = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setErrorMessage('')
+  const onLogin = async () => {
+    setAlert(null)
     const errorCopy = { ...defaultState }
     const errorObj = validateForm(login)
     const errorArr = Object.keys(errorObj)
@@ -33,7 +33,7 @@ const LoginForm: React.FC<Props> = ({
         await submitLogin(login)
         window.location.href = `${process.env.rootUrl}`
       } catch (e) {
-        setErrorMessage(e.message)
+        setAlert({ type: 'error', message: e.message })
       }
     }
     setError(errorCopy)
@@ -51,7 +51,7 @@ const LoginForm: React.FC<Props> = ({
 
   return (
     <div className="login-form form">
-      <form className="login" onSubmit={onLogin}>
+      <Form id="login" onSubmit={onLogin} alert={alert}>
         <Input
           label="Username"
           value={login.username}
@@ -65,11 +65,10 @@ const LoginForm: React.FC<Props> = ({
           error={error.pwd}
           onChange={e => handleInput(e, 'pwd')}
         />
-        <span className="error-message">{errorMessage}</span>
         <button className="btn btn-primary login-button" type="submit">
           Login
         </button>
-      </form>
+      </Form>
       <button className="btn btn-link" onClick={() => showPasswordModal()}>
         Forgot Password
       </button>
@@ -83,5 +82,3 @@ const LoginForm: React.FC<Props> = ({
     </div>
   )
 }
-
-export default LoginForm
