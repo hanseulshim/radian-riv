@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   getFilterDefaults,
   getFilterDefaultsSquareFt,
@@ -10,7 +10,7 @@ import Select from 'components/common/Select'
 import Input from 'components/common/Input'
 import { setFilterDefaults } from 'api'
 import { useAuth } from 'components/auth/AuthProvider'
-import { Checkbox } from 'components/common/Checkbox'
+import Checkbox from 'components/common/Checkbox'
 import Form from 'components/common/Form'
 
 const defaultFilterState = {

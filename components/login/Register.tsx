@@ -4,7 +4,7 @@ import { validateForm } from 'utils/validation'
 import TermsOfUse from './TermsOfUse'
 import { submitRegister } from 'api'
 import Modal from 'components/common/Modal'
-import { Checkbox } from 'components/common/Checkbox'
+import Checkbox from 'components/common/Checkbox'
 import Form from 'components/common/Form'
 
 interface Props {

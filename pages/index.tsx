@@ -1,6 +1,6 @@
 import { withAuth } from 'components/auth/AuthRoute'
 
-const Main: React.FC = () => {
+function Main() {
   return (
     <div className="container">
       <div>Welcome to Red Bell Real Estate!</div>

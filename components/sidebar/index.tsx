@@ -1,4 +1,3 @@
-import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
@@ -27,7 +26,7 @@ const routes = [
   }
 ]
 
-const Sidebar: React.FC = () => {
+export default function Sidebar() {
   const { pathname } = useRouter()
   const activeRoute = routes.find(
     route => pathname !== '/' && pathname.includes(route.link)
@@ -83,5 +82,3 @@ const Sidebar: React.FC = () => {
     </div>
   )
 }
-
-export default Sidebar

@@ -4,7 +4,7 @@ import ResetPassword from 'components/login/ResetPassword'
 import Register from 'components/login/Register'
 import { useState } from 'react'
 
-const Login: React.FC = () => {
+function Login() {
   const [passwordModal, setPasswordModal] = useState(false)
   const [registerModal, setRegisterModal] = useState(false)
 

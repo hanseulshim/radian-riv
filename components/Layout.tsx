@@ -1,4 +1,3 @@
-import * as React from 'react'
 import Head from 'next/head'
 import Header from './Header'
 import Footer from './Footer'
@@ -9,7 +8,7 @@ type Props = {
   children: React.ReactNode
 }
 
-const Layout: React.FC = (props: Props) => {
+export default function Layout({ children }: Props) {
   const {
     auth: { token }
   } = useAuth()
@@ -27,11 +26,9 @@ const Layout: React.FC = (props: Props) => {
       <Header />
       <div id="main">
         {token && <Sidebar />}
-        {props.children}
+        {children}
       </div>
       <Footer />
     </div>
   )
 }
-
-export default Layout

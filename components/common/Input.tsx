@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 interface Props {
   value: string | number
@@ -10,7 +10,7 @@ interface Props {
   disabled?: boolean
 }
 
-const Input: React.FC<Props> = ({
+export default function Input({
   value,
   label,
   type = 'text',
@@ -18,7 +18,7 @@ const Input: React.FC<Props> = ({
   onChange,
   error,
   disabled = false
-}) => {
+}: Props) {
   const [focus, setFocus] = useState(false)
   return (
     <div className="input-group">
@@ -46,5 +46,3 @@ const Input: React.FC<Props> = ({
     </div>
   )
 }
-
-export default Input
