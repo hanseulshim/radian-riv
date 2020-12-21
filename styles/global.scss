@@ -78,6 +78,9 @@ h6 {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    .btn {
+      margin: 1em 0;
+    }
   }
 
   .form-row {

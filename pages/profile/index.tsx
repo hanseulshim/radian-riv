@@ -6,6 +6,7 @@ import { submitProfile, getStates } from 'api'
 import Cookies from 'js-cookie'
 import { useAuth } from 'components/auth/AuthProvider'
 import Select from 'components/common/Select'
+import Form from 'components/common/Form'
 
 interface State {
   label: string
@@ -25,7 +26,7 @@ const defaultState = {
   phone_home: ''
 }
 
-const Profile: React.FC = () => {
+function Profile() {
   const {
     auth: { user },
     setAuth
@@ -43,8 +44,7 @@ const Profile: React.FC = () => {
     phone_home: user.phone_home
   })
   const [error, setError] = useState({ ...defaultState })
-  const [errorMessage, setErrorMessage] = useState('')
-  const [successMessage, setSuccessMessage] = useState('')
+  const [alert, setAlert] = useState(null)
   const [states, setStates] = useState<State[]>([])
   const [selectedState, setSelectedState] = useState({
     label: user.state,
@@ -61,10 +61,8 @@ const Profile: React.FC = () => {
     setProfile({ ...profile, [key]: e.target.value })
   }
 
-  const onUpdate = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setErrorMessage('')
-    setSuccessMessage('')
+  const onUpdate = async () => {
+    setAlert(null)
     const errorCopy = { ...defaultState }
     const errorObj = validateForm(profile)
     const errorArr = Object.keys(errorObj)
@@ -79,11 +77,11 @@ const Profile: React.FC = () => {
           state: selectedState.label,
           userid_ssid: user.userid_ssid
         })
-        setSuccessMessage(message)
+        setAlert({ type: 'success', message })
         const authCookies = Cookies.get('auth')
         setAuth(JSON.parse(authCookies))
       } catch (e) {
-        setErrorMessage(e.message)
+        setAlert({ type: 'error', message: e.message })
       }
     }
     setError(errorCopy)
@@ -111,7 +109,7 @@ const Profile: React.FC = () => {
         </div>
       </div>
       <div className="form">
-        <form onSubmit={onUpdate}>
+        <Form id="profile" onSubmit={onUpdate} alert={alert}>
           <div className="form-row">
             <div className="form-group">
               <Input
@@ -184,15 +182,10 @@ const Profile: React.FC = () => {
               />
             </div>
           </div>
-          <span
-            className={successMessage ? 'success-message' : 'error-message'}
-          >
-            {successMessage || errorMessage}
-          </span>
           <button className="btn btn-primary" type="submit">
             Update My Profile
           </button>
-        </form>
+        </Form>
       </div>
     </div>
   )
