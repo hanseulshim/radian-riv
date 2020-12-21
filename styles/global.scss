@@ -383,6 +383,7 @@ a {
   pre {
     margin: 0;
     font-family: inherit;
+    white-space: pre-wrap;
   }
 
   &.alert-danger {
