@@ -1,9 +1,8 @@
-import * as React from 'react'
 import { useAuth, defaultAuth } from 'components/auth/AuthProvider'
 import { useRouter } from 'next/router'
 import Cookies from 'js-cookie'
 
-const Header: React.FC = () => {
+export default function Header() {
   const router = useRouter()
   const {
     auth: { user, token },
@@ -40,5 +39,3 @@ const Header: React.FC = () => {
     </div>
   )
 }
-
-export default Header

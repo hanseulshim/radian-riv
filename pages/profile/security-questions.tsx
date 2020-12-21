@@ -6,6 +6,7 @@ import Input from 'components/common/Input'
 import { setSecurityQuestions } from 'api'
 import { validateForm } from 'utils/validation'
 import { useAuth } from 'components/auth/AuthProvider'
+import Form from 'components/common/Form'
 
 interface Question {
   label: string
@@ -19,7 +20,7 @@ const defaultQuestionState = {
   question3: null
 }
 
-const SecurityQuestions: React.FC = () => {
+function SecurityQuestions() {
   const {
     auth: { user }
   } = useAuth()
@@ -27,8 +28,7 @@ const SecurityQuestions: React.FC = () => {
   const [questions, setQuestions] = useState({ ...defaultQuestionState })
   const [answers, setAnswers] = useState({ ...defaultAnswerState })
   const [error, setError] = useState({ ...defaultAnswerState })
-  const [errorMessage, setErrorMessage] = useState('')
-  const [successMessage, setSuccessMessage] = useState('')
+  const [alert, setAlert] = useState(null)
 
   useEffect(() => {
     const securityQuestionFetch = async () => {
@@ -53,10 +53,8 @@ const SecurityQuestions: React.FC = () => {
     securityQuestionFetch()
   }, [])
 
-  const submitQuestions = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setErrorMessage('')
-    setSuccessMessage('')
+  const submitQuestions = async () => {
+    setAlert(null)
     const errorCopy = { ...defaultAnswerState }
     const errorObj = validateForm(answers)
     const errorArr = Object.keys(errorObj)
@@ -77,9 +75,9 @@ const SecurityQuestions: React.FC = () => {
           answer3: answers.answer3
         }
         const message = await setSecurityQuestions(form)
-        setSuccessMessage(message)
+        setAlert({ type: 'success', message })
       } catch (e) {
-        setErrorMessage(e.message)
+        setAlert({ type: 'error', message: e.message })
       }
     }
     setError(errorCopy)
@@ -110,7 +108,7 @@ const SecurityQuestions: React.FC = () => {
     <div className="container security-questions">
       <h1>Change Security Questions</h1>
       <div className="form">
-        <form onSubmit={submitQuestions}>
+        <Form id="security-questions" onSubmit={submitQuestions} alert={alert}>
           <h3>
             Please select three security questions and provide answers below:
           </h3>
@@ -145,14 +143,9 @@ const SecurityQuestions: React.FC = () => {
               error={error.answer3}
               onChange={e => handleInput(e, 'answer3')}
             />
-            <span
-              className={successMessage ? 'success-message' : 'error-message'}
-            >
-              {successMessage || errorMessage}
-            </span>
             <button className="btn btn-secondary btn-small">Submit</button>
           </div>
-        </form>
+        </Form>
       </div>
     </div>
   )

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 interface item {
   label: string
@@ -13,14 +13,14 @@ interface Props {
   disabled?: boolean
 }
 
-const Select: React.FC<Props> = ({
+export default function Select({
   options,
   value,
   placeholder,
   label,
   onChange,
   disabled = false
-}) => {
+}: Props) {
   const [open, setOpen] = useState(false)
 
   const toggleOpen = () => {
@@ -75,5 +75,3 @@ const Select: React.FC<Props> = ({
     </>
   )
 }
-
-export default Select

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   getFilterDefaults,
   getFilterDefaultsSquareFt,
@@ -10,7 +10,8 @@ import Select from 'components/common/Select'
 import Input from 'components/common/Input'
 import { setFilterDefaults } from 'api'
 import { useAuth } from 'components/auth/AuthProvider'
-import { Checkbox } from 'components/common/Checkbox'
+import Checkbox from 'components/common/Checkbox'
+import Form from 'components/common/Form'
 
 const defaultFilterState = {
   sqft: null,
@@ -29,7 +30,7 @@ interface Option {
   value: number | string
 }
 
-const AveFilterDefaults: React.FC = () => {
+function AveFilterDefaults() {
   const {
     auth: { user }
   } = useAuth()
@@ -40,8 +41,7 @@ const AveFilterDefaults: React.FC = () => {
   const [percentOptions, setPercentOptions] = useState<Option[]>([])
   const [timeOptions, setTimeOptions] = useState<Option[]>([])
   const [restrictCompOptions, setRestrictCompOptions] = useState<Option[]>([])
-  const [errorMessage, setErrorMessage] = useState('')
-  const [successMessage, setSuccessMessage] = useState('')
+  const [alert, setAlert] = useState(null)
 
   useEffect(() => {
     const fetchUserDefaults = async () => {
@@ -60,7 +60,7 @@ const AveFilterDefaults: React.FC = () => {
           restrict_comps: defaults.restrict_comps
         })
       } catch (e) {
-        setErrorMessage(e.message)
+        setAlert({ type: 'error', message: e.message })
       }
     }
     fetchUserDefaults()
@@ -81,16 +81,14 @@ const AveFilterDefaults: React.FC = () => {
         setRestrictCompOptions(restrictOptions)
         setTimeOptions(timeOptions)
       } catch (e) {
-        setErrorMessage(e.message)
+        setAlert({ type: 'error', message: e.message })
       }
     }
     fetchFilterDefaultOptions()
   }, [])
 
-  const submitDefaults = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setErrorMessage('')
-    setSuccessMessage('')
+  const submitDefaults = async () => {
+    setAlert(null)
     try {
       const {
         sqft,
@@ -109,9 +107,9 @@ const AveFilterDefaults: React.FC = () => {
         time_going_back: time_going_back.value,
         restrict_comps: restrict_comps.value
       })
-      setSuccessMessage(message)
+      setAlert({ type: 'success', message: message })
     } catch (e) {
-      setErrorMessage(e.message)
+      setAlert({ type: 'error', message: e.message })
     }
   }
 
@@ -154,7 +152,7 @@ const AveFilterDefaults: React.FC = () => {
     <div>
       <h1>AVE Filter Defaults</h1>
       <div className="form">
-        <form onSubmit={submitDefaults}>
+        <Form id="ave-filter-defaults" onSubmit={submitDefaults} alert={alert}>
           <div className="filter-defaults-container">
             <div className="filter-defaults-column">
               <div className="title">Square Footage</div>
@@ -235,13 +233,8 @@ const AveFilterDefaults: React.FC = () => {
               />
             </div>
           </div>
-          <span
-            className={successMessage ? 'success-message' : 'error-message'}
-          >
-            {successMessage || errorMessage}
-          </span>
           <button className="btn btn-secondary btn-small">Submit</button>
-        </form>
+        </Form>
       </div>
     </div>
   )

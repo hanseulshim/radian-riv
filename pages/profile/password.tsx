@@ -4,22 +4,23 @@ import Input from 'components/common/Input'
 import { validateForm } from 'utils/validation'
 import { useAuth } from 'components/auth/AuthProvider'
 import { submitChangePassword } from 'api'
+import Form from 'components/common/Form'
 
 const defaultState = {
   pwd: '',
   confirmPwd: ''
 }
 
-const ChangePassword: React.FC = () => {
+function ChangePassword() {
   const {
     auth: { user }
   } = useAuth()
   const [changePassword, setChangePassword] = useState({ ...defaultState })
   const [error, setError] = useState({ ...defaultState })
-  const [errorMessage, setErrorMessage] = useState('')
-  const [successMessage, setSuccessMessage] = useState('')
+  const [alert, setAlert] = useState(null)
   const [pwdStrength, setPwdStrength] = useState('Password not entered')
   const [pwdClass, setPwdClass] = useState('strength-0')
+
   const handleInput = (
     e: React.ChangeEvent<HTMLInputElement>,
     key = 'string'
@@ -72,10 +73,8 @@ const ChangePassword: React.FC = () => {
     }
   }
 
-  const onUpdate = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setErrorMessage('')
-    setSuccessMessage('')
+  const onUpdate = async () => {
+    setAlert(null)
     const errorCopy = { ...defaultState }
     const errorObj = validateForm(changePassword)
     const errorArr = Object.keys(errorObj)
@@ -89,9 +88,9 @@ const ChangePassword: React.FC = () => {
           pwd: changePassword.pwd,
           userid_ssid: user.userid_ssid
         })
-        setSuccessMessage(message)
+        setAlert({ type: 'success', message })
       } catch (e) {
-        setErrorMessage(e.message)
+        setAlert({ type: 'error', message: e.message })
       }
     }
     setError(errorCopy)
@@ -101,7 +100,7 @@ const ChangePassword: React.FC = () => {
     <div className="container change-password">
       <h1>Change Password</h1>
       <div className="form">
-        <form onSubmit={onUpdate}>
+        <Form id="change-password" onSubmit={onUpdate} alert={alert}>
           <div className="form-group">
             <Input
               label="New Password"
@@ -120,15 +119,10 @@ const ChangePassword: React.FC = () => {
               onChange={e => handleInput(e, 'confirmPwd')}
             />
           </div>
-          <span
-            className={successMessage ? 'success-message' : 'error-message'}
-          >
-            {successMessage || errorMessage}
-          </span>
           <button className="btn btn-primary" type="submit">
             Confirm Password
           </button>
-        </form>
+        </Form>
         <div className="password-requirements">
           <h3>Password Requirements:</h3>
           <div>* Password must be at least 8 characters(s) long</div>

@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 type Props = {
   title: string
   children: React.ReactNode
@@ -8,7 +6,7 @@ type Props = {
 }
 
 //TODO #8 add in CSS animations for modal open/close
-const Modal: React.FC<Props> = ({ children, title, closeModal, width }) => {
+export default function Modal({ children, title, closeModal, width }: Props) {
   const handleClick = e => {
     if (e.target.className === 'modal-container') {
       closeModal()
@@ -28,5 +26,3 @@ const Modal: React.FC<Props> = ({ children, title, closeModal, width }) => {
     </div>
   )
 }
-
-export default Modal

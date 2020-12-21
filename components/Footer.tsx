@@ -1,6 +1,4 @@
-import * as React from 'react'
-
-const Footer: React.FC = () => {
+export default function Footer() {
   return (
     <div id="footer">
       <img src={`${process.env.baseUrl}/images/footer-logo.svg`} alt="logo" />
@@ -27,5 +25,3 @@ const Footer: React.FC = () => {
     </div>
   )
 }
-
-export default Footer

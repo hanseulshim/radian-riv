@@ -6,6 +6,7 @@ import {
 } from 'api'
 import Select from 'components/common/Select'
 import { useAuth } from 'components/auth/AuthProvider'
+import Form from 'components/common/Form'
 
 const defaultSearchState = {
   department: null
@@ -16,7 +17,7 @@ interface Option {
   value: number | string
 }
 
-const SearchDefaults: React.FC = () => {
+function SearchDefaults() {
   const {
     auth: { user }
   } = useAuth()
@@ -24,8 +25,7 @@ const SearchDefaults: React.FC = () => {
     ...defaultSearchState
   })
   const [departments, setDepartments] = useState<Option[]>([])
-  const [errorMessage, setErrorMessage] = useState('')
-  const [successMessage, setSuccessMessage] = useState('')
+  const [alert, setAlert] = useState(null)
 
   useEffect(() => {
     const fetchUserDefaults = async () => {
@@ -36,7 +36,7 @@ const SearchDefaults: React.FC = () => {
           department: defaults
         })
       } catch (e) {
-        setErrorMessage(e.message)
+        setAlert({ type: 'error', message: e.message })
       }
     }
     fetchUserDefaults()
@@ -49,25 +49,23 @@ const SearchDefaults: React.FC = () => {
         const options = await getDefaultSearchDepartments(userid_ssid)
         setDepartments(options)
       } catch (e) {
-        setErrorMessage(e.message)
+        setAlert({ type: 'error', message: e.message })
       }
     }
     fetchDepartments()
   }, [])
 
-  const submitDefaults = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setErrorMessage('')
-    setSuccessMessage('')
+  const submitDefaults = async () => {
+    setAlert(null)
     try {
       const { userid_ssid } = user
       const message = await setDefaultSearchDepartment({
         userid_ssid,
         department_id: searchDefaults.department.value
       })
-      setSuccessMessage(message)
+      setAlert({ type: 'success', message: message })
     } catch (e) {
-      setErrorMessage(e.message)
+      setAlert({ type: 'error', message: e.message })
     }
   }
 
@@ -81,7 +79,7 @@ const SearchDefaults: React.FC = () => {
     <div>
       <h1>Search Defaults</h1>
       <div className="form">
-        <form onSubmit={submitDefaults}>
+        <Form id="search-defaults" onSubmit={submitDefaults} alert={alert}>
           <div className="search-defaults-container">
             <Select
               options={departments}
@@ -91,13 +89,8 @@ const SearchDefaults: React.FC = () => {
               placeholder="Select Department"
             />
           </div>
-          <span
-            className={successMessage ? 'success-message' : 'error-message'}
-          >
-            {successMessage || errorMessage}
-          </span>
           <button className="btn btn-secondary btn-small">Submit</button>
-        </form>
+        </Form>
       </div>
     </div>
   )

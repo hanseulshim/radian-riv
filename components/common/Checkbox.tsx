@@ -1,17 +1,15 @@
-import React from 'react'
-
 interface Props {
   label: string
   checked: boolean
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export const Checkbox: React.FC<Props> = ({
+export default function Checkbox({
   label,
   checked,
   onChange,
   ...props
-}) => {
+}: Props) {
   return (
     <div className="checkbox-container">
       <label>
