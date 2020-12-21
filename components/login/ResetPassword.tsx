@@ -3,6 +3,7 @@ import Input from 'components/common/Input'
 import { validateForm } from 'utils/validation'
 import { submitResetPassword, getUserQuestion, submitAnswer } from 'api'
 import Modal from 'components/common/Modal'
+import Form from 'components/common/Form'
 
 interface Props {
   closeModal: () => void
@@ -13,19 +14,16 @@ const defaultState = {
   email: ''
 }
 
-const ResetPassword: React.FC<Props> = ({ closeModal }) => {
+export default function ResetPassword({ closeModal }: Props) {
   const [resetPassword, setResetPassword] = useState({ ...defaultState })
   const [error, setError] = useState({ ...defaultState })
-  const [errorMessage, setErrorMessage] = useState('')
-  const [successMessage, setSuccessMessage] = useState('')
+  const [alert, setAlert] = useState(null)
   const [question, setQuestion] = useState(null)
   const [answer, setAnswer] = useState('')
   const [answerError, setAnswerError] = useState('')
   const [userId, setUserId] = useState('')
 
-  const onReset = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setErrorMessage('')
+  const onReset = async () => {
     const errorCopy = { ...defaultState }
     const errorObj = validateForm(resetPassword)
     const errorArr = Object.keys(errorObj)
@@ -40,16 +38,14 @@ const ResetPassword: React.FC<Props> = ({ closeModal }) => {
         setUserId(userid_ssid)
         setQuestion(questionResponse)
       } catch (e) {
-        setErrorMessage(e.message)
+        setAlert({ type: 'error', message: e.message })
       }
     }
     setError(errorCopy)
   }
 
-  const onAnswer = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setErrorMessage('')
-    setSuccessMessage('')
+  const onAnswer = async () => {
+    setAlert(null)
     if (answer.length === 0) {
       setAnswerError('Answer cannot be empty')
     } else {
@@ -59,9 +55,9 @@ const ResetPassword: React.FC<Props> = ({ closeModal }) => {
           question_id: question.question_id,
           answer
         })
-        setSuccessMessage(message)
+        setAlert({ type: 'success', message })
       } catch (e) {
-        setErrorMessage(e.message)
+        setAlert({ type: 'error', message: e.message })
       }
     }
   }
@@ -88,7 +84,7 @@ const ResetPassword: React.FC<Props> = ({ closeModal }) => {
       width={500}
     >
       {question === null ? (
-        <form className="reset-password" onSubmit={onReset}>
+        <Form id="reset-password" onSubmit={onReset} alert={alert}>
           <Input
             label="User Name"
             value={resetPassword.username}
@@ -103,11 +99,6 @@ const ResetPassword: React.FC<Props> = ({ closeModal }) => {
             onChange={e => handleInput(e, 'email')}
             required
           />
-          <span
-            className={successMessage ? 'success-message' : 'error-message'}
-          >
-            {successMessage || errorMessage}
-          </span>
           <button className="btn btn-primary" type="submit">
             Reset Password
           </button>
@@ -120,9 +111,9 @@ const ResetPassword: React.FC<Props> = ({ closeModal }) => {
             your password, please send an email to{' '}
             <a href="mailto:vow@redbellre.com">vow@redbellre.com</a>
           </p>
-        </form>
+        </Form>
       ) : (
-        <form className="reset-password" onSubmit={onAnswer}>
+        <Form id="set-question" onSubmit={onAnswer} alert={alert}>
           <div className="question">{question.question_text}</div>
           <Input
             label="Answer"
@@ -130,18 +121,11 @@ const ResetPassword: React.FC<Props> = ({ closeModal }) => {
             error={answerError}
             onChange={updateAnswer}
           />
-          <span
-            className={successMessage ? 'success-message' : 'error-message'}
-          >
-            {successMessage || errorMessage}
-          </span>
           <button className="btn btn-primary" type="submit">
             Reset Password
           </button>
-        </form>
+        </Form>
       )}
     </Modal>
   )
 }
-
-export default ResetPassword
