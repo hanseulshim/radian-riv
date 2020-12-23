@@ -36,7 +36,7 @@ export default function Select({
   return (
     <>
       <div
-        className={`custom-select ${disabled ? ' disabled' : ''}`}
+        className={`custom-select${disabled ? ' disabled' : ''}`}
         onClick={toggleOpen}
       >
         {!value && (

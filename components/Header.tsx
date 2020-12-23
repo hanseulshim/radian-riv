@@ -25,7 +25,7 @@ export default function Header() {
               Hello {user.name_first} {user.name_last}
             </span>
             <img
-              id="profile"
+              id="profile-logo"
               alt="profile"
               src={`${process.env.baseUrl}/images/profile.svg`}
               onClick={logout}

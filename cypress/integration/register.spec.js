@@ -31,7 +31,7 @@ describe('Register Flow', () => {
     })
 
     it('empty submit should show errors on input', () => {
-      cy.get('form.register').submit()
+      cy.get('#register').submit()
       cy.get('@firstName-error').should('not.be.empty')
       cy.get('@lastName-error').should('not.be.empty')
       cy.get('@username-error').should('not.be.empty')
@@ -51,7 +51,7 @@ describe('Register Flow', () => {
       cy.get('@confirmEmail-error').should('be.empty')
     })
     it('invalid email should trigger error', () => {
-      cy.get('form.register').submit()
+      cy.get('#register').submit()
       cy.get('@email-error').contains('Email must be valid')
       cy.get('@confirmEmail-error').contains('Confirm Email must be valid')
     })
@@ -61,12 +61,12 @@ describe('Register Flow', () => {
       cy.get('@confirmEmail').clear()
       cy.get('@email').type('test@boostlabs.com')
       cy.get('@confirmEmail').type('test1@boostlabs.com')
-      cy.get('form.register').submit()
+      cy.get('#register').submit()
       cy.get('@confirmEmail-error').contains('Confirm Email must match email')
     })
     it('invalid phone number should trigger error', () => {
       cy.get('@phone').type('invalid')
-      cy.get('form.register').submit()
+      cy.get('#register').submit()
       cy.get('@phone-error').contains('Must be a valid phone number format')
     })
     it('valid form should result in success', () => {
@@ -75,12 +75,12 @@ describe('Register Flow', () => {
       cy.get('.styled-checkbox').click()
       cy.get('@phone').type('123-456-7890')
       cy.get('@confirmEmail').type('test@boostlabs.com')
-      cy.get('form.register').submit()
-      cy.get('form.register > .success-message')
+      cy.get('#register').submit()
+      cy.get('#register > .alert-success')
     })
     it('should close modal', () => {
       cy.get('.close-form').click()
-      cy.get('form.register').should('not.exist')
+      cy.get('#register').should('not.exist')
     })
   })
 })

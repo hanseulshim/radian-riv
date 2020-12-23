@@ -23,3 +23,19 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('login', () => {
+  cy.visit('http://localhost:3000')
+  cy.get('input[name="Username"]').type('t')
+  cy.get('input[name="Password"]').type('t')
+  cy.get('#login').submit()
+})
+
+Cypress.Commands.add('myAccount', () => {
+  cy.clearCookies()
+  cy.visit('http://localhost:3000')
+  cy.get('input[name="Username"]').type('t')
+  cy.get('input[name="Password"]').type('t')
+  cy.get('#login').submit()
+  cy.get('.route-link').first().click()
+})
