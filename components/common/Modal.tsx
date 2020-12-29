@@ -15,7 +15,7 @@ export default function Modal({ children, title, closeModal, width }: Props) {
   return (
     <div className="modal-container" onClick={handleClick}>
       <div className="form" style={{ width }}>
-        {title && <h3 className="form-title">{title}</h3>}
+        {title && <h2 className="form-title">{title}</h2>}
         <img
           src={`${process.env.baseUrl}/images/icon_x.svg`}
           className={'close-form'}

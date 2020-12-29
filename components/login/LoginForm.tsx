@@ -70,7 +70,7 @@ export default function LoginForm({
         </button>
       </Form>
       <button className="btn btn-link" onClick={() => showPasswordModal()}>
-        Forgot Password
+        Reset Your Password
       </button>
       <span>or</span>
       <button

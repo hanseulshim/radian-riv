@@ -22,6 +22,7 @@ export default function ResetPassword({ closeModal }: Props) {
   const [answer, setAnswer] = useState('')
   const [answerError, setAnswerError] = useState('')
   const [userId, setUserId] = useState('')
+  const [questionSuccess, setQuestionSuccess] = useState(false)
 
   const onReset = async () => {
     const errorCopy = { ...defaultState }
@@ -50,12 +51,12 @@ export default function ResetPassword({ closeModal }: Props) {
       setAnswerError('Answer cannot be empty')
     } else {
       try {
-        const message = await submitAnswer({
+        await submitAnswer({
           userid_ssid: userId,
           question_id: question.question_id,
           answer
         })
-        setAlert({ type: 'success', message })
+        setQuestionSuccess(true)
       } catch (e) {
         setAlert({ type: 'error', message: e.message })
       }
@@ -80,7 +81,13 @@ export default function ResetPassword({ closeModal }: Props) {
   return (
     <Modal
       closeModal={closeModal}
-      title={question === null ? 'Reset Password' : 'Security Question'}
+      title={
+        question === null
+          ? 'Password Help'
+          : questionSuccess
+          ? 'Success!'
+          : 'Security Question'
+      }
       width={500}
     >
       {question === null ? (
@@ -104,14 +111,15 @@ export default function ResetPassword({ closeModal }: Props) {
           </button>
           <p className="info">
             For security purposes you are required to reset your password every
-            120 days.
-          </p>
-          <p className="info">
-            If you do not receive an email with instructions on how to reset
-            your password, please send an email to{' '}
+            120 days. If you do not receive an email with instructions on how to
+            reset your password, please send an email to{' '}
             <a href="mailto:vow@redbellre.com">vow@redbellre.com</a>
           </p>
         </Form>
+      ) : questionSuccess ? (
+        <div className="question-success">
+          Your temporary password will be emailed to you.
+        </div>
       ) : (
         <Form id="set-question" onSubmit={onAnswer} alert={alert}>
           <div className="question">{question.question_text}</div>
@@ -122,7 +130,7 @@ export default function ResetPassword({ closeModal }: Props) {
             onChange={updateAnswer}
           />
           <button className="btn btn-primary" type="submit">
-            Reset Password
+            Submit
           </button>
         </Form>
       )}
