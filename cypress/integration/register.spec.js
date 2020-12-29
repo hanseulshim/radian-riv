@@ -7,7 +7,7 @@ describe('Register Flow', () => {
 
   it('clicking Register for free should open modal', () => {
     cy.get('button').contains('Register for free').click()
-    cy.get('.modal-container').find('h3').contains('Create a New Account')
+    cy.get('.modal-container').find('h2').contains('Create a New Account')
   })
 
   describe('Create a New Account Form', () => {

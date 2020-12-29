@@ -69,7 +69,11 @@ export default function LoginForm({
           Login
         </button>
       </Form>
-      <button className="btn btn-link" onClick={() => showPasswordModal()}>
+      <button
+        id="reset-password-button"
+        className="btn btn-link"
+        onClick={() => showPasswordModal()}
+      >
         Reset Your Password
       </button>
       <span>or</span>

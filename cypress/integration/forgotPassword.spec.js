@@ -6,8 +6,8 @@ describe('Reset Password Flow', () => {
   })
 
   it('clicking forgot email should open modal', () => {
-    cy.get('button').contains('Forgot Password').click()
-    cy.get('.modal-container').find('h3').contains('Reset Password')
+    cy.get('#reset-password-button').click()
+    cy.get('.modal-container').find('h2').contains('Password Help')
   })
 
   describe('Reset Password Form', () => {
@@ -38,7 +38,7 @@ describe('Reset Password Flow', () => {
       cy.get('@email').clear()
       cy.get('@email').type('test@boostlabs.com')
       cy.get('#reset-password').submit()
-      cy.get('.modal-container').find('h3').contains('Security Question')
+      cy.get('.modal-container').find('h2').contains('Security Question')
     })
   })
 
@@ -57,14 +57,20 @@ describe('Reset Password Flow', () => {
     it('typing text should get rid of input errors', () => {
       cy.get('@answer').type('answer')
       cy.get('@answer-error').should('be.empty')
-    })
-    it('submitting answer should show success message', () => {
       cy.get('#set-question').submit()
-      cy.get('#set-question > .alert-success')
+    })
+  })
+
+  describe('Success Message', () => {
+    it('submitting answer should show success message', () => {
+      cy.get('.modal-container').find('h2').contains('Success!')
+      cy.get('.question-success').contains(
+        'Your temporary password will be emailed to you.'
+      )
     })
     it('should close modal', () => {
       cy.get('.close-form').click()
-      cy.get('#set-question').should('not.exist')
+      cy.get('.question-success').should('not.exist')
     })
   })
 })
