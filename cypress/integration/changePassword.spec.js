@@ -46,4 +46,7 @@ describe('Change Password page', () => {
     cy.get('#change-password').submit()
     cy.get('#change-password > .alert-success')
   })
+  after(() => {
+    cy.clearCookies()
+  })
 })

@@ -51,6 +51,9 @@ describe('Profile page', () => {
     cy.get('input[name="Home Phone"]').type('123-456-7890')
     cy.get('#profile').submit()
     cy.get('.alert-success')
-    cy.get('.profile-row > span').contains('Hello Hingle McCringleberr')
+    cy.get('.profile-row > span').contains('Hello Hingle McCringleberry')
+  })
+  after(() => {
+    cy.clearCookies()
   })
 })

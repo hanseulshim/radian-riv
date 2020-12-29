@@ -28,4 +28,7 @@ describe('Change Filter Defaults page', () => {
     cy.get('#subject-property-defaults').submit()
     cy.get('#subject-property-defaults > .alert-success')
   })
+  after(() => {
+    cy.clearCookies()
+  })
 })

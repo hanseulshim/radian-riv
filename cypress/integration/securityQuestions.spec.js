@@ -30,4 +30,7 @@ describe('Change Security Questions page', () => {
     cy.get('#security-questions').submit()
     cy.get('.alert-success')
   })
+  after(() => {
+    cy.clearCookies()
+  })
 })
