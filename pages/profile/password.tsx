@@ -5,6 +5,7 @@ import { validateForm } from 'utils/validation'
 import { useAuth } from 'components/auth/AuthProvider'
 import { submitChangePassword } from 'api'
 import Form from 'components/common/Form'
+import SidebarLayout from 'components/sidebar'
 
 const defaultState = {
   pwd: '',
@@ -97,45 +98,47 @@ function ChangePassword() {
   }
 
   return (
-    <div className="container change-password">
-      <h1>Change Password</h1>
-      <div className="form">
-        <Form id="change-password" onSubmit={onUpdate} alert={alert}>
-          <div className="form-group">
-            <Input
-              label="New Password"
-              type="password"
-              value={changePassword.pwd}
-              error={error.pwd}
-              onChange={e => handleInput(e, 'pwd')}
-            />
-            <span className="pwd-label">Password Strength:</span>
-            <div className={`${pwdClass} pwd-strength`}>{pwdStrength}</div>
-            <Input
-              label="Confirm Password"
-              type="password"
-              value={changePassword.confirmPwd}
-              error={error.confirmPwd}
-              onChange={e => handleInput(e, 'confirmPwd')}
-            />
-          </div>
-          <button className="btn btn-primary" type="submit">
-            Confirm Password
-          </button>
-        </Form>
-        <div className="password-requirements">
-          <h3>Password Requirements:</h3>
-          <div>* Password must be at least 8 characters(s) long</div>
-          <div>* Password must contain an uppercase character</div>
-          <div>* Password must contain a lowercase character</div>
-          <div>* Password must contain a numeric character</div>
-          <div>* Password must contain a special character (ex: !,@,#,$)</div>
-          <div>
-            * Password must NOT have been used within the last 25 passwords
+    <SidebarLayout group="Account">
+      <div className="container change-password">
+        <h1>Change Password</h1>
+        <div className="form">
+          <Form id="change-password" onSubmit={onUpdate} alert={alert}>
+            <div className="form-group">
+              <Input
+                label="New Password"
+                type="password"
+                value={changePassword.pwd}
+                error={error.pwd}
+                onChange={e => handleInput(e, 'pwd')}
+              />
+              <span className="pwd-label">Password Strength:</span>
+              <div className={`${pwdClass} pwd-strength`}>{pwdStrength}</div>
+              <Input
+                label="Confirm Password"
+                type="password"
+                value={changePassword.confirmPwd}
+                error={error.confirmPwd}
+                onChange={e => handleInput(e, 'confirmPwd')}
+              />
+            </div>
+            <button className="btn btn-primary" type="submit">
+              Confirm Password
+            </button>
+          </Form>
+          <div className="password-requirements">
+            <h3>Password Requirements:</h3>
+            <div>* Password must be at least 8 characters(s) long</div>
+            <div>* Password must contain an uppercase character</div>
+            <div>* Password must contain a lowercase character</div>
+            <div>* Password must contain a numeric character</div>
+            <div>* Password must contain a special character (ex: !,@,#,$)</div>
+            <div>
+              * Password must NOT have been used within the last 25 passwords
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </SidebarLayout>
   )
 }
 

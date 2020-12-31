@@ -7,6 +7,7 @@ import Cookies from 'js-cookie'
 import { useAuth } from 'components/auth/AuthProvider'
 import Select from 'components/common/Select'
 import Form from 'components/common/Form'
+import SidebarLayout from 'components/sidebar'
 
 interface State {
   label: string
@@ -96,98 +97,100 @@ function Profile() {
   }, [])
 
   return (
-    <div className="container profile">
-      <h1>Profile</h1>
-      <div className="info-container">
-        <div>
-          <span className="bold">Username:</span>
-          <span>{user.username}</span>
+    <SidebarLayout group="Account">
+      <div className="container profile">
+        <h1>Profile</h1>
+        <div className="info-container">
+          <div>
+            <span className="bold">Username:</span>
+            <span>{user.username}</span>
+          </div>
+          <div>
+            <span className="bold">Email:</span>
+            <span>{user.email}</span>
+          </div>
         </div>
-        <div>
-          <span className="bold">Email:</span>
-          <span>{user.email}</span>
-        </div>
-      </div>
-      <div className="form">
-        <Form id="profile" onSubmit={onUpdate} alert={alert}>
-          <div className="form-row">
-            <div className="form-group">
-              <Input
-                label="First Name"
-                value={profile.name_first}
-                error={error.name_first}
-                onChange={e => handleInput(e, 'name_first')}
-              />
-              <Input
-                label="Last Name"
-                value={profile.name_last}
-                error={error.name_last}
-                onChange={e => handleInput(e, 'name_last')}
-              />
-              <Input
-                label="Title"
-                value={profile.title}
-                error={error.title}
-                onChange={e => handleInput(e, 'title')}
-              />
-            </div>
-            <div className="form-group">
-              <Input
-                label="Address"
-                value={profile.address}
-                error={error.address}
-                onChange={e => handleInput(e, 'address')}
-              />
-              <Input
-                label="City"
-                value={profile.city}
-                error={error.city}
-                onChange={e => handleInput(e, 'city')}
-              />
-              <div className="form-row">
-                <div className="select-container">
-                  <Select
-                    label="State"
-                    options={states}
-                    value={selectedState}
-                    onChange={state => setSelectedState(state)}
+        <div className="form">
+          <Form id="profile" onSubmit={onUpdate} alert={alert}>
+            <div className="form-row">
+              <div className="form-group">
+                <Input
+                  label="First Name"
+                  value={profile.name_first}
+                  error={error.name_first}
+                  onChange={e => handleInput(e, 'name_first')}
+                />
+                <Input
+                  label="Last Name"
+                  value={profile.name_last}
+                  error={error.name_last}
+                  onChange={e => handleInput(e, 'name_last')}
+                />
+                <Input
+                  label="Title"
+                  value={profile.title}
+                  error={error.title}
+                  onChange={e => handleInput(e, 'title')}
+                />
+              </div>
+              <div className="form-group">
+                <Input
+                  label="Address"
+                  value={profile.address}
+                  error={error.address}
+                  onChange={e => handleInput(e, 'address')}
+                />
+                <Input
+                  label="City"
+                  value={profile.city}
+                  error={error.city}
+                  onChange={e => handleInput(e, 'city')}
+                />
+                <div className="form-row">
+                  <div className="select-container">
+                    <Select
+                      label="State"
+                      options={states}
+                      value={selectedState}
+                      onChange={state => setSelectedState(state)}
+                    />
+                  </div>
+                  <Input
+                    label="Zip"
+                    value={profile.zip}
+                    error={error.zip}
+                    onChange={e => handleInput(e, 'zip')}
                   />
                 </div>
+              </div>
+              <div className="form-group">
                 <Input
-                  label="Zip"
-                  value={profile.zip}
-                  error={error.zip}
-                  onChange={e => handleInput(e, 'zip')}
+                  label="Department"
+                  value={profile.department}
+                  error={error.department}
+                  onChange={e => handleInput(e, 'clientcode')}
+                />
+                <Input
+                  label="Cell Phone"
+                  value={profile.phone_mobile}
+                  error={error.phone_mobile}
+                  onChange={e => handleInput(e, 'phone_mobile')}
+                />
+                <Input
+                  label="Home Phone"
+                  value={profile.phone_home}
+                  error={error.phone_home}
+                  onChange={e => handleInput(e, 'phone_home')}
                 />
               </div>
             </div>
-            <div className="form-group">
-              <Input
-                label="Department"
-                value={profile.department}
-                error={error.department}
-                onChange={e => handleInput(e, 'clientcode')}
-              />
-              <Input
-                label="Cell Phone"
-                value={profile.phone_mobile}
-                error={error.phone_mobile}
-                onChange={e => handleInput(e, 'phone_mobile')}
-              />
-              <Input
-                label="Home Phone"
-                value={profile.phone_home}
-                error={error.phone_home}
-                onChange={e => handleInput(e, 'phone_home')}
-              />
-            </div>
-          </div>
-          <button className="btn btn-primary" type="submit">
-            Update My Profile
-          </button>
-        </Form>
+            <button className="btn btn-primary" type="submit">
+              Update My Profile
+            </button>
+          </Form>
+        </div>
       </div>
-    </div>
+    </SidebarLayout>
   )
 }
 

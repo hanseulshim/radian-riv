@@ -3,8 +3,9 @@
 @import './layout.scss';
 
 // Page styles
-@import './pages/login/index.scss';
-@import './pages/profile/index.scss';
+@import './pages/Home.scss';
+@import './pages/Login.scss';
+@import './pages/Profile.scss';
 
 :root {
   --white: #ffffff;
@@ -14,11 +15,9 @@
   --gray: #8b8886;
   --nebula: #cddcda;
   --light-gray: rgba(61, 57, 53, 0.05);
-  --robins-egg: #00bab3;
+  --robins-egg: #09b9b3;
+  --elephant: #0f3654;
+  --cello: #1f445f;
+  --san-juan: #2e516a;
   --box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.1);
-}
-
-.primary-background {
-  background: var(--prussian-blue);
-  color: var(--white);
 }

@@ -1,18 +1,12 @@
 import Head from 'next/head'
 import Header from './Header'
 import Footer from './Footer'
-import { useAuth } from 'components/auth/AuthProvider'
-import Sidebar from 'components/sidebar'
 
 type Props = {
   children: React.ReactNode
 }
 
 export default function Layout({ children }: Props) {
-  const {
-    auth: { token }
-  } = useAuth()
-
   return (
     <div id="layout">
       <Head>
@@ -24,10 +18,7 @@ export default function Layout({ children }: Props) {
         />
       </Head>
       <Header />
-      <div id="main">
-        {token && <Sidebar />}
-        {children}
-      </div>
+      {children}
       <Footer />
     </div>
   )

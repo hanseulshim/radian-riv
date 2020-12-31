@@ -7,6 +7,7 @@ import { setSecurityQuestions } from 'api'
 import { validateForm } from 'utils/validation'
 import { useAuth } from 'components/auth/AuthProvider'
 import Form from 'components/common/Form'
+import SidebarLayout from 'components/sidebar'
 
 interface Question {
   label: string
@@ -105,49 +106,55 @@ function SecurityQuestions() {
   }
 
   return (
-    <div className="container security-questions">
-      <h1>Change Security Questions</h1>
-      <div className="form">
-        <Form id="security-questions" onSubmit={submitQuestions} alert={alert}>
-          <h3>
-            Please select three security questions and provide answers below:
-          </h3>
-          <div className="question-container">
-            <Select
-              options={questionList}
-              value={questions.question1}
-              onChange={item => handleSelect(item, 'question1')}
-            />
-            <Input
-              value={answers.answer1}
-              error={error.answer1}
-              onChange={e => handleInput(e, 'answer1')}
-            />
-            <Select
-              options={questionList}
-              value={questions.question2}
-              onChange={item => handleSelect(item, 'question2')}
-            />
-            <Input
-              value={answers.answer2}
-              error={error.answer2}
-              onChange={e => handleInput(e, 'answer2')}
-            />
-            <Select
-              options={questionList}
-              value={questions.question3}
-              onChange={item => handleSelect(item, 'question3')}
-            />
-            <Input
-              value={answers.answer3}
-              error={error.answer3}
-              onChange={e => handleInput(e, 'answer3')}
-            />
-            <button className="btn btn-secondary btn-small">Submit</button>
-          </div>
-        </Form>
+    <SidebarLayout group="Account">
+      <div className="container security-questions">
+        <h1>Change Security Questions</h1>
+        <div className="form">
+          <Form
+            id="security-questions"
+            onSubmit={submitQuestions}
+            alert={alert}
+          >
+            <h3>
+              Please select three security questions and provide answers below:
+            </h3>
+            <div className="question-container">
+              <Select
+                options={questionList}
+                value={questions.question1}
+                onChange={item => handleSelect(item, 'question1')}
+              />
+              <Input
+                value={answers.answer1}
+                error={error.answer1}
+                onChange={e => handleInput(e, 'answer1')}
+              />
+              <Select
+                options={questionList}
+                value={questions.question2}
+                onChange={item => handleSelect(item, 'question2')}
+              />
+              <Input
+                value={answers.answer2}
+                error={error.answer2}
+                onChange={e => handleInput(e, 'answer2')}
+              />
+              <Select
+                options={questionList}
+                value={questions.question3}
+                onChange={item => handleSelect(item, 'question3')}
+              />
+              <Input
+                value={answers.answer3}
+                error={error.answer3}
+                onChange={e => handleInput(e, 'answer3')}
+              />
+              <button className="btn btn-secondary btn-small">Submit</button>
+            </div>
+          </Form>
+        </div>
       </div>
-    </div>
+    </SidebarLayout>
   )
 }
 

@@ -10,6 +10,7 @@
   #main {
     flex: 1;
     display: flex;
+    margin-top: -1px;
 
     .container {
       padding: 3em 2em;
@@ -29,51 +30,52 @@
       .go-back {
         display: flex;
         align-items: center;
-        padding: 5px 30px;
+        padding: 20px 50px 0 50px;
         cursor: pointer;
+        font-size: 0.6em;
         img {
           width: 20px;
           margin-right: 5px;
         }
-        div {
-          font-size: 0.6em;
-        }
       }
-      .route-link,
-      .subroute-link {
+      .route-link {
         width: 100%;
-        padding: 5px 30px;
+        padding: 22.5px 25px 22.5px 50px;
+        font-weight: 700;
         position: relative;
         &:hover {
           span {
-            border-bottom: 1px solid var(--robins-egg);
+            border-bottom: 1px solid var(--white);
           }
         }
-      }
-      .route-link {
-        margin-bottom: 5px;
+        .label-icon {
+          position: absolute;
+          top: 30px;
+          left: 28px;
+          width: 12px;
+        }
         &.active:before {
           content: '';
           position: absolute;
           left: 0;
           bottom: 0;
-          border-bottom: 1px solid var(--robins-egg);
-          width: 75%;
+          border-bottom: 2px solid var(--robins-egg);
+          width: 200px;
         }
-        .label-icon {
+        &.active .label-icon {
           position: absolute;
-          bottom: -4px;
-          right: 22%;
-          width: 8px;
+          top: 64px;
+          left: 200px;
+          width: 12px;
         }
-      }
-      .subroute-link {
-        font-size: 0.75em;
-        img {
-          position: absolute;
-          left: 5%;
-          top: 40%;
-          width: 8px;
+        &.route-1 {
+          background: var(--elephant);
+        }
+        &.route-2 {
+          background: var(--cello);
+        }
+        &.route-3 {
+          background: var(--san-juan);
         }
       }
     }
@@ -85,9 +87,12 @@
     width: 150px;
   }
   .header-spacer {
-    padding: 10px 1em 0em 1em;
+    padding: 10px 50px 0em 50px;
     &.primary-background {
-      padding-bottom: 10px;
+      padding: 1em;
+      background: var(--prussian-blue);
+      color: var(--white);
+      text-align: center;
     }
   }
   .header-row {
@@ -99,11 +104,39 @@
     .profile-row {
       display: flex;
       align-items: center;
-      #profile-logo {
-        width: 25px;
-        height: 25px;
-        margin-left: 1em;
-        cursor: pointer;
+      .profile-menu {
+        display: flex;
+        align-items: center;
+        position: relative;
+        .menu-container {
+          position: absolute;
+          box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+          top: 30px;
+          left: -105px;
+          width: 150px;
+          display: flex;
+          flex-direction: column;
+          background: white;
+          margin: 0;
+          padding: 0;
+          list-style-type: none;
+          border-top: 1px solid var(--robins-egg);
+          border-radius: 0px 0px 16px 16px;
+          li {
+            cursor: pointer;
+            padding: 7px 1em;
+
+            &:hover {
+              background: var(--light-gray);
+            }
+          }
+        }
+        #profile-logo {
+          width: 25px;
+          height: 25px;
+          margin-left: 1em;
+          cursor: pointer;
+        }
       }
     }
   }
