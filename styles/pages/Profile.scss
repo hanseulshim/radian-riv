@@ -3,6 +3,10 @@
 .security-questions,
 .filter-defaults {
   background: var(--nebula);
+
+  .form {
+    max-width: 1600px;
+  }
 }
 .profile,
 .change-password {

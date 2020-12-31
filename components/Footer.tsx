@@ -1,7 +1,9 @@
 export default function Footer() {
   return (
     <div id="footer">
-      <img src={`${process.env.baseUrl}/images/footer-logo.svg`} alt="logo" />
+      <div className="logo-container">
+        <img src={`${process.env.baseUrl}/images/footer-logo.svg`} alt="logo" />
+      </div>
       <div className="content">
         <div className="footer-links">
           <a>About Us</a>
