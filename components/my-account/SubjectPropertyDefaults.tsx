@@ -4,7 +4,7 @@ import {
   getSubjectPropertyDefaults,
   setSubjectPropertyDefault
 } from 'api'
-import Select from 'components/common/Select'
+import CustomSelect from 'components/common/CustomSelect'
 import { useAuth } from 'components/auth/AuthProvider'
 import Form from 'components/common/Form'
 
@@ -90,7 +90,7 @@ function SubjectPropertyDefaults() {
               Includes/Excludes Subject Property in Comparables Lists &
               Calculations
             </p>
-            <Select
+            <CustomSelect
               options={subjectPropertyDefaults}
               value={selectedDefault.property}
               onChange={item => handleSelect(item, 'property')}

@@ -5,7 +5,7 @@ import { validateForm } from 'utils/validation'
 import { submitProfile, getStates } from 'api'
 import Cookies from 'js-cookie'
 import { useAuth } from 'components/auth/AuthProvider'
-import Select from 'components/common/Select'
+import CustomSelect from 'components/common/CustomSelect'
 import Form from 'components/common/Form'
 import SidebarLayout from 'components/sidebar'
 
@@ -110,56 +110,50 @@ function Profile() {
             <span>{user.email}</span>
           </div>
         </div>
-        <div className="form">
-          <Form id="profile" onSubmit={onUpdate} alert={alert}>
-            <div className="form-row">
-              <div className="form-group">
-                <Input
-                  label="First Name"
-                  value={profile.name_first}
-                  error={error.name_first}
-                  onChange={e => handleInput(e, 'name_first')}
-                />
-                <Input
-                  label="Last Name"
-                  value={profile.name_last}
-                  error={error.name_last}
-                  onChange={e => handleInput(e, 'name_last')}
-                />
-                <Input
-                  label="Title"
-                  value={profile.title}
-                  error={error.title}
-                  onChange={e => handleInput(e, 'title')}
-                />
-              </div>
-              <div className="form-group">
-                <Input
-                  label="Address"
-                  value={profile.address}
-                  error={error.address}
-                  onChange={e => handleInput(e, 'address')}
-                />
-                <Input
-                  label="City"
-                  value={profile.city}
-                  error={error.city}
-                  onChange={e => handleInput(e, 'city')}
-                />
-                <div className="form-row">
-                  <div className="select-container">
-                    <Select
-                      label="State"
-                      options={states}
-                      value={selectedState}
-                      onChange={state => setSelectedState(state)}
-                    />
-                  </div>
-                  <Input
-                    label="Zip"
-                    value={profile.zip}
-                    error={error.zip}
-                    onChange={e => handleInput(e, 'zip')}
+      </div>
+      <div className="form">
+        <Form id="profile" onSubmit={onUpdate} alert={alert}>
+          <div className="form-row">
+            <div className="form-group">
+              <Input
+                label="First Name"
+                value={profile.name_first}
+                error={error.name_first}
+                onChange={e => handleInput(e, 'name_first')}
+              />
+              <Input
+                label="Last Name"
+                value={profile.name_last}
+                error={error.name_last}
+                onChange={e => handleInput(e, 'name_last')}
+              />
+              <Input
+                label="Title"
+                value={profile.title}
+                error={error.title}
+                onChange={e => handleInput(e, 'title')}
+              />
+            </div>
+            <div className="form-group">
+              <Input
+                label="Address"
+                value={profile.address}
+                error={error.address}
+                onChange={e => handleInput(e, 'address')}
+              />
+              <Input
+                label="City"
+                value={profile.city}
+                error={error.city}
+                onChange={e => handleInput(e, 'city')}
+              />
+              <div className="form-row">
+                <div className="select-container">
+                  <CustomSelect
+                    label="State"
+                    options={states}
+                    value={selectedState}
+                    onChange={state => setSelectedState(state)}
                   />
                 </div>
               </div>
@@ -187,8 +181,8 @@ function Profile() {
             <button className="btn btn-primary" type="submit">
               Update My Profile
             </button>
-          </Form>
-        </div>
+          </div>
+        </Form>
       </div>
     </SidebarLayout>
   )

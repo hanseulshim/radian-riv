@@ -103,6 +103,7 @@
     .question-container {
       display: flex;
       flex-direction: column;
+      width: 600px;
     }
 
     .error-message,
@@ -128,6 +129,15 @@
         > * {
           margin: 10px 0;
         }
+      }
+    }
+    .search-defaults-container,
+    .subject-property-defaults-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .custom-select-container {
+        width: 400px;
       }
     }
     .success-message,

@@ -6,7 +6,7 @@ import {
   getFilterDefaultsTime,
   getFilterDefaultsRestrict
 } from 'api'
-import Select from 'components/common/Select'
+import CustomSelect from 'components/common/CustomSelect'
 import Input from 'components/common/Input'
 import { setFilterDefaults } from 'api'
 import { useAuth } from 'components/auth/AuthProvider'
@@ -156,7 +156,7 @@ function AveFilterDefaults() {
           <div className="filter-defaults-container">
             <div className="filter-defaults-column">
               <div className="title">Square Footage</div>
-              <Select
+              <CustomSelect
                 options={squareFootageOptions}
                 value={filterDefaults.sqft}
                 onChange={item => handleSelect(item, 'sqft')}
@@ -183,7 +183,7 @@ function AveFilterDefaults() {
                   filterDefaults.sqft && filterDefaults.sqft.value !== 1
                 }
               />
-              <Select
+              <CustomSelect
                 options={percentOptions}
                 value={filterDefaults.sqft_percent}
                 onChange={e => handleSelect(e, 'sqft_percent')}
@@ -214,7 +214,7 @@ function AveFilterDefaults() {
             </div>
             <div className="filter-defaults-column">
               <div className="title">Time Going Back</div>
-              <Select
+              <CustomSelect
                 options={timeOptions}
                 value={filterDefaults.time_going_back}
                 onChange={item => handleSelect(item, 'time_going_back')}
@@ -224,7 +224,7 @@ function AveFilterDefaults() {
             </div>
             <div className="filter-defaults-column">
               <div className="title">Restrict Comps</div>
-              <Select
+              <CustomSelect
                 options={restrictCompOptions}
                 value={filterDefaults.restrict_comps}
                 onChange={item => handleSelect(item, 'restrict_comps')}

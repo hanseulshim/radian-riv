@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getSecurityQuestions } from 'api'
 import { withAuth } from 'components/auth/AuthRoute'
-import Select from 'components/common/Select'
+import CustomSelect from 'components/common/CustomSelect'
 import Input from 'components/common/Input'
 import { setSecurityQuestions } from 'api'
 import { validateForm } from 'utils/validation'
@@ -11,7 +11,7 @@ import SidebarLayout from 'components/sidebar'
 
 interface Question {
   label: string
-  value: number
+  value: string | number
 }
 
 const defaultAnswerState = { answer1: '', answer2: '', answer3: '' }
@@ -119,7 +119,7 @@ function SecurityQuestions() {
               Please select three security questions and provide answers below:
             </h3>
             <div className="question-container">
-              <Select
+              <CustomSelect
                 options={questionList}
                 value={questions.question1}
                 onChange={item => handleSelect(item, 'question1')}
@@ -129,7 +129,7 @@ function SecurityQuestions() {
                 error={error.answer1}
                 onChange={e => handleInput(e, 'answer1')}
               />
-              <Select
+              <CustomSelect
                 options={questionList}
                 value={questions.question2}
                 onChange={item => handleSelect(item, 'question2')}
@@ -139,7 +139,7 @@ function SecurityQuestions() {
                 error={error.answer2}
                 onChange={e => handleInput(e, 'answer2')}
               />
-              <Select
+              <CustomSelect
                 options={questionList}
                 value={questions.question3}
                 onChange={item => handleSelect(item, 'question3')}

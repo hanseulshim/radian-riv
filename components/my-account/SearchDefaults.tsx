@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import Select from 'react-select'
 import {
   getDefaultSearchDepartments,
   getDefaultSearchDepartment,
   setDefaultSearchDepartment
 } from 'api'
-import Select from 'components/common/Select'
 import { useAuth } from 'components/auth/AuthProvider'
+import CustomSelect from 'components/common/CustomSelect'
 import Form from 'components/common/Form'
 
 const defaultSearchState = {
@@ -81,12 +82,13 @@ function SearchDefaults() {
       <div className="form">
         <Form id="search-defaults" onSubmit={submitDefaults} alert={alert}>
           <div className="search-defaults-container">
-            <Select
+            <CustomSelect
               options={departments}
               value={searchDefaults.department}
-              onChange={item => handleSelect(item, 'department')}
+              onChange={e => handleSelect(e, 'department')}
               label="Department (Search)"
               placeholder="Select Department"
+              className="custom-select"
             />
           </div>
           <button className="btn btn-secondary btn-small">Submit</button>
