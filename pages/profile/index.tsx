@@ -91,7 +91,7 @@ function Profile() {
   useEffect(() => {
     const stateFetch = async () => {
       const states = await getStates()
-      setStates(states.map(state => ({ label: state.code, value: state.code })))
+      setStates(states)
     }
     stateFetch()
   }, [])
@@ -110,50 +110,56 @@ function Profile() {
             <span>{user.email}</span>
           </div>
         </div>
-      </div>
-      <div className="form">
-        <Form id="profile" onSubmit={onUpdate} alert={alert}>
-          <div className="form-row">
-            <div className="form-group">
-              <Input
-                label="First Name"
-                value={profile.name_first}
-                error={error.name_first}
-                onChange={e => handleInput(e, 'name_first')}
-              />
-              <Input
-                label="Last Name"
-                value={profile.name_last}
-                error={error.name_last}
-                onChange={e => handleInput(e, 'name_last')}
-              />
-              <Input
-                label="Title"
-                value={profile.title}
-                error={error.title}
-                onChange={e => handleInput(e, 'title')}
-              />
-            </div>
-            <div className="form-group">
-              <Input
-                label="Address"
-                value={profile.address}
-                error={error.address}
-                onChange={e => handleInput(e, 'address')}
-              />
-              <Input
-                label="City"
-                value={profile.city}
-                error={error.city}
-                onChange={e => handleInput(e, 'city')}
-              />
-              <div className="form-row">
-                <div className="select-container">
-                  <CustomSelect
-                    label="State"
-                    options={states}
-                    value={selectedState}
-                    onChange={state => setSelectedState(state)}
+        <div className="form">
+          <Form id="profile" onSubmit={onUpdate} alert={alert}>
+            <div className="form-row">
+              <div className="form-group">
+                <Input
+                  label="First Name"
+                  value={profile.name_first}
+                  error={error.name_first}
+                  onChange={e => handleInput(e, 'name_first')}
+                />
+                <Input
+                  label="Last Name"
+                  value={profile.name_last}
+                  error={error.name_last}
+                  onChange={e => handleInput(e, 'name_last')}
+                />
+                <Input
+                  label="Title"
+                  value={profile.title}
+                  error={error.title}
+                  onChange={e => handleInput(e, 'title')}
+                />
+              </div>
+              <div className="form-group">
+                <Input
+                  label="Address"
+                  value={profile.address}
+                  error={error.address}
+                  onChange={e => handleInput(e, 'address')}
+                />
+                <Input
+                  label="City"
+                  value={profile.city}
+                  error={error.city}
+                  onChange={e => handleInput(e, 'city')}
+                />
+                <div className="form-row">
+                  <div className="select-container">
+                    <CustomSelect
+                      label="State"
+                      options={states}
+                      value={selectedState}
+                      onChange={state => setSelectedState(state)}
+                    />
+                  </div>
+                  <Input
+                    label="Zip"
+                    value={profile.zip}
+                    error={error.zip}
+                    onChange={e => handleInput(e, 'zip')}
                   />
                 </div>
               </div>
@@ -181,8 +187,8 @@ function Profile() {
             <button className="btn btn-primary" type="submit">
               Update My Profile
             </button>
-          </div>
-        </Form>
+          </Form>
+        </div>
       </div>
     </SidebarLayout>
   )
