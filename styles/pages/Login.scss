@@ -7,14 +7,6 @@
   overflow: hidden;
   flex: 1;
 
-  .background-image {
-    object-fit: cover;
-    position: absolute;
-    z-index: -5;
-    width: 100%;
-    height: 105%;
-  }
-
   .btn {
     margin: 20px 0;
   }
