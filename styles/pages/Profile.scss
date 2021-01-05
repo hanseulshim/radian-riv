@@ -9,7 +9,8 @@
   }
 }
 .profile,
-.change-password {
+.change-password,
+.security-questions {
   .info-container {
     margin: 1em 0;
 
@@ -125,6 +126,7 @@
     }
     .filter-defaults-container {
       display: flex;
+      width: 100%;
       .filter-defaults-column {
         display: flex;
         flex-direction: column;
@@ -157,10 +159,4 @@
 .search-defaults-container,
 .subject-property-defaults-container {
   margin-bottom: 1em;
-  .custom-select {
-    margin-left: auto;
-    margin-right: auto;
-    width: 300px;
-    max-width: 300px;
-  }
 }
