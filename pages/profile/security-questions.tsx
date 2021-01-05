@@ -149,7 +149,9 @@ function SecurityQuestions() {
                 error={error.answer3}
                 onChange={e => handleInput(e, 'answer3')}
               />
-              <button className="btn btn-secondary btn-small">Submit</button>
+              <div>
+                <button className="btn btn-secondary btn-small">Submit</button>
+              </div>
             </div>
           </Form>
         </div>

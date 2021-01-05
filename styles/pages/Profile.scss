@@ -104,6 +104,10 @@
       display: flex;
       flex-direction: column;
       width: 600px;
+      div {
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
 
     .error-message,
