@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Input from 'components/common/Input'
-import { validateForm } from 'utils/validation'
+import { validateForm } from 'utils'
 import TermsOfUse from './TermsOfUse'
 import { submitRegister } from 'api'
 import Modal from 'components/common/Modal'

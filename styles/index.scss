@@ -6,6 +6,7 @@
 @import './pages/Home.scss';
 @import './pages/Login.scss';
 @import './pages/Profile.scss';
+@import './pages/Trending.scss';
 
 :root {
   --white: #ffffff;
@@ -19,5 +20,7 @@
   --elephant: #0f3654;
   --cello: #1f445f;
   --san-juan: #2e516a;
+  --patina: #6a978e;
+  --black-squeeze: #f0fafa;
   --box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.1);
 }

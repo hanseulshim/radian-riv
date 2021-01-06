@@ -1,19 +1,14 @@
-import { withAuth } from 'components/auth/AuthRoute'
+import ProfileLayout from 'components/layouts/ProfileLayout'
 import AveFilterDefaults from 'components/my-account/AveFilterDefaults'
 import SearchDefaults from 'components/my-account/SearchDefaults'
 import SubjectPropertyDefaults from 'components/my-account/SubjectPropertyDefaults'
-import SidebarLayout from 'components/sidebar'
 
-function FilterDefaults() {
+export default function FilterDefaults() {
   return (
-    <SidebarLayout group="Account">
-      <div className={'container filter-defaults'}>
-        <AveFilterDefaults />
-        <SearchDefaults />
-        <SubjectPropertyDefaults />
-      </div>
-    </SidebarLayout>
+    <ProfileLayout label="Filter Defaults" className="filter-defaults">
+      <AveFilterDefaults />
+      <SearchDefaults />
+      <SubjectPropertyDefaults />
+    </ProfileLayout>
   )
 }
-
-export default withAuth(FilterDefaults)

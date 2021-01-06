@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext, useContext } from 'react'
+import { useState, useEffect, createContext, useContext } from 'react'
 import Cookies from 'js-cookie'
 
 export const defaultAuth = {
@@ -63,7 +63,7 @@ export const AuthProvider = ({
   children: React.ReactNode
 }): React.ReactElement => {
   const [auth, setAuth] = useState<AuthType>(defaultAuth)
-  const [isLoading, setLoading] = React.useState<boolean>(true)
+  const [isLoading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
     const initializeAuth = async (): Promise<void> => {

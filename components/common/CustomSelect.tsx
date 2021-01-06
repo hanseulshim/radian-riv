@@ -1,4 +1,3 @@
-import React from 'react'
 import Select from 'react-select'
 
 interface Option {
@@ -17,7 +16,7 @@ interface Props {
 }
 
 const customStyles = {
-  option: (provided, state) => ({
+  option: provided => ({
     ...provided,
     cursor: 'pointer',
     color: 'black',
@@ -26,7 +25,7 @@ const customStyles = {
       backgroundColor: 'rgba(61, 57, 53, 0.05)'
     }
   }),
-  control: (provided, state) => ({
+  control: provided => ({
     ...provided,
     cursor: 'pointer',
     border: 'none',

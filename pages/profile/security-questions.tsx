@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { getSecurityQuestions } from 'api'
-import { withAuth } from 'components/auth/AuthRoute'
-import CustomSelect from 'components/common/CustomSelect'
-import Input from 'components/common/Input'
-import { setSecurityQuestions } from 'api'
-import { validateForm } from 'utils/validation'
+import { getSecurityQuestions, setSecurityQuestions } from 'api'
 import { useAuth } from 'components/auth/AuthProvider'
+import CustomSelect from 'components/common/CustomSelect'
 import Form from 'components/common/Form'
-import SidebarLayout from 'components/sidebar'
+import Input from 'components/common/Input'
+import ProfileLayout from 'components/layouts/ProfileLayout'
+import { useEffect, useState } from 'react'
+import { validateForm } from 'utils'
 
 interface Question {
   label: string
@@ -21,7 +19,7 @@ const defaultQuestionState = {
   question3: null
 }
 
-function SecurityQuestions() {
+export default function SecurityQuestions() {
   const {
     auth: { user }
   } = useAuth()
@@ -106,58 +104,50 @@ function SecurityQuestions() {
   }
 
   return (
-    <SidebarLayout group="Account">
-      <div className="container security-questions">
-        <h1>Change Security Questions</h1>
-        <div className="form">
-          <Form
-            id="security-questions"
-            onSubmit={submitQuestions}
-            alert={alert}
-          >
-            <h3>
-              Please select three security questions and provide answers below:
-            </h3>
-            <div className="question-container">
-              <CustomSelect
-                options={questionList}
-                value={questions.question1}
-                onChange={item => handleSelect(item, 'question1')}
-              />
-              <Input
-                value={answers.answer1}
-                error={error.answer1}
-                onChange={e => handleInput(e, 'answer1')}
-              />
-              <CustomSelect
-                options={questionList}
-                value={questions.question2}
-                onChange={item => handleSelect(item, 'question2')}
-              />
-              <Input
-                value={answers.answer2}
-                error={error.answer2}
-                onChange={e => handleInput(e, 'answer2')}
-              />
-              <CustomSelect
-                options={questionList}
-                value={questions.question3}
-                onChange={item => handleSelect(item, 'question3')}
-              />
-              <Input
-                value={answers.answer3}
-                error={error.answer3}
-                onChange={e => handleInput(e, 'answer3')}
-              />
-              <div>
-                <button className="btn btn-secondary btn-small">Submit</button>
-              </div>
+    <ProfileLayout label="Security Questions" className="security-questions">
+      <h1>Change Security Questions</h1>
+      <div className="form">
+        <Form id="security-questions" onSubmit={submitQuestions} alert={alert}>
+          <h3>
+            Please select three security questions and provide answers below:
+          </h3>
+          <div className="question-container">
+            <CustomSelect
+              options={questionList}
+              value={questions.question1}
+              onChange={item => handleSelect(item, 'question1')}
+            />
+            <Input
+              value={answers.answer1}
+              error={error.answer1}
+              onChange={e => handleInput(e, 'answer1')}
+            />
+            <CustomSelect
+              options={questionList}
+              value={questions.question2}
+              onChange={item => handleSelect(item, 'question2')}
+            />
+            <Input
+              value={answers.answer2}
+              error={error.answer2}
+              onChange={e => handleInput(e, 'answer2')}
+            />
+            <CustomSelect
+              options={questionList}
+              value={questions.question3}
+              onChange={item => handleSelect(item, 'question3')}
+            />
+            <Input
+              value={answers.answer3}
+              error={error.answer3}
+              onChange={e => handleInput(e, 'answer3')}
+            />
+            <div>
+              <button className="btn btn-secondary btn-small">Submit</button>
             </div>
-          </Form>
-        </div>
+          </div>
+        </Form>
       </div>
-    </SidebarLayout>
+    </ProfileLayout>
   )
 }
-
-export default withAuth(SecurityQuestions)

@@ -199,3 +199,16 @@
     }
   }
 }
+
+#breadcrumbs {
+  margin-bottom: 1em;
+  display: flex;
+
+  a {
+    color: var(--patina);
+    text-decoration: underline;
+  }
+  span {
+    margin: 0 10px;
+  }
+}

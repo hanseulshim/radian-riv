@@ -1,10 +1,11 @@
 import { withAuth } from 'components/auth/AuthRoute'
-import SidebarLayout from 'components/sidebar'
+import Sidebar from 'components/Sidebar'
+import { rootRoutes } from 'utils'
 
 function Main() {
   return (
     <div id="main">
-      <SidebarLayout />
+      <Sidebar parent routes={rootRoutes} />
       <div id="home-page">
         <img
           src={`${process.env.baseUrl}/images/house.png`}

@@ -1,51 +1,113 @@
-export default [
+import { getCounties, getStates } from 'api'
+
+export interface Route {
+  label: string
+  value: string
+  path: string
+  parentPath: string
+}
+
+export const rootRoutes = [
   {
-    id: 1,
-    name: 'Home',
+    label: 'Home',
+    value: 'Home',
     path: '/',
-    parentId: null,
-    group: 'root'
+    parentPath: ''
   },
   {
-    id: 2,
-    name: 'Trending',
+    label: 'Trending',
+    value: 'Trending',
     path: '/trending',
-    parentId: null,
-    group: 'root'
+    parentPath: '/'
   },
   {
-    id: 3,
-    name: 'Radian Interactive Value',
+    label: 'Radian Interactive Value',
+    value: 'Radian Interactive Value',
     path: '/radian-interactive-value',
-    parentId: null,
-    group: 'root'
-  },
+    parentPath: '/'
+  }
+]
+
+export const profileRoutes = [
   {
-    id: 4,
-    name: 'Profile',
+    label: 'User Profile',
+    value: 'User Profile',
     path: '/profile',
-    parentId: 1,
-    group: 'Account'
+    parentPath: '/'
   },
   {
-    id: 5,
-    name: 'Change Password',
+    label: 'Change Password',
+    value: 'Change Password',
     path: '/profile/password',
-    parentId: 1,
-    group: 'Account'
+    parentPath: '/'
   },
   {
-    id: 6,
-    name: 'Change Security Questions',
+    label: 'Change Security Questions',
+    value: 'Change Security Questions',
     path: '/profile/security-questions',
-    parentId: 1,
-    group: 'Account'
+    parentPath: '/'
   },
   {
-    id: 7,
-    name: 'Change Filter Defaults',
+    label: 'Change Filter Defaults',
+    value: 'Change Filter Defaults',
     path: '/profile/filter-defaults',
-    parentId: 1,
-    group: 'Account'
+    parentPath: '/'
+  }
+]
+
+export const getStateRoutes = async (): Promise<Route[]> => {
+  const states = await getStates()
+  return [
+    {
+      label: 'United States',
+      value: 'United States',
+      path: '/trending',
+      parentPath: '/trending'
+    },
+    ...states.map(({ label, value }) => ({
+      label,
+      value: value.toLowerCase(),
+      path: `/trending/${value.toLowerCase()}`,
+      parentPath: '/trending'
+    }))
+  ]
+}
+
+export const getCountyRoutes = async (state: Route): Promise<Route[]> => {
+  const counties = await getCounties(state.value)
+  return [
+    {
+      label: `${state.label} Counties`,
+      value: `${state.label} Counties`,
+      path: `/trending/${state.value}`,
+      parentPath: `/trending/${state.value}`
+    },
+    ...counties.map(({ label, value }) => ({
+      label,
+      value: value.toLowerCase(),
+      path: `/trending/${state.value}/${value.toLowerCase()}`,
+      parentPath: `/trending/${state.value}`
+    }))
+  ]
+}
+
+export const getTrendingRoutes = (state: Route, county: Route): Route[] => [
+  {
+    label: 'Home Price',
+    value: 'Home Price',
+    path: `/trending/${state.value}/${county.value}`,
+    parentPath: `/trending/${state.value}/${county.value}`
+  },
+  {
+    label: 'Listed/Sold',
+    value: 'Listed/Sold',
+    path: `/trending/${state.value}/${county.value}/listed-sold`,
+    parentPath: `/trending/${state.value}/${county.value}`
+  },
+  {
+    label: 'DOM/Supply',
+    value: 'DOM/Supply',
+    path: `/trending/${state.value}/${county.value}/dom-supply`,
+    parentPath: `/trending/${state.value}/${county.value}`
   }
 ]
