@@ -1,0 +1,25 @@
+name: Beta Deployment
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: Install NPM packages
+        run: npm install
+      - name: Build project
+        run: NODE_ENV=beta npm run build && npm run export
+      - name: Copy files to the test website with the AWS CLI
+        run: |
+          aws s3 sync ./out s3://beta.boostlabs/radian-riv && aws cloudfront create-invalidation --distribution-id E1BGED8DR3E2BV --paths '/radian-riv/*'
