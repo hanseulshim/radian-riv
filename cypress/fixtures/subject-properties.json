@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "status": 1,
+  "message": "string",
+  "detail": "string",
+  "data": [
+    {
+      "value": 0,
+      "label": "Include - 6 Months"
+    },
+    {
+      "value": 1,
+      "label": "Include - 3 Months"
+    },
+    {
+      "value": 2,
+      "label": "Exclude"
+    }
+  ]
+}

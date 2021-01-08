@@ -34,7 +34,7 @@ export default function ResetPassword({ closeModal }: Props) {
       })
     } else {
       try {
-        const userid_ssid = await submitResetPassword(resetPassword)
+        const { userid_ssid } = await submitResetPassword(resetPassword)
         const questionResponse = await getUserQuestion(userid_ssid)
         setUserId(userid_ssid)
         setQuestion(questionResponse)

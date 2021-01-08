@@ -1,0 +1,10 @@
+{
+  "success": true,
+  "status": 1,
+  "message": "string",
+  "detail": "string",
+  "data": {
+    "value": -1,
+    "label": "- All -"
+  }
+}

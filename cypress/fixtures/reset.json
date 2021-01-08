@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "status": 1,
+  "message": "string",
+  "detail": "string",
+  "data": {
+    "userid_ssid": "1234567890"
+  }
+}

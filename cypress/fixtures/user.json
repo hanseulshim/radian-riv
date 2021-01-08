@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "status": 1,
+  "message": null,
+  "detail": null,
+  "data": {
+    "userid_ssid": "1234567890",
+    "roleid": 1,
+    "clientcode": "Client 1",
+    "departmentid": 1,
+    "username": "user@radian.com",
+    "email": "user@radian.com",
+    "name_last": "McCringleberry",
+    "name_first": "Hingle",
+    "address": "82681 Schmidt Plaza",
+    "city": "North Carli",
+    "state": "WI",
+    "zip": 58099,
+    "phone_home": "215-555-1872",
+    "phone_mobile": "484-555-0980",
+    "title": "Manager"
+  }
+}

@@ -20,9 +20,13 @@ interface ResetPassword {
   email: string
 }
 
+interface UserId {
+  userid_ssid: string
+}
+
 export const submitResetPassword = async (
   form: ResetPassword
-): Promise<string> => {
+): Promise<UserId> => {
   const data = await handleApi('/auth/reset', form)
   return data
 }

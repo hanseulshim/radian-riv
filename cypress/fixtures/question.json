@@ -1,0 +1,10 @@
+{
+  "success": true,
+  "status": 1,
+  "message": "string",
+  "detail": "string",
+  "data": {
+    "question_id": 1,
+    "question_text": "What's your dad's name"
+  }
+}

@@ -26,16 +26,9 @@
 
 Cypress.Commands.add('login', () => {
   cy.visit('http://localhost:3000')
+  cy.intercept('POST', '/auth/login', { fixture: 'login' })
+  cy.intercept('GET', '/user', { fixture: 'user' })
   cy.get('input[name="Username"]').type('t')
   cy.get('input[name="Password"]').type('t')
   cy.get('#login').submit()
-})
-
-Cypress.Commands.add('myAccount', () => {
-  cy.clearCookies()
-  cy.visit('http://localhost:3000')
-  cy.get('input[name="Username"]').type('t')
-  cy.get('input[name="Password"]').type('t')
-  cy.get('#login').submit()
-  cy.get('.route-link').first().click()
 })

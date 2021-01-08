@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "status": 1,
+  "message": "string",
+  "detail": "string",
+  "data": [
+    {
+      "value": 0,
+      "label": ""
+    },
+    {
+      "value": 1,
+      "label": "by Min/Max"
+    },
+    {
+      "value": 2,
+      "label": "by Variance"
+    }
+  ]
+}

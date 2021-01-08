@@ -1,16 +1,17 @@
-import { useAuth, defaultAuth } from 'components/auth/AuthProvider'
-import { useRouter } from 'next/router'
-import Link from 'next/link'
+import { defaultAuth, useAuth } from 'components/auth/AuthProvider'
 import Cookies from 'js-cookie'
-import { useState, useEffect, useCallback } from 'react'
+import Link from 'next/link'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 export default function ProfileMenu() {
+  const isCancelled = useRef(false)
   const [showMenu, setShowMenu] = useState(false)
   const { setAuth } = useAuth()
-  const router = useRouter()
 
   const handleClick = useCallback(() => {
-    setShowMenu(false)
+    if (!isCancelled.current) {
+      setShowMenu(false)
+    }
   }, [setShowMenu])
 
   useEffect(() => {
@@ -21,10 +22,15 @@ export default function ProfileMenu() {
     }
   }, [showMenu])
 
+  useEffect(() => {
+    return () => {
+      isCancelled.current = true
+    }
+  }, [])
+
   const logout = () => {
     Cookies.remove('auth')
     setAuth(defaultAuth)
-    router.push('/login')
   }
   const openMenu = () => {
     setShowMenu(true)

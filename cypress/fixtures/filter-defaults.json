@@ -1,0 +1,29 @@
+{
+  "success": true,
+  "status": 1,
+  "message": "string",
+  "detail": "string",
+  "data": {
+    "sqft": {
+      "value": 1,
+      "label": "by Min/Max"
+    },
+    "sqft_min": 12.5,
+    "sqft_max": 15,
+    "sqft_percent": {
+      "value": 2,
+      "label": "10%"
+    },
+    "comparable_retail": true,
+    "comparable_distressed": false,
+    "time_going_back": {
+      "value": 0,
+      "label": "3 Months"
+    },
+    "comps_subdivision": true,
+    "restrict_comps": {
+      "value": 1,
+      "label": "Single Family"
+    }
+  }
+}

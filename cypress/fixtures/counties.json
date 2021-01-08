@@ -1,0 +1,100 @@
+{
+  "success": true,
+  "status": 1,
+  "message": "string",
+  "detail": "string",
+  "data": [
+    {
+      "label": "Allegany",
+      "value": "allegany"
+    },
+    {
+      "label": "Anne Arundel",
+      "value": "anne-arundel"
+    },
+    {
+      "label": "Baltimore",
+      "value": "baltimore"
+    },
+    {
+      "label": "Calvert",
+      "value": "calvert"
+    },
+    {
+      "label": "Caroline",
+      "value": "caroline"
+    },
+    {
+      "label": "Carroll",
+      "value": "carroll"
+    },
+    {
+      "label": "Cecil",
+      "value": "cecil"
+    },
+    {
+      "label": "Charles",
+      "value": "charles"
+    },
+    {
+      "label": "Dorchester",
+      "value": "dorchester"
+    },
+    {
+      "label": "Frederick",
+      "value": "frederick"
+    },
+    {
+      "label": "Garrett",
+      "value": "garrett"
+    },
+    {
+      "label": "Harford",
+      "value": "harford"
+    },
+    {
+      "label": "Howard",
+      "value": "howard"
+    },
+    {
+      "label": "Kent",
+      "value": "kent"
+    },
+    {
+      "label": "Montgomery",
+      "value": "montgomery"
+    },
+    {
+      "label": "Prince George's",
+      "value": "prince-georges"
+    },
+    {
+      "label": "Queen Anne's",
+      "value": "queen-annes"
+    },
+    {
+      "label": "Somerset",
+      "value": "somerset"
+    },
+    {
+      "label": "St. Mary's",
+      "value": "st-marys"
+    },
+    {
+      "label": "Talbot",
+      "value": "talbot"
+    },
+    {
+      "label": "Washington",
+      "value": "washington"
+    },
+    {
+      "label": "Wicomico",
+      "value": "wicomico"
+    },
+    {
+      "label": "Worcester",
+      "value": "worcester"
+    }
+  ]
+}

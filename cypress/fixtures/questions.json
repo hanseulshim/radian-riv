@@ -1,0 +1,32 @@
+{
+  "success": true,
+  "status": 1,
+  "message": "string",
+  "detail": "string",
+  "data": [
+    {
+      "value": 0,
+      "label": "What was your childhood nickname?"
+    },
+    {
+      "value": 1,
+      "label": "In what city did you meet your spouse/significant other?"
+    },
+    {
+      "value": 2,
+      "label": "What is the name of your favorite childhood friend?"
+    },
+    {
+      "value": 3,
+      "label": "What street did you live on in third grade?"
+    },
+    {
+      "value": 4,
+      "label": "What was the name of your first stuffed animal?"
+    },
+    {
+      "value": 5,
+      "label": "What is the middle name of your youngest child?"
+    }
+  ]
+}

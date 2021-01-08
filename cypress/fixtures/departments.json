@@ -1,0 +1,28 @@
+{
+  "success": true,
+  "status": 1,
+  "message": "string",
+  "detail": "string",
+  "data": [
+    {
+      "value": -1,
+      "label": "- All -"
+    },
+    {
+      "value": -2,
+      "label": "<Not Assigned>"
+    },
+    {
+      "value": 1,
+      "label": "Sample 1"
+    },
+    {
+      "value": 2,
+      "label": "Sample 2"
+    },
+    {
+      "value": 3,
+      "label": "Sample 3"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "status": 1,
+  "message": null,
+  "detail": null,
+  "data": {
+    "token": "bcf62b2c-c739-42aa-958d-7a9930ca7fff",
+    "userid_ssid": "1234567890",
+    "display-name": "John Doe",
+    "landing-page": "search",
+    "has-password": true,
+    "has-questions": true,
+    "has-terms": true,
+    "has-lock": true,
+    "has-notifications": true,
+    "navigation-blacklist": [0]
+  }
+}
