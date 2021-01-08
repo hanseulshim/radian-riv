@@ -316,8 +316,12 @@ a {
 }
 
 .custom-select-container {
+  position: relative;
   .custom-select-label {
     font-size: 0.6em;
+    position: absolute;
+    z-index: 5;
+    top: -15px;
   }
   width: 100%;
   min-width: 100px;

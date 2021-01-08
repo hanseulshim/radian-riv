@@ -6,6 +6,7 @@
 
   .form {
     max-width: 1600px;
+    padding: 2em 3em;
   }
 }
 .profile,
@@ -21,8 +22,6 @@
   }
 
   .form {
-    padding: 2em 3em;
-
     .error-input-message {
       height: 1.5em;
     }
@@ -35,7 +34,7 @@
     }
 
     .select-container {
-      margin-bottom: 24px;
+      margin-bottom: 22px;
       margin-right: 1em;
     }
   }

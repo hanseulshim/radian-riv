@@ -1,0 +1,11 @@
+.change-prop-chars-wrapper {
+  color: var(--prussian-blue);
+  .form {
+    align-items: flex-start;
+    .form-row {
+      .input-group {
+        margin-right: 20px;
+      }
+    }
+  }
+}

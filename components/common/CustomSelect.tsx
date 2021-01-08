@@ -34,6 +34,7 @@ const customStyles = {
     '&:hover': {
       borderBottom: '1px solid #00bab3'
     },
+    borderRadius: 0,
     width: '100%'
   })
 }
