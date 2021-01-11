@@ -20,32 +20,22 @@ interface ResetPassword {
   email: string
 }
 
-interface UserId {
-  userid_ssid: string
+interface QuestionInfo {
+  question_text: string
+  question_num: number
 }
 
 export const submitResetPassword = async (
   form: ResetPassword
-): Promise<UserId> => {
+): Promise<QuestionInfo> => {
   const data = await handleApi('/auth/reset', form)
   return data
 }
 
-interface Question {
-  questionid: number
-  question_text: string
-}
-
-export const getUserQuestion = async (
-  userid_ssid: string
-): Promise<Question> => {
-  const data = await handleApi(`/auth/question/${userid_ssid}`)
-  return data
-}
-
 interface Answer {
-  userid_ssid: string
-  question_id: number
+  username: string
+  email: string
+  question_num: number
   answer: string
 }
 

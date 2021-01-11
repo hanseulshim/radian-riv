@@ -84,7 +84,6 @@ describe('Login Page Functions', () => {
         cy.get('@email').clear()
         cy.get('@email').type('test@boostlabs.com')
         cy.intercept('POST', '/auth/reset', { fixture: 'reset' })
-        cy.intercept('GET', '/auth/question', { fixture: 'question' })
         cy.get('#reset-password').submit()
         cy.get('.modal-container').find('h2').contains('Security Question')
       })

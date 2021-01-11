@@ -4,6 +4,7 @@
   "message": "string",
   "detail": "string",
   "data": {
-    "userid_ssid": "1234567890"
+    "question_text": "In what year was your father born?",
+    "question_num": 3
   }
 }

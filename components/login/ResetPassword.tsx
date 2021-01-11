@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Input from 'components/common/Input'
 import { validateForm } from 'utils'
-import { submitResetPassword, getUserQuestion, submitAnswer } from 'api'
+import { submitResetPassword, submitAnswer } from 'api'
 import Modal from 'components/common/Modal'
 import Form from 'components/common/Form'
 
@@ -21,7 +21,6 @@ export default function ResetPassword({ closeModal }: Props) {
   const [question, setQuestion] = useState(null)
   const [answer, setAnswer] = useState('')
   const [answerError, setAnswerError] = useState('')
-  const [userId, setUserId] = useState('')
   const [questionSuccess, setQuestionSuccess] = useState(false)
 
   const onReset = async () => {
@@ -34,9 +33,8 @@ export default function ResetPassword({ closeModal }: Props) {
       })
     } else {
       try {
-        const { userid_ssid } = await submitResetPassword(resetPassword)
-        const questionResponse = await getUserQuestion(userid_ssid)
-        setUserId(userid_ssid)
+        setAlert(null)
+        const questionResponse = await submitResetPassword(resetPassword)
         setQuestion(questionResponse)
       } catch (e) {
         setAlert({ type: 'error', message: e.message })
@@ -52,8 +50,8 @@ export default function ResetPassword({ closeModal }: Props) {
     } else {
       try {
         await submitAnswer({
-          userid_ssid: userId,
-          question_id: question.question_id,
+          ...resetPassword,
+          question_num: question.question_num,
           answer
         })
         setQuestionSuccess(true)
