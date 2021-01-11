@@ -7,7 +7,9 @@ export default function Footer() {
       <div className="content">
         <div className="footer-links">
           <a>About Us</a>
-          <a>Privacy Policy</a>
+          <a target="_blank" href={`${process.env.baseUrl}/TermsOfUse.pdf`}>
+            Privacy Policy
+          </a>
           <a>Terms of Use</a>
           <a>Copyright Infringement</a>
           <a>Email Us: vox@redbellre.com</a>
