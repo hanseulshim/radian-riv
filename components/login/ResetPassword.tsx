@@ -21,7 +21,7 @@ export default function ResetPassword({ closeModal }: Props) {
   const [question, setQuestion] = useState(null)
   const [answer, setAnswer] = useState('')
   const [answerError, setAnswerError] = useState('')
-  const [questionSuccess, setQuestionSuccess] = useState(false)
+  const [questionSuccess, setQuestionSuccess] = useState('')
 
   const onReset = async () => {
     const errorCopy = { ...defaultState }
@@ -49,12 +49,12 @@ export default function ResetPassword({ closeModal }: Props) {
       setAnswerError('Answer cannot be empty')
     } else {
       try {
-        await submitAnswer({
+        const message = await submitAnswer({
           ...resetPassword,
           question_num: question.question_num,
           answer
         })
-        setQuestionSuccess(true)
+        setQuestionSuccess(message)
       } catch (e) {
         setAlert({ type: 'error', message: e.message })
       }
@@ -115,9 +115,7 @@ export default function ResetPassword({ closeModal }: Props) {
           </p>
         </Form>
       ) : questionSuccess ? (
-        <div className="question-success">
-          Your temporary password will be emailed to you.
-        </div>
+        <div className="question-success">{questionSuccess}</div>
       ) : (
         <Form id="set-question" onSubmit={onAnswer} alert={alert}>
           <div className="question">{question.question_text}</div>

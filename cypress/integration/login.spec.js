@@ -112,9 +112,7 @@ describe('Login Page Functions', () => {
     describe('Success Message', () => {
       it('submitting answer should show success message', () => {
         cy.get('.modal-container').find('h2').contains('Success!')
-        cy.get('.question-success').contains(
-          'Your temporary password will be emailed to you.'
-        )
+        cy.get('.question-success').should('not.be.empty')
       })
       it('should close modal', () => {
         cy.get('.close-form').click()
