@@ -6,7 +6,7 @@ interface Login {
   pwd: string
 }
 export const submitLogin = async (form: Login): Promise<void> => {
-  const { token, userid_ssid } = await handleApi('/auth/login', form)
+  const { token, userid_ssid } = await handleApi('/auth/login', form, true)
   const user = await handleApi(`/user/${userid_ssid}`)
   const auth = {
     token,
@@ -28,7 +28,7 @@ interface QuestionInfo {
 export const submitResetPassword = async (
   form: ResetPassword
 ): Promise<QuestionInfo> => {
-  const data = await handleApi('/auth/reset', form)
+  const data = await handleApi('/auth/reset', form, true)
   return data
 }
 
@@ -40,7 +40,7 @@ interface Answer {
 }
 
 export const submitAnswer = async (form: Answer): Promise<string> => {
-  const data = await handleApi('/auth/answer', form)
+  const data = await handleApi('/auth/answer', form, true)
   return data
 }
 
@@ -53,6 +53,6 @@ interface Register {
 }
 
 export const submitRegister = async (form: Register): Promise<string> => {
-  const data = await handleApi('/auth/register', form)
+  const data = await handleApi('/auth/register', form, true)
   return data
 }
