@@ -89,6 +89,7 @@ export default function Profile() {
 
   useEffect(() => {
     const stateFetch = async () => {
+      //TODO: Add try/catch
       const states = await getStates()
       setStates(states.map(state => ({ ...state, label: state.value })))
     }

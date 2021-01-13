@@ -18,6 +18,7 @@ function CountyLayout({ children, label }: Props) {
   useEffect(() => {
     const currentCounty = async () => {
       if (state && county) {
+        //TODO: Add try/catch
         const currentCounty = await getCurrentCounty(
           state as string,
           county as string

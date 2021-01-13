@@ -8,6 +8,7 @@ function Trending() {
   const [stateRoutes, setStateRoutes] = useState<Route[]>([])
   useEffect(() => {
     const getStates = async () => {
+      //TODO: Add try/catch
       const states = await getStateRoutes()
       setStateRoutes(states)
     }

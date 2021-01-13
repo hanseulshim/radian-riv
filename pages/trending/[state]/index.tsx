@@ -13,6 +13,7 @@ function State() {
   useEffect(() => {
     const currentState = async () => {
       if (state) {
+        //TODO: Add try/catch
         const currentState = await getCurrentState(state as string)
         const counties = await getCountyRoutes(currentState)
         setCountyRoutes(counties)

@@ -31,22 +31,26 @@ export default function SecurityQuestions() {
 
   useEffect(() => {
     const securityQuestionFetch = async () => {
-      const securityQuestions = await getSecurityQuestions()
-      setQuestionList(securityQuestions)
-      if (securityQuestions.length > 2) {
-        setQuestions({
-          question3: securityQuestions[2],
-          question2: securityQuestions[1],
-          question1: securityQuestions[0]
-        })
-      } else if (securityQuestions.length > 1) {
-        setQuestions({
-          ...questions,
-          question2: securityQuestions[1],
-          question1: securityQuestions[0]
-        })
-      } else if (securityQuestions.length) {
-        setQuestions({ ...questions, question1: securityQuestions[0] })
+      try {
+        const securityQuestions = await getSecurityQuestions()
+        setQuestionList(securityQuestions)
+        if (securityQuestions.length > 2) {
+          setQuestions({
+            question3: securityQuestions[2],
+            question2: securityQuestions[1],
+            question1: securityQuestions[0]
+          })
+        } else if (securityQuestions.length > 1) {
+          setQuestions({
+            ...questions,
+            question2: securityQuestions[1],
+            question1: securityQuestions[0]
+          })
+        } else if (securityQuestions.length) {
+          setQuestions({ ...questions, question1: securityQuestions[0] })
+        }
+      } catch (e) {
+        setAlert({ type: 'error', message: e.message })
       }
     }
     securityQuestionFetch()
