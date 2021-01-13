@@ -8,16 +8,19 @@ import Cookies from 'js-cookie'
 export const handleApi = async (
   route: string,
   payload?: any,
-  noToken: boolean = false
+  noToken: boolean = false,
+  token: string = ''
 ) => {
   const myHeaders = new Headers()
   myHeaders.append('Content-Type', 'application/json')
   myHeaders.append('Accept', 'application/json')
   const authCookies = Cookies.get('auth')
   let auth = null
-  if (authCookies) {
+  if (token) {
+    myHeaders.append('Authorization', `Bearer ${token}`)
+  } else if (authCookies) {
     auth = JSON.parse(authCookies)
-    if (noToken) {
+    if (!noToken) {
       myHeaders.append('Authorization', `Bearer ${auth.token}`)
     }
   }

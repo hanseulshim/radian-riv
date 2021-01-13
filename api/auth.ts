@@ -6,8 +6,8 @@ interface Login {
   pwd: string
 }
 export const submitLogin = async (form: Login): Promise<void> => {
-  const { token, userid_ssid } = await handleApi('/auth/login', form, true)
-  const user = await handleApi(`/user/${userid_ssid}`)
+  const { token } = await handleApi('/auth/login', form, true)
+  const user = await handleApi(`/user/get`, null, true, token)
   const auth = {
     token,
     user
