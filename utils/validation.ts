@@ -4,6 +4,20 @@
 const emailValidation = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/gm
 const phoneValidation = /^[(]?[0-9]{3}[)]?[-\s]?[0-9]{3}[-\s]?[0-9]{4}$/gim
 
+export const validateEmail = (
+  email: string,
+  required: boolean = false
+): string => {
+  if (email.length === 0) {
+    if (required) {
+      return `Email can't be empty`
+    } else return ''
+  } else if (!email.match(emailValidation)) {
+    return `Email must be valid`
+  }
+  return ''
+}
+
 export const validateForm = (form: any, reqFields: any = {}): any => {
   const errorObj = {}
   Object.keys(form).forEach(key => {

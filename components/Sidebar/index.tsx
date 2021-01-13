@@ -1,6 +1,8 @@
 import Link from 'next/link'
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { Route } from 'utils/routes'
+import WebsiteSupport from './WebsiteSupport'
 
 type Props = {
   children?: React.ReactNode
@@ -17,6 +19,10 @@ export default function Sidebar({
   routes = [],
   parent = false
 }: Props) {
+  const [websiteSupport, setWebsiteSupport] = useState(false)
+  const toggleWebsiteSupport = () => {
+    setWebsiteSupport(!websiteSupport)
+  }
   const { asPath } = useRouter()
   const activeIndex = routes.findIndex(route => route.path === asPath)
   return (
@@ -60,12 +66,15 @@ export default function Sidebar({
           </div>
         </div>
         <div className="sidebar-footer">
-          <a>Help Doc</a>
+          <a target="_blank" href={`${process.env.baseUrl}/Faq.pdf`}>
+            Help Doc
+          </a>
           <div style={{ fontWeight: 'bold' }}>|</div>
-          <a>Website Support</a>
+          <a onClick={toggleWebsiteSupport}>Website Support</a>
         </div>
       </div>
       {children}
+      {websiteSupport && <WebsiteSupport closeModal={toggleWebsiteSupport} />}
     </div>
   )
 }

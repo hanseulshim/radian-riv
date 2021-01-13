@@ -1,4 +1,16 @@
+import { useState } from 'react'
+import ContactUs from './ContactUs'
+import Copyright from './Copyright'
+
 export default function Footer() {
+  const [contactUsModal, setContactUsModal] = useState(false)
+  const [copyrightModal, setCopyrightModal] = useState(false)
+  const toggleContactUsModal = () => {
+    setContactUsModal(!contactUsModal)
+  }
+  const toggleCopyrightModal = () => {
+    setCopyrightModal(!copyrightModal)
+  }
   return (
     <div id="footer">
       <div className="logo-container">
@@ -13,8 +25,8 @@ export default function Footer() {
           <a target="_blank" href={`${process.env.baseUrl}/TermsOfUse.pdf`}>
             Terms of Use
           </a>
-          <a>Copyright Infringement</a>
-          <a>Email Us: vox@redbellre.com</a>
+          <a onClick={toggleCopyrightModal}>Copyright Infringement</a>
+          <a onClick={toggleContactUsModal}>Contact Us: vox@redbellre.com</a>
         </div>
         <span>
           © 2020 Red Bell Real Estate, LLC. All rights reserved. Ownership and
@@ -28,6 +40,8 @@ export default function Footer() {
           such agreement, including reliance on this report, is prohibited.
         </span>
       </div>
+      {copyrightModal && <Copyright closeModal={toggleCopyrightModal} />}
+      {contactUsModal && <ContactUs closeModal={toggleContactUsModal} />}
     </div>
   )
 }

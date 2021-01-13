@@ -197,6 +197,23 @@
       }
     }
   }
+
+  .modal-container {
+    font-size: 20px;
+    color: var(--prussian-blue);
+
+    .copyright {
+      height: 210px;
+      overflow: auto;
+      line-height: 25px;
+      white-space: pre-line;
+      margin-bottom: 1em;
+      padding: 1em;
+      box-shadow: inset 0px 3px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      border: 1px solid var(--concrete);
+    }
+  }
 }
 
 #breadcrumbs {
