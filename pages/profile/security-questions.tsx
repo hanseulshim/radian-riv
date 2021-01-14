@@ -1,5 +1,5 @@
 import { getSecurityQuestions, setSecurityQuestions } from 'api'
-import { useAuth } from 'components/auth/AuthProvider'
+import { useAuth } from 'context/auth/AuthProvider'
 import CustomSelect from 'components/common/CustomSelect'
 import Form from 'components/common/Form'
 import Input from 'components/common/Input'

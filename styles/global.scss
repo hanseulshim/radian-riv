@@ -322,7 +322,7 @@ a {
   bottom: 0;
   right: 0;
   left: 0;
-  z-index: 1;
+  z-index: 3;
   background-color: rgba(0, 43, 73, 0.75);
   display: flex;
   justify-content: center;
@@ -334,7 +334,7 @@ a {
   .custom-select-label {
     font-size: 0.6em;
     position: absolute;
-    z-index: 5;
+    z-index: 1;
     top: -15px;
   }
   width: 100%;

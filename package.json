@@ -15,11 +15,13 @@
     "e2e": "cypress open"
   },
   "dependencies": {
+    "faker": "^5.1.0",
     "js-cookie": "^2.2.1",
     "next": "10.0.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-select": "^3.1.1",
+    "recharts": "^2.0.3",
     "sass": "^1.29.0"
   },
   "devDependencies": {

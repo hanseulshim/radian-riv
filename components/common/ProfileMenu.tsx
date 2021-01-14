@@ -1,4 +1,4 @@
-import { defaultAuth, useAuth } from 'components/auth/AuthProvider'
+import { defaultAuth, useAuth } from 'context/auth/AuthProvider'
 import Cookies from 'js-cookie'
 import Link from 'next/link'
 import { useCallback, useEffect, useRef, useState } from 'react'

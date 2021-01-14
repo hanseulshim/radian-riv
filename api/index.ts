@@ -1,7 +1,13 @@
 export * from './auth'
 export * from './user'
 export * from './utility'
+export * from './trending'
 import Cookies from 'js-cookie'
+
+export interface Option {
+  label: string
+  value: string
+}
 
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */

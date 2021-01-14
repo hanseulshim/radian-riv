@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Input from 'components/common/Input'
 import Modal from 'components/common/Modal'
 import Form from 'components/common/Form'
-import { useAuth } from 'components/auth/AuthProvider'
+import { useAuth } from 'context/auth/AuthProvider'
 
 interface Props {
   closeModal: () => void

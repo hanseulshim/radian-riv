@@ -29,7 +29,7 @@ describe('Trending Page', () => {
     it('Should click a state and route to it', () => {
       cy.intercept('GET', 'counties', { fixture: 'counties' })
       cy.get('.route-link').contains('Texas').click()
-      cy.url().should('includes', '/trending/tx')
+      cy.url().should('includes', '/trending/TX')
     })
   })
 

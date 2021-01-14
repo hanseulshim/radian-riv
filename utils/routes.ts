@@ -1,4 +1,4 @@
-import { getCounties, getStates } from 'api'
+import { getCounties, getStates, Option } from 'api'
 
 export interface Route {
   label: string
@@ -55,8 +55,7 @@ export const profileRoutes = [
   }
 ]
 
-export const getStateRoutes = async (): Promise<Route[]> => {
-  const states = await getStates()
+export const getStateRoutes = (stateList: Option[]): Route[] => {
   return [
     {
       label: 'United States',
@@ -64,17 +63,19 @@ export const getStateRoutes = async (): Promise<Route[]> => {
       path: '/trending',
       parentPath: '/trending'
     },
-    ...states.map(({ label, value }) => ({
+    ...stateList.map(({ label, value }) => ({
       label,
-      value: value.toLowerCase(),
-      path: `/trending/${value.toLowerCase()}`,
+      value,
+      path: `/trending/${value}`,
       parentPath: '/trending'
     }))
   ]
 }
 
-export const getCountyRoutes = async (state: Route): Promise<Route[]> => {
-  const counties = await getCounties(state.value)
+export const getCountyRoutes = (
+  state: Option,
+  countyList: Option[]
+): Route[] => {
   return [
     {
       label: `${state.label} Counties`,
@@ -82,16 +83,16 @@ export const getCountyRoutes = async (state: Route): Promise<Route[]> => {
       path: `/trending/${state.value}`,
       parentPath: `/trending/${state.value}`
     },
-    ...counties.map(({ label, value }) => ({
+    ...countyList.map(({ label, value }) => ({
       label,
-      value: value.toLowerCase(),
-      path: `/trending/${state.value}/${value.toLowerCase()}`,
+      value,
+      path: `/trending/${state.value}/${value}`,
       parentPath: `/trending/${state.value}`
     }))
   ]
 }
 
-export const getTrendingRoutes = (state: Route, county: Route): Route[] => [
+export const getTrendingRoutes = (state: Option, county: Option): Route[] => [
   {
     label: 'Home Price',
     value: 'Home Price',

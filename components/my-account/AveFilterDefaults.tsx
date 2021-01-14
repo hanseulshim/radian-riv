@@ -9,7 +9,7 @@ import {
 import CustomSelect from 'components/common/CustomSelect'
 import Input from 'components/common/Input'
 import { setFilterDefaults } from 'api'
-import { useAuth } from 'components/auth/AuthProvider'
+import { useAuth } from 'context/auth/AuthProvider'
 import Checkbox from 'components/common/Checkbox'
 import Form from 'components/common/Form'
 

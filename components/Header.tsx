@@ -1,4 +1,4 @@
-import { useAuth } from 'components/auth/AuthProvider'
+import { useAuth } from 'context/auth/AuthProvider'
 import ProfileMenu from 'components/common/ProfileMenu'
 
 export default function Header() {

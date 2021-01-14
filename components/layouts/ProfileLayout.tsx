@@ -1,4 +1,4 @@
-import { withAuth } from 'components/auth/AuthRoute'
+import { withAuth } from 'context/auth/AuthRoute'
 import Breadcrumbs from 'components/Breadcrumbs'
 import Sidebar from 'components/Sidebar'
 import { profileRoutes } from 'utils'

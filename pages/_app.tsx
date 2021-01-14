@@ -1,6 +1,6 @@
 import Layout from 'components/Layout'
-import { AuthProvider } from 'components/auth/AuthProvider'
-
+import { AuthProvider } from 'context/auth/AuthProvider'
+import { TrendingProvider } from 'context/trending/TrendingProvider'
 import { AppProps } from 'next/app'
 import 'styles/index.scss'
 
@@ -8,9 +8,11 @@ import 'styles/index.scss'
 function App({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <TrendingProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </TrendingProvider>
     </AuthProvider>
   )
 }

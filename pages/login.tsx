@@ -1,4 +1,4 @@
-import { withoutAuth } from 'components/auth/AuthRoute'
+import { withoutAuth } from 'context/auth/AuthRoute'
 import LoginForm from 'components/login/LoginForm'
 import ResetPassword from 'components/login/ResetPassword'
 import Register from 'components/login/Register'

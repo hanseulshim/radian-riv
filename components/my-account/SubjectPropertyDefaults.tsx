@@ -5,7 +5,7 @@ import {
   setSubjectPropertyDefault
 } from 'api'
 import CustomSelect from 'components/common/CustomSelect'
-import { useAuth } from 'components/auth/AuthProvider'
+import { useAuth } from 'context/auth/AuthProvider'
 import Form from 'components/common/Form'
 
 interface Option {

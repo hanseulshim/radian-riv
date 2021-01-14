@@ -25,6 +25,10 @@ const customStyles = {
       backgroundColor: 'rgba(61, 57, 53, 0.05)'
     }
   }),
+  menu: provided => ({
+    ...provided,
+    zIndex: '3'
+  }),
   control: provided => ({
     ...provided,
     cursor: 'pointer',

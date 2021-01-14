@@ -1,5 +1,5 @@
 import { submitChangePassword } from 'api'
-import { useAuth } from 'components/auth/AuthProvider'
+import { useAuth } from 'context/auth/AuthProvider'
 import Form from 'components/common/Form'
 import Input from 'components/common/Input'
 import ProfileLayout from 'components/layouts/ProfileLayout'

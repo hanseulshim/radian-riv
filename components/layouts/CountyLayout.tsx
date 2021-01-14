@@ -1,9 +1,12 @@
-import { withAuth } from 'components/auth/AuthRoute'
+import { withAuth } from 'context/auth/AuthRoute'
+import { useTrending } from 'context/trending/TrendingProvider'
 import Breadcrumbs from 'components/Breadcrumbs'
 import Sidebar from 'components/Sidebar'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
-import { getCurrentCounty, getTrendingRoutes, Route } from 'utils'
+import { useEffect } from 'react'
+import { getTrendingRoutes } from 'utils'
+import { getCounties } from 'api'
+import TrendingFilters from 'components/trending/TrendingFilters'
 
 interface Props {
   children: React.ReactNode
@@ -11,43 +14,65 @@ interface Props {
 }
 
 function CountyLayout({ children, label }: Props) {
-  const [currentState, setCurrentState] = useState<Route>(null)
-  const [currentCounty, setCurrentCounty] = useState<Route>(null)
+  const {
+    state,
+    county,
+    stateList,
+    countyList,
+    setCounty,
+    countyFirstLoad,
+    setCountyList,
+    setSelectedCounty,
+    setSelectedState,
+    setState,
+    setCountyFirstLoad
+  } = useTrending()
   const router = useRouter()
-  const { state, county } = router.query
+  const { state: routerState, county: routerCounty } = router.query
+
   useEffect(() => {
-    const currentCounty = async () => {
-      if (state && county) {
-        //TODO: Add try/catch
-        const currentCounty = await getCurrentCounty(
-          state as string,
-          county as string
+    const getCounty = async () => {
+      //TODO: Add try/catch
+      if (routerState && stateList.length && state === null) {
+        const currentState = stateList.find(
+          route => route.value === routerState
         )
-        setCurrentState(currentCounty.currentState)
-        setCurrentCounty(currentCounty.currentCounty)
+        const counties = await getCounties(currentState.value)
+        setCountyList(counties)
+        setState(currentState)
+        setSelectedState(currentState)
+      }
+      if (routerCounty && countyList.length) {
+        const county = countyList.find(route => route.value === routerCounty)
+        setCounty(county)
+        if (countyFirstLoad) {
+          setCountyFirstLoad(false)
+          setSelectedCounty(county)
+        }
       }
     }
-    currentCounty()
-  }, [state, county])
-  return currentCounty ? (
+    getCounty()
+  }, [routerCounty, stateList, state, routerState])
+  return county ? (
     <Sidebar
-      routes={getTrendingRoutes(currentState, currentCounty)}
-      label={currentCounty.label}
-      parentPath={`/trending/${currentState.value}`}
+      routes={getTrendingRoutes(state, county)}
+      label={county.label}
+      parentPath={`/trending/${state.value}`}
     >
       <div className="container trending">
         <Breadcrumbs
-          current={`${currentCounty.label} County ${label}`}
+          current={`${county.label} County ${label}`}
           parents={[
             { path: '/trending', name: 'National Level' },
             {
-              path: `/trending/${state}`,
-              name: `${currentState.label} County Level`
+              path: `/trending/${state.value}`,
+              name: `${state.label} County Level`
             }
           ]}
         />
-        <h1>{currentCounty.label} County Real Estate Trending</h1>
-        <h2>{label}</h2>
+        <h1>{county.label} County Real Estate Trending</h1>
+        <h2 className="county-view">{label}</h2>
+        <TrendingFilters />
         {children}
       </div>
     </Sidebar>
