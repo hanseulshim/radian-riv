@@ -100,7 +100,7 @@ describe('Account Page', () => {
       cy.get('input[name="New Password"]').type('1234')
       cy.get('.pwd-strength').contains('Strong')
       cy.get('input[name="Confirm Password"]').type('aA1!1234')
-      cy.intercept('POST', '/user/pwd-change', { fixture: 'successful' })
+      cy.intercept('POST', '/user/pwdchange', { fixture: 'successful' })
       cy.get('#change-password').submit()
       cy.get('#change-password > .alert-success')
     })
@@ -127,7 +127,7 @@ describe('Account Page', () => {
       cy.get('.input-group > input[type="text"]').each($el => {
         cy.wrap($el).type('test')
       })
-      cy.intercept('POST', '/user/questions-set', { fixture: 'successful' })
+      cy.intercept('POST', '/user/questionsset', { fixture: 'successful' })
       cy.get('#security-questions').submit()
       cy.get('.alert-success')
     })

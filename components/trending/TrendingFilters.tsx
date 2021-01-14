@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
-import { getPropertyTypes, getMSA, getZipcodes, Option } from 'api'
+import { getPropertyTypes, getMsas, getZipcodes, Option } from 'api'
 import { useTrending } from 'context/trending/TrendingProvider'
 import CustomSelect from 'components/common/CustomSelect'
 
@@ -22,17 +21,6 @@ export default function TrendingFilters() {
   const [zipcodes, setZipcodes] = useState<Option[]>([])
   const [types, setTypes] = useState<Option[]>([])
   const [msas, setMsas] = useState<Option[]>([])
-  const router = useRouter()
-  const { state: routerState, county: routerCounty } = router.query
-
-  // These calls are for fetching static lists on mount. They don't need to be refetched on input change
-  useEffect(() => {
-    const typesFetch = async () => {
-      const types = await getPropertyTypes()
-      setTypes(types)
-    }
-    typesFetch()
-  }, [])
 
   // useEffect(() => {
   //   if (county && counties.length) {
@@ -53,15 +41,20 @@ export default function TrendingFilters() {
   useEffect(() => {
     if (selectedState) {
       const zipcodeFetch = async () => {
-        const zipcodes = await getZipcodes(selectedState)
+        const zipcodes = await getZipcodes(selectedState.value)
         setZipcodes(zipcodes)
       }
       zipcodeFetch()
       const fetchMSA = async () => {
-        const msas = await getMSA()
+        const msas = await getMsas(selectedState.value)
         setMsas(msas)
       }
       fetchMSA()
+      const typesFetch = async () => {
+        const types = await getPropertyTypes(selectedState.value)
+        setTypes(types)
+      }
+      typesFetch()
     }
   }, [selectedState])
 

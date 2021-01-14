@@ -1,40 +1,5 @@
 import Cookies from 'js-cookie'
-import { handleApi } from './index'
-
-interface ChangePassword {
-  userid_ssid: string
-  pwd: string
-}
-
-export const submitChangePassword = async (
-  form: ChangePassword
-): Promise<string> => {
-  const { pwd } = form
-  if (pwd.length < 8) {
-    throw new Error('Password must be at least 8 characters(s) long')
-  } else if (!/[A-Z]/.test(pwd)) {
-    throw new Error('Password must contain an uppercase character')
-  } else if (!/[a-z]/.test(pwd)) {
-    throw new Error('Password must contain a lowercase character')
-  } else if (!/[0-9]/.test(pwd)) {
-    throw new Error('Password must contain a numeric character')
-  } else if (!/[!@#$]/.test(pwd)) {
-    throw new Error(
-      'Password must contain a special character (example: !,@,#,$)'
-    )
-  }
-  const data = await handleApi('/user/pwd-change', form)
-  return data
-}
-
-interface Question {
-  value: number
-  label: string
-}
-export const getSecurityQuestions = async (): Promise<Question[]> => {
-  const questions = await handleApi('/user/questions')
-  return questions
-}
+import { handleApi, fakeApi } from './index'
 
 interface Profile {
   userid_ssid: string
@@ -51,7 +16,8 @@ interface Profile {
 }
 
 export const submitProfile = async (form: Profile): Promise<string> => {
-  const data = await handleApi('/user/update', form)
+  // const data = await handleApi('/user/update', form)
+  const data = await fakeApi('/user/update')
   const authCookies = Cookies.get('auth')
   const { token, user } = JSON.parse(authCookies)
   Cookies.set('auth', { token, user: { ...user, ...form } })
@@ -78,10 +44,8 @@ export const setSecurityQuestions = async (
   ) {
     throw new Error(`Questions can't be blank`)
   }
-  if (form.answer1 === 'error') {
-    throw new Error('Error with security question')
-  }
-  const data = await handleApi('/user/questions-set', form)
+  // const data = await handleApi('/user/questionsset', form)
+  const data = await fakeApi('/user/questionsset')
   return data
 }
 
@@ -117,42 +81,48 @@ interface FilterDefaultSet {
 export const getFilterDefaults = async (
   userid: string
 ): Promise<FilterDefaults> => {
-  const defaults = await handleApi(`/user/filter-defaults/${userid}`)
-  return defaults
+  // const data = await handleApi(`/user/filter-defaults/${userid}`)
+  const data = await fakeApi(`/user/filter-defaults/${userid}`)
+  return data
 }
 
 export const setFilterDefaults = async (
   form: FilterDefaultSet
 ): Promise<string> => {
-  const data = await handleApi('/user/filter-defaults-set', form)
+  // const data = await handleApi('/user/filter-defaults-set', form)
+  const data = await fakeApi('/user/filter-defaults-set')
   return data
 }
 
 export const getFilterDefaultsSquareFt = async (
   userid: string
 ): Promise<FilterDefaultOption[]> => {
-  const data = await handleApi(`/user/filter-defaults-sqft/${userid}`)
+  // const data = await handleApi(`/user/filter-defaults-sqft/${userid}`)
+  const data = await fakeApi(`/user/filter-defaults-sqft/${userid}`)
   return data
 }
 
 export const getFilterDefaultsSquareFtPercent = async (
   userid: string
 ): Promise<FilterDefaultOption[]> => {
-  const data = await handleApi(`/user/filter-defaults-sqft-percent/${userid}`)
+  // const data = await handleApi(`/user/filter-defaults-sqft-percent/${userid}`)
+  const data = await fakeApi(`/user/filter-defaults-sqft-percent/${userid}`)
   return data
 }
 
 export const getFilterDefaultsRestrict = async (
   userid: string
 ): Promise<FilterDefaultOption[]> => {
-  const data = await handleApi(`/user/filter-defaults-restrict-comps/${userid}`)
+  // const data = await handleApi(`/user/filter-defaults-restrict-comps/${userid}`)
+  const data = await fakeApi(`/user/filter-defaults-restrict-comps/${userid}`)
   return data
 }
 
 export const getFilterDefaultsTime = async (
   userid: string
 ): Promise<FilterDefaultOption[]> => {
-  const data = await handleApi(`/user/filter-defaults-time/${userid}`)
+  // const data = await handleApi(`/user/filter-defaults-time/${userid}`)
+  const data = await fakeApi(`/user/filter-defaults-time/${userid}`)
   return data
 }
 
@@ -168,41 +138,47 @@ interface SubjectProperty {
 export const getDefaultSearchDepartments = async (
   userid: string
 ): Promise<FilterDefaultOption[]> => {
-  const data = await handleApi(`/user/departments/${userid}`)
+  // const data = await handleApi(`/user/departments/${userid}`)
+  const data = await fakeApi(`/user/departments/${userid}`)
   return data
 }
 
 export const getDefaultSearchDepartment = async (
   userid: string
 ): Promise<FilterDefaultOption[]> => {
-  const data = await handleApi(`/user/department/${userid}`)
+  // const data = await handleApi(`/user/department/${userid}`)
+  const data = await fakeApi(`/user/department/${userid}`)
   return data
 }
 
 export const setDefaultSearchDepartment = async (
   form: Department
 ): Promise<any> => {
-  const data = await handleApi('/user/department-set', form)
+  // const data = await handleApi('/user/department-set', form)
+  const data = await fakeApi('/user/department-set')
   return data
 }
 
 export const getSubjectPropertyDefault = async (
   userid: string
 ): Promise<FilterDefaultOption[]> => {
-  const data = await handleApi(`/user/subject-property/${userid}`)
+  // const data = await handleApi(`/user/subject-property/${userid}`)
+  const data = await fakeApi(`/user/subject-property/${userid}`)
   return data
 }
 
 export const getSubjectPropertyDefaults = async (
   userid: string
 ): Promise<FilterDefaultOption[]> => {
-  const data = await handleApi(`/user/subject-properties/${userid}`)
+  // const data = await handleApi(`/user/subject-properties/${userid}`)
+  const data = await fakeApi(`/user/subject-properties/${userid}`)
   return data
 }
 
 export const setSubjectPropertyDefault = async (
   form: SubjectProperty
 ): Promise<any> => {
-  const data = await handleApi('/user/subject-properties-set', form)
+  // const data = await handleApi('/user/subject-properties-set', form)
+  const data = await fakeApi('/user/subject-properties-set')
   return data
 }

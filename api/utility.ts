@@ -1,63 +1,32 @@
-import { handleApi } from './index'
+import { handleApi, fakeApi } from './index'
 import { Option } from 'api'
 
-interface State {
-  label: string
-  value: string
-}
-export const getStates = async (): Promise<State[]> => {
-  const data = await handleApi('/utility/states')
+export const getStates = async (): Promise<Option[]> => {
+  // const data = await handleApi('/utility/states')
+  const data = await fakeApi('/utility/states')
   return data
 }
 
-interface County {
-  label: string
-  value: string
-}
-export const getCounties = async (state: string): Promise<County[]> => {
-  const data = await handleApi(`/utility/states/${state}/counties`)
+export const getCounties = async (state: string): Promise<Option[]> => {
+  // const data = await handleApi(`/utility/counties/${state}`)
+  const data = await fakeApi(`/utility/counties/${state}`)
   return data
 }
 
-//TODO Switch this to real API
-export const getZipcodes = async (state: Option): Promise<Option[]> => {
-  // const data = await handleApi(`/utility/states/${state}/${county}/zipcodes`)
-  const zips = [
-    { label: '12345', value: '12345' },
-    { label: '23456', value: '23456' },
-    { label: '34567', value: '34567' },
-    { label: '45678', value: '45678' },
-    { label: '56789', value: '56789' }
-  ]
-  return zips
+export const getZipcodes = async (state: string): Promise<Option[]> => {
+  // const data = await handleApi(`/utility/zips/${state}`)
+  const data = await fakeApi(`/utility/zips/${state}`)
+  return data
 }
 
-//TODO Switch this to real API
-interface PropertyType {
-  label: string
-  value: string
-}
-export const getPropertyTypes = async (): Promise<PropertyType[]> => {
-  // const data = await handleApi(`/utility/states/${state}/${county}/zipcodes`)
-  const types = [
-    { label: 'Single Family Property', value: 'Single Family Property' },
-    { label: 'Condo', value: 'Condo' },
-    { label: 'Apartment', value: 'Apartment' }
-  ]
-  return types
+export const getPropertyTypes = async (state: string): Promise<Option[]> => {
+  // const data = await handleApi(`/utility/propertytypes/${state}`)
+  const data = await fakeApi(`/utility/propertytypes/${state}`)
+  return data
 }
 
-//TODO Switch this to real API
-interface MSA {
-  label: string
-  value: string
-}
-export const getMSA = async (): Promise<MSA[]> => {
-  // const data = await handleApi(`/utility/states/${state}/${county}/zipcodes`)
-  const types = [
-    { label: 'MSA one', value: 'MSA one' },
-    { label: 'MSA two', value: 'MSA two' },
-    { label: 'MSA three', value: 'MSA three' }
-  ]
-  return types
+export const getMsas = async (state: string): Promise<Option[]> => {
+  // const data = await handleApi(`/utility/msas/${state}`)
+  const data = await fakeApi(`/utility/msas/${state}`)
+  return data
 }
