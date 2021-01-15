@@ -5,7 +5,6 @@ type Props = {
   closeModal: () => void
 }
 
-//TODO #8 add in CSS animations for modal open/close
 export default function Modal({ children, title, closeModal, width }: Props) {
   const handleClick = e => {
     if (e.target.className === 'modal-container') {

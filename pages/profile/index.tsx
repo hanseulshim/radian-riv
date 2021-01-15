@@ -89,9 +89,12 @@ export default function Profile() {
 
   useEffect(() => {
     const stateFetch = async () => {
-      //TODO: Add try/catch
-      const states = await getStates()
-      setStates(states.map(state => ({ ...state, label: state.value })))
+      try {
+        const states = await getStates()
+        setStates(states.map(state => ({ ...state, label: state.value })))
+      } catch (e) {
+        setAlert({ type: 'error', message: e.message })
+      }
     }
     stateFetch()
   }, [])

@@ -3,11 +3,13 @@ import { useTrending } from 'context/trending/TrendingProvider'
 import Breadcrumbs from 'components/Breadcrumbs'
 import Sidebar from 'components/Sidebar'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { getCounties } from 'api'
 import { getCountyRoutes } from 'utils'
+import Modal from 'components/common/Modal'
 
 function State() {
+  const [hasError, setHasError] = useState(false)
   const {
     state,
     stateList,
@@ -28,14 +30,14 @@ function State() {
         const currentState = stateList.find(
           state => state.value === routerState
         )
-
-        //TODO: Add try/catch
         try {
           const counties = await getCounties(currentState.value)
           setCountyList(counties)
           setState(currentState)
           setSelectedState(currentState)
-        } catch (e) {}
+        } catch (e) {
+          setHasError(true)
+        }
       }
     }
     getState()
@@ -46,6 +48,16 @@ function State() {
     setSelectedMsa(null)
     setSelectedType(null)
   }, [])
+  const toggleErrorModal = () => {
+    setHasError(!hasError)
+  }
+  if (hasError) {
+    return (
+      <Modal title="Error" closeModal={toggleErrorModal}>
+        <div>Something went wrong.</div>
+      </Modal>
+    )
+  }
   return countyList.length && state ? (
     <Sidebar
       routes={getCountyRoutes(state, countyList)}

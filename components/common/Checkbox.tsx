@@ -2,12 +2,14 @@ interface Props {
   label: string
   checked: boolean
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  disabled?: boolean
 }
 
 export default function Checkbox({
   label,
   checked,
   onChange,
+  disabled,
   ...props
 }: Props) {
   return (
@@ -18,9 +20,14 @@ export default function Checkbox({
           className="hidden-checkbox"
           checked={checked}
           onChange={onChange}
+          disabled={disabled}
           {...props}
         />
-        <div className={`styled-checkbox ${checked && 'checked'}`}>
+        <div
+          className={`styled-checkbox ${checked && 'checked'} ${
+            disabled && 'disabled'
+          }`}
+        >
           <svg viewBox="0 0 24 24">
             <polyline
               className={`checkmark ${!checked && 'hidden'}`}
@@ -28,7 +35,7 @@ export default function Checkbox({
             />
           </svg>
         </div>
-        <span>{label}</span>
+        <span className={`${disabled && 'disabled'}`}>{label}</span>
       </label>
     </div>
   )

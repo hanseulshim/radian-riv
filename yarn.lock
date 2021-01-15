@@ -1597,6 +1597,11 @@
     "@types/cheerio" "*"
     "@types/react" "*"
 
+"@types/faker@^5.1.5":
+  version "5.1.5"
+  resolved "https://registry.yarnpkg.com/@types/faker/-/faker-5.1.5.tgz#f14b015e0100232bb00c6dd7611505efb08709a0"
+  integrity sha512-2uEQFb7bsx68rqD4F8q95wZq6LTLOyexjv6BnvJogCO4jStkyc6IDEkODPQcWfovI6g6M3uPQ2/uD/oedJKkNw==
+
 "@types/graceful-fs@^4.1.2":
   version "4.1.4"
   resolved "https://registry.yarnpkg.com/@types/graceful-fs/-/graceful-fs-4.1.4.tgz#4ff9f641a7c6d1a3508ff88bc3141b152772e753"
@@ -1650,6 +1655,11 @@
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/@types/normalize-package-data/-/normalize-package-data-2.4.0.tgz#e486d0d97396d79beedd0a6e33f4534ff6b4973e"
   integrity sha512-f5j5b/Gf71L+dbqxIpQ4Z2WlmI/mPJ0fOkGGmFgtb6sAu97EPczzbS3/tJKxmcYDj55OX6ssqwDAWOHIYDRDGA==
+
+"@types/numeral@^0.0.29":
+  version "0.0.29"
+  resolved "https://registry.yarnpkg.com/@types/numeral/-/numeral-0.0.29.tgz#4f227c5eaf5c8049ae301484b4101ba0a8db97ba"
+  integrity sha512-uf5Rlq4FWJhaz4GSplEcenC40hTINy+efewZXULqXrSdddibcN2yPKQBjQ8K5kXk12Wnu6GdjB1/P5ovJso6Vg==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -6797,6 +6807,11 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
+numeral@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/numeral/-/numeral-2.0.6.tgz#4ad080936d443c2561aed9f2197efffe25f4e506"
+  integrity sha1-StCAk21EPCVhrtnyGX7//iX05QY=
+
 nwsapi@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/nwsapi/-/nwsapi-2.2.0.tgz#204879a9e3d068ff2a55139c2c772780681a38b7"
@@ -7573,6 +7588,11 @@ react-smooth@^1.0.6:
     prop-types "^15.6.0"
     raf "^3.4.0"
     react-transition-group "^2.5.0"
+
+react-table@^7.6.3:
+  version "7.6.3"
+  resolved "https://registry.yarnpkg.com/react-table/-/react-table-7.6.3.tgz#76434392b3f62344bdb704f5b227c2f29c1ffb14"
+  integrity sha512-hfPF13zDLxPMpLKzIKCE8RZud9T/XrRTsaCIf8zXpWZIZ2juCl7qrGpo3AQw9eAetXV5DP7s2GDm+hht7qq5Dw==
 
 react-test-renderer@^16.0.0-0:
   version "16.14.0"

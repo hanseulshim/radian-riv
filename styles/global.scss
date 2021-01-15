@@ -236,6 +236,11 @@ textarea {
   &.checked {
     background: var(--robins-egg);
   }
+  &.disabled {
+    border: 1px solid var(--gray);
+    background-color: var(--light-gray);
+    cursor: not-allowed;
+  }
 }
 
 .checkbox-container {
@@ -245,6 +250,9 @@ textarea {
   }
   span {
     cursor: pointer;
+    &.disabled {
+      color: var(--gray);
+    }
   }
 }
 
@@ -264,6 +272,11 @@ a {
   :visited {
     color: inherit;
   }
+}
+
+ul {
+  margin: 0;
+  padding: 0;
 }
 
 .btn {
@@ -401,4 +414,29 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  .styled-table-head {
+    background: var(--prussian-blue);
+    color: var(--white);
+    font-weight: bold;
+    font-size: 1em;
+    padding: 20px;
+    text-align: start;
+    th {
+      text-align: start;
+    }
+  }
+  .styled-table-row {
+    td {
+      padding: 20px;
+      text-align: start;
+    }
+  }
+  .styled-table-row:nth-of-type(even) {
+    background-color: var(--light-gray);
+  }
 }

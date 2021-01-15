@@ -13,6 +13,7 @@ interface Props {
   placeholder?: string
   className?: string
   disabled?: boolean
+  isSearchable?: boolean
 }
 
 const customStyles = {
@@ -50,7 +51,8 @@ export default function CustomSelect({
   label,
   placeholder,
   className,
-  disabled
+  disabled,
+  isSearchable
 }: Props) {
   return (
     <div className="custom-select-container">
@@ -63,6 +65,7 @@ export default function CustomSelect({
         className={className}
         isDisabled={disabled}
         styles={customStyles}
+        isSearchable={isSearchable}
       />
     </div>
   )

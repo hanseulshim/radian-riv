@@ -97,6 +97,7 @@ export default function TrendingFilters() {
             value={selectedZip}
             onChange={opt => onSelectChange(opt as Option, 'selectedZip')}
             label="Zipcode"
+            isSearchable
             placeholder="Zip..."
           />
           <CustomSelect

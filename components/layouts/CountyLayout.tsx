@@ -3,10 +3,11 @@ import { useTrending } from 'context/trending/TrendingProvider'
 import Breadcrumbs from 'components/Breadcrumbs'
 import Sidebar from 'components/Sidebar'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { getTrendingRoutes } from 'utils'
 import { getCounties } from 'api'
 import TrendingFilters from 'components/trending/TrendingFilters'
+import Modal from 'components/common/Modal'
 
 interface Props {
   children: React.ReactNode
@@ -14,6 +15,7 @@ interface Props {
 }
 
 function CountyLayout({ children, label }: Props) {
+  const [hasError, setHasError] = useState(false)
   const {
     state,
     county,
@@ -32,27 +34,42 @@ function CountyLayout({ children, label }: Props) {
 
   useEffect(() => {
     const getCounty = async () => {
-      //TODO: Add try/catch
-      if (routerState && stateList.length && state === null) {
-        const currentState = stateList.find(
-          route => route.value === routerState
-        )
-        const counties = await getCounties(currentState.value)
-        setCountyList(counties)
-        setState(currentState)
-        setSelectedState(currentState)
-      }
-      if (routerCounty && countyList.length) {
-        const county = countyList.find(route => route.value === routerCounty)
-        setCounty(county)
-        if (countyFirstLoad) {
-          setCountyFirstLoad(false)
-          setSelectedCounty(county)
+      try {
+        if (routerState && stateList.length && state === null) {
+          const currentState = stateList.find(
+            route => route.value === routerState
+          )
+          const counties = await getCounties(currentState.value)
+          setCountyList(counties)
+          setState(currentState)
+          setSelectedState(currentState)
         }
+        if (routerCounty && countyList.length) {
+          const county = countyList.find(route => route.value === routerCounty)
+          setCounty(county)
+          if (countyFirstLoad) {
+            setCountyFirstLoad(false)
+            setSelectedCounty(county)
+          }
+        }
+      } catch (e) {
+        setHasError(true)
       }
     }
     getCounty()
   }, [routerCounty, stateList, state, routerState])
+
+  const toggleErrorModal = () => {
+    setHasError(!hasError)
+  }
+  if (hasError) {
+    return (
+      <Modal title="Error" closeModal={toggleErrorModal}>
+        <div>Something went wrong.</div>
+      </Modal>
+    )
+  }
+
   return county ? (
     <Sidebar
       routes={getTrendingRoutes(state, county)}
