@@ -12,8 +12,12 @@ import {
 } from 'recharts'
 import numeral from 'numeral'
 import { getListedSoldChart, ChartParam } from 'api'
+import DownloadData from '../DownloadData'
+interface Props {
+  view: string
+}
 
-export default function SoldChart() {
+export default function SoldChart({ view }: Props) {
   const {
     selectedState,
     selectedCounty,
@@ -35,6 +39,12 @@ export default function SoldChart() {
     })
   const formatYAxisLeft = (num: number): string => numeral(num).format('0,0')
   const formatYAxisRight = (num: number): string => numeral(num).format('0a')
+  const formatTooltip = (num: number, name: string): [string, string] => {
+    const formatted = name.includes('Price')
+      ? numeral(num).format('$0,0[.]00')
+      : num.toString()
+    return [formatted, name]
+  }
 
   const formatLabel = (date: Date): string =>
     `Period: ${date.toLocaleDateString('en-NY', {
@@ -128,7 +138,7 @@ export default function SoldChart() {
               tickCount={10}
               tickFormatter={formatYAxisRight}
             />
-            <Tooltip labelFormatter={formatLabel} />
+            <Tooltip labelFormatter={formatLabel} formatter={formatTooltip} />
             <CartesianGrid stroke="#f5f5f5" />
             <Bar
               key={'Sold NonDistressed Properties'}
@@ -164,7 +174,9 @@ export default function SoldChart() {
       >
         Download Data
       </button>
-      {/* {dataModal && <DownloadData closeModal={closeModal} />} */}
+      {dataModal && (
+        <DownloadData closeModal={closeModal} view={view} range={range} />
+      )}
     </>
   )
 }

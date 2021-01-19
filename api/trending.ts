@@ -124,62 +124,130 @@ export const getListedSoldChart = async ({
     'DOM - Sold Properties': faker.random.number({ min: 0, max: 100 })
   }))
 }
-export interface DataParam {
+export interface ChartDataParam {
+  range: string
   state: string
   county: string | null
   zip: string | null
   type: string | null
   msa: string | null
+  view: string
 }
 
-export const downloadHomePriceData = async (
-  params: DataParam
-): Promise<any[]> => {
-  const data = []
-  const firstDate = new Date()
-  firstDate.setDate(firstDate.getDate() - 1000)
-  for (let i = 0; i < 50; i++) {
-    const newDate = new Date(firstDate)
-    newDate.setDate(newDate.getDate() + i)
+export const downloadChartData = async ({
+  range,
+  state,
+  county,
+  zip,
+  type,
+  msa,
+  view
+}: ChartDataParam): Promise<any[]> => {
+  const data = getDateArray(range)
+  return data.map(date => ({
+    PERIOD: date.date,
+    ...getDataObject(view)
+  }))
+}
 
-    data.push({
-      PERIOD: newDate.toDateString(),
-      'PCT CHANGE 1 YEAR MED SOLD PRICE NATIONAL LEVEL': faker.finance.amount(
-        -100,
-        100,
-        2
-      ),
-      'PCT CHANGE 1 YEAR MED SOLD PRICE STATE LEVEL': faker.finance.amount(
-        -100,
-        100,
-        2
-      ),
-      'PCT CHANGE 1 YEAR MED SOLD PRICE CBSA LEVEL': faker.finance.amount(
-        -100,
-        100,
-        2
-      ),
-      'PCT CHANGE 1 YEAR MED SOLD PRICE COUNTY LEVEL': faker.finance.amount(
-        -100,
-        100,
-        2
-      ),
-      'PCT CHANGE 1 YEAR MED SOLD PRICE ZIP LEVEL': faker.finance.amount(
-        -100,
-        100,
-        2
-      ),
-      'PCT CHANGE 1 YEAR MED SOLD PRICE OFHEO': faker.finance.amount(
-        -100,
-        100,
-        2
-      ),
-      'PCT CHANGE 1 YEAR MED SOLD PRICE CASE SCHILLER': faker.finance.amount(
-        -100,
-        100,
-        2
-      )
-    })
-  }
-  return data
+const getDataObject = (view: string) => {
+  return view === 'Home Price'
+    ? {
+        'PCT CHANGE 1 YEAR MED SOLD PRICE NATIONAL LEVEL': faker.finance.amount(
+          -100,
+          100,
+          2
+        ),
+        'PCT CHANGE 1 YEAR MED SOLD PRICE STATE LEVEL': faker.finance.amount(
+          -100,
+          100,
+          2
+        ),
+        'PCT CHANGE 1 YEAR MED SOLD PRICE CBSA LEVEL': faker.finance.amount(
+          -100,
+          100,
+          2
+        ),
+        'PCT CHANGE 1 YEAR MED SOLD PRICE COUNTY LEVEL': faker.finance.amount(
+          -100,
+          100,
+          2
+        ),
+        'PCT CHANGE 1 YEAR MED SOLD PRICE ZIP LEVEL': faker.finance.amount(
+          -100,
+          100,
+          2
+        ),
+        'PCT CHANGE 1 YEAR MED SOLD PRICE OFHEO': faker.finance.amount(
+          -100,
+          100,
+          2
+        ),
+        'PCT CHANGE 1 YEAR MED SOLD PRICE CASE SCHILLER': faker.finance.amount(
+          -100,
+          100,
+          2
+        )
+      }
+    : view === 'Listed'
+    ? {
+        'NUM OF ACTIVE LISTINGS': faker.random.number(50000),
+        'NUM OF REO ACTIVE LISTINGS': faker.random.number(2000),
+        'NUM OF NONREO ACTIVE LISTINGS': faker.random.number(50000),
+        'NUM OF NEW LISTINGS': faker.random.number(10000),
+        'NUM OF REO NEW LISTINGS': faker.random.number(500),
+        'NUM OF NONREO NEW LISTINGS': faker.random.number(15000),
+        'NUM OF U/C': faker.random.number(10000),
+        'NUM OF REO UC': faker.random.number(500),
+        'NUM OF NONREO UC': faker.random.number(10000),
+        'MEDIAN ACTIVE LIST PRICE': faker.random.number(300000),
+        'MEDIAN NEW LIST PRICE': faker.random.number(300000),
+        'MEDIAN U/C PRICE': faker.random.number(300000)
+      }
+    : view === 'Sold'
+    ? {
+        'NUM OF SOLD PROPS': faker.random.number(10000),
+        'NUM OF REO SOLD PROPS': faker.random.number(750),
+        'NUM OF NONREO SOLD PROPS': faker.random.number(10000),
+        'MEDIAN SOLD PRICE': faker.random.number(300000)
+      }
+    : view === 'Original List vs Final Sold'
+    ? {
+        'CURRLISTTOFINALSOLD % CHANGE': faker.finance.amount(50, 150, 2),
+        'ORIGLISTTOFINALSOLD % CHANGE': faker.finance.amount(50, 150, 2),
+        'DOM SOLD PROPS': faker.finance.amount(50, 150, 2)
+      }
+    : view === 'Supply'
+    ? {
+        'NUM OF ACTIVE LISTINGS': faker.random.number(50000),
+        'NUM OF REO ACTIVE LISTINGS': faker.random.number(2000),
+        'NUM OF NONREO ACTIVE LISTINGS': faker.random.number(50000),
+        'NUM OF SOLD PROPS': faker.random.number(10000),
+        'NUM OF SOLD PROPS REO': faker.random.number(750),
+        'NUM OF NONREO SOLD PROPS': faker.random.number(10000),
+        'NUM OF U/C': faker.random.number(10000),
+        'NUM OF REO UC': faker.random.number(1000),
+        'NUM OF NONREO UC': faker.random.number(10000),
+        'MONTHS SUPPLY': faker.random.number(15)
+      }
+    : view === 'DOM'
+    ? {
+        'NUM OF ACTIVE LISTINGS': faker.random.number(50000),
+        'NUM OF REO ACTIVE LISTINGS': faker.random.number(2000),
+        'NUM OF NONREO ACTIVE LISTINGS': faker.random.number(50000),
+        'NUM OF SOLD PROPS': faker.random.number(10000),
+        'NUM OF SOLD PROPS REO': faker.random.number(10000),
+        'NUM OF NONREO SOLD PROPS': faker.random.number(15000),
+        'NUM OF U/C': faker.random.number(750),
+        'NUM OF REO UC': faker.random.number(20000),
+        'NUM OF NONREO UC': faker.random.number(15000),
+        'NUM OF NEW LISTINGS': faker.random.number(15000),
+        'NUM OF NEW LISTINGS REO': faker.random.number(500),
+        'NUM OF NEW LISTINGS NONREO': faker.random.number(10000),
+        'DOM SOLD': faker.random.number(200),
+        'DOM ACTIVE LISTINGS': faker.random.number(150),
+        'DOM NEW LISTINGS': faker.random.number(150),
+        'DOM UC': faker.random.number(150)
+      }
+    : {}
 }

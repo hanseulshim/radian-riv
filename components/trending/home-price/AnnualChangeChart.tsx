@@ -12,6 +12,7 @@ import {
 import Checkbox from 'components/common/Checkbox'
 import { getHomePriceChart, ChartParam } from 'api'
 import numeral from 'numeral'
+import DownloadData from '../DownloadData'
 
 export default function AnnualChangeChart() {
   const {
@@ -189,7 +190,9 @@ export default function AnnualChangeChart() {
       >
         Download Data
       </button>
-      {/* {dataModal && <DownloadData closeModal={closeModal} />} */}
+      {dataModal && (
+        <DownloadData closeModal={closeModal} range={range} view="Home Price" />
+      )}
     </>
   )
 }

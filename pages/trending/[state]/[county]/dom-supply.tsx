@@ -4,7 +4,7 @@ import SupplyChart from 'components/trending/dom-supply/SupplyChart'
 import DomChart from 'components/trending/dom-supply/DomChart'
 
 export default function DomSupply() {
-  const [currentView, setCurrentView] = useState('Supply')
+  const [currentView, setCurrentView] = useState('DOM')
 
   const views = ['DOM', 'Supply']
   return (
@@ -22,7 +22,11 @@ export default function DomSupply() {
           </li>
         ))}
       </ul>
-      {currentView === 'Supply' ? <SupplyChart /> : <DomChart />}
+      {currentView === 'Supply' ? (
+        <SupplyChart view={currentView} />
+      ) : (
+        <DomChart view={currentView} />
+      )}
     </CountyLayout>
   )
 }

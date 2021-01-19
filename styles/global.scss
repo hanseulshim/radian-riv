@@ -340,6 +340,10 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
+  ou .form {
+    max-height: 90%;
+    overflow: auto;
+  }
 }
 
 .custom-select-container {
@@ -416,9 +420,23 @@ ul {
   object-fit: cover;
 }
 
+.table-container {
+  display: block;
+  max-width: 100%;
+  .table-wrap {
+    display: block;
+    max-width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+}
+
 .styled-table {
   width: 100%;
   border-collapse: collapse;
+  thead {
+    background: var(--prussian-blue);
+  }
   .styled-table-head {
     background: var(--prussian-blue);
     color: var(--white);
@@ -426,9 +444,6 @@ ul {
     font-size: 1em;
     padding: 20px;
     text-align: start;
-    th {
-      text-align: start;
-    }
   }
   .styled-table-row {
     td {
@@ -439,4 +454,11 @@ ul {
   .styled-table-row:nth-of-type(even) {
     background-color: var(--light-gray);
   }
+}
+
+tbody,
+thead {
+  display: block;
+  max-height: 700px;
+  overflow-y: scroll;
 }

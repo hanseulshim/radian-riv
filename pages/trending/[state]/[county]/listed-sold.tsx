@@ -24,11 +24,11 @@ export default function ListedSold() {
         ))}
       </ul>
       {currentView === 'Listed' ? (
-        <ListedChart />
+        <ListedChart view={currentView} />
       ) : currentView === 'Sold' ? (
-        <SoldChart />
+        <SoldChart view={currentView} />
       ) : (
-        <OriginalListVsSoldChart />
+        <OriginalListVsSoldChart view={currentView} />
       )}
     </CountyLayout>
   )

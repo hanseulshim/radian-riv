@@ -14,7 +14,11 @@ import Checkbox from 'components/common/Checkbox'
 import { getSupplyChart, ChartParam } from 'api'
 import DownloadData from '../DownloadData'
 
-export default function DomChart() {
+interface Props {
+  view: string
+}
+
+export default function DomChart({ view }: Props) {
   const {
     selectedState,
     selectedCounty,
@@ -27,6 +31,7 @@ export default function DomChart() {
   const [seriesState, setSeriesState] = useState({
     Sold: true,
     'Active Listings': false,
+    'New Listings': false,
     'U/C': false
   })
   const [dataModal, setDataModal] = useState(false)
@@ -84,7 +89,12 @@ export default function DomChart() {
     return { left: padding, right: padding }
   }
   const renderChartComponents = () => {
-    const { Sold: sold, 'Active Listings': active, 'U/C': uc } = seriesState
+    const {
+      Sold: sold,
+      'Active Listings': active,
+      'New Listings': newListings,
+      'U/C': uc
+    } = seriesState
     const chartComponents = []
     const maxBarSize = 300
     const chartBuilder = {
@@ -98,44 +108,102 @@ export default function DomChart() {
       },
       thirdBar: {
         label: '',
+        color: '#BCAF8C'
+      },
+      fourthBar: {
+        label: '',
         color: '#C19A54'
       },
       firstLine: {
-        label: 'Months to Supply',
+        label: '',
+        color: '#27703F'
+      },
+      secondLine: {
+        label: '',
         color: '#44356F'
+      },
+      thirdLine: {
+        label: '',
+        color: '#E7511D'
+      },
+      fourthLine: {
+        label: '',
+        color: '#878349'
       }
     }
-    if (sold && !active && !uc) {
-      chartBuilder.firstBar.label = 'Sold Distressed Properties'
-      chartBuilder.secondBar.label = 'Sold Non Distressed Properties'
-    } else if (!sold && active && !uc) {
+    if (sold && !active && !newListings && !uc) {
+      chartBuilder.firstBar.label = 'DOM - Distressed Sold Properties'
+      chartBuilder.secondBar.label = 'DOM - Non Distressed Sold Properties'
+      chartBuilder.firstLine.label = 'DOM - Sold Properties'
+    } else if (!sold && active && !newListings && !uc) {
       chartBuilder.firstBar.label = 'Distressed Active Listings'
       chartBuilder.secondBar.label = 'NonDistressed Active Listings'
-    } else if (!sold && !active && uc) {
+      chartBuilder.secondLine.label = 'DOM - Active Listings'
+    } else if (!sold && !active && newListings && !uc) {
+      chartBuilder.firstBar.label = 'New Listings Distressed'
+      chartBuilder.secondBar.label = 'New Listings NonDistressed'
+      chartBuilder.fourthLine.label = 'DOM - New Listings'
+    } else if (!sold && !active && !newListings && uc) {
       chartBuilder.firstBar.label = 'U/C Distressed Properties'
       chartBuilder.secondBar.label = 'U/C NonDistressed Properties'
-    } else if (sold && active && !uc) {
+      chartBuilder.thirdLine.label = 'DOM - U/C Listings'
+    } else if (sold && active && !newListings && !uc) {
       chartBuilder.firstBar.label = 'Sold Properties'
       chartBuilder.firstBar.color = '#DBCF7B'
-      chartBuilder.secondBar.label = 'Active Listings'
-      chartBuilder.secondBar.color = '#BCAF8C'
-    } else if (sold && !active && uc) {
+      chartBuilder.thirdBar.label = 'Active Listings'
+      chartBuilder.firstLine.label = 'DOM - Sold Properties'
+      chartBuilder.secondLine.label = 'DOM - U/C Listings'
+    } else if (sold && !active && newListings && !uc) {
+      chartBuilder.firstBar.label = 'New Listings'
+      chartBuilder.thirdBar.label = 'Sold Properties'
+      chartBuilder.firstLine.label = 'DOM - Sold Properties'
+      chartBuilder.fourthLine.label = 'DOM - New Listings'
+    } else if (sold && !active && !newListings && uc) {
       chartBuilder.firstBar.label = 'Sold Properties'
       chartBuilder.firstBar.color = '#DBCF7B'
-      chartBuilder.secondBar.label = 'U/C Listings'
-      chartBuilder.secondBar.color = '#C19A54'
-    } else if (!sold && active && uc) {
-      chartBuilder.firstBar.label = 'Active Listings'
-      chartBuilder.firstBar.color = '#DBCF7B'
-      chartBuilder.secondBar.label = 'U/C Listings'
-      chartBuilder.secondBar.color = '#C19A54'
-    } else {
-      chartBuilder.firstBar.label = 'Sold Properties'
-      chartBuilder.firstBar.color = '#DBCF7B'
-      chartBuilder.secondBar.label = 'Active Listings'
-      chartBuilder.secondBar.color = '#BCAF8C'
+      chartBuilder.fourthBar.label = 'U/C Listings'
+      chartBuilder.firstLine.label = 'DOM - Sold Properties'
+      chartBuilder.thirdLine.label = 'DOM - U/C Listings'
+    } else if (!sold && active && newListings && !uc) {
+      chartBuilder.firstBar.label = 'New Listings'
+      chartBuilder.thirdBar.label = 'Active Listings'
+      chartBuilder.secondLine.label = 'DOM - Active Listings'
+      chartBuilder.fourthLine.label = 'DOM - U/C Listings'
+    } else if (!sold && active && !newListings && uc) {
+      chartBuilder.thirdBar.label = 'Active Listings'
+      chartBuilder.fourthBar.label = 'U/C Listings'
+      chartBuilder.secondLine.label = 'DOM - Active Listings'
+      chartBuilder.thirdLine.label = 'DOM - U/C Listings'
+    } else if (!sold && !active && newListings && uc) {
+      chartBuilder.firstBar.label = 'New Listings'
+      chartBuilder.fourthBar.label = 'U/C Listings'
+      chartBuilder.thirdLine.label = 'DOM - U/C Listings'
+      chartBuilder.fourthLine.label = 'DOM - New Listings'
+    } else if (sold && active && newListings && !uc) {
+      chartBuilder.firstBar.label = 'New Listings'
+      chartBuilder.secondBar.label = 'Sold Properties'
+      chartBuilder.secondBar.color = '#DBCF7B'
       chartBuilder.thirdBar.label = 'U/C Listings'
-      chartBuilder.thirdBar.color = '#C19A54'
+      chartBuilder.firstLine.label = 'DOM - Sold Properties'
+      chartBuilder.secondLine.label = 'DOM - Active Listings'
+      chartBuilder.fourthLine.label = 'DOM - New Listings'
+    } else if (!sold && active && newListings && uc) {
+      chartBuilder.firstBar.label = 'New Listings'
+      chartBuilder.thirdBar.label = 'Active Listings'
+      chartBuilder.fourthBar.label = 'U/C Listings'
+      chartBuilder.secondLine.label = 'DOM - Active Listings'
+      chartBuilder.thirdLine.label = 'DOM - U/C Listings'
+      chartBuilder.fourthLine.label = 'DOM - New Listings'
+    } else {
+      chartBuilder.firstBar.label = 'New Listings'
+      chartBuilder.secondBar.label = 'Sold Properties'
+      chartBuilder.secondBar.color = '#DBCF7B'
+      chartBuilder.thirdBar.label = 'Active Listings'
+      chartBuilder.fourthBar.label = 'U/C Listings'
+      chartBuilder.firstLine.label = 'DOM - Sold Properties'
+      chartBuilder.secondLine.label = 'DOM - Active Listings'
+      chartBuilder.thirdLine.label = 'DOM - U/C Listings'
+      chartBuilder.fourthLine.label = 'DOM - New Listings'
     }
     for (const [key, { label, color }] of Object.entries(chartBuilder)) {
       if (label) {
@@ -156,7 +224,7 @@ export default function DomChart() {
               stroke={color}
               yAxisId="right"
               type="monotone"
-              strokeWidth={2}
+              strokeWidth={3}
               dot={false}
             />
           )
@@ -179,7 +247,7 @@ export default function DomChart() {
             </li>
           ))}
         </ul>
-        <h4 className="chart-title">Supply County: {selectedCounty.label}</h4>
+        <h4 className="chart-title">DOM County: {selectedCounty.label}</h4>
         <ResponsiveContainer width="100%" height={500}>
           <ComposedChart data={data} margin={{ left: 50, right: 50 }}>
             <XAxis
@@ -202,7 +270,7 @@ export default function DomChart() {
               orientation="right"
               yAxisId="right"
               label={{
-                value: 'Months Supply',
+                value: 'DOM',
                 angle: 90,
                 position: 'center',
                 dx: 50
@@ -236,7 +304,9 @@ export default function DomChart() {
       >
         Download Data
       </button>
-      {/* {dataModal && <DownloadData closeModal={closeModal} />} */}
+      {dataModal && (
+        <DownloadData closeModal={closeModal} view={view} range={range} />
+      )}
     </>
   )
 }

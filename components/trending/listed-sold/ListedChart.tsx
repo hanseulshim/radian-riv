@@ -13,8 +13,13 @@ import {
 import numeral from 'numeral'
 import Checkbox from 'components/common/Checkbox'
 import { getListedSoldChart, ChartParam } from 'api'
+import DownloadData from '../DownloadData'
 
-export default function Listed() {
+interface Props {
+  view: string
+}
+
+export default function Listed({ view }: Props) {
   const {
     selectedState,
     selectedCounty,
@@ -271,7 +276,9 @@ export default function Listed() {
       >
         Download Data
       </button>
-      {/* {dataModal && <DownloadData closeModal={closeModal} />} */}
+      {dataModal && (
+        <DownloadData closeModal={closeModal} view={view} range={range} />
+      )}
     </>
   )
 }

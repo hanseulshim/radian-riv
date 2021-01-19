@@ -1,15 +1,20 @@
 import { useState } from 'react'
 import ContactUs from './ContactUs'
 import Copyright from './Copyright'
+import AboutUs from './AboutUs'
 
 export default function Footer() {
   const [contactUsModal, setContactUsModal] = useState(false)
   const [copyrightModal, setCopyrightModal] = useState(false)
+  const [aboutUsModal, setAboutUsModal] = useState(false)
   const toggleContactUsModal = () => {
     setContactUsModal(!contactUsModal)
   }
   const toggleCopyrightModal = () => {
     setCopyrightModal(!copyrightModal)
+  }
+  const toggleAboutUsModal = () => {
+    setAboutUsModal(!aboutUsModal)
   }
   return (
     <div id="footer">
@@ -18,7 +23,7 @@ export default function Footer() {
       </div>
       <div className="content">
         <div className="footer-links">
-          <a>About Us</a>
+          <a onClick={toggleAboutUsModal}>About Us</a>
           <a target="_blank" href={`${process.env.baseUrl}/PrivacyPolicy.pdf`}>
             Privacy Policy
           </a>
@@ -42,6 +47,7 @@ export default function Footer() {
       </div>
       {copyrightModal && <Copyright closeModal={toggleCopyrightModal} />}
       {contactUsModal && <ContactUs closeModal={toggleContactUsModal} />}
+      {aboutUsModal && <AboutUs closeModal={toggleAboutUsModal} />}
     </div>
   )
 }

@@ -12,8 +12,13 @@ import {
 } from 'recharts'
 import { getListedSoldChart, ChartParam } from 'api'
 import numeral from 'numeral'
+import DownloadData from '../DownloadData'
 
-export default function OriginalListVsSoldChart() {
+interface Props {
+  view: string
+}
+
+export default function OriginalListVsSoldChart({ view }: Props) {
   const {
     selectedState,
     selectedCounty,
@@ -39,6 +44,12 @@ export default function OriginalListVsSoldChart() {
       month: '2-digit',
       year: 'numeric'
     })}`
+  const formatTooltip = (num: number, name: string): [string, string] => {
+    const formatted = name.includes('%')
+      ? numeral(num).format('0[.]00%')
+      : num.toString()
+    return [formatted, name]
+  }
   useEffect(() => {
     const getChartData = async () => {
       const chartData = await getListedSoldChart({
@@ -67,7 +78,7 @@ export default function OriginalListVsSoldChart() {
 
   const rangeOptions = ['3M', '6M', '1Yr', '5Yr', 'Max']
   const getChartPadding = () => {
-    let padding = 0
+    let padding = 10
     return { left: padding, right: padding }
   }
 
@@ -118,7 +129,7 @@ export default function OriginalListVsSoldChart() {
               }}
               tickCount={10}
             />
-            <Tooltip labelFormatter={formatLabel} />
+            <Tooltip labelFormatter={formatLabel} formatter={formatTooltip} />
             <CartesianGrid stroke="#f5f5f5" />
             <Line
               key={'Current List To Final Sold % Change'}
@@ -156,7 +167,9 @@ export default function OriginalListVsSoldChart() {
       >
         Download Data
       </button>
-      {/* {dataModal && <DownloadData closeModal={closeModal} />} */}
+      {dataModal && (
+        <DownloadData closeModal={closeModal} view={view} range={range} />
+      )}
     </>
   )
 }

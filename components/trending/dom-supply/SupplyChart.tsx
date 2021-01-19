@@ -14,7 +14,11 @@ import Checkbox from 'components/common/Checkbox'
 import { getSupplyChart, ChartParam } from 'api'
 import DownloadData from '../DownloadData'
 
-export default function SupplyChart() {
+interface Props {
+  view: string
+}
+
+export default function SupplyChart({ view }: Props) {
   const {
     selectedState,
     selectedCounty,
@@ -236,7 +240,9 @@ export default function SupplyChart() {
       >
         Download Data
       </button>
-      {/* {dataModal && <DownloadData closeModal={closeModal} />} */}
+      {dataModal && (
+        <DownloadData closeModal={closeModal} view={view} range={range} />
+      )}
     </>
   )
 }

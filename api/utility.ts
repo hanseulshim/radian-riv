@@ -1,5 +1,6 @@
 import { handleApi, fakeApi } from './index'
 import { Option } from 'api'
+import faker from 'faker'
 
 export const getStates = async (): Promise<Option[]> => {
   // const data = await handleApi('/utility/states')
@@ -28,5 +29,19 @@ export const getPropertyTypes = async (state: string): Promise<Option[]> => {
 export const getMsas = async (state: string): Promise<Option[]> => {
   // const data = await handleApi(`/utility/msas/${state}`)
   const data = await fakeApi(`/utility/msas/${state}`)
+  return data
+}
+
+export const getAboutUs = async (): Promise<any[]> => {
+  // const data = await handleApi(`/utility/aboutus`)
+  const data = []
+  for (let i = 0; i < 50; i++) {
+    data.push({
+      State: faker.address.stateAbbr(),
+      'Broker Name': faker.name.findName(),
+      License: faker.vehicle.vin(),
+      Office: `${faker.address.streetAddress()} ${faker.address.secondaryAddress()}, ${faker.address.city()}, ${faker.address.stateAbbr()} ${faker.address.zipCode()}`
+    })
+  }
   return data
 }
