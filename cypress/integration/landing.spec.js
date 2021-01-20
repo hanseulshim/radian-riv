@@ -31,6 +31,16 @@ describe('Landing page', () => {
     it('should open About Us', () => {
       cy.get('.footer-links > a').contains('About Us')
     })
+
+    it('should render a table with a list of Brokers', () => {
+      cy.get('.footer-links > a').contains('About Us').click()
+      cy.get('tr').should('have.length.above', 1)
+    })
+
+    it('should close About Us modal', () => {
+      cy.get('.close-form').click()
+      cy.get('.modal-container').should('not.exist')
+    })
     it('should open Privacy Policy doc', () => {
       cy.get('.footer-links > a')
         .contains('Privacy Policy')
