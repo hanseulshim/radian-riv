@@ -118,7 +118,7 @@ export default function SoldChart({ view }: Props) {
             <YAxis
               yAxisId="left"
               label={{
-                value: 'Listed',
+                value: 'Sold',
                 angle: -90,
                 position: 'center',
                 dx: -50
@@ -130,7 +130,7 @@ export default function SoldChart({ view }: Props) {
               orientation="right"
               yAxisId="right"
               label={{
-                value: 'Median List Price',
+                value: 'Median Sold Price',
                 angle: 90,
                 position: 'center',
                 dx: 50

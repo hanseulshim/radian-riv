@@ -195,7 +195,7 @@ export default function SupplyChart({ view }: Props) {
             <YAxis
               yAxisId="left"
               label={{
-                value: '# of Change',
+                value: '# of Units',
                 angle: -90,
                 position: 'center',
                 dx: -50
