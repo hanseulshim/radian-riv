@@ -17,9 +17,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: Install NPM packages
-        run: npm install
+        run: npm install --production
       - name: Build project
         run: NODE_ENV=alpha npm run build && npm run export
       - name: Copy files to the test website with the AWS CLI
         run: |
-           aws s3 sync ./out s3://alpha.boostlabs/radian-riv && aws cloudfront create-invalidation --distribution-id E39HJLG88JXDDO --paths '/radian-riv/*'
+          aws s3 sync ./out s3://alpha.boostlabs/radian-riv && aws cloudfront create-invalidation --distribution-id E39HJLG88JXDDO --paths '/radian-riv/*'

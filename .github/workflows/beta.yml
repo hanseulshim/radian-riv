@@ -17,7 +17,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: Install NPM packages
-        run: npm install
+        run: npm install --production
       - name: Build project
         run: NODE_ENV=beta npm run build && npm run export
       - name: Copy files to the test website with the AWS CLI
