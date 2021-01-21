@@ -23,12 +23,25 @@ describe('Trending Page', () => {
       cy.get('.route-link > .label-icon')
       cy.get('.route-link > span').contains('United States')
     })
+    it('Should render a map of the United States', () => {
+      cy.get('.usa > path').should('have.length.above', 50)
+    })
     it('Should have state routes', () => {
       cy.get('.route-link').should('have.length.above', 50)
     })
-    it('Should click a state and route to it', () => {
+    it('Should click a state in the left side navigation and route to it', () => {
       cy.intercept('GET', 'counties', { fixture: 'counties' })
       cy.get('.route-link').contains('Texas').click()
+      cy.url().should('includes', '/trending/TX')
+    })
+
+    it('Should be able to go back to Trending', () => {
+      cy.get('.go-back').click()
+      cy.url().should('eq', 'http://localhost:3000/trending')
+    })
+
+    it('Should click a state on the map and route to it', () => {
+      cy.get('text').contains('Tex.').click()
       cy.url().should('includes', '/trending/TX')
     })
   })

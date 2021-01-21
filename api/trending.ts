@@ -1,4 +1,5 @@
 import faker from 'faker'
+import * as usaGeoJson from './us-states.geojson.json'
 
 const getDateArray = (range: string): { date: Date }[] => {
   const data = []
@@ -250,4 +251,20 @@ const getDataObject = (view: string) => {
         'DOM UC': faker.random.number(150)
       }
     : {}
+}
+
+export const getUsaMap = async (): Promise<any> => {
+  const geoJsonWithData = usaGeoJson.features.map(state => {
+    return {
+      ...state,
+      properties: {
+        medianPctChange: (
+          Math.random() * (Math.round(Math.random()) ? 1 : -1)
+        ).toFixed(2),
+        ...state.properties
+      }
+    }
+  })
+
+  return geoJsonWithData
 }

@@ -7,6 +7,58 @@
     margin-bottom: 1em;
   }
 
+  .usa-map-container {
+    .legend-container {
+      display: flex;
+      align-items: center;
+      max-width: 1200px;
+      margin-top: 2em;
+      .legend-title {
+        margin-right: 1em;
+      }
+
+      .item {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+        .swatch {
+          height: 20px;
+          width: 20px;
+          border-radius: 2px;
+          margin-right: 5px;
+        }
+        .swatch6 {
+          background-color: #76143b;
+        }
+        .swatch5 {
+          background-color: #bd2042;
+        }
+        .swatch4 {
+          background-color: #bd6720;
+        }
+        .swatch3 {
+          background-color: #a8bf31;
+        }
+        .swatch2 {
+          background-color: #42c675;
+        }
+        .swatch1 {
+          background-color: #068e26;
+        }
+      }
+    }
+
+    .usa {
+      .state,
+      .state-label {
+        cursor: pointer;
+        &:hover {
+          opacity: 0.85;
+        }
+      }
+    }
+  }
+
   .home-price-form-container {
     display: flex;
     border-bottom: 1px solid var(--light-gray);

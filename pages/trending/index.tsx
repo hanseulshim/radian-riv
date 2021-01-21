@@ -3,6 +3,7 @@ import Breadcrumbs from 'components/Breadcrumbs'
 import Sidebar from 'components/Sidebar'
 import { useTrending } from 'context/trending/TrendingProvider'
 import { getStateRoutes } from 'utils'
+import UnitedStatesMap from 'components/trending/UnitedStatesMap'
 
 function Trending() {
   const { stateList } = useTrending()
@@ -12,6 +13,7 @@ function Trending() {
         <Breadcrumbs current="National Level" />
         <h1>National Level Annual Price Change</h1>
         <h2>Single Family Only</h2>
+        <UnitedStatesMap />
       </div>
     </Sidebar>
   )
