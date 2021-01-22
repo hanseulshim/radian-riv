@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input should match snapshot 1`] = `
+<div
+  className="input-group"
+>
+  <input
+    className="error-input"
+    disabled={false}
+    name="test"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    placeholder="test..."
+    type="text"
+    value="test"
+  />
+  <label
+    className="input-label"
+    htmlFor="test"
+  >
+    test
+  </label>
+  <span
+    className="error-input-message"
+  >
+    error
+  </span>
+</div>
+`;

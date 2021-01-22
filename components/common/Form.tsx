@@ -1,3 +1,4 @@
+import React from 'react'
 import Alert from 'components/common/Alert'
 
 type Props = {

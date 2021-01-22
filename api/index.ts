@@ -3,14 +3,13 @@ export * from './user'
 export * from './utility'
 export * from './trending'
 import Cookies from 'js-cookie'
-import data from './data'
+import fakeData from './data'
 
 export interface Option {
   label: string
   value: string
 }
 
-import fakeData from './data'
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export const handleApi = async (

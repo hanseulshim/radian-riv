@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox should match snapshot 1`] = `
+<div
+  className="checkbox-container"
+>
+  <label>
+    <input
+      checked={false}
+      className="hidden-checkbox"
+      disabled={true}
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <div
+      className="styled-checkbox false disabled"
+    >
+      <svg
+        viewBox="0 0 24 24"
+      >
+        <polyline
+          className="checkmark hidden"
+          points="20 6 9 17 4 12"
+        />
+      </svg>
+    </div>
+    <span
+      className="disabled"
+    >
+      Test
+    </span>
+  </label>
+</div>
+`;

@@ -1,6 +1,6 @@
 import { withAuth } from 'context/auth/AuthRoute'
 import { useTrending } from 'context/trending/TrendingProvider'
-import Breadcrumbs from 'components/Breadcrumbs'
+import Breadcrumbs from 'components/common/Breadcrumbs'
 import Sidebar from 'components/Sidebar'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'

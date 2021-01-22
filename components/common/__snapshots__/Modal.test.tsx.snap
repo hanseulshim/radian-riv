@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal should match snapshot 1`] = `
+<div
+  className="modal-container"
+  onClick={[Function]}
+>
+  <div
+    className="form"
+    style={
+      Object {
+        "width": null,
+      }
+    }
+  >
+    <h2
+      className="form-title"
+    >
+      title
+    </h2>
+    <img
+      className="close-form"
+      onClick={[Function]}
+      src="undefined/images/icon_x.svg"
+    />
+    <div>
+      children
+    </div>
+  </div>
+</div>
+`;

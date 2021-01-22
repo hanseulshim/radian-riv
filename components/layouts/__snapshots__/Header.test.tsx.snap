@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout should match snapshot 1`] = `
+<div
+  id="layout"
+>
+  <Head>
+    <title>
+      Radian RIV
+    </title>
+    <link
+      href="undefined/favicon.ico"
+      rel="icon"
+      type="image/x-icon"
+    />
+  </Head>
+  <Header />
+  <div>
+    test
+  </div>
+  <Footer />
+</div>
+`;

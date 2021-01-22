@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import React, { useState, useCallback } from 'react'
 import Modal from 'components/common/Modal'
 import { getAboutUs } from 'api'
 import Table from 'components/common/Table'

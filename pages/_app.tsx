@@ -1,4 +1,4 @@
-import Layout from 'components/Layout'
+import Layout from 'components/layouts/Layout'
 import { AuthProvider } from 'context/auth/AuthProvider'
 import { TrendingProvider } from 'context/trending/TrendingProvider'
 import { AppProps } from 'next/app'

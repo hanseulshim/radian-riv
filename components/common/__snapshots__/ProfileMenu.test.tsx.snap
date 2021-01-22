@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileMenu should match snapshot after clicking image 1`] = `
+<div
+  className="profile-menu"
+>
+  <img
+    alt="profile"
+    id="profile-logo"
+    onClick={[Function]}
+    src="undefined/images/profile.svg"
+  />
+  <ul
+    className="menu-container"
+  >
+    <Link
+      href="/profile"
+    >
+      <a>
+        <li>
+          Account
+        </li>
+      </a>
+    </Link>
+    <li>
+      Help
+    </li>
+    <li
+      onClick={[Function]}
+    >
+      Logout
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`ProfileMenu should match snapshot before clicking image 1`] = `
+<div
+  className="profile-menu"
+>
+  <img
+    alt="profile"
+    id="profile-logo"
+    onClick={[Function]}
+    src="undefined/images/profile.svg"
+  />
+</div>
+`;

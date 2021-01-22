@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register should match snapshot 1`] = `
+<Modal
+  closeModal={[Function]}
+  title="Create a New Account"
+  width={800}
+>
+  <Form
+    alert={null}
+    id="register"
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-row"
+    >
+      <div
+        className="form-group"
+      >
+        <Input
+          error=""
+          label="First Name"
+          onChange={[Function]}
+          required={true}
+          value=""
+        />
+        <Input
+          error=""
+          label="Last Name"
+          onChange={[Function]}
+          required={true}
+          value=""
+        />
+        <Input
+          error=""
+          label="User Name"
+          onChange={[Function]}
+          required={true}
+          value=""
+        />
+      </div>
+      <div
+        className="form-group"
+      >
+        <Input
+          error=""
+          label="Phone"
+          onChange={[Function]}
+          value=""
+        />
+        <Input
+          error=""
+          label="Email"
+          onChange={[Function]}
+          required={true}
+          value=""
+        />
+        <Input
+          error=""
+          label="Confirm Email"
+          onChange={[Function]}
+          required={true}
+          value=""
+        />
+      </div>
+    </div>
+    <TermsOfUse />
+    <Checkbox
+      checked={false}
+      label="I have read and agree to the Terms Of Use"
+      onChange={[Function]}
+    />
+    <button
+      className="btn btn-primary"
+      disabled={true}
+      type="submit"
+    >
+      Agree
+    </button>
+  </Form>
+</Modal>
+`;

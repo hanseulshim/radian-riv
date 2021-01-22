@@ -22,22 +22,6 @@ export default function TrendingFilters() {
   const [types, setTypes] = useState<Option[]>([])
   const [msas, setMsas] = useState<Option[]>([])
 
-  // useEffect(() => {
-  //   if (county && counties.length) {
-  //     const setCountyDefault = async () => {
-  //       const currentCounty = await getCurrentCounty(
-  //         state as string,
-  //         county as string
-  //       )
-  //       const matchedCounty = counties.find(
-  //         countyObj => countyObj.value === currentCounty.currentCounty.value
-  //       )
-  //       onSelectChange(matchedCounty, 'county')
-  //     }
-  //     setCountyDefault()
-  //   }
-  // }, [counties])
-
   useEffect(() => {
     if (selectedState) {
       const zipcodeFetch = async () => {

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import Input from 'components/common/Input'
 import Modal from 'components/common/Modal'
 import Form from 'components/common/Form'
@@ -31,7 +31,7 @@ export default function ContactUs({ closeModal }: Props) {
   }
   return (
     <Modal closeModal={closeModal} title={'Contact Us'} width={800}>
-      <Form id="reset-password" onSubmit={submitForm} alert={alert}>
+      <Form id="contact-us" onSubmit={submitForm} alert={alert}>
         <Input
           label="To"
           value={toEmail}

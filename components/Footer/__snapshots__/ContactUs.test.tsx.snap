@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Contact us should match snapshot 1`] = `
+<Modal
+  closeModal={[Function]}
+  title="Contact Us"
+  width={800}
+>
+  <Form
+    alert={null}
+    id="contact-us"
+    onSubmit={[Function]}
+  >
+    <Input
+      disabled={true}
+      error=""
+      label="To"
+      onChange={[Function]}
+      value="vow@redbellre.com"
+    />
+    <div
+      className="form-row"
+    >
+      <div
+        className="form-spacer"
+      >
+        <Input
+          error=""
+          label="Name"
+          onChange={[Function]}
+          value=""
+        />
+      </div>
+      <div
+        className="form-spacer"
+      >
+        <Input
+          error=""
+          label="Email"
+          onChange={[Function]}
+          value=""
+        />
+      </div>
+    </div>
+    <Input
+      error=""
+      label="Subject"
+      onChange={[Function]}
+      value=""
+    />
+    <Input
+      error=""
+      label="Property Address"
+      onChange={[Function]}
+      value=""
+    />
+    <textarea
+      onChange={[Function]}
+      placeholder="Comment Field..."
+      value="12345"
+    />
+    <button
+      className="btn btn-primary"
+      type="submit"
+    >
+      Submit
+    </button>
+  </Form>
+</Modal>
+`;

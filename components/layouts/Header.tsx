@@ -1,3 +1,4 @@
+import React from 'react'
 import { useAuth } from 'context/auth/AuthProvider'
 import ProfileMenu from 'components/common/ProfileMenu'
 

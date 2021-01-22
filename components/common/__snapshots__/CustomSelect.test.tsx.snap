@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomSelect should match snapshot 1`] = `
+<div
+  className="custom-select-container"
+>
+  <div
+    className="custom-select-label"
+  >
+    test
+  </div>
+  <StateManager
+    defaultInputValue=""
+    defaultMenuIsOpen={false}
+    defaultValue={null}
+    onChange={[Function]}
+    options={
+      Array [
+        Object {
+          "label": "test",
+          "value": "test",
+        },
+      ]
+    }
+    styles={
+      Object {
+        "control": [Function],
+        "menu": [Function],
+        "option": [Function],
+      }
+    }
+    value={
+      Object {
+        "label": "test",
+        "value": "test",
+      }
+    }
+  />
+</div>
+`;

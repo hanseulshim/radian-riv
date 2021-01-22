@@ -1,7 +1,7 @@
 import { defaultAuth, useAuth } from 'context/auth/AuthProvider'
 import Cookies from 'js-cookie'
 import Link from 'next/link'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 export default function ProfileMenu() {
   const isCancelled = useRef(false)

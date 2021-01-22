@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TermsOfUse should match snapshot 1`] = `
+<div
+  className="terms-of-use"
+>
+  <h4>
+    Terms of Use:
+  </h4>
+  <object
+    data="undefined/TermsOfUse.pdf"
+    height="300px"
+    type="application/pdf"
+    width="100%"
+  />
+</div>
+`;

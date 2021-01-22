@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form should match snapshot 1`] = `
+<form
+  id="test"
+  onSubmit={[Function]}
+>
+  <div>
+    form
+  </div>
+  <Alert
+    message="request successful"
+    type="success"
+  />
+</form>
+`;

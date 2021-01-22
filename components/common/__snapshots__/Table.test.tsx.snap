@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table should match snapshot after clicking image 1`] = `
+<div
+  className="table-container"
+>
+  <div
+    className="table-wrap"
+  >
+    <table
+      className="styled-table"
+      role="table"
+    >
+      <thead />
+      <tbody
+        role="rowgroup"
+      />
+    </table>
+  </div>
+</div>
+`;

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import ContactUs from './ContactUs'
 import Copyright from './Copyright'
 import AboutUs from './AboutUs'

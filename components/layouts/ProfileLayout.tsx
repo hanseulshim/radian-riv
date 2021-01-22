@@ -1,5 +1,5 @@
 import { withAuth } from 'context/auth/AuthRoute'
-import Breadcrumbs from 'components/Breadcrumbs'
+import Breadcrumbs from 'components/common/Breadcrumbs'
 import Sidebar from 'components/Sidebar'
 import { profileRoutes } from 'utils'
 

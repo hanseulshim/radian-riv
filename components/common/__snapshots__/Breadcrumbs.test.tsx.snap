@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumbs should match snapshot 1`] = `
+<div
+  id="breadcrumbs"
+>
+  <Link
+    href="/"
+  >
+    <a>
+      Home
+    </a>
+  </Link>
+  <span>
+    /
+  </span>
+  <Link
+    href="parent"
+  >
+    <a>
+      parent
+    </a>
+  </Link>
+  <div>
+    <span>
+      /
+    </span>
+    Test
+  </div>
+</div>
+`;
