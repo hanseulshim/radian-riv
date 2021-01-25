@@ -1,14 +1,8 @@
 import React, { useEffect } from 'react'
-import { useSortBy, useTable } from 'react-table'
+import { useSortBy, useTable, useFlexLayout } from 'react-table'
 
-export default function Table({ columns, data, fetchData, getColWidth }) {
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow
-  } = useTable(
+export default function Table({ columns, data, fetchData, sortTable = false }) {
+  const { getTableProps, headerGroups, rows, prepareRow } = useTable(
     {
       columns,
       data,
@@ -24,29 +18,57 @@ export default function Table({ columns, data, fetchData, getColWidth }) {
         ]
       }
     },
-    useSortBy
+    useSortBy,
+    useFlexLayout
   )
 
   useEffect(() => {
     fetchData()
   }, [fetchData])
 
+  const headerProps = (props, { column }) =>
+    getStyles(props, column.align, column)
+
+  const cellProps = (props, { cell }) => getStyles(props, cell.column.align)
+
+  const getStyles = (props, align = 'left', column?) => {
+    if (!column || !sortTable) {
+      return [
+        props,
+        {
+          style: {
+            justifyContent: align === 'right' ? 'flex-end' : 'flex-start'
+          }
+        }
+      ]
+    }
+    const colProps = column.getSortByToggleProps()
+    return [
+      props,
+      {
+        ...colProps,
+        style: {
+          ...colProps.style,
+          justifyContent: align === 'right' ? 'flex-end' : 'flex-start'
+        }
+      }
+    ]
+  }
+
   return (
     <div className="table-container">
-      <div className="table-wrap">
-        <table {...getTableProps()} className="styled-table">
-          <thead>
-            {headerGroups.map(headerGroup => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map(column => (
-                  <th
-                    className="styled-table-head"
-                    {...column.getHeaderProps(column.getSortByToggleProps())}
-                    style={{
-                      ...column.getHeaderProps.style,
-                      ...getColWidth(column.Header)
-                    }}
-                  >
+      <div {...getTableProps()} className="table">
+        <div className="thead">
+          {headerGroups.map(headerGroup => (
+            <div
+              {...headerGroup.getHeaderGroupProps({
+                style: { paddingRight: '15px' }
+              })}
+              className="tr"
+            >
+              {headerGroup.headers.map(column => {
+                return (
+                  <div className="th" {...column.getHeaderProps(headerProps)}>
                     {column.render('Header')}
                     <span>
                       {column.isSorted
@@ -55,32 +77,26 @@ export default function Table({ columns, data, fetchData, getColWidth }) {
                           : ' ▲'
                         : ' '}
                     </span>
-                  </th>
+                  </div>
+                )
+              })}
+            </div>
+          ))}
+        </div>
+        <div className="tbody">
+          {rows.map(row => {
+            prepareRow(row)
+            return (
+              <div {...row.getRowProps()} className="tr styled-table-row">
+                {row.cells.map(cell => (
+                  <div {...cell.getCellProps(cellProps)} className="td">
+                    {cell.render('Cell')}
+                  </div>
                 ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody {...getTableBodyProps()}>
-            {rows.map(row => {
-              prepareRow(row)
-              return (
-                <tr {...row.getRowProps()} className="styled-table-row">
-                  {row.cells.map(cell => (
-                    <td
-                      {...cell.getCellProps()}
-                      style={{
-                        ...cell.getCellProps.style,
-                        ...getColWidth(cell.column.id)
-                      }}
-                    >
-                      {cell.render('Cell')}
-                    </td>
-                  ))}
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
+              </div>
+            )
+          })}
+        </div>
       </div>
     </div>
   )

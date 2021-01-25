@@ -38,6 +38,11 @@ describe('Dom/Supply', () => {
     cy.get('.chart-title').contains('Supply')
     cy.get('.recharts-surface')
   })
+  it('Should open the download data modal, render a table, and close modal', () => {
+    cy.get('.download-data').click()
+    cy.get('.table')
+    cy.get('.close-form').click()
+  })
   after(() => {
     cy.clearCookies()
   })

@@ -34,7 +34,7 @@ describe('Landing page', () => {
 
     it('should render a table with a list of Brokers', () => {
       cy.get('.footer-links > a').contains('About Us').click()
-      cy.get('tr').should('have.length.above', 1)
+      cy.get('.tr').should('have.length.above', 1)
     })
 
     it('should close About Us modal', () => {

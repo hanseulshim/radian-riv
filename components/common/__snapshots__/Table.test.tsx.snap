@@ -5,17 +5,20 @@ exports[`Table should match snapshot after clicking image 1`] = `
   className="table-container"
 >
   <div
-    className="table-wrap"
+    className="table"
+    role="table"
+    style={
+      Object {
+        "minWidth": "0px",
+      }
+    }
   >
-    <table
-      className="styled-table"
-      role="table"
-    >
-      <thead />
-      <tbody
-        role="rowgroup"
-      />
-    </table>
+    <div
+      className="thead"
+    />
+    <div
+      className="tbody"
+    />
   </div>
 </div>
 `;

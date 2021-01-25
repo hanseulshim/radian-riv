@@ -23,18 +23,9 @@ export default function AboutUs({ closeModal }: Props) {
     setData(tableData)
   }, [])
 
-  const getColWidth = (header: string) => ({
-    minWidth: 250
-  })
-
   return (
     <Modal closeModal={closeModal} title={'About Us'} percent={80}>
-      <Table
-        columns={columns}
-        data={data}
-        fetchData={fetchData}
-        getColWidth={getColWidth}
-      />
+      <Table columns={columns} data={data} fetchData={fetchData} />
     </Modal>
   )
 }

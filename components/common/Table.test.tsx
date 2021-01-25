@@ -10,19 +10,16 @@ describe('Table', () => {
     const props = {
       columns: [],
       data: [],
-      fetchData: () => {},
-      getColWidth: () => {}
+      fetchData: () => {}
     }
     component = shallow(<Table {...props} />)
   })
   it('renders table container', () => {
     expect(component.find('.table-container')).toHaveLength(1)
-    expect(component.find('.table-wrap')).toHaveLength(1)
   })
   it('renders table', () => {
-    expect(component.find('table.styled-table')).toHaveLength(1)
-    expect(component.find('th.styled-table-head')).toHaveLength(0)
-    expect(component.find('tr.styled-table-row')).toHaveLength(0)
+    expect(component.find('.table')).toHaveLength(1)
+    expect(component.find('.styled-table-row')).toHaveLength(0)
   })
   it('should match snapshot after clicking image', () => {
     expect(toJson(component)).toMatchSnapshot()

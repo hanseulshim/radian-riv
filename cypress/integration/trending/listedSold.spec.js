@@ -43,6 +43,11 @@ describe('Listed/Sold', () => {
     cy.get('.chart-title').contains('Original List')
     cy.get('.recharts-surface')
   })
+  it('Should open the download data modal, render a table, and close modal', () => {
+    cy.get('.download-data').click()
+    cy.get('.table')
+    cy.get('.close-form').click()
+  })
   after(() => {
     cy.clearCookies()
   })

@@ -10,7 +10,6 @@ exports[`About Us should match snapshot 1`] = `
     columns={Array []}
     data={Array []}
     fetchData={[Function]}
-    getColWidth={[Function]}
   />
 </Modal>
 `;
