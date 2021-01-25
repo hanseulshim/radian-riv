@@ -1,7 +1,7 @@
 import { withAuth } from 'context/auth/AuthRoute'
 import Breadcrumbs from 'components/common/Breadcrumbs'
 import Sidebar from 'components/Sidebar'
-import { useTrending } from 'context/trending/TrendingProvider'
+import { useTrending } from 'context/TrendingProvider'
 import { getStateRoutes } from 'utils'
 import UnitedStatesMap from 'components/trending/UnitedStatesMap'
 

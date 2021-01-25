@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Property Info should match snapshot 1`] = `
+<div
+  className="property-info"
+>
+  <div
+    className="property-info-header"
+  >
+    <h1>
+      RIV Property Info
+    </h1>
+    <button
+      className="btn btn-primary lock-button"
+    >
+      <span>
+        Lock
+      </span>
+      <div
+        className="lock-icon"
+      >
+        <img
+          alt="lock"
+          src="undefined/images/lock.svg"
+        />
+      </div>
+    </button>
+  </div>
+  <button
+    className="btn btn-primary"
+    style={
+      Object {
+        "marginRight": "1em",
+      }
+    }
+  >
+    Re-Order RIV
+  </button>
+  <button
+    className="btn btn-primary"
+    style={
+      Object {
+        "marginRight": "1em",
+      }
+    }
+  >
+    Order Rental Analysis
+  </button>
+  <button
+    className="btn btn-primary"
+    style={
+      Object {
+        "marginRight": "1em",
+      }
+    }
+  >
+    Change Property Characteristics
+  </button>
+  <div
+    className="icon-row"
+  >
+    <img
+      alt="logo"
+      className="icon"
+      src="undefined/images/download-pdf.svg"
+    />
+    <img
+      alt="download-excel"
+      className="icon"
+      src="undefined/images/download-excel.svg"
+    />
+    <img
+      alt="aerial-map"
+      className="icon"
+      src="undefined/images/aerial-map.svg"
+    />
+    <img
+      alt="cost"
+      className="icon"
+      src="undefined/images/cost.svg"
+    />
+    <img
+      alt="property-info"
+      className="icon"
+      src="undefined/images/property-info.svg"
+    />
+    <img
+      alt="photos"
+      className="icon"
+      src="undefined/images/photos.svg"
+    />
+  </div>
+</div>
+`;

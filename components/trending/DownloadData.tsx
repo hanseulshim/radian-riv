@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { useTrending } from 'context/trending/TrendingProvider'
+import { useTrending } from 'context/TrendingProvider'
 import Modal from 'components/common/Modal'
 import { useSortBy, useTable } from 'react-table'
 import { downloadChartData } from 'api'

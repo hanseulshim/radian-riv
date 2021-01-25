@@ -2,6 +2,7 @@ export * from './auth'
 export * from './user'
 export * from './utility'
 export * from './trending'
+export * from './valueProduct'
 import Cookies from 'js-cookie'
 import fakeData from './data'
 

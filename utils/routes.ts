@@ -1,4 +1,4 @@
-import { getCounties, getStates, Option } from 'api'
+import { Option } from 'api'
 
 export interface Route {
   label: string
@@ -23,7 +23,7 @@ export const rootRoutes = [
   {
     label: 'Radian Interactive Value',
     value: 'Radian Interactive Value',
-    path: '/radian-interactive-value',
+    path: '/value-products',
     parentPath: '/'
   }
 ]
@@ -110,5 +110,50 @@ export const getTrendingRoutes = (state: Option, county: Option): Route[] => [
     value: 'DOM/Supply',
     path: `/trending/${state.value}/${county.value}/dom-supply`,
     parentPath: `/trending/${state.value}/${county.value}`
+  }
+]
+
+export const getValueProductRoutes = (orderId: string): Route[] => [
+  {
+    label: 'RIV Property Info',
+    value: 'RIV Property Info',
+    path: `/value-products/${orderId}`,
+    parentPath: `/value-products/${orderId}`
+  },
+  {
+    label: 'RIV Valuation Form',
+    value: 'RIV Valuation Form',
+    path: `/value-products/${orderId}/valuation-form`,
+    parentPath: `/value-products/${orderId}/valuation-form`
+  },
+  {
+    label: 'Market Analysis',
+    value: 'Market Analysis',
+    path: `/value-products/${orderId}/market-analysis`,
+    parentPath: `/value-products/${orderId}/market-analysis`
+  },
+  {
+    label: 'Rental Analysis',
+    value: 'Rental Analysis',
+    path: `/value-products/${orderId}/rental-analysis`,
+    parentPath: `/value-products/${orderId}/rental-analysis`
+  },
+  {
+    label: 'Rental Valuation Form',
+    value: 'Rental Valuation Form',
+    path: `/value-products/${orderId}/rental-valuation-form`,
+    parentPath: `/value-products/${orderId}/rental-valuation-form`
+  },
+  {
+    label: 'Define Market Area',
+    value: 'Define Market Area',
+    path: `/value-products/${orderId}/define-market-area`,
+    parentPath: `/value-products/${orderId}/define-market-area`
+  },
+  {
+    label: 'Documents',
+    value: 'Documents',
+    path: `/value-products/${orderId}/documents`,
+    parentPath: `/value-products/${orderId}/documents`
   }
 ]

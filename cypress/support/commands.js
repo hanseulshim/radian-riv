@@ -32,3 +32,20 @@ Cypress.Commands.add('login', () => {
   cy.get('input[name="Password"]').type('t')
   cy.get('#login').submit()
 })
+
+Cypress.Commands.add('valueProduct', () => {
+  cy.get('.route-link').contains('Radian Interactive Value').click()
+})
+
+Cypress.Commands.add('profile', () => {
+  cy.intercept('GET', '/utility/states', { fixture: 'states' })
+  cy.get('#profile-logo').click()
+  cy.get('.menu-container').contains('Account').click()
+  cy.url().should('contain', '/profile')
+})
+
+Cypress.Commands.add('trending', () => {
+  cy.intercept('GET', '/utility/states', { fixture: 'states' })
+  cy.get('.route-link').contains('Trending').click()
+  cy.url().should('contain', '/trending')
+})

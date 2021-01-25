@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useTrending } from 'context/trending/TrendingProvider'
+import { useTrending } from 'context/TrendingProvider'
 import {
   ComposedChart,
   Line,

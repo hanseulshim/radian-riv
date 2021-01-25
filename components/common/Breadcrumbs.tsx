@@ -2,12 +2,17 @@ import React from 'react'
 import Link from 'next/link'
 type Props = {
   current: string
+  children?: React.ReactNode
   parents?: {
     path: string
     name: string
   }[]
 }
-export default function Breadcrumbs({ current, parents = [] }: Props) {
+export default function Breadcrumbs({
+  current,
+  parents = [],
+  children
+}: Props) {
   return (
     <div id="breadcrumbs">
       <Link href={'/'}>
@@ -25,6 +30,7 @@ export default function Breadcrumbs({ current, parents = [] }: Props) {
         <span>/</span>
         {current}
       </div>
+      {children}
     </div>
   )
 }

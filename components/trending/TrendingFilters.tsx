@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { getPropertyTypes, getMsas, getZipcodes, Option } from 'api'
-import { useTrending } from 'context/trending/TrendingProvider'
+import { useTrending } from 'context/TrendingProvider'
 import CustomSelect from 'components/common/CustomSelect'
 
 export default function TrendingFilters() {

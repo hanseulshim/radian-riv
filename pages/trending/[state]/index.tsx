@@ -1,5 +1,5 @@
 import { withAuth } from 'context/auth/AuthRoute'
-import { useTrending } from 'context/trending/TrendingProvider'
+import { useTrending } from 'context/TrendingProvider'
 import Breadcrumbs from 'components/common/Breadcrumbs'
 import Sidebar from 'components/Sidebar'
 import { useRouter } from 'next/router'

@@ -1,0 +1,32 @@
+.value-product {
+  .property-info {
+    .property-info-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .lock-button {
+        display: flex;
+        min-width: 0;
+        .lock-icon {
+          margin-left: 1em;
+          background: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 100%;
+          width: 1.25em;
+          height: 1.25em;
+        }
+      }
+    }
+    .icon-row {
+      display: flex;
+      align-items: center;
+      margin-top: 1em;
+    }
+    .icon {
+      cursor: pointer;
+      margin-right: 1em;
+    }
+  }
+}
