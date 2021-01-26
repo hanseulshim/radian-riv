@@ -169,7 +169,7 @@ export default function SoldChart({ view }: Props) {
         </ResponsiveContainer>
       </div>
       <button
-        className="btn btn-primary download-data"
+        className="btn btn-small download-data"
         onClick={() => setDataModal(!dataModal)}
       >
         Download Data

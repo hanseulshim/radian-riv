@@ -186,7 +186,7 @@ export default function Profile() {
               />
             </div>
           </div>
-          <button className="btn btn-primary" type="submit">
+          <button className="btn" type="submit">
             Update My Profile
           </button>
         </Form>

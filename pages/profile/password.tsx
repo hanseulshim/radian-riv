@@ -119,7 +119,7 @@ export default function ChangePassword() {
               onChange={e => handleInput(e, 'confirmPwd')}
             />
           </div>
-          <button className="btn btn-primary" type="submit">
+          <button className="btn" type="submit">
             Confirm Password
           </button>
         </Form>

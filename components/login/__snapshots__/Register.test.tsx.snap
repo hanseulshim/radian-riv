@@ -71,7 +71,7 @@ exports[`Register should match snapshot 1`] = `
       onChange={[Function]}
     />
     <button
-      className="btn btn-primary"
+      className="btn"
       disabled={true}
       type="submit"
     >

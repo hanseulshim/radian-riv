@@ -62,7 +62,7 @@ export default function DownloadData({ view, closeModal, range }: Props) {
     <Modal title="" closeModal={closeModal} percent={80}>
       <button
         style={{ alignSelf: 'flex-end', marginBottom: '1em' }}
-        className="btn btn-primary"
+        className="btn btn-small"
       >
         Export to Excel
       </button>

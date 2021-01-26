@@ -11,23 +11,23 @@ exports[`Property Info should match snapshot 1`] = `
       RIV Property Info
     </h1>
     <button
-      className="btn btn-primary lock-button"
+      className="btn btn-icon"
     >
       <span>
         Lock
       </span>
-      <div
-        className="lock-icon"
+      <span
+        className="icon-container"
       >
         <img
           alt="lock"
           src="undefined/images/lock.svg"
         />
-      </div>
+      </span>
     </button>
   </div>
   <button
-    className="btn btn-primary"
+    className="btn btn-small"
     style={
       Object {
         "marginRight": "1em",
@@ -37,7 +37,7 @@ exports[`Property Info should match snapshot 1`] = `
     Re-Order RIV
   </button>
   <button
-    className="btn btn-primary"
+    className="btn btn-small"
     style={
       Object {
         "marginRight": "1em",
@@ -47,7 +47,7 @@ exports[`Property Info should match snapshot 1`] = `
     Order Rental Analysis
   </button>
   <button
-    className="btn btn-primary"
+    className="btn btn-small"
     style={
       Object {
         "marginRight": "1em",

@@ -62,7 +62,7 @@ export default function WebsiteSupport({ closeModal }: Props) {
           onChange={e => setIssue(e.target.value)}
           value={issue}
         />
-        <button className="btn btn-primary" type="submit">
+        <button className="btn" type="submit">
           Submit
         </button>
       </Form>

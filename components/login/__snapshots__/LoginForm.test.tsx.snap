@@ -23,7 +23,7 @@ exports[`LoginForm should match snapshot 1`] = `
       value=""
     />
     <button
-      className="btn btn-primary login-button"
+      className="btn login-button"
       type="submit"
     >
       Login

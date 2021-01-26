@@ -5,20 +5,20 @@ export default function PropertyInfo() {
     <div className="property-info">
       <div className="property-info-header">
         <h1>RIV Property Info</h1>
-        <button className="btn btn-primary lock-button">
+        <button className="btn btn-icon">
           <span>Lock</span>
-          <div className="lock-icon">
+          <span className="icon-container">
             <img src={`${process.env.baseUrl}/images/lock.svg`} alt="lock" />
-          </div>
+          </span>
         </button>
       </div>
-      <button style={{ marginRight: '1em' }} className="btn btn-primary">
+      <button style={{ marginRight: '1em' }} className="btn btn-small">
         Re-Order RIV
       </button>
-      <button style={{ marginRight: '1em' }} className="btn btn-primary">
+      <button style={{ marginRight: '1em' }} className="btn btn-small">
         Order Rental Analysis
       </button>
-      <button style={{ marginRight: '1em' }} className="btn btn-primary">
+      <button style={{ marginRight: '1em' }} className="btn btn-small">
         Change Property Characteristics
       </button>
       <div className="icon-row">

@@ -77,7 +77,7 @@ export default function ContactUs({ closeModal }: Props) {
           onChange={e => setComment(e.target.value)}
           value={comment}
         />
-        <button className="btn btn-primary" type="submit">
+        <button className="btn" type="submit">
           Submit
         </button>
       </Form>

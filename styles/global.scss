@@ -281,44 +281,71 @@ ul {
 }
 
 .btn {
-  padding: 10px 15px;
-  border-radius: 20px;
+  height: 50px;
+  border-radius: 100px;
   border: none;
   font-size: 1em;
   min-width: 180px;
   font-weight: bold;
+  padding: 0 1em;
   cursor: pointer;
-  &.btn-primary {
+  color: var(--white);
+  background-color: var(--prussian-blue);
+  &:hover {
     color: var(--white);
-    background-color: var(--prussian-blue);
-    &:hover {
-      color: var(--white);
-      background-color: var(--oracle);
-    }
+    background-color: var(--oracle);
+  }
+  &:focus {
+    border: 2px solid var(--robins-egg-blue);
+  }
+  &:disabled {
+    background-color: var(--gray);
+    cursor: not-allowed;
   }
   &.btn-secondary {
     color: var(--prussian-blue);
     background-color: var(--white);
-    border: 1px solid var(--prussian-blue);
+    border: 2px solid var(--prussian-blue);
     &:hover {
       color: var(--oracle);
       background-color: var(--white);
-      border: 1px solid var(--oracle);
+      border-color: var(--oracle);
+    }
+    &:focus {
+      border-color: var(--robins-egg-blue);
+    }
+    &:disabled {
+      border-color: var(--gray);
+      color: var(--gray);
     }
   }
   &.btn-link {
     font-weight: normal;
     background: none;
     color: var(--oracle);
+    &:focus {
+      border: none;
+    }
   }
   &.btn-small {
-    padding: 2px 0;
-    background-color: var(--white);
-    border: 1px solid var(--prussian-blue);
+    height: 30px;
   }
-  &:disabled {
-    background-color: var(--gray);
-    cursor: not-allowed;
+  &.btn-icon {
+    min-width: 150px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .icon-container {
+      margin-left: 1em;
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 100%;
+      width: 1.25em;
+      height: 1.25em;
+    }
   }
 }
 

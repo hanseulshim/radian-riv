@@ -60,7 +60,7 @@ exports[`Contact us should match snapshot 1`] = `
       value="12345"
     />
     <button
-      className="btn btn-primary"
+      className="btn"
       type="submit"
     >
       Submit

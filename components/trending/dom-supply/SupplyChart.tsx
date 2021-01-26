@@ -235,7 +235,7 @@ export default function SupplyChart({ view }: Props) {
         </div>
       </div>
       <button
-        className="btn btn-primary download-data"
+        className="btn btn-small download-data"
         onClick={() => setDataModal(!dataModal)}
       >
         Download Data

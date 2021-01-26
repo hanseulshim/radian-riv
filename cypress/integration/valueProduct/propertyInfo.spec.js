@@ -14,7 +14,7 @@ describe('RIV Property Info', () => {
 
   it('should have header row', () => {
     cy.get('h1').contains('RIV Property Info')
-    cy.get('.lock-button').contains('Lock')
+    cy.get('.btn-icon').contains('Lock')
   })
   it('should have 3 button row', () => {
     cy.get('.btn').contains('Re-Order RIV')

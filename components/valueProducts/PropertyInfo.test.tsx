@@ -11,8 +11,10 @@ describe('Property Info', () => {
   })
   it('has h1 tag and lock button', () => {
     expect(component.find('h1').text()).toEqual('RIV Property Info')
-    expect(component.find('.lock-button').text()).toEqual('Lock')
-    expect(component.find('.lock-icon > img').prop('src')).toContain('lock.svg')
+    expect(component.find('.btn-icon').text()).toEqual('Lock')
+    expect(component.find('.icon-container > img').prop('src')).toContain(
+      'lock.svg'
+    )
   })
   it('has three top row buttons', () => {
     expect(component.find('button').at(1).text()).toEqual('Re-Order RIV')

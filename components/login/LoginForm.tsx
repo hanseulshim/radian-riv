@@ -65,7 +65,7 @@ export default function LoginForm({
           error={error.pwd}
           onChange={e => handleInput(e, 'pwd')}
         />
-        <button className="btn btn-primary login-button" type="submit">
+        <button className="btn login-button" type="submit">
           Login
         </button>
       </Form>

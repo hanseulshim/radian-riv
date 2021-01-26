@@ -126,7 +126,7 @@ export default function Register({ closeModal }: Props) {
           }
         />
         <button
-          className="btn btn-primary"
+          className="btn"
           type="submit"
           disabled={!register.terms_accepted}
         >

@@ -104,7 +104,7 @@ export default function ResetPassword({ closeModal }: Props) {
             onChange={e => handleInput(e, 'email')}
             required
           />
-          <button className="btn btn-primary" type="submit">
+          <button className="btn" type="submit">
             Reset Password
           </button>
           <p className="info">
@@ -125,7 +125,7 @@ export default function ResetPassword({ closeModal }: Props) {
             error={answerError}
             onChange={updateAnswer}
           />
-          <button className="btn btn-primary" type="submit">
+          <button className="btn" type="submit">
             Submit
           </button>
         </Form>
