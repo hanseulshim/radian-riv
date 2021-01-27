@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import ValueProductLayout from 'components/layouts/ValueProductLayout'
-import MarketAnalysis from 'components/valueProducts/MarketAnalysis'
+import MarketAnalysis from 'components/valueProducts/analysis/MarketAnalysis'
+import FilteredMarketAnalysis from 'components/valueProducts/analysis/FilteredMarketAnalysis'
 import PropertyTabs from 'components/valueProducts/analysis/PropertyInfoTable'
 
 export default function MarketAnalysisPage() {
@@ -19,7 +20,11 @@ export default function MarketAnalysisPage() {
           currentView={currentView}
           setCurrentView={setCurrentView}
         />
-        {currentView === 'Market Analysis' && <MarketAnalysis />}
+        {currentView === 'Market Analysis' ? (
+          <MarketAnalysis />
+        ) : (
+          <FilteredMarketAnalysis />
+        )}
       </div>
     </ValueProductLayout>
   )

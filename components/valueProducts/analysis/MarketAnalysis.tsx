@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useValueProduct } from 'context/ValueProductProvider'
-import DaysTable from './analysis/DaysTable'
-import SoldDaysTable from './analysis/SoldDaysTable'
-import FinalListPriceTable from './analysis/FinalListPriceTable'
-import OriginalListPriceTable from './analysis/OriginalListPriceTable'
+import DaysTable from './DaysTable'
+import SoldDaysTable from './SoldDaysTable'
+import FinalListPriceTable from './FinalListPriceTable'
+import OriginalListPriceTable from './OriginalListPriceTable'
 import {
   getMarketAnalysisDays,
   getMarketAnalysisListings,

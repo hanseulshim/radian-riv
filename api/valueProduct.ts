@@ -2,10 +2,10 @@ import { PropertyInfoType } from 'context/ValueProductProvider'
 import faker from 'faker'
 
 export const getPropertyInfo = async (
-  orderId: string
+  propertyInfoId: string
 ): Promise<PropertyInfoType> => {
   return {
-    id: orderId,
+    id: propertyInfoId,
     poolName: 'DEFAULT',
     loanNumber: 'test',
     address: '18324 Tapwood Road',
@@ -46,40 +46,96 @@ interface DaysTable {
   '271-365': number
 }
 
+const daysData = () => [
+  {
+    days: 'Total # of Sales (Solds)',
+    '0-90': faker.random.number({ min: 10, max: 25 }),
+    '91-180': faker.random.number({ min: 10, max: 25 }),
+    '180-270': faker.random.number({ min: 10, max: 25 }),
+    '271-365': faker.random.number({ min: 10, max: 25 })
+  },
+  {
+    days: 'Absorption Rate (Sales per Month)',
+    '0-90': +faker.finance.amount(3, 8, 2),
+    '91-180': +faker.finance.amount(3, 8, 2),
+    '180-270': +faker.finance.amount(3, 8, 2),
+    '271-365': +faker.finance.amount(3, 8, 2)
+  },
+  {
+    days: 'Inventory (Listings & Pendings)',
+    '0-90': faker.random.number({ min: 10, max: 25 }),
+    '91-180': faker.random.number({ min: 10, max: 25 }),
+    '180-270': faker.random.number({ min: 10, max: 25 }),
+    '271-365': faker.random.number({ min: 10, max: 25 })
+  },
+  {
+    days: 'Months Supply',
+    '0-90': +faker.finance.amount(0.2, 0.8, 2),
+    '91-180': +faker.finance.amount(0.2, 0.8, 2),
+    '180-270': +faker.finance.amount(0.2, 0.8, 2),
+    '271-365': +faker.finance.amount(0.2, 0.8, 2)
+  }
+]
+
 export const getMarketAnalysisDays = async (
-  orderId: string
+  propertyInfoId: string
 ): Promise<DaysTable[]> => {
-  return [
-    {
-      days: 'Total # of Sales (Solds)',
-      '0-90': faker.random.number({ min: 10, max: 25 }),
-      '91-180': faker.random.number({ min: 10, max: 25 }),
-      '180-270': faker.random.number({ min: 10, max: 25 }),
-      '271-365': faker.random.number({ min: 10, max: 25 })
-    },
-    {
-      days: 'Absorption Rate (Sales per Month)',
-      '0-90': +faker.finance.amount(3, 8, 2),
-      '91-180': +faker.finance.amount(3, 8, 2),
-      '180-270': +faker.finance.amount(3, 8, 2),
-      '271-365': +faker.finance.amount(3, 8, 2)
-    },
-    {
-      days: 'Inventory (Listings & Pendings)',
-      '0-90': faker.random.number({ min: 10, max: 25 }),
-      '91-180': faker.random.number({ min: 10, max: 25 }),
-      '180-270': faker.random.number({ min: 10, max: 25 }),
-      '271-365': faker.random.number({ min: 10, max: 25 })
-    },
-    {
-      days: 'Months Supply',
-      '0-90': +faker.finance.amount(0.2, 0.8, 2),
-      '91-180': +faker.finance.amount(0.2, 0.8, 2),
-      '180-270': +faker.finance.amount(0.2, 0.8, 2),
-      '271-365': +faker.finance.amount(0.2, 0.8, 2)
-    }
-  ]
+  return daysData()
 }
+
+export const getFilteredMarketAnalysisDays = async (
+  propertyInfoId: string
+): Promise<DaysTable[]> => {
+  return daysData()
+}
+
+const soldData = () => [
+  {
+    category: 'Low',
+    active: faker.random.number({ max: 4000, min: 2000 }),
+    pending: null,
+    '0-90': faker.random.number({ max: 4000, min: 1500 }),
+    '91-180': faker.random.number({ max: 4000, min: 1500 }),
+    '180-270': faker.random.number({ max: 4000, min: 1500 }),
+    '271-365': faker.random.number({ max: 4000, min: 1500 })
+  },
+  {
+    category: 'High',
+    active: faker.random.number({ max: 4000, min: 2000 }),
+    pending: null,
+    '0-90': faker.random.number({ max: 4000, min: 1500 }),
+    '91-180': faker.random.number({ max: 4000, min: 1500 }),
+    '180-270': faker.random.number({ max: 4000, min: 1500 }),
+    '271-365': faker.random.number({ max: 4000, min: 1500 })
+  },
+  {
+    category: 'Median',
+    active: faker.random.number({ max: 4000, min: 2000 }),
+    pending: null,
+    '0-90': faker.random.number({ max: 4000, min: 1500 }),
+    '91-180': faker.random.number({ max: 4000, min: 1500 }),
+    '180-270': faker.random.number({ max: 4000, min: 1500 }),
+    '271-365': faker.random.number({ max: 4000, min: 1500 })
+  },
+  {
+    category: 'Average',
+    active: faker.random.number({ max: 4000, min: 2000 }),
+    pending: null,
+    '0-90': faker.random.number({ max: 4000, min: 1500 }),
+    '91-180': faker.random.number({ max: 4000, min: 1500 }),
+    '180-270': faker.random.number({ max: 4000, min: 1500 }),
+    '271-365': faker.random.number({ max: 4000, min: 1500 })
+  },
+  {
+    category: 'Median DOM',
+    active: faker.random.number({ max: 40, min: 10 }),
+    pending: null,
+    '0-90': faker.random.number({ max: 40, min: 10 }),
+    '91-180': faker.random.number({ max: 40, min: 10 }),
+    '180-270': faker.random.number({ max: 40, min: 10 }),
+    '271-365': faker.random.number({ max: 40, min: 10 })
+  }
+]
 
 interface SoldDaysTable {
   category: string
@@ -92,55 +148,14 @@ interface SoldDaysTable {
 }
 
 export const getMarketAnalysisSoldDays = async (
-  orderId: string
+  propertyInfoId: string
 ): Promise<SoldDaysTable[]> => {
-  return [
-    {
-      category: 'Low',
-      active: faker.random.number({ max: 4000, min: 2000 }),
-      pending: null,
-      '0-90': faker.random.number({ max: 4000, min: 1500 }),
-      '91-180': faker.random.number({ max: 4000, min: 1500 }),
-      '180-270': faker.random.number({ max: 4000, min: 1500 }),
-      '271-365': faker.random.number({ max: 4000, min: 1500 })
-    },
-    {
-      category: 'High',
-      active: faker.random.number({ max: 4000, min: 2000 }),
-      pending: null,
-      '0-90': faker.random.number({ max: 4000, min: 1500 }),
-      '91-180': faker.random.number({ max: 4000, min: 1500 }),
-      '180-270': faker.random.number({ max: 4000, min: 1500 }),
-      '271-365': faker.random.number({ max: 4000, min: 1500 })
-    },
-    {
-      category: 'Median',
-      active: faker.random.number({ max: 4000, min: 2000 }),
-      pending: null,
-      '0-90': faker.random.number({ max: 4000, min: 1500 }),
-      '91-180': faker.random.number({ max: 4000, min: 1500 }),
-      '180-270': faker.random.number({ max: 4000, min: 1500 }),
-      '271-365': faker.random.number({ max: 4000, min: 1500 })
-    },
-    {
-      category: 'Average',
-      active: faker.random.number({ max: 4000, min: 2000 }),
-      pending: null,
-      '0-90': faker.random.number({ max: 4000, min: 1500 }),
-      '91-180': faker.random.number({ max: 4000, min: 1500 }),
-      '180-270': faker.random.number({ max: 4000, min: 1500 }),
-      '271-365': faker.random.number({ max: 4000, min: 1500 })
-    },
-    {
-      category: 'Median DOM',
-      active: faker.random.number({ max: 40, min: 10 }),
-      pending: null,
-      '0-90': faker.random.number({ max: 40, min: 10 }),
-      '91-180': faker.random.number({ max: 40, min: 10 }),
-      '180-270': faker.random.number({ max: 40, min: 10 }),
-      '271-365': faker.random.number({ max: 40, min: 10 })
-    }
-  ]
+  return soldData()
+}
+export const getFilteredMarketAnalysisSoldDays = async (
+  propertyInfoId: string
+): Promise<SoldDaysTable[]> => {
+  return soldData()
 }
 
 export interface MarketListings {
@@ -160,23 +175,101 @@ export interface MarketListings {
   }
 }
 
-export const getMarketAnalysisListings = async (
-  orderId: string
-): Promise<MarketListings> => {
-  return {
-    activeListings: faker.random.number(6),
-    pendings: faker.random.number(3),
-    finalListPrice: {
-      '0-90': +faker.finance.amount(0.9, 1, 4),
-      '91-180': +faker.finance.amount(0.9, 1, 4),
-      '180-270': +faker.finance.amount(0.9, 1, 4),
-      '271-365': +faker.finance.amount(0.9, 1, 4)
-    },
-    originalListPrice: {
-      '0-90': +faker.finance.amount(0.9, 1, 4),
-      '91-180': +faker.finance.amount(0.9, 1, 4),
-      '180-270': +faker.finance.amount(0.9, 1, 4),
-      '271-365': +faker.finance.amount(0.9, 1, 4)
-    }
+const listings = () => ({
+  activeListings: faker.random.number(6),
+  pendings: faker.random.number(3),
+  finalListPrice: {
+    '0-90': +faker.finance.amount(0.9, 1, 4),
+    '91-180': +faker.finance.amount(0.9, 1, 4),
+    '180-270': +faker.finance.amount(0.9, 1, 4),
+    '271-365': +faker.finance.amount(0.9, 1, 4)
+  },
+  originalListPrice: {
+    '0-90': +faker.finance.amount(0.9, 1, 4),
+    '91-180': +faker.finance.amount(0.9, 1, 4),
+    '180-270': +faker.finance.amount(0.9, 1, 4),
+    '271-365': +faker.finance.amount(0.9, 1, 4)
   }
+})
+
+export const getMarketAnalysisListings = async (
+  propertyInfoId: string
+): Promise<MarketListings> => {
+  return listings()
+}
+
+export const getFilteredMarketAnalysisListings = async (
+  propertyInfoId: string
+): Promise<MarketListings> => {
+  return listings()
+}
+
+export interface FilteredMarketAnalysisFilters {
+  minSqft: number
+  maxSqft: number
+  minYrBlt: number
+  maxYrBlt: number
+  propertyType: string
+  minBed: number
+  maxBed: number
+  comparableType: string
+}
+
+export const getFilteredMarketAnalysisFilters = async (
+  propertyInfoId: string
+): Promise<FilteredMarketAnalysisFilters> => {
+  return {
+    minSqft: faker.random.number({ min: 2000, max: 3000 }),
+    maxSqft: faker.random.number({ min: 4000, max: 5000 }),
+    minYrBlt: faker.random.number({ min: 1950, max: 1999 }),
+    maxYrBlt: faker.random.number({ min: 2000, max: 2020 }),
+    propertyType: 'Default',
+    minBed: faker.random.number({ min: 1, max: 3 }),
+    maxBed: faker.random.number({ min: 4, max: 6 }),
+    comparableType: 'All'
+  }
+}
+
+interface FilteredMarketAnalysisDepressedMarketGrid {
+  category: string
+  listingsCount: number
+  listingsPercent: number
+  pendingsCount: number
+  pendingsPercent: number
+  soldsCount: number
+  soldsPercent: number
+}
+
+export const getFilteredMarketAnalysisDepressedMarketGrid = async (
+  propertyInfoId: string
+): Promise<FilteredMarketAnalysisDepressedMarketGrid[]> => {
+  return [
+    {
+      category: 'Retail',
+      listingsCount: faker.random.number(10),
+      listingsPercent: +faker.finance.amount(0, 1, 4),
+      pendingsCount: faker.random.number(5),
+      pendingsPercent: +faker.finance.amount(0, 1, 4),
+      soldsCount: faker.random.number(100),
+      soldsPercent: +faker.finance.amount(0, 1, 4)
+    },
+    {
+      category: 'Short Sale',
+      listingsCount: faker.random.number(10),
+      listingsPercent: +faker.finance.amount(0, 1, 4),
+      pendingsCount: faker.random.number(5),
+      pendingsPercent: +faker.finance.amount(0, 1, 4),
+      soldsCount: faker.random.number(100),
+      soldsPercent: +faker.finance.amount(0, 1, 4)
+    },
+    {
+      category: 'REO',
+      listingsCount: faker.random.number(10),
+      listingsPercent: +faker.finance.amount(0, 1, 4),
+      pendingsCount: faker.random.number(5),
+      pendingsPercent: +faker.finance.amount(0, 1, 4),
+      soldsCount: faker.random.number(100),
+      soldsPercent: +faker.finance.amount(0, 1, 4)
+    }
+  ]
 }
