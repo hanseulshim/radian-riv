@@ -3,6 +3,11 @@
 exports[`Table should match snapshot after clicking image 1`] = `
 <div
   className="table-container"
+  style={
+    Object {
+      "width": undefined,
+    }
+  }
 >
   <div
     className="table"

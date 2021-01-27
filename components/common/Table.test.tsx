@@ -10,7 +10,7 @@ describe('Table', () => {
     const props = {
       columns: [],
       data: [],
-      fetchData: () => {}
+      fetchData: async () => {}
     }
     component = shallow(<Table {...props} />)
   })

@@ -4,7 +4,7 @@ import { useValueProduct } from 'context/ValueProductProvider'
 import Breadcrumbs from 'components/common/Breadcrumbs'
 import Sidebar from 'components/Sidebar'
 import { useRouter } from 'next/router'
-import { getOrderInfo } from 'api'
+import { getPropertyInfo } from 'api'
 import { getValueProductRoutes } from 'utils'
 import Modal from 'components/common/Modal'
 
@@ -14,23 +14,23 @@ interface Props {
 
 function ValueProductLayout({ children }: Props) {
   const [hasError, setHasError] = useState(false)
-  const { order, setOrder } = useValueProduct()
+  const { propertyInfo, setPropertyInfo } = useValueProduct()
   const router = useRouter()
-  const { orderId } = router.query
+  const { propertyInfoId } = router.query
 
   useEffect(() => {
     const getOrder = async () => {
-      if (orderId) {
+      if (propertyInfoId) {
         try {
-          const orderInfo = await getOrderInfo(orderId as string)
-          setOrder(orderInfo)
+          const propertyInfo = await getPropertyInfo(propertyInfoId as string)
+          setPropertyInfo(propertyInfo)
         } catch (e) {
           setHasError(true)
         }
       }
     }
     getOrder()
-  }, [orderId])
+  }, [propertyInfoId])
 
   const toggleErrorModal = () => {
     setHasError(!hasError)
@@ -44,15 +44,15 @@ function ValueProductLayout({ children }: Props) {
   }
 
   return (
-    order && (
+    propertyInfo.id && (
       <Sidebar
-        routes={getValueProductRoutes(order.id)}
-        label={order.address}
+        routes={getValueProductRoutes(propertyInfo.id)}
+        label={propertyInfo.address}
         parentPath={`/value-products`}
       >
         <div className="container value-product">
           <Breadcrumbs
-            current={`${order.address}`}
+            current={`${propertyInfo.address}`}
             parents={[{ path: '/value-products', name: 'Value Products' }]}
           >
             <img

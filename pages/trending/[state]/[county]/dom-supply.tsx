@@ -9,14 +9,12 @@ export default function DomSupply() {
   const views = ['DOM', 'Supply']
   return (
     <CountyLayout label="DOM/Supply">
-      <ul className="view-container">
+      <ul className="tab-container">
         {views.map(view => (
           <li
             key={view}
             onClick={() => setCurrentView(view)}
-            className={`${
-              view === currentView ? 'active ' : ''
-            }trending-view-tab`}
+            className={`${view === currentView ? 'active ' : ''}`}
           >
             {view}
           </li>

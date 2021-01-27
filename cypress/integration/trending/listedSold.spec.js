@@ -33,13 +33,13 @@ describe('Listed/Sold', () => {
   })
 
   it('Should switch to Sold view and render chart', () => {
-    cy.get('.trending-view-tab').contains('Sold').click()
+    cy.get('.tab-container > li').contains('Sold').click()
     cy.get('.chart-title').contains('Sold County:')
     cy.get('.recharts-surface')
   })
 
   it('Should switch to Original List vs Final Sold view and render chart', () => {
-    cy.get('.trending-view-tab').contains('Original').click()
+    cy.get('.tab-container > li').contains('Original').click()
     cy.get('.chart-title').contains('Original List')
     cy.get('.recharts-surface')
   })

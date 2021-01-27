@@ -1,17 +1,79 @@
 import React, { useState, createContext, useContext } from 'react'
-interface Order {
+export interface PropertyInfoType {
   id: string
+  poolName: string
+  loanNumber: string
   address: string
+  city: string
+  state: string
+  zip: string
+  subdivision: string
+  bed: number
+  bath: number
+  sqft: number
+  garage: number
+  lotSize: number
+  yearBuilt: number
+  dnaSource: string
+  reo: boolean
+  propertyType: string
+  marketArea: string
+  compsGoingBack: string
+  asOfDate: string
+  rivDate: string
+  calculatedPrice: number
+  priceSqFt: number
+  lock: boolean
+  geoAccuracy: string
+  retailMarket: number
+  distressedMarket: number
+  summaryComments: string
+  area: string
+  areaParameter: string
 }
+
+const defaultPropertyInfo = {
+  id: null,
+  poolName: null,
+  loanNumber: null,
+  address: null,
+  city: null,
+  state: null,
+  zip: null,
+  subdivision: null,
+  bed: null,
+  bath: null,
+  sqft: null,
+  garage: null,
+  lotSize: null,
+  yearBuilt: null,
+  dnaSource: null,
+  reo: null,
+  propertyType: null,
+  marketArea: null,
+  compsGoingBack: null,
+  asOfDate: null,
+  rivDate: null,
+  calculatedPrice: null,
+  priceSqFt: null,
+  lock: null,
+  geoAccuracy: null,
+  retailMarket: null,
+  distressedMarket: null,
+  summaryComments: null,
+  area: null,
+  areaParameter: null
+}
+
 type ValueProductContextType = {
-  order: Order
-  setOrder: React.Dispatch<React.SetStateAction<Order>>
+  propertyInfo: PropertyInfoType
+  setPropertyInfo: React.Dispatch<React.SetStateAction<PropertyInfoType>>
 }
 
 const ValueProductContext = createContext<ValueProductContextType>({
-  order: null,
+  propertyInfo: null,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setOrder: () => {}
+  setPropertyInfo: () => {}
 })
 
 export const ValueProductProvider = ({
@@ -19,13 +81,15 @@ export const ValueProductProvider = ({
 }: {
   children: React.ReactNode
 }): React.ReactElement => {
-  const [order, setOrder] = useState<Order>(null)
+  const [propertyInfo, setPropertyInfo] = useState<PropertyInfoType>(
+    defaultPropertyInfo
+  )
 
   return (
     <ValueProductContext.Provider
       value={{
-        order,
-        setOrder
+        propertyInfo,
+        setPropertyInfo
       }}
     >
       {children}

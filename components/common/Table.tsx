@@ -1,11 +1,27 @@
 import React, { useEffect } from 'react'
 import { useSortBy, useTable, useFlexLayout } from 'react-table'
 
-export default function Table({ columns, data, fetchData, sortTable = false }) {
+interface Props {
+  columns: any[]
+  data: any[]
+  fetchData: () => {}
+  sortTable?: boolean
+  lightMode?: boolean
+  width?: number
+}
+
+export default function Table({
+  columns,
+  data,
+  fetchData,
+  sortTable = false,
+  lightMode = false,
+  width
+}: Props) {
   const { getTableProps, headerGroups, rows, prepareRow } = useTable(
     {
       columns,
-      data,
+      data: data.reverse(),
       disableSortRemove: true,
       initialState: {
         sortBy: [
@@ -37,7 +53,8 @@ export default function Table({ columns, data, fetchData, sortTable = false }) {
         props,
         {
           style: {
-            justifyContent: align === 'right' ? 'flex-end' : 'flex-start'
+            justifyContent: align === 'right' ? 'flex-end' : 'flex-start',
+            textAlign: align === 'right' ? 'right' : 'left'
           }
         }
       ]
@@ -49,26 +66,27 @@ export default function Table({ columns, data, fetchData, sortTable = false }) {
         ...colProps,
         style: {
           ...colProps.style,
-          justifyContent: align === 'right' ? 'flex-end' : 'flex-start'
+          justifyContent: align === 'right' ? 'flex-end' : 'flex-start',
+          textAlign: align === 'right' ? 'right' : 'left'
         }
       }
     ]
   }
 
   return (
-    <div className="table-container">
-      <div {...getTableProps()} className="table">
+    <div className="table-container" style={{ width }}>
+      <div {...getTableProps()} className={`${lightMode ? 'light ' : ''}table`}>
         <div className="thead">
           {headerGroups.map(headerGroup => (
-            <div
-              {...headerGroup.getHeaderGroupProps({
-                style: { paddingRight: '15px' }
-              })}
-              className="tr"
-            >
+            <div {...headerGroup.getHeaderGroupProps()} className="tr">
               {headerGroup.headers.map(column => {
                 return (
-                  <div className="th" {...column.getHeaderProps(headerProps)}>
+                  <div
+                    className={`th${
+                      column.id.includes('placeholder') ? ' empty' : ''
+                    }${column.columns ? ' header-group' : ''}`}
+                    {...column.getHeaderProps(headerProps)}
+                  >
                     {column.render('Header')}
                     <span>
                       {column.isSorted
@@ -90,7 +108,7 @@ export default function Table({ columns, data, fetchData, sortTable = false }) {
               <div {...row.getRowProps()} className="tr styled-table-row">
                 {row.cells.map(cell => (
                   <div {...cell.getCellProps(cellProps)} className="td">
-                    {cell.render('Cell')}
+                    {cell.value !== null ? cell.render('Cell') : '--'}
                   </div>
                 ))}
               </div>

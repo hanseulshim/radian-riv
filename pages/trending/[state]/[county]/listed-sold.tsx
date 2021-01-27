@@ -10,14 +10,12 @@ export default function ListedSold() {
   const views = ['Listed', 'Sold', 'Original List vs Final Sold']
   return (
     <CountyLayout label="Listed/Sold">
-      <ul className="view-container">
+      <ul className="tab-container">
         {views.map(view => (
           <li
             key={view}
             onClick={() => setCurrentView(view)}
-            className={`${
-              view === currentView ? 'active ' : ''
-            }trending-view-tab`}
+            className={`${view === currentView ? 'active ' : ''}`}
           >
             {view}
           </li>

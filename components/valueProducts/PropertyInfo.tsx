@@ -1,6 +1,8 @@
 import React from 'react'
+import { useValueProduct } from 'context/ValueProductProvider'
 
 export default function PropertyInfo() {
+  const { propertyInfo } = useValueProduct()
   return (
     <div className="property-info">
       <div className="property-info-header">

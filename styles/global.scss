@@ -429,7 +429,8 @@ ul {
     display: table;
     width: 100%;
     border-spacing: 0;
-    line-height: 1rem;
+    line-height: 20px;
+    font-size: 16px;
 
     .thead {
       overflow-y: auto;
@@ -439,30 +440,106 @@ ul {
     .th {
       background: var(--prussian-blue);
       color: var(--white);
-      padding: 1.5rem 1rem;
+      font-weight: bold;
+      min-height: 60px;
+
+      &.empty {
+        background: none;
+      }
+      &.header-group {
+        font-size: 20px;
+        border-bottom: 1px solid var(--white);
+        justify-content: center !important;
+        padding: 0 20px;
+      }
     }
 
     .tbody {
-      overflow-y: scroll;
+      overflow-y: auto;
       overflow-x: hidden;
-      height: 50vh;
+      max-height: 50vh;
+      scrollbar-width: thin;
     }
 
     .tr:nth-child(even) {
-      background-color: var(--geyser);
+      background-color: var(--geyser-light);
     }
 
     .td {
-      padding: 0.5rem 1rem;
+      min-height: 50px;
     }
 
     .th,
     .td {
       margin: 0;
       position: relative;
-      line-height: 25px;
       display: flex;
       align-items: center;
+      padding: 5px 10px;
+    }
+
+    .th:first-child,
+    .td:first-child {
+      padding-left: 20px;
+    }
+    .th:last-child,
+    .td:last-child {
+      padding-right: 20px;
+    }
+
+    &.light {
+      .th {
+        background: var(--white);
+        color: var(--prussian-blue);
+      }
+      .td {
+        color: var(--white);
+      }
+    }
+  }
+}
+
+.tab-container {
+  list-style-type: none;
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 2em;
+  li {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px 15px;
+    background: var(--aqua-spring);
+    border-bottom: 2px solid var(--robins-egg-blue);
+
+    &.active {
+      color: var(--white);
+      background: var(--prussian-blue);
+      border-radius: 2px;
+      border-bottom: none;
+      position: relative;
+      &::after {
+        content: ' ';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: var(--prussian-blue) transparent transparent transparent;
+      }
+    }
+  }
+  &.dark {
+    li {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      &.active {
+        background: var(--white);
+        color: var(--prussian-blue);
+        &::after {
+          border-color: var(--white) transparent transparent transparent;
+        }
+      }
     }
   }
 }

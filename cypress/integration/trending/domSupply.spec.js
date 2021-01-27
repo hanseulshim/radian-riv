@@ -34,7 +34,7 @@ describe('Dom/Supply', () => {
   })
 
   it('Should switch to Supply view and render chart', () => {
-    cy.get('.trending-view-tab').contains('Supply').click()
+    cy.get('.tab-container > li').contains('Supply').click()
     cy.get('.chart-title').contains('Supply')
     cy.get('.recharts-surface')
   })
