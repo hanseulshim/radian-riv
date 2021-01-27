@@ -19,7 +19,7 @@ describe('National Level', () => {
     cy.get('.route-link > span').contains('United States')
   })
   it('Should render a map of the United States', () => {
-    cy.get('.usa > path').should('have.length.above', 50)
+    cy.get('.usa > .state').should('have.length.above', 50)
   })
   it('Should have state routes', () => {
     cy.get('.route-link').should('have.length.above', 50)
@@ -28,6 +28,15 @@ describe('National Level', () => {
     cy.intercept('GET', 'counties', { fixture: 'counties' })
     cy.get('.route-link').contains('Texas').click()
     cy.url().should('includes', '/trending/TX')
+  })
+
+  it('Should render a map of the state and its counties', () => {
+    cy.get('.state > path').should('have.length.above', 5)
+  })
+
+  it('Should route to a county on click', () => {
+    cy.get('text').contains('Travis').click()
+    cy.url().should('includes', '48453')
   })
   after(() => {
     cy.clearCookies()

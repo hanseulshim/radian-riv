@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 import { getCounties } from 'api'
 import { getCountyRoutes } from 'utils'
 import Modal from 'components/common/Modal'
+import StateWithCountiesMap from 'components/trending/StateWithCountiesMap'
 
 function State() {
   const [hasError, setHasError] = useState(false)
@@ -59,20 +60,23 @@ function State() {
     )
   }
   return countyList.length && state ? (
-    <Sidebar
-      routes={getCountyRoutes(state, countyList)}
-      label={state.label}
-      parentPath="/trending"
-    >
-      <div className="container trending">
-        <Breadcrumbs
-          current={`${state.label} County Level`}
-          parents={[{ path: '/trending', name: 'National Level' }]}
-        />
-        <h1>{state.label} County Level Annual Price Change</h1>
-        <h2>Single Family Only</h2>
-      </div>
-    </Sidebar>
+    <>
+      <Sidebar
+        routes={getCountyRoutes(state, countyList)}
+        label={state.label}
+        parentPath="/trending"
+      >
+        <div className="container trending">
+          <Breadcrumbs
+            current={`${state.label} County Level`}
+            parents={[{ path: '/trending', name: 'National Level' }]}
+          />
+          <h1>{state.label} County Level Annual Price Change</h1>
+          <h2>Single Family Only</h2>
+          <StateWithCountiesMap />
+        </div>
+      </Sidebar>
+    </>
   ) : null
 }
 

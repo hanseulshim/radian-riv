@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Alert from 'components/common/Alert'
 import * as d3 from 'd3'
-import { getUsaMap } from 'api'
+import { getNationalGeoJson } from 'api'
+import MapLegend from './MapLegend'
 
 const width = 1100
 const height = 850
@@ -20,7 +21,7 @@ export default function UnitedStatesMap() {
   useEffect(() => {
     const getMapData = async () => {
       try {
-        const geoJson = await getUsaMap()
+        const geoJson = await getNationalGeoJson()
         setGeographies(geoJson)
       } catch (e) {
         setError('There was a problem loading the Geo Json data.')
@@ -124,11 +125,10 @@ export default function UnitedStatesMap() {
     }
 
     return (
-      <React.Fragment key={'state' + name}>
+      <g className="state" key={'state: ' + d.properties.name}>
         <path
           key={`path-${name}`}
           d={d3.geoPath().projection(projection)(d)}
-          className="state"
           fill={getStateFill(medianPctChange)}
           stroke="#FFFFFF"
           strokeWidth={0.75}
@@ -151,7 +151,7 @@ export default function UnitedStatesMap() {
         >
           {abbrev}
         </text>
-      </React.Fragment>
+      </g>
     )
   }
 
@@ -160,34 +160,8 @@ export default function UnitedStatesMap() {
   }
 
   return (
-    <div className="usa-map-container">
-      <div className="legend-container">
-        <span className="legend-title">Year/Year Median Percent Change:</span>
-        <div className="item">
-          <div className="swatch swatch1" />
-          <span>20% +</span>
-        </div>
-        <div className="item">
-          <div className="swatch swatch2" />
-          <span>10 - 20%</span>
-        </div>
-        <div className="item">
-          <div className="swatch swatch3" />
-          <span>0 - 10%</span>
-        </div>
-        <div className="item">
-          <div className="swatch swatch4" />
-          <span>-10 - 0%</span>
-        </div>
-        <div className="item">
-          <div className="swatch swatch5" />
-          <span>-20 - -10%</span>
-        </div>
-        <div className="item">
-          <div className="swatch swatch6" />
-          <span> &lt; - 20%</span>
-        </div>
-      </div>
+    <div className="map-container">
+      <MapLegend />
       <svg width={width} height={height} viewBox="270 150 600 600">
         <g className="usa">{geographies.map((d, i) => renderStates(d))}</g>
       </svg>

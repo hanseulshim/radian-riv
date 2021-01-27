@@ -1,5 +1,4 @@
 import faker from 'faker'
-import * as usaGeoJson from './us-states.geojson.json'
 
 const getDateArray = (range: string): { date: Date }[] => {
   const data = []
@@ -253,8 +252,12 @@ const getDataObject = (view: string) => {
     : {}
 }
 
-export const getUsaMap = async (): Promise<any> => {
-  const geoJsonWithData = usaGeoJson.features.map(state => {
+export const getNationalGeoJson = async (): Promise<any> => {
+  const data = await fetch(
+    `${process.env.baseUrl}/geoJson/national/us-states.geojson.json`
+  )
+  const json = await data.json()
+  const geoJsonWithData = json.features.map(state => {
     return {
       ...state,
       properties: {
@@ -267,4 +270,23 @@ export const getUsaMap = async (): Promise<any> => {
   })
 
   return geoJsonWithData
+}
+
+export const getStateGeoJson = async (stateCode: string): Promise<any> => {
+  const data = await fetch(
+    `${process.env.baseUrl}/geoJson/national/us-states.geojson.json`
+  )
+  const json = await data.json()
+  const stateGeoJson = json.features.find(
+    state => state.properties.postal === stateCode
+  )
+  return stateGeoJson
+}
+
+export const getCountiesGeoJson = async (stateCode: string): Promise<any> => {
+  const data = await fetch(
+    `${process.env.baseUrl}/geoJson/states/${stateCode}.json`
+  )
+  const json = await data.json()
+  return json.features
 }
