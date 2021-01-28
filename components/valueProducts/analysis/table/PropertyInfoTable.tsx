@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import { useValueProduct } from 'context/ValueProductProvider'
 import Table from 'components/common/Table'
+import numeral from 'numeral'
 
 interface Props {
   views: string[]
@@ -26,37 +27,49 @@ export default function PropertyInfoTable({
     setColumns([
       {
         Header: 'Pool Name',
-        accessor: 'poolName'
+        accessor: 'poolName',
+        width: 120
       },
       {
         Header: 'Loan Number',
-        accessor: 'loanNumber'
+        accessor: 'loanNumber',
+        width: 125
       },
       {
         Header: 'ID',
-        accessor: 'id'
+        accessor: 'id',
+        width: 125
       },
       {
         Header: 'Subject',
         accessor: row => {
           return `${row['address']}, ${row['city']}, ${row['state']}`
-        }
+        },
+        width: 150
       },
       {
         Header: 'Zip',
-        accessor: 'zip'
+        accessor: 'zip',
+        width: 95
       },
       {
         Header: 'Radian Interactive Value Date',
-        accessor: 'rivDate'
+        accessor: 'rivDate',
+        width: 180
       },
       {
         Header: 'Calculated Price',
-        accessor: 'calculatedPrice'
+        accessor: row => {
+          return row.calculatedPrice
+            ? numeral(row.calculatedPrice).format('$0,')
+            : row.calculatedPrice
+        },
+        width: 100
       },
       {
         Header: 'As of Date',
-        accessor: 'asOfDate'
+        accessor: 'asOfDate',
+        width: 125
       }
     ])
     setData(tableData)

@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react'
 import Table from 'components/common/Table'
 import numeral from 'numeral'
 
-export default function DepressedMarketGrid({ tableData }) {
+export default function DepressedMarketGridTable({ tableData }) {
   const [data, setData] = useState([])
   const [columns, setColumns] = useState([])
   const fetchData = useCallback(async () => {
@@ -16,7 +16,8 @@ export default function DepressedMarketGrid({ tableData }) {
       {
         Header: '# of Listings',
         accessor: 'listingsCount',
-        align: 'right'
+        align: 'right',
+        width: 125
       },
       {
         Header: '% of Listings',
@@ -30,7 +31,8 @@ export default function DepressedMarketGrid({ tableData }) {
       {
         Header: '# of Pendings',
         accessor: 'pendingsCount',
-        align: 'right'
+        align: 'right',
+        width: 125
       },
       {
         Header: '% of Pendings',
@@ -44,7 +46,8 @@ export default function DepressedMarketGrid({ tableData }) {
       {
         Header: '# of Solds',
         accessor: 'soldsCount',
-        align: 'right'
+        align: 'right',
+        width: 125
       },
       {
         Header: '% of Solds',

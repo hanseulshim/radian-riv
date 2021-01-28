@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useValueProduct } from 'context/ValueProductProvider'
-import DaysTable from './DaysTable'
-import SoldDaysTable from './SoldDaysTable'
-import FinalListPriceTable from './FinalListPriceTable'
-import OriginalListPriceTable from './OriginalListPriceTable'
-import DepressedMarketGrid from './DepressedMarketGrid'
+import DaysTable from './table/DaysTable'
+import SoldDaysTable from './table/SoldDaysTable'
+import ListPriceTable from './table/ListPriceTable'
+import DepressedMarketGrid from './table/DepressedMarketGridTable'
 import {
   getFilteredMarketAnalysisFilters,
   getFilteredMarketAnalysisDays,
@@ -77,17 +76,17 @@ export default function FilteredMarketAnalysis() {
   return (
     <>
       <div className="analytics-container">
-        <div className="analytics">
+        <div className="analytics" style={{ width: 210 }}>
           <span className="label">Subject SQFT:</span>
           <span>{propertyInfo.sqft !== null ? propertyInfo.sqft : '--'}</span>
         </div>
-        <div className="analytics">
+        <div className="analytics" style={{ width: 245 }}>
           <span className="label">Subject Year Built:</span>
           <span>
             {propertyInfo.yearBuilt !== null ? propertyInfo.yearBuilt : '--'}
           </span>
         </div>
-        <div className="analytics">
+        <div className="analytics" style={{ width: 245 }}>
           <span className="label">Prop Type:</span>
           <span>
             {propertyInfo.propertyType !== null
@@ -97,11 +96,11 @@ export default function FilteredMarketAnalysis() {
         </div>
       </div>
       <div className="analytics-container">
-        <div className="analytics">
+        <div className="analytics" style={{ width: 210 }}>
           <span className="label">Area:</span>
           <span>{propertyInfo.area !== null ? propertyInfo.area : '--'}</span>
         </div>
-        <div className="analytics">
+        <div className="analytics" style={{ width: 245 }}>
           <span className="label">Area Parameter:</span>
           <span>
             {propertyInfo.areaParameter !== null
@@ -109,13 +108,13 @@ export default function FilteredMarketAnalysis() {
               : '--'}
           </span>
         </div>
-        <div className="analytics">
+        <div className="analytics" style={{ width: 170 }}>
           <span className="label">Min Sqft:</span>
           <span>
             {marketFilters.minSqft !== null ? marketFilters.minSqft : '--'}
           </span>
         </div>
-        <div className="analytics">
+        <div className="analytics" style={{ width: 170 }}>
           <span className="label">Min YrBlt:</span>
           <span>
             {marketFilters.minYrBlt !== null ? marketFilters.minYrBlt : '--'}
@@ -131,25 +130,25 @@ export default function FilteredMarketAnalysis() {
         </div>
       </div>
       <div className="analytics-container">
-        <div className="analytics">
+        <div className="analytics" style={{ width: 210 }}>
           <span className="label">Min Bed:</span>
           <span>
             {marketFilters.minBed !== null ? marketFilters.minBed : '--'}
           </span>
         </div>
-        <div className="analytics">
+        <div className="analytics" style={{ width: 245 }}>
           <span className="label">Max Bed:</span>
           <span>
             {marketFilters.maxBed !== null ? marketFilters.maxBed : '--'}
           </span>
         </div>
-        <div className="analytics">
+        <div className="analytics" style={{ width: 170 }}>
           <span className="label">Max Sqft:</span>
           <span>
             {marketFilters.maxSqft !== null ? marketFilters.maxSqft : '--'}
           </span>
         </div>
-        <div className="analytics">
+        <div className="analytics" style={{ width: 170 }}>
           <span className="label">Max YrBlt:</span>
           <span>
             {marketFilters.maxYrBlt !== null ? marketFilters.maxYrBlt : '--'}
@@ -183,8 +182,14 @@ export default function FilteredMarketAnalysis() {
         </div>
       </div>
       <div style={{ display: 'flex', marginBottom: '1em' }}>
-        <FinalListPriceTable {...marketListings.finalListPrice} />
-        <OriginalListPriceTable {...marketListings.originalListPrice} />
+        <ListPriceTable
+          listPrice={marketListings.finalListPrice}
+          type="FINAL"
+        />
+        <ListPriceTable
+          listPrice={marketListings.originalListPrice}
+          type="ORIGINAL"
+        />
       </div>
       <h2>Depressed Market Grid</h2>
       <DepressedMarketGrid tableData={depressedMarketTable} />

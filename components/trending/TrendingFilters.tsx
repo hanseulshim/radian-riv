@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { getPropertyTypes, getMsas, getZipcodes, Option } from 'api'
 import { useTrending } from 'context/TrendingProvider'
 import CustomSelect from 'components/common/CustomSelect'

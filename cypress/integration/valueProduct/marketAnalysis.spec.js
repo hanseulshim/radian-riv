@@ -96,6 +96,16 @@ describe('Market Analysis', () => {
       cy.get('.th').contains('# of Listings')
     })
   })
+  describe('Median Sale Price Tab', () => {
+    it('should click Median Sale Price Tab', () => {
+      cy.get('.tab-container > li').contains('Median Sale Price').click()
+    })
+    it('should render one, two, three month tables', () => {
+      cy.get('.header-group').contains('ONE MONTH')
+      cy.get('.header-group').contains('TWO MONTHS')
+      cy.get('.header-group').contains('THREE MONTHS')
+    })
+  })
 
   after(() => {
     cy.clearCookies()

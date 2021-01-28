@@ -20,7 +20,6 @@
       margin: 1em 0;
       .analytics {
         display: inline-block;
-        margin-right: 20px;
         .label {
           font-weight: bold;
           margin-right: 5px;
@@ -39,6 +38,19 @@
       width: 100%;
       padding-top: 1em;
       border-top: 1px solid var(--geyser);
+    }
+  }
+  .median-sale-price {
+    margin-top: 2em;
+    display: flex;
+    .table-wrapper {
+      flex: 1;
+      &.two {
+        margin: 0 2px;
+      }
+    }
+    .tbody {
+      max-height: 100%;
     }
   }
 }

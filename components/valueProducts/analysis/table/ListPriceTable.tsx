@@ -3,13 +3,16 @@ import Table from 'components/common/Table'
 import numeral from 'numeral'
 
 interface Props {
-  '0-90': number
-  '91-180': number
-  '180-270': number
-  '271-365': number
+  listPrice: {
+    '0-90': number
+    '91-180': number
+    '180-270': number
+    '271-365': number
+  }
+  type: string
 }
 
-export default function OriginalListPriceTable(props: Props) {
+export default function ListPriceTable({ type, listPrice }: Props) {
   const [data, setData] = useState([])
   const [columns, setColumns] = useState([])
 
@@ -18,25 +21,28 @@ export default function OriginalListPriceTable(props: Props) {
   }
 
   const fetchData = useCallback(async () => {
-    const tableData = [{ ...props }]
+    const tableData = [{ ...listPrice }]
     setColumns([
       {
-        Header: 'MEDIAN SOLD PRICE AS % OF ORIGINAL LIST PRICE',
+        Header: `MEDIAN SOLD PRICE AS % OF ${type} LIST PRICE`,
         columns: [
           {
             Header: 'Most Recent 90 Days',
             accessor: row => getValue(row, '0-90'),
-            align: 'right'
+            align: 'right',
+            width: 130
           },
           {
             Header: 'Prior 91 to 180 Days',
             accessor: row => getValue(row, '91-180'),
-            align: 'right'
+            align: 'right',
+            width: 100
           },
           {
             Header: 'Prior 181 to 270 Days',
             accessor: row => getValue(row, '180-270'),
-            align: 'right'
+            align: 'right',
+            width: 110
           },
           {
             Header: 'Prior 271 to 360 Days',
@@ -47,9 +53,11 @@ export default function OriginalListPriceTable(props: Props) {
       }
     ])
     setData(tableData)
-  }, [props])
+  }, [listPrice])
 
   return (
-    <Table columns={columns} data={data} fetchData={fetchData} width={600} />
+    <div style={{ marginRight: type === 'FINAL' ? '1em' : 0 }}>
+      <Table columns={columns} data={data} fetchData={fetchData} />
+    </div>
   )
 }

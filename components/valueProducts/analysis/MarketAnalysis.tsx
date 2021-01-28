@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useValueProduct } from 'context/ValueProductProvider'
-import DaysTable from './DaysTable'
-import SoldDaysTable from './SoldDaysTable'
-import FinalListPriceTable from './FinalListPriceTable'
-import OriginalListPriceTable from './OriginalListPriceTable'
+import DaysTable from './table/DaysTable'
+import SoldDaysTable from './table/SoldDaysTable'
+import ListPriceTable from './table/ListPriceTable'
 import {
   getMarketAnalysisDays,
   getMarketAnalysisListings,
@@ -49,11 +48,11 @@ export default function MarketAnalysis() {
   return (
     <>
       <div className="analytics-container">
-        <div className="analytics">
+        <div className="analytics" style={{ width: 210 }}>
           <span className="label">Subject SQFT:</span>
           <span>{propertyInfo.sqft !== null ? propertyInfo.sqft : '--'}</span>
         </div>
-        <div className="analytics">
+        <div className="analytics" style={{ width: 245 }}>
           <span className="label">Subject Year Built:</span>
           <span>
             {propertyInfo.yearBuilt !== null ? propertyInfo.yearBuilt : '--'}
@@ -69,7 +68,7 @@ export default function MarketAnalysis() {
         </div>
       </div>
       <div className="analytics-container">
-        <div className="analytics">
+        <div className="analytics" style={{ width: 210 }}>
           <span className="label">Area:</span>
           <span>{propertyInfo.area !== null ? propertyInfo.area : '--'}</span>
         </div>
@@ -101,8 +100,14 @@ export default function MarketAnalysis() {
         </div>
       </div>
       <div style={{ display: 'flex' }}>
-        <FinalListPriceTable {...marketListings.finalListPrice} />
-        <OriginalListPriceTable {...marketListings.originalListPrice} />
+        <ListPriceTable
+          listPrice={marketListings.finalListPrice}
+          type="FINAL"
+        />
+        <ListPriceTable
+          listPrice={marketListings.originalListPrice}
+          type="ORIGINAL"
+        />
       </div>
     </>
   )
