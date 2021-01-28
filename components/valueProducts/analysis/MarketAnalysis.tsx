@@ -84,7 +84,7 @@ export default function MarketAnalysis() {
       <DaysTable tableData={daysTable} />
       <SoldDaysTable tableData={soldDaysTable} />
       <div className="analytics-container">
-        <div className="analytics">
+        <div className="analytics" style={{ marginRight: '1em' }}>
           <span className="label">Current Active Listings:</span>
           <span>
             {marketListings.activeListings !== null
