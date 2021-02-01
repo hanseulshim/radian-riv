@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useValueProduct } from 'context/ValueProductProvider'
+import ExportPdf from './ExportPdf'
 
 export default function PropertyInfo() {
   const { propertyInfo } = useValueProduct()
+  const [pdfModal, setPdfModal] = useState(false)
+  const [listingSheets, setListingSheets] = useState({
+    subject: 0,
+    selected: 2,
+    all: 1
+  })
+
+  const togglePdfModal = () => {
+    setPdfModal(!pdfModal)
+  }
+
   return (
     <div className="property-info">
       <div className="property-info-header">
@@ -28,6 +40,7 @@ export default function PropertyInfo() {
           className="icon"
           src={`${process.env.baseUrl}/images/download-pdf.svg`}
           alt="logo"
+          onClick={togglePdfModal}
         />
         <img
           className="icon"
@@ -55,6 +68,9 @@ export default function PropertyInfo() {
           alt="photos"
         />
       </div>
+      {pdfModal && (
+        <ExportPdf closeModal={togglePdfModal} listingSheets={listingSheets} />
+      )}
     </div>
   )
 }

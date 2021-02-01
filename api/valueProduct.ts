@@ -689,3 +689,21 @@ export const getMedianSalePrice = async (
     ]
   }
 }
+
+interface ExportForm {
+  subjectPhotos: string
+  subjectListingSheets: boolean
+  comparableType: string
+  selectedCompPhotosType: string | null
+  selectedCompListingSheets: boolean
+  allCompPhotosType: string | null
+  allCompListingSheets: boolean
+  uncheckedManualComparables: boolean
+}
+
+export const exportPdf = async (
+  emailList: string[],
+  exportForm: ExportForm
+): Promise<string> => {
+  return 'Request Submitted!'
+}

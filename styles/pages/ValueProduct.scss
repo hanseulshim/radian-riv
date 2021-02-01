@@ -40,6 +40,43 @@
       border-top: 1px solid var(--geyser);
     }
   }
+
+  .export-pdf-form {
+    width: 100%;
+    text-align: left;
+    padding-bottom: 1em;
+    .section-title {
+      margin: 1em 0;
+    }
+    .radio,
+    .checkbox-container {
+      margin-left: 20px;
+      margin-bottom: 10px;
+    }
+
+    .radio {
+      &.section-title {
+        margin: 1em 0;
+        font-size: 1.17em;
+        font-weight: bold;
+      }
+    }
+
+    .unchecked-manual-comparables {
+      .checkbox-container {
+        margin-top: 1em;
+        margin-left: 0;
+        margin: 2em 0;
+        label {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .warning-header {
+    color: red;
+  }
   .median-sale-price {
     margin-top: 2em;
     display: flex;
