@@ -10,10 +10,10 @@ import {
   Tooltip,
   ResponsiveContainer
 } from 'recharts'
-import numeral from 'numeral'
 import Checkbox from 'components/common/Checkbox'
 import { getListedSoldChart, ChartParam } from 'api'
 import DownloadData from '../DownloadData'
+import { formatPrice, formatValue } from 'utils'
 
 interface Props {
   view: string
@@ -44,14 +44,11 @@ export default function Listed({ view }: Props) {
       year: '2-digit'
     })
   const formatTooltip = (num: number, name: string): [string, string] => {
-    const formatted = name.includes('Price')
-      ? numeral(num).format('$0,0[.]00')
-      : num.toString()
+    const formatted = name.includes('Price') ? formatPrice(num) : num.toString()
     return [formatted, name]
   }
-  const formatYAxisLeft = (num: number): string => numeral(num).format('0,0')
-  const formatYAxisRight = (num: number): string =>
-    numeral(num).format('0[.]0a')
+  const formatYAxisLeft = (num: number): string => formatValue(num)
+  const formatYAxisRight = (num: number): string => formatValue(num, true)
   const formatLabel = (date: Date): string =>
     `Period: ${date.toLocaleDateString('en-NY', {
       month: '2-digit',

@@ -13,7 +13,7 @@ exports[`Checkbox should match snapshot 1`] = `
       type="checkbox"
     />
     <div
-      className="styled-checkbox false disabled"
+      className="styled-checkbox disabled"
     >
       <svg
         viewBox="0 0 24 24"
@@ -25,7 +25,7 @@ exports[`Checkbox should match snapshot 1`] = `
       </svg>
     </div>
     <span
-      className="disabled"
+      className="label disabled"
     >
       Test
     </span>

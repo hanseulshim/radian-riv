@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import { useValueProduct } from 'context/ValueProductProvider'
 import Table from 'components/common/Table'
-import numeral from 'numeral'
+import { formatPrice } from 'utils'
 
 interface Props {
   views: string[]
@@ -60,9 +60,7 @@ export default function PropertyInfoTable({
       {
         Header: 'Calculated Price',
         accessor: row => {
-          return row.calculatedPrice
-            ? numeral(row.calculatedPrice).format('$0,')
-            : row.calculatedPrice
+          return formatPrice(row.calculatedPrice)
         },
         width: 100
       },

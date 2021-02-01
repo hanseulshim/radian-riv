@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DaysTable should match snapshot 1`] = `
+<div
+  className="table-spacer"
+>
+  <Table
+    columns={Array []}
+    data={Array []}
+    fetchData={[Function]}
+    width={700}
+  />
+</div>
+`;

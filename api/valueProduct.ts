@@ -690,6 +690,124 @@ export const getMedianSalePrice = async (
   }
 }
 
+export interface PropertyInterface {
+  actDom: number
+  address: string
+  agSqft: number
+  basement: string
+  bath: number
+  bed: number
+  city: string
+  coeDate: string
+  concessions: number
+  description: string
+  distressed: boolean
+  garage: number
+  listDate: string
+  listingNumber: string
+  listingSheetSelected: boolean
+  listPrice: number
+  listPricePerSqft: number
+  lotSize: number
+  order: number
+  pool: string
+  photos: string[]
+  schoolDistrict: string
+  soldPrice: number
+  sqft: number
+  sqftPrice: number
+  subdivision: string
+  targetDistance: number
+  totalSqft: number
+  totDom: number
+  valuationPercent: number
+  waterfront: string
+  yearBuilt: number
+  zip: string
+}
+
+const generatePropertyPhotos = (): string[] => {
+  const data = []
+  const property = faker.random.arrayElement([
+    'https://rbimages.blob.core.windows.net/rb-images/US/real-estate/mls-homes/single-family-property/for-sale/MD/Germantown/20874/1665-MDMC668232-20190705-18123-Coachmans-Road',
+    'https://rbimages.blob.core.windows.net/rb-images/US/real-estate/mls-homes/single-family-property/for-sale/MD/Boyds/20841/1665-MDMC682440-20191007-14410-Foolish-Pleasure',
+    'https://rbimages.blob.core.windows.net/rb-images/US/real-estate/mls-homes/single-family-property/for-sale/MD/Boyds/20841/1665-MDMC676350-20190901-18410-Polynesian-Lane',
+    'https://rbimages.blob.core.windows.net/rb-images/US/real-estate/mls-homes/single-family-property/for-sale/MD/Boyds/20841/1665-MDMC686430-20191107-18500-Crossview-Road',
+    'https://rbimages.blob.core.windows.net/rb-images/US/real-estate/mls-homes/single-family-property/for-sale/MD/Germantown/20874/1665-MDMC689800-20200105-18318-Bailiwick-Place',
+    'https://rbimages.blob.core.windows.net/rb-images/US/real-estate/mls-homes/single-family-property/for-sale/MD/Boyds/20841/1665-MDMC688114-20191122-18214-Endora-Circle',
+    'https://rbimages.blob.core.windows.net/rb-images/US/real-estate/mls-homes/single-family-property/for-sale/MD/Germantown/20874/1665-MDMC684706-20191023-13855-Bailiwick-Terrace',
+    'https://rbimages.blob.core.windows.net/rb-images/US/real-estate/mls-homes/single-family-property/for-sale/MD/Germantown/20874/1665-MDMC623212-20190311-2-Sanderling-Court',
+    'https://rbimages.blob.core.windows.net/rb-images/US/real-estate/mls-homes/single-family-property/for-sale/MD/Germantown/20874/1665-MDMC676344-20190921-13525-Sanderling-Place',
+    'https://rbimages.blob.core.windows.net/rb-images/US/real-estate/mls-homes/single-family-property/for-sale/MD/Germantown/20874/1665-1006570122-20180924-19061-Highstream-Drive',
+    'https://rbimages.blob.core.windows.net/rb-images/US/real-estate/mls-homes/single-family-property/for-sale/MD/Germantown/20874/1665-MDMC672942-20190806-18878-Mcfarlin-Drive'
+  ])
+  for (let i = 0; i < 20; i++) {
+    data.push(`${property}-${i}.jpg`)
+  }
+  return data
+}
+
+const generateProperties = (): PropertyInterface[] => {
+  const data: PropertyInterface[] = []
+  for (let i = 1; i <= 15; i++) {
+    data.push({
+      actDom: faker.random.number({ min: 5, max: 300 }),
+      address: faker.address.streetAddress(),
+      agSqft: faker.random.number({ min: 2000, max: 5000 }),
+      basement: faker.random.arrayElement(['Yes', 'Full', 'No']),
+      bath: faker.random.number({ min: 2, max: 3 }),
+      bed: faker.random.number({ min: 4, max: 5 }),
+      city: faker.address.city(),
+      coeDate: faker.date
+        .between('2020-01-01', '2020-12-31')
+        .toLocaleDateString(),
+      concessions: faker.random.number({ min: 10000, max: 20000 }),
+      description: faker.lorem.paragraph(5),
+      distressed: faker.random.boolean(),
+      garage: faker.random.number(2),
+      listDate: faker.date
+        .between('2020-01-01', '2020-12-31')
+        .toLocaleDateString(),
+      listingNumber: `MDMC${faker.random.number({ min: 645679, max: 698371 })}`,
+      listingSheetSelected: false,
+      listPrice: faker.random.number({ min: 500000, max: 600000 }),
+      listPricePerSqft: faker.random.number({ min: 2000, max: 5000 }),
+      lotSize: +faker.finance.amount(0, 1, 2),
+      order: i,
+      pool: faker.random.arrayElement(['Community', 'None']),
+      photos: generatePropertyPhotos(),
+      schoolDistrict: `${faker.address.county()} County Public Schools`,
+      soldPrice: faker.random.number({ min: 500000, max: 600000 }),
+      sqft: faker.random.number({ min: 2000, max: 5000 }),
+      sqftPrice: +faker.finance.amount(100, 300, 2),
+      subdivision: `${faker.commerce.productMaterial()} ${faker.commerce.product()} Village`,
+      targetDistance: +faker.finance.amount(0.4, 0.9, 2),
+      totalSqft: faker.random.number({ min: 2000, max: 5000 }),
+      totDom: faker.random.number({ min: 5, max: 300 }),
+      valuationPercent: +faker.finance.amount(0, 1, 2),
+      waterfront: 'Water Oriented: No',
+      yearBuilt: faker.random.number({ min: 1980, max: 2010 }),
+      zip: faker.address.zipCode()
+    })
+  }
+  return data
+}
+
+export const getSoldProperties = async (
+  propertyInfoId: string
+): Promise<PropertyInterface[]> => {
+  return generateProperties()
+}
+export const getListedProperties = async (
+  propertyInfoId: string
+): Promise<PropertyInterface[]> => {
+  return generateProperties()
+}
+export const getContractProperties = async (
+  propertyInfoId: string
+): Promise<PropertyInterface[]> => {
+  return generateProperties()
+}
 interface ExportForm {
   subjectPhotos: string
   subjectListingSheets: boolean

@@ -1,8 +1,12 @@
 import React, { useState, useCallback } from 'react'
 import Table from 'components/common/Table'
-import numeral from 'numeral'
+import { formatPercent } from 'utils'
 
-export default function DepressedMarketGridTable({ tableData }) {
+interface Props {
+  tableData: any[]
+}
+
+export default function DepressedMarketGridTable({ tableData }: Props) {
   const [data, setData] = useState([])
   const [columns, setColumns] = useState([])
   const fetchData = useCallback(async () => {
@@ -22,9 +26,7 @@ export default function DepressedMarketGridTable({ tableData }) {
       {
         Header: '% of Listings',
         accessor: row => {
-          return row.listingsPercent !== null
-            ? numeral(row.listingsPercent).format('0.00%')
-            : row.listingsPercent
+          return formatPercent(row.listingsPercent)
         },
         align: 'right'
       },
@@ -37,9 +39,7 @@ export default function DepressedMarketGridTable({ tableData }) {
       {
         Header: '% of Pendings',
         accessor: row => {
-          return row.pendingsPercent !== null
-            ? numeral(row.pendingsPercent).format('0.00%')
-            : row.pendingsPercent
+          return formatPercent(row.pendingsPercent)
         },
         align: 'right'
       },
@@ -52,9 +52,7 @@ export default function DepressedMarketGridTable({ tableData }) {
       {
         Header: '% of Solds',
         accessor: row => {
-          return row.soldsPercent !== null
-            ? numeral(row.soldsPercent).format('0.00%')
-            : row.soldsPercent
+          return formatPercent(row.soldsPercent)
         },
         align: 'right'
       }

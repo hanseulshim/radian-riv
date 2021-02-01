@@ -35,6 +35,7 @@ Cypress.Commands.add('login', () => {
 
 Cypress.Commands.add('valueProduct', () => {
   cy.get('.route-link').contains('Radian Interactive Value').click()
+  cy.url().should('includes', '/value-products')
 })
 
 Cypress.Commands.add('profile', () => {

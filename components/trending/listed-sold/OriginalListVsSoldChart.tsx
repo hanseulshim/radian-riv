@@ -11,7 +11,7 @@ import {
   ResponsiveContainer
 } from 'recharts'
 import { getListedSoldChart, ChartParam } from 'api'
-import numeral from 'numeral'
+import { formatPercent } from 'utils'
 import DownloadData from '../DownloadData'
 
 interface Props {
@@ -38,16 +38,14 @@ export default function OriginalListVsSoldChart({ view }: Props) {
       month: 'short',
       year: '2-digit'
     })
-  const formatYAxis = (num: number): string => numeral(num).format('0%')
+  const formatYAxis = (num: number): string => formatPercent(num)
   const formatLabel = (date: Date): string =>
     `Period: ${date.toLocaleDateString('en-NY', {
       month: '2-digit',
       year: 'numeric'
     })}`
   const formatTooltip = (num: number, name: string): [string, string] => {
-    const formatted = name.includes('%')
-      ? numeral(num).format('0[.]00%')
-      : num.toString()
+    const formatted = name.includes('%') ? formatPercent(num) : num.toString()
     return [formatted, name]
   }
   useEffect(() => {

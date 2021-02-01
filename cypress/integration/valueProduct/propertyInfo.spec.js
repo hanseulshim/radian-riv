@@ -4,7 +4,6 @@ describe('RIV Property Info', () => {
   before(() => {
     cy.login()
     cy.valueProduct()
-    cy.url().should('includes', '/value-products')
     cy.get('a').contains('18324 Tapwood Road').click()
     cy.url().should('includes', '/value-products/31130765-5')
   })

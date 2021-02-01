@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SoldDaysTable should match snapshot 1`] = `
+<Table
+  columns={Array []}
+  data={Array []}
+  fetchData={[Function]}
+  width={700}
+/>
+`;

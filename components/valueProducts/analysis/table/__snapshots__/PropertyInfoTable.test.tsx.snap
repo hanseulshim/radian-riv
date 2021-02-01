@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PropertyInfoTable should match snapshot 1`] = `
+<div
+  className="property-tabs"
+>
+  <Table
+    columns={Array []}
+    data={Array []}
+    fetchData={[Function]}
+  />
+  <ul
+    className="tab-container"
+  >
+    <li
+      className="active "
+      key="one"
+      onClick={[Function]}
+    >
+      one
+    </li>
+    <li
+      className=""
+      key="two"
+      onClick={[Function]}
+    >
+      two
+    </li>
+    <li
+      className=""
+      key="three"
+      onClick={[Function]}
+    >
+      three
+    </li>
+  </ul>
+</div>
+`;

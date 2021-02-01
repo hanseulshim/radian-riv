@@ -1,17 +1,14 @@
 import React, { useState, useCallback } from 'react'
 import Table from 'components/common/Table'
-import numeral from 'numeral'
+import { formatPrice } from 'utils'
 
-export default function SoldDays({ tableData }) {
+interface Props {
+  tableData: any[]
+}
+
+export default function SoldDays({ tableData }: Props) {
   const [data, setData] = useState([])
   const [columns, setColumns] = useState([])
-
-  const getValue = (row, key: string) => {
-    if (row.category === 'Median DOM') {
-      return row[key]
-    }
-    return row[key] ? numeral(row[key]).format('$0,') : row[key]
-  }
 
   const fetchData = useCallback(async () => {
     const width = 95
@@ -26,37 +23,37 @@ export default function SoldDays({ tableData }) {
         columns: [
           {
             Header: 'Active',
-            accessor: row => getValue(row, 'active'),
+            accessor: row => formatPrice(row['active']),
             width: 80,
             align: 'right'
           },
           {
             Header: 'Pending',
-            accessor: row => getValue(row, 'pending'),
+            accessor: row => formatPrice(row['pending']),
             width: 80,
             align: 'right'
           },
           {
             Header: '0-90',
-            accessor: row => getValue(row, '0-90'),
+            accessor: row => formatPrice(row['0-90']),
             width: 80,
             align: 'right'
           },
           {
             Header: '91-180',
-            accessor: row => getValue(row, '91-180'),
+            accessor: row => formatPrice(row['91-180']),
             width,
             align: 'right'
           },
           {
             Header: '180-270',
-            accessor: row => getValue(row, '180-270'),
+            accessor: row => formatPrice(row['180-270']),
             width,
             align: 'right'
           },
           {
             Header: '271-365',
-            accessor: row => getValue(row, '271-365'),
+            accessor: row => formatPrice(row['271-365']),
             width,
             align: 'right'
           }

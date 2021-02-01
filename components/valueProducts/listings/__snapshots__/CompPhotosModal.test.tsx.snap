@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CompPhotosModal should match snapshot 1`] = `
+<Modal
+  closeModal={[Function]}
+  id="comp-modal"
+  percent={90}
+  title=""
+>
+  <div
+    className="comp-photos-modal"
+  >
+    <div
+      className="top-row"
+    >
+      <button
+        className="btn btn-small"
+      >
+        Submit
+      </button>
+      <div
+        className="check"
+      >
+        <Checkbox
+          checked={false}
+          label="Check/Uncheck All"
+          leftLabel={true}
+          onChange={[Function]}
+        />
+      </div>
+    </div>
+    <div
+      className="comp-photo-container"
+    >
+      <CompPhoto
+        checkedProperties={Array []}
+        key="MDMC662271"
+        property={
+          Object {
+            "actDom": 204,
+            "address": "684 Willms Roads",
+            "agSqft": 4596,
+            "basement": "Full",
+            "bath": 2,
+            "bed": 5,
+            "city": "East Dean",
+            "coeDate": "6/25/2020",
+            "concessions": 16464,
+            "description": "Esse commodi et eum voluptatem rerum. Non rerum quia. Quia nisi vel minus cumque neque reprehenderit architecto et dolores. Nostrum in maiores cum. Quia ut sed omnis error cumque necessitatibus perferendis esse dolor. Provident porro aperiam dolorem dolores.",
+            "distressed": true,
+            "garage": 2,
+            "listDate": "12/27/2020",
+            "listPrice": 552470,
+            "listPricePerSqft": 3998,
+            "listingNumber": "MDMC662271",
+            "listingSheetSelected": false,
+            "lotSize": 1,
+            "order": 1,
+            "photos": Array [],
+            "pool": "None",
+            "schoolDistrict": "Borders County Public Schools",
+            "soldPrice": 585277,
+            "sqft": 3355,
+            "sqftPrice": 145.15,
+            "subdivision": "Fresh Chair Village",
+            "targetDistance": 0.68,
+            "totDom": 172,
+            "totalSqft": 4243,
+            "valuationPercent": 0.62,
+            "waterfront": "Water Oriented: No",
+            "yearBuilt": 2010,
+            "zip": "03194-7596",
+          }
+        }
+        setCheckedProperties={[Function]}
+        view="test"
+      />
+    </div>
+  </div>
+  <button
+    className="btn btn-small"
+  >
+    Submit
+  </button>
+</Modal>
+`;

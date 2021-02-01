@@ -106,6 +106,7 @@ h6 {
   .close-form {
     position: absolute;
     top: 1em;
+    z-index: 10;
     left: 1em;
     width: 15px;
     cursor: pointer;
@@ -247,7 +248,6 @@ textarea {
   border: 1px solid var(--robins-egg);
   border-radius: 3px;
   transition: all 150ms;
-  margin-right: 10px;
   &.checked {
     background: var(--robins-egg);
   }
@@ -256,12 +256,24 @@ textarea {
     background-color: var(--light-gray);
     cursor: not-allowed;
   }
+  &.small {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+  }
 }
 
 .checkbox-container {
   label {
     display: flex;
     align-items: center;
+  }
+  .label {
+    margin-left: 10px;
+  }
+  .left-label {
+    margin-right: 10px;
+    margin-left: 0;
   }
   span {
     cursor: pointer;
@@ -309,9 +321,6 @@ ul {
     color: var(--white);
     background-color: var(--oracle);
   }
-  &:focus {
-    border: 2px solid var(--robins-egg-blue);
-  }
   &:disabled {
     background-color: var(--gray);
     cursor: not-allowed;
@@ -325,9 +334,6 @@ ul {
       background-color: var(--white);
       border-color: var(--oracle);
     }
-    &:focus {
-      border-color: var(--robins-egg-blue);
-    }
     &:disabled {
       border-color: var(--gray);
       color: var(--gray);
@@ -337,9 +343,6 @@ ul {
     font-weight: normal;
     background: none;
     color: var(--oracle);
-    &:focus {
-      border: none;
-    }
   }
   &.btn-small {
     height: 30px;
@@ -556,4 +559,38 @@ ul {
       }
     }
   }
+}
+
+.toggle-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .toggle-button {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid var(--gull-gray);
+    padding: 3px;
+    margin: 0 5px;
+    border-radius: 25px;
+    background: var(--white);
+    .toggle {
+      padding: 0 10px;
+      border-radius: 25px;
+      cursor: pointer;
+      &.active {
+        background: var(--prussian-blue);
+        color: var(--white);
+      }
+    }
+  }
+  .spacer {
+    flex: 1;
+    height: 1px;
+    background: var(--gull-gray);
+  }
+}
+
+.link {
+  cursor: pointer;
+  color: var(--oracle);
 }

@@ -11,7 +11,7 @@ import {
 } from 'recharts'
 import Checkbox from 'components/common/Checkbox'
 import { getHomePriceChart, ChartParam } from 'api'
-import numeral from 'numeral'
+import { formatPercent } from 'utils'
 import DownloadData from '../DownloadData'
 
 export default function AnnualChangeChart() {
@@ -40,14 +40,14 @@ export default function AnnualChangeChart() {
       month: 'short',
       year: '2-digit'
     })
-  const formatYAxis = (num: number): string => numeral(num).format('0%')
+  const formatYAxis = (num: number): string => formatPercent(num)
   const formatLabel = (date: Date): string =>
     `Period: ${date.toLocaleDateString('en-NY', {
       month: '2-digit',
       year: 'numeric'
     })}`
   const formatTooltip = (num: number, name: string): [string, string] => [
-    numeral(num).format('0[.]0%'),
+    formatPercent(num),
     name
   ]
   useEffect(() => {

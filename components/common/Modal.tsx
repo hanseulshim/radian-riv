@@ -3,6 +3,7 @@ import React from 'react'
 type Props = {
   title: string
   children: React.ReactNode
+  id?: string
   width?: number
   percent?: number
   closeModal: () => void
@@ -10,6 +11,7 @@ type Props = {
 
 export default function Modal({
   children,
+  id,
   title,
   closeModal,
   width,
@@ -21,7 +23,7 @@ export default function Modal({
     }
   }
   return (
-    <div className="modal-container" onClick={handleClick}>
+    <div className="modal-container" id={id} onClick={handleClick}>
       <div
         className="form"
         style={{ width: width ? width : percent ? `${percent}%` : null }}

@@ -1,8 +1,18 @@
 import React, { useState, useCallback } from 'react'
 import Table from 'components/common/Table'
-import numeral from 'numeral'
+import { formatPrice } from 'utils'
 
-export default function MedianSalePriceTable({ tableData, month, label }) {
+interface Props {
+  tableData: any[]
+  month: string
+  label: string
+}
+
+export default function MedianSalePriceTable({
+  tableData,
+  month,
+  label
+}: Props) {
   const [data, setData] = useState([])
   const [columns, setColumns] = useState([])
 
@@ -32,9 +42,7 @@ export default function MedianSalePriceTable({ tableData, month, label }) {
           {
             Header: 'Median Value',
             accessor: row => {
-              return row.medianValue
-                ? numeral(row.medianValue).format('$0,')
-                : row.medianValue
+              return formatPrice(row.medianValue)
             },
             align: 'right',
             width: 100

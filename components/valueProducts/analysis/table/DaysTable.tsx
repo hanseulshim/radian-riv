@@ -1,7 +1,11 @@
 import React, { useState, useCallback } from 'react'
 import Table from 'components/common/Table'
 
-export default function DaysTable({ tableData }) {
+interface Props {
+  tableData: any[]
+}
+
+export default function DaysTable({ tableData }: Props) {
   const [data, setData] = useState([])
   const [columns, setColumns] = useState([])
 
