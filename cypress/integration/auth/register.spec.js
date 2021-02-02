@@ -2,6 +2,7 @@
 
 describe('Register', () => {
   before(() => {
+    cy.clearCookies()
     cy.visit('http://localhost:3000')
   })
   it('clicking Register for free should open modal', () => {

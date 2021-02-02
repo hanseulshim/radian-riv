@@ -53,13 +53,13 @@ describe('CompPhotosModal', () => {
     component = shallow(<CompPhotosModal {...props} />)
   })
   it('has comp-modal container', () => {
-    expect(component.get('#comp-modal'))
-    expect(component.get('.comp-photos-modal'))
-    expect(component.get('.top-row'))
-    expect(component.get('.comp-photo-container'))
+    expect(component.find('#comp-modal')).toHaveLength(1)
+    expect(component.find('.comp-photos-modal')).toHaveLength(1)
+    expect(component.find('.top-row')).toHaveLength(1)
+    expect(component.find('.comp-photo-container')).toHaveLength(1)
   })
   it('two submit buttons', () => {
-    expect(component.find('.btn').length).toEqual(2)
+    expect(component.find('.btn')).toHaveLength(2)
   })
   it('should match snapshot', () => {
     expect(toJson(component)).toMatchSnapshot()

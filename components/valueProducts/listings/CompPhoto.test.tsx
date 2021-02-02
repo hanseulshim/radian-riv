@@ -51,13 +51,13 @@ describe('CompPhoto', () => {
     component = shallow(<CompPhoto {...props} />)
   })
   it('has comp-photo container', () => {
-    expect(component.get('.comp-photo'))
+    expect(component.find('.comp-photo')).toHaveLength(1)
   })
   it('has comp-photo content', () => {
-    expect(component.get('.photo-container'))
-    expect(component.get('.detail-container'))
-    expect(component.get('.column-container'))
-    expect(component.get('.listing-export'))
+    expect(component.find('.photo-container')).toHaveLength(1)
+    expect(component.find('.detail-container')).toHaveLength(1)
+    expect(component.find('.column-container')).toHaveLength(1)
+    expect(component.find('.listing-export')).toHaveLength(1)
   })
   it('should match snapshot', () => {
     expect(toJson(component)).toMatchSnapshot()

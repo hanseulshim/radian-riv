@@ -1,6 +1,6 @@
 {
   "viewportWidth": 1600,
   "viewportHeight": 1400,
-  "defaultCommandTimeout": 15000,
+  "defaultCommandTimeout": 20000,
   "projectId": "kdg1o2"
 }

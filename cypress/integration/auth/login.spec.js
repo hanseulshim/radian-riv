@@ -2,6 +2,7 @@
 
 describe('Login', () => {
   before(() => {
+    cy.clearCookies()
     cy.visit('http://localhost:3000')
   })
   describe('Before Login', () => {

@@ -25,6 +25,7 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
 Cypress.Commands.add('login', () => {
+  cy.clearCookies()
   cy.visit('http://localhost:3000')
   cy.intercept('POST', '/auth/login', { fixture: 'login' })
   cy.intercept('GET', '/user', { fixture: 'user' })

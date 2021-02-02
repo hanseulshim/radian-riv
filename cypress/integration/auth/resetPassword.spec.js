@@ -2,6 +2,7 @@
 
 describe('Reset Password', () => {
   before(() => {
+    cy.clearCookies()
     cy.visit('http://localhost:3000')
   })
   it('clicking forgot email should open modal', () => {
