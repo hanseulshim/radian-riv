@@ -49,6 +49,15 @@ describe('RIV Property Info > photo comparison', () => {
     cy.get('span').contains('All Photos').click()
     cy.get('#gallery-modal')
   })
+  it('closing photo gallery modal should not close photo comp modal', () => {
+    cy.get('#gallery-modal > .form > .close-form').click()
+    cy.get('#comp-modal').should('exist')
+  })
+
+  it('should close photo comp modal', () => {
+    cy.get('.close-form').click()
+    cy.get('#comp-modal').should('not.exist')
+  })
 
   after(() => {
     cy.clearCookies()

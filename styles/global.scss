@@ -106,7 +106,6 @@ h6 {
   .close-form {
     position: absolute;
     top: 1em;
-    z-index: 10;
     left: 1em;
     width: 15px;
     cursor: pointer;
@@ -385,7 +384,7 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  ou .form {
+  .form {
     max-height: 90%;
     overflow: auto;
   }
