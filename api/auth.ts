@@ -8,6 +8,9 @@ interface Login {
 export const submitLogin = async (form: Login): Promise<void> => {
   // const { token } = await handleApi('/auth/login', form, true)
   // const user = await handleApi('/user/get', null, true, token)
+  if (form.username !== 'test' || form.pwd !== 'test') {
+    throw Error('Incorrect Username or Password')
+  }
   const { token } = await fakeApi('/auth/login')
   const user = await fakeApi('/user/get')
   const auth = {

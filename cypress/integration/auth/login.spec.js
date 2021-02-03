@@ -27,9 +27,9 @@ describe('Login', () => {
       cy.get('@password-error').should('not.be.empty')
     })
     it('typing text should get rid of input errors', () => {
-      cy.get('@username').type('username')
+      cy.get('@username').type('test')
       cy.get('@username-error').should('be.empty')
-      cy.get('@password').type('password')
+      cy.get('@password').type('test')
       cy.get('@password-error').should('be.empty')
     })
     it('clicking login should log user in', () => {

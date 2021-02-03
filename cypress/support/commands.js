@@ -29,8 +29,8 @@ Cypress.Commands.add('login', () => {
   cy.visit('http://localhost:3000')
   cy.intercept('POST', '/auth/login', { fixture: 'login' })
   cy.intercept('GET', '/user', { fixture: 'user' })
-  cy.get('input[name="Username"]').type('t')
-  cy.get('input[name="Password"]').type('t')
+  cy.get('input[name="Username"]').type('test')
+  cy.get('input[name="Password"]').type('test')
   cy.get('#login').submit()
 })
 
