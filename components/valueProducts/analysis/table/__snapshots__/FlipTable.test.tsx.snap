@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FlipTable should match snapshot 1`] = `
+<div
+  className="flip-table"
+>
+  <Table
+    columns={Array []}
+    data={Array []}
+    fetchData={[Function]}
+    width={1050}
+  />
+</div>
+`;

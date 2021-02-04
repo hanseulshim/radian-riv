@@ -1,73 +1,70 @@
 import React, { useState, createContext, useContext } from 'react'
-export interface PropertyInfoType {
-  id: string
-  poolName: string
-  loanNumber: string
-  address: string
-  city: string
-  state: string
-  zip: string
-  subdivision: string
-  bed: number
-  bath: number
-  sqft: number
-  garage: number
-  lotSize: number
-  yearBuilt: number
-  dnaSource: string
-  reo: boolean
-  propertyType: string
-  marketArea: string
-  compsGoingBack: string
-  asOfDate: string
-  rivDate: string
-  calculatedPrice: number
-  priceSqFt: number
-  lock: boolean
-  geoAccuracy: string
-  retailMarket: number
-  distressedMarket: number
-  summaryComments: string
-  area: string
-  areaParameter: string
-}
+import { PropertyInterface } from 'api'
 
 const defaultPropertyInfo = {
-  id: null,
-  poolName: null,
-  loanNumber: null,
+  actDom: null,
   address: null,
-  city: null,
-  state: null,
-  zip: null,
-  subdivision: null,
-  bed: null,
-  bath: null,
-  sqft: null,
-  garage: null,
-  lotSize: null,
-  yearBuilt: null,
-  dnaSource: null,
-  reo: null,
-  propertyType: null,
-  marketArea: null,
-  compsGoingBack: null,
-  asOfDate: null,
-  rivDate: null,
-  calculatedPrice: null,
-  priceSqFt: null,
-  lock: null,
-  geoAccuracy: null,
-  retailMarket: null,
-  distressedMarket: null,
-  summaryComments: null,
+  agSqft: null,
   area: null,
-  areaParameter: null
+  areaParameter: null,
+  asOfDate: null,
+  basement: null,
+  bath: null,
+  bed: null,
+  calculatedPrice: null,
+  city: null,
+  coeDate: null,
+  coePrice: null,
+  coe2Date: null,
+  coe2Price: null,
+  compsGoingBack: null,
+  concessions: null,
+  daysFromFlip: null,
+  description: null,
+  distressed: null,
+  distressedMarket: null,
+  dnaSource: null,
+  garage: null,
+  geoAccuracy: null,
+  id: null,
+  lat: null,
+  listDate: null,
+  listingNumber: null,
+  listingSheetSelected: null,
+  listPrice: null,
+  listPricePerSqft: null,
+  lng: null,
+  lock: null,
+  loanNumber: null,
+  lotSize: null,
+  marketArea: null,
+  order: null,
+  pool: null,
+  photos: null,
+  poolName: null,
+  propertyType: null,
+  reo: null,
+  retailMarket: null,
+  rivDate: null,
+  schoolDistrict: null,
+  soldPrice: null,
+  sqft: null,
+  sqftPrice: null,
+  subdivision: null,
+  summaryComments: null,
+  state: null,
+  targetDistance: null,
+  totalSqft: null,
+  totDom: null,
+  valuationPercent: null,
+  waterfront: null,
+  yearBuilt: null,
+  zip: null
 }
 
 type ValueProductContextType = {
-  propertyInfo: PropertyInfoType
-  setPropertyInfo: React.Dispatch<React.SetStateAction<PropertyInfoType>>
+  propertyInfo: PropertyInterface
+  setPropertyInfo: React.Dispatch<React.SetStateAction<PropertyInterface>>
 }
 
 const ValueProductContext = createContext<ValueProductContextType>({
@@ -81,7 +78,7 @@ export const ValueProductProvider = ({
 }: {
   children: React.ReactNode
 }): React.ReactElement => {
-  const [propertyInfo, setPropertyInfo] = useState<PropertyInfoType>(
+  const [propertyInfo, setPropertyInfo] = useState<PropertyInterface>(
     defaultPropertyInfo
   )
 

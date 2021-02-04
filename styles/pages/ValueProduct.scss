@@ -223,6 +223,42 @@
       }
     }
   }
+  .flip-analysis {
+    margin-top: 1em;
+    .table-container {
+      display: flex;
+    }
+    .map-container {
+      margin-top: 2em;
+      height: 500px;
+      width: 100%;
+    }
+    .map-toggle {
+      margin-top: 10px;
+      display: flex;
+      .toggle-label-container {
+        display: flex;
+        margin-right: 1em;
+        .toggle-label {
+          width: 125px;
+          margin-left: 5px;
+        }
+      }
+    }
+    .flip-tables {
+      margin-top: 2em;
+      h2 {
+        padding-bottom: 5px;
+        border-bottom: 2px solid var(--prussian-blue);
+        margin: 1em 0;
+      }
+      .flip-table {
+        .tbody {
+          max-height: 250px;
+        }
+      }
+    }
+  }
 }
 #video-modal {
   .form {

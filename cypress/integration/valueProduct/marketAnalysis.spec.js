@@ -20,11 +20,12 @@ describe('Market Analysis', () => {
     it('should render property info table', () => {
       cy.get('.property-tabs > .table-container').should('exist')
     })
-    it('should render three tabs', () => {
-      cy.get('.tab-container > li').should('have.length', 3)
+    it('should render four tabs', () => {
+      cy.get('.tab-container > li').should('have.length', 4)
       cy.get('.tab-container > li').contains('Market Analysis')
       cy.get('.tab-container > li').contains('Filtered Market Analysis')
       cy.get('.tab-container > li').contains('Median Sale Price')
+      cy.get('.tab-container > li').contains('Flip Analysis')
     })
     it('should render analytics', () => {
       cy.get('.analytics > .label').contains('Subject SQFT')
@@ -103,6 +104,31 @@ describe('Market Analysis', () => {
       cy.get('.header-group').contains('ONE MONTH')
       cy.get('.header-group').contains('TWO MONTHS')
       cy.get('.header-group').contains('THREE MONTHS')
+    })
+  })
+  describe('Flip Analysis Tab', () => {
+    it('should click Median Sale Price Tab', () => {
+      cy.get('.tab-container > li').contains('Flip Analysis').click()
+    })
+    it('should render flip sold, flip rented tables', () => {
+      cy.get('.header-group').contains('FLIP SOLD')
+      cy.get('.header-group').contains('FLIP RENTED')
+    })
+    it('should render map with marker', () => {
+      cy.get('.marker')
+    })
+    it('should render map toggles', () => {
+      cy.get('.toggle-label-container > span').contains('Subject')
+      cy.get('.toggle-label-container > span').contains('Flip Sold')
+      cy.get('.toggle-label-container > span').contains('Flip Rented')
+      cy.get('.toggle-label-container > span').contains('Flip for Sale')
+      cy.get('.toggle-label-container > span').contains('Flip for Rent')
+    })
+    it('should render Flip sections', () => {
+      cy.get('h2').contains('Flip Sold')
+      cy.get('h2').contains('Flip for Sale')
+      cy.get('h2').contains('Flip Rented')
+      cy.get('h2').contains('Flip for Rent')
     })
   })
 

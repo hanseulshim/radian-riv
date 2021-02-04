@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FlipAnalysisTable should match snapshot 1`] = `
+<div
+  style={
+    Object {
+      "marginRight": 0,
+    }
+  }
+>
+  <Table
+    columns={Array []}
+    data={Array []}
+    fetchData={[Function]}
+    width={520}
+  />
+</div>
+`;

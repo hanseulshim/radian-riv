@@ -17,6 +17,7 @@ module.exports = {
       : isBeta
       ? 'https://beta.boostlabs.com/radian-riv/'
       : '',
-    api: 'https://virtserver.swaggerhub.com/BoostLabs/radian_riv/0.4.0'
+    api: 'https://virtserver.swaggerhub.com/BoostLabs/radian_riv/0.4.0',
+    googleMapsApiKey: 'AIzaSyCDqsUhKCXYQ3T_ErIXnVt0xoQa4wo_KOE'
   }
 }

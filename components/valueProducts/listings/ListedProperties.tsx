@@ -1,3 +1,4 @@
+import React from 'react'
 import { PropertyInterface } from 'api'
 
 interface Props {

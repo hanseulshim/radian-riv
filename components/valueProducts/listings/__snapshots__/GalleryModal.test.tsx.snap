@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GalleryModal should match snapshot 1`] = `
+<Modal
+  closeModal={[Function]}
+  id="gallery-modal"
+  percent={90}
+  title=""
+>
+  <div
+    className="gallery-container"
+  />
+</Modal>
+`;

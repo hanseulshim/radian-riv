@@ -40,7 +40,9 @@ export const getAboutUs = async (): Promise<any[]> => {
       State: faker.address.stateAbbr(),
       'Broker Name': faker.name.findName(),
       License: faker.vehicle.vin(),
-      Office: `${faker.address.streetAddress()} ${faker.address.secondaryAddress()}, ${faker.address.city()}, ${faker.address.stateAbbr()} ${faker.address.zipCode()}`
+      Office: `${faker.address.streetAddress()} ${faker.address.secondaryAddress()}, ${faker.address.city()}, ${faker.address.stateAbbr()} ${faker.address.zipCode(
+        '#####'
+      )}`
     })
   }
   return data

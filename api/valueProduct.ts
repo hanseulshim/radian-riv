@@ -1,41 +1,11 @@
-import { PropertyInfoType } from 'context/ValueProductProvider'
 import faker from 'faker'
 
 export const getPropertyInfo = async (
   propertyInfoId: string
-): Promise<PropertyInfoType> => {
-  return {
-    id: propertyInfoId,
-    poolName: 'DEFAULT',
-    loanNumber: 'test',
-    address: '18324 Tapwood Road',
-    city: 'Boyds',
-    state: 'MD',
-    zip: '20841',
-    subdivision: null,
-    bed: 5,
-    bath: 4.5,
-    sqft: 3835,
-    garage: 2,
-    lotSize: 0.231,
-    yearBuilt: 2004,
-    dnaSource: 'User',
-    reo: false,
-    propertyType: 'Single Family',
-    marketArea: 'Radian Interactive Value Default - 1 mile',
-    compsGoingBack: '3 months',
-    asOfDate: '01/25/2021',
-    rivDate: '03/18/2020',
-    calculatedPrice: 671860,
-    priceSqFt: 175.19,
-    lock: true,
-    geoAccuracy: 'PREMISE LEVEL. Excellent',
-    retailMarket: 0.9542,
-    distressedMarket: 0.0458,
-    summaryComments: 'This is a property',
-    area: 'Default',
-    areaParameter: null
-  }
+): Promise<PropertyInterface> => {
+  const properties = generateProperties(1)
+  properties[0].id = propertyInfoId
+  return properties[0]
 }
 
 interface DaysTable {
@@ -694,29 +664,54 @@ export interface PropertyInterface {
   actDom: number
   address: string
   agSqft: number
+  area: string
+  areaParameter: string
+  asOfDate: string
   basement: string
   bath: number
   bed: number
+  calculatedPrice: number
   city: string
   coeDate: string
+  coePrice: number
+  coe2Date: string
+  coe2Price: number
+  compsGoingBack: string
   concessions: number
+  daysFromFlip: number
   description: string
   distressed: boolean
+  distressedMarket: number
+  dnaSource: string
   garage: number
+  geoAccuracy: string
+  id: string
+  lat: number
   listDate: string
   listingNumber: string
   listingSheetSelected: boolean
   listPrice: number
   listPricePerSqft: number
+  lng: number
+  lock: boolean
+  loanNumber: string
   lotSize: number
+  marketArea: string
   order: number
   pool: string
   photos: string[]
+  poolName: string
+  propertyType: string
+  reo: boolean
+  retailMarket: number
+  rivDate: string
   schoolDistrict: string
   soldPrice: number
   sqft: number
   sqftPrice: number
   subdivision: string
+  summaryComments: string
+  state: string
   targetDistance: number
   totalSqft: number
   totDom: number
@@ -747,24 +742,42 @@ const generatePropertyPhotos = (): string[] => {
   return data
 }
 
-const generateProperties = (): PropertyInterface[] => {
+const generateProperties = (num = 15): PropertyInterface[] => {
   const data: PropertyInterface[] = []
-  for (let i = 1; i <= 15; i++) {
+  for (let i = 1; i <= num; i++) {
     data.push({
       actDom: faker.random.number({ min: 5, max: 300 }),
       address: faker.address.streetAddress(),
       agSqft: faker.random.number({ min: 2000, max: 5000 }),
+      area: 'Default',
+      areaParameter: null,
+      asOfDate: faker.date
+        .between('2020-01-01', '2020-12-31')
+        .toLocaleDateString(),
       basement: faker.random.arrayElement(['Yes', 'Full', 'No']),
       bath: faker.random.number({ min: 2, max: 3 }),
       bed: faker.random.number({ min: 4, max: 5 }),
+      calculatedPrice: faker.random.number({ min: 500000, max: 700000 }),
       city: faker.address.city(),
       coeDate: faker.date
         .between('2020-01-01', '2020-12-31')
         .toLocaleDateString(),
+      coePrice: faker.random.number({ min: 500000, max: 600000 }),
+      coe2Date: faker.date
+        .between('2020-01-01', '2020-12-31')
+        .toLocaleDateString(),
+      coe2Price: faker.random.number({ min: 500000, max: 600000 }),
+      compsGoingBack: '3 months',
       concessions: faker.random.number({ min: 10000, max: 20000 }),
+      daysFromFlip: faker.random.number({ min: 10, max: 50 }),
       description: faker.lorem.paragraph(5),
       distressed: faker.random.boolean(),
+      distressedMarket: +faker.finance.amount(0.4, 0.9, 4),
+      dnaSource: 'User',
       garage: faker.random.number(2),
+      geoAccuracy: 'PREMISE LEVEl. Excellent',
+      id: faker.finance.amount(200000, 500000),
+      lat: +faker.address.latitude(39.050498, 39.057319),
       listDate: faker.date
         .between('2020-01-01', '2020-12-31')
         .toLocaleDateString(),
@@ -772,22 +785,38 @@ const generateProperties = (): PropertyInterface[] => {
       listingSheetSelected: false,
       listPrice: faker.random.number({ min: 500000, max: 600000 }),
       listPricePerSqft: faker.random.number({ min: 2000, max: 5000 }),
+      lng: +faker.address.longitude(-77.224241, -77.243871),
+      lock: faker.random.boolean(),
+      loanNumber: 'test',
       lotSize: +faker.finance.amount(0, 1, 2),
+      marketArea: 'Radian Interactive Value Default - 1 mile',
       order: i,
       pool: faker.random.arrayElement(['Community', 'None']),
+      poolName: 'DEFAULT',
       photos: generatePropertyPhotos(),
+      propertyType: faker.random.arrayElement([
+        'Single Family',
+        'Multi Family'
+      ]),
+      reo: faker.random.boolean(),
+      retailMarket: +faker.finance.amount(0.4, 0.9, 4),
+      rivDate: faker.date
+        .between('2020-01-01', '2020-12-31')
+        .toLocaleDateString(),
       schoolDistrict: `${faker.address.county()} County Public Schools`,
       soldPrice: faker.random.number({ min: 500000, max: 600000 }),
       sqft: faker.random.number({ min: 2000, max: 5000 }),
       sqftPrice: +faker.finance.amount(100, 300, 2),
       subdivision: `${faker.commerce.productMaterial()} ${faker.commerce.product()} Village`,
+      summaryComments: faker.lorem.paragraph(5),
+      state: faker.address.stateAbbr(),
       targetDistance: +faker.finance.amount(0.4, 0.9, 2),
       totalSqft: faker.random.number({ min: 2000, max: 5000 }),
       totDom: faker.random.number({ min: 5, max: 300 }),
       valuationPercent: +faker.finance.amount(0, 1, 2),
       waterfront: 'Water Oriented: No',
       yearBuilt: faker.random.number({ min: 1980, max: 2010 }),
-      zip: faker.address.zipCode()
+      zip: faker.address.zipCode('#####')
     })
   }
   return data
@@ -807,6 +836,83 @@ export const getContractProperties = async (
   propertyInfoId: string
 ): Promise<PropertyInterface[]> => {
   return generateProperties()
+}
+
+export interface FlipAnalysisInterface {
+  flipSoldAnalysis: {
+    report: string
+    '0-90': number
+    '91-180': number
+    '180-270': number
+    '271-365': number
+  }[]
+  flipRentedAnalysis: {
+    report: string
+    '0-90': number
+    '91-180': number
+    '180-270': number
+    '271-365': number
+  }[]
+  flipSold: PropertyInterface[]
+  flipForSale: PropertyInterface[]
+  flipRented: PropertyInterface[]
+  flipForRent: PropertyInterface[]
+}
+
+export const getFlipAnalysis = async (
+  propertyInfoId: string
+): Promise<FlipAnalysisInterface> => {
+  const flipSoldAnalysis = [
+    'Number of Sold Flips',
+    'Average Sold Price',
+    'Avg. % Change of Sold Prices',
+    'Pre-Flip Low Sold',
+    'Pre-Flip High Sold',
+    'Post-Flip Low Sold',
+    'Post-Flip High Sold',
+    'Smallest Price Difference',
+    'Largest Price Difference'
+  ]
+  const flipRentAnalysis = [
+    'Number of Rental Flips',
+    'Average Sold Price',
+    'Avg Cap Ex',
+    'Avg Rent per SqFt',
+    'Low Rent',
+    'High Rent',
+    'Avg Gross Rent Multiplier',
+    'Lowest GRM',
+    'Highest GRM'
+  ]
+  const generateFlip = (report: string) => {
+    return report.includes('Number')
+      ? faker.random.number(5)
+      : report.includes('%') || report.includes('Cap')
+      ? +faker.finance.amount(0.1, 0.4, 4)
+      : report.includes('Difference') || report.includes('GRM')
+      ? faker.random.number({ min: 10000, max: 100000 })
+      : faker.random.number({ min: 100000, max: 500000 })
+  }
+  return {
+    flipSoldAnalysis: flipSoldAnalysis.map(report => ({
+      report,
+      '0-90': generateFlip(report),
+      '91-180': generateFlip(report),
+      '180-270': generateFlip(report),
+      '271-365': generateFlip(report)
+    })),
+    flipRentedAnalysis: flipRentAnalysis.map(report => ({
+      report,
+      '0-90': generateFlip(report),
+      '91-180': generateFlip(report),
+      '180-270': generateFlip(report),
+      '271-365': generateFlip(report)
+    })),
+    flipSold: generateProperties(5),
+    flipForSale: generateProperties(5),
+    flipRented: generateProperties(5),
+    flipForRent: generateProperties(5)
+  }
 }
 interface ExportForm {
   subjectPhotos: string

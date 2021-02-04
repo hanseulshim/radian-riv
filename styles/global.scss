@@ -593,3 +593,24 @@ ul {
   cursor: pointer;
   color: var(--oracle);
 }
+
+.marker {
+  position: relative;
+  img {
+    width: 40px;
+  }
+  span {
+    position: absolute;
+    top: 13px;
+    left: 16px;
+    font-size: 12px;
+    font-weight: bold;
+    &.marker-flip-sold,
+    &.marker-flip-rented {
+      left: 17px;
+    }
+    &.double-digit {
+      left: 13px;
+    }
+  }
+}
