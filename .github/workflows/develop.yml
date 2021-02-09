@@ -37,3 +37,5 @@ jobs:
           install-command: yarn --frozen-lockfile --silent
       - name: Run tests
         run: yarn test
+      - name: Build Project
+        run: yarn build && yarn export
