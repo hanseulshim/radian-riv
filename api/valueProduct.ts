@@ -1,4 +1,68 @@
+import { Option } from 'api'
 import faker from 'faker'
+
+export interface PropertyInterface {
+  actDom: number
+  address: string
+  agSqft: number
+  area: string
+  areaParameter: string
+  asOfDate: string
+  basement: string
+  bath: number
+  bed: number
+  calculatedPrice: number
+  city: string
+  coeDate: string
+  coePrice: number
+  coe2Date: string
+  coe2Price: number
+  compsGoingBack: string
+  concessions: number
+  daysFromFlip: number
+  description: string
+  distressed: boolean
+  distressedMarket: number
+  dnaSource: string
+  garage: number
+  geoAccuracy: string
+  id: string
+  lat: number
+  listDate: string
+  listingNumber: string
+  listingSheetSelected: boolean
+  listPrice: number
+  listPricePerSqft: number
+  lng: number
+  lock: boolean
+  loanNumber: string
+  lotSize: number
+  marketArea: string
+  order: number
+  pool: string
+  photos: string[]
+  poolName: string
+  propertyType: string
+  reo: boolean
+  retailMarket: number
+  rivDate: string
+  schoolDistrict: string
+  soldPrice: number
+  source: string
+  sqft: number
+  sqftPrice: number
+  subdivision: string
+  summaryComments: string
+  state: string
+  targetDistance: number
+  totalSqft: number
+  totDom: number
+  units: number
+  valuationPercent: number
+  waterfront: string
+  yearBuilt: number
+  zip: string
+}
 
 export const getPropertyInfo = async (
   propertyInfoId: string
@@ -660,67 +724,6 @@ export const getMedianSalePrice = async (
   }
 }
 
-export interface PropertyInterface {
-  actDom: number
-  address: string
-  agSqft: number
-  area: string
-  areaParameter: string
-  asOfDate: string
-  basement: string
-  bath: number
-  bed: number
-  calculatedPrice: number
-  city: string
-  coeDate: string
-  coePrice: number
-  coe2Date: string
-  coe2Price: number
-  compsGoingBack: string
-  concessions: number
-  daysFromFlip: number
-  description: string
-  distressed: boolean
-  distressedMarket: number
-  dnaSource: string
-  garage: number
-  geoAccuracy: string
-  id: string
-  lat: number
-  listDate: string
-  listingNumber: string
-  listingSheetSelected: boolean
-  listPrice: number
-  listPricePerSqft: number
-  lng: number
-  lock: boolean
-  loanNumber: string
-  lotSize: number
-  marketArea: string
-  order: number
-  pool: string
-  photos: string[]
-  poolName: string
-  propertyType: string
-  reo: boolean
-  retailMarket: number
-  rivDate: string
-  schoolDistrict: string
-  soldPrice: number
-  sqft: number
-  sqftPrice: number
-  subdivision: string
-  summaryComments: string
-  state: string
-  targetDistance: number
-  totalSqft: number
-  totDom: number
-  valuationPercent: number
-  waterfront: string
-  yearBuilt: number
-  zip: string
-}
-
 const generatePropertyPhotos = (): string[] => {
   const data = []
   const property = faker.random.arrayElement([
@@ -796,7 +799,8 @@ const generateProperties = (num = 15): PropertyInterface[] => {
       photos: generatePropertyPhotos(),
       propertyType: faker.random.arrayElement([
         'Single Family',
-        'Multi Family'
+        'Multi Family',
+        'Duplex'
       ]),
       reo: faker.random.boolean(),
       retailMarket: +faker.finance.amount(0.4, 0.9, 4),
@@ -805,6 +809,13 @@ const generateProperties = (num = 15): PropertyInterface[] => {
         .toLocaleDateString(),
       schoolDistrict: `${faker.address.county()} County Public Schools`,
       soldPrice: faker.random.number({ min: 500000, max: 600000 }),
+      source: faker.random.arrayElement([
+        'User',
+        'Appraisal',
+        'MLS',
+        'Estimated',
+        'Public Record APM: 17-0155-003-005-3'
+      ]),
       sqft: faker.random.number({ min: 2000, max: 5000 }),
       sqftPrice: +faker.finance.amount(100, 300, 2),
       subdivision: `${faker.commerce.productMaterial()} ${faker.commerce.product()} Village`,
@@ -813,6 +824,7 @@ const generateProperties = (num = 15): PropertyInterface[] => {
       targetDistance: +faker.finance.amount(0.4, 0.9, 2),
       totalSqft: faker.random.number({ min: 2000, max: 5000 }),
       totDom: faker.random.number({ min: 5, max: 300 }),
+      units: faker.random.number({ min: 1, max: 5 }),
       valuationPercent: +faker.finance.amount(0, 1, 2),
       waterfront: 'Water Oriented: No',
       yearBuilt: faker.random.number({ min: 1980, max: 2010 }),
@@ -915,7 +927,7 @@ export const getFlipAnalysis = async (
   }
 }
 interface ExportForm {
-  subjectPhotos: string
+  subjectPhotosType: string
   subjectListingSheets: boolean
   comparableType: string
   selectedCompPhotosType: string | null
@@ -930,4 +942,96 @@ export const exportPdf = async (
   exportForm: ExportForm
 ): Promise<string> => {
   return 'Request Submitted!'
+}
+
+export const getPropertyTypeOptions = async (): Promise<Option[]> => {
+  const options = [
+    {
+      label: 'Single Family',
+      value: 'Single Family'
+    },
+    {
+      label: 'Multi Family',
+      value: 'Multi Family'
+    },
+    {
+      label: 'Duplex',
+      value: 'Duplex'
+    }
+  ]
+  return options
+}
+
+export const getMonthsBackOptions = async (): Promise<Option[]> => {
+  const options = [
+    {
+      label: '3 months',
+      value: '3 months'
+    },
+    {
+      label: '6 months',
+      value: '6 months'
+    },
+    {
+      label: '12 months',
+      value: '12 months'
+    }
+  ]
+  return options
+}
+
+export interface PropertyCharacteristics {
+  source: string
+  bed: number
+  bath: number
+  sqft: number
+  units: number
+  garage: number
+  lotSize: number
+  yearBuilt: number
+}
+
+export const getPropertyCharacteristicsSources = async (): Promise<
+  PropertyCharacteristics[]
+> => {
+  const sources = [
+    {
+      source: 'MLS',
+      bed: null,
+      bath: 3,
+      sqft: null,
+      units: 4,
+      garage: 2,
+      lotSize: 2.5,
+      yearBuilt: 1995
+    },
+    {
+      source: 'Public Record APM: 17-0155-003-005-3',
+      bed: 4,
+      bath: 3,
+      sqft: 2100,
+      units: 4,
+      garage: 2,
+      lotSize: 2.5,
+      yearBuilt: 1995
+    },
+    {
+      source: 'Estimated',
+      bed: 4,
+      bath: 3,
+      sqft: null,
+      units: 1,
+      garage: null,
+      lotSize: 2.5,
+      yearBuilt: 1995
+    }
+  ]
+
+  return sources
+}
+
+export const changePropertyCharacteristics = async (
+  propertyInfo: PropertyInterface
+): Promise<PropertyInterface> => {
+  return propertyInfo
 }

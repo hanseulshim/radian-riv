@@ -16,7 +16,7 @@ exports[`Input should match snapshot 1`] = `
     value="test"
   />
   <label
-    className="input-label"
+    className="input-label "
     htmlFor="test"
   >
     test

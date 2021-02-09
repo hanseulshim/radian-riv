@@ -3,6 +3,8 @@
 
 const emailValidation = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/gm
 const phoneValidation = /^[(]?[0-9]{3}[)]?[-\s]?[0-9]{3}[-\s]?[0-9]{4}$/gim
+const dateValidation = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/
+const yearValidation = /^\d{4}$/
 
 export const validateEmail = (
   email: string,
@@ -68,6 +70,16 @@ export const validateForm = (form: any, reqFields: any = {}): any => {
     } else if (key === 'answer1' || key === 'answer2' || key === 'answer3') {
       if (form[key].length === 0) {
         errorObj[key] = `Answer can't be blank`
+      }
+    } else if (key === 'date' || key === 'asOfDate') {
+      if (form[key].length === 0) {
+        errorObj[key] = `Date can't be empty`
+      } else if (!form[key].match(dateValidation)) {
+        errorObj[key] = `Date must be valid (MM/DD/YYYY)`
+      }
+    } else if (key === 'yearBuilt') {
+      if (form[key].length && !form[key].match(yearValidation)) {
+        errorObj[key] = `Date must be valid (YYYY)`
       }
     }
   })

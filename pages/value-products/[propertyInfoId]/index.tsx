@@ -12,6 +12,7 @@ import {
   getContractProperties,
   PropertyInterface
 } from 'api'
+import ChangePropertyCharacteristics from 'components/valueProducts/change-property-characteristics'
 
 export default function PropertyInfoPage() {
   const { propertyInfo } = useValueProduct()
@@ -23,6 +24,7 @@ export default function PropertyInfoPage() {
     PropertyInterface[]
   >([])
   const [pdfModal, setPdfModal] = useState(false)
+  const [propertyCharModal, setPropertyCharModal] = useState(false)
   const [listingSheets, setListingSheets] = useState({
     subject: 0,
     selected: 2,
@@ -58,6 +60,10 @@ export default function PropertyInfoPage() {
     setPdfModal(!pdfModal)
   }
 
+  const togglePropCharModal = () => {
+    setPropertyCharModal(!propertyCharModal)
+  }
+
   return (
     <ValueProductLayout>
       <div className="property-info">
@@ -76,7 +82,11 @@ export default function PropertyInfoPage() {
         <button style={{ marginRight: '1em' }} className="btn btn-small">
           Order Rental Analysis
         </button>
-        <button style={{ marginRight: '1em' }} className="btn btn-small">
+        <button
+          style={{ marginRight: '1em' }}
+          className="btn btn-small"
+          onClick={togglePropCharModal}
+        >
           Change Property Characteristics
         </button>
         <div className="icon-row">
@@ -151,6 +161,9 @@ export default function PropertyInfoPage() {
             closeModal={togglePdfModal}
             listingSheets={listingSheets}
           />
+        )}
+        {propertyCharModal && (
+          <ChangePropertyCharacteristics closeModal={togglePropCharModal} />
         )}
       </div>
     </ValueProductLayout>

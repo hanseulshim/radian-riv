@@ -163,6 +163,10 @@ input:disabled {
       top: 0;
       display: block;
     }
+
+    &.capitalize-label {
+      text-transform: capitalize;
+    }
   }
   .required-field {
     color: var(--red);
@@ -181,6 +185,12 @@ input:disabled {
   }
   input:focus::placeholder {
     opacity: 0;
+  }
+
+  input::placeholder {
+    &.capitalize-label {
+      text-transform: capitalize;
+    }
   }
 
   input {

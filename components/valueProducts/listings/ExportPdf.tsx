@@ -20,7 +20,7 @@ interface Props {
 export default function ExportPdf({ closeModal, listingSheets }: Props) {
   const [formSubmitted, setFormSubmitted] = useState(false)
   const [form, setForm] = useState({
-    subjectPhotos: 'primaryOnly',
+    subjectPhotosType: 'primaryOnly',
     subjectListingSheets: false,
     comparableType: 'selectedComparables',
     selectedCompPhotosType: 'primaryOnly',
@@ -64,7 +64,7 @@ export default function ExportPdf({ closeModal, listingSheets }: Props) {
   }
 
   const {
-    subjectPhotos,
+    subjectPhotosType,
     subjectListingSheets,
     comparableType,
     selectedCompPhotosType,
@@ -89,17 +89,17 @@ export default function ExportPdf({ closeModal, listingSheets }: Props) {
         <h3 className="section-title">Subject</h3>
         <Radio
           value="primaryOnly"
-          checked={subjectPhotos === 'primaryOnly'}
+          checked={subjectPhotosType === 'primaryOnly'}
           onChange={onRadioChange}
           label="Primary Photograph Only"
-          name="subjectPhotos"
+          name="subjectPhotosType"
         />
         <Radio
           value="allAvailable"
-          checked={subjectPhotos === 'allAvailable'}
+          checked={subjectPhotosType === 'allAvailable'}
           onChange={onRadioChange}
           label="All Available Photographs"
-          name="subjectPhotos"
+          name="subjectPhotosType"
         />
         <Checkbox
           label={`Listing Sheets (${subject})`}
@@ -202,7 +202,7 @@ export default function ExportPdf({ closeModal, listingSheets }: Props) {
 interface ChooseDeliveryProps {
   closeModal: () => void
   exportForm: {
-    subjectPhotos: string
+    subjectPhotosType: string
     subjectListingSheets: boolean
     comparableType: string
     selectedCompPhotosType: string | null

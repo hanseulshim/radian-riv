@@ -8,6 +8,7 @@ interface Props {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   error: string
   disabled?: boolean
+  capitalizeLabel?: boolean
 }
 
 export default function Input({
@@ -17,7 +18,8 @@ export default function Input({
   required = false,
   onChange,
   error,
-  disabled = false
+  disabled = false,
+  capitalizeLabel
 }: Props) {
   const [focus, setFocus] = useState(false)
   return (
@@ -25,7 +27,15 @@ export default function Input({
       <input
         className={error ? 'error-input' : null}
         type={type}
-        placeholder={label && `${required ? '   ' : ''}${label}...`}
+        placeholder={
+          label
+            ? `${required ? '   ' : ''}${
+                capitalizeLabel
+                  ? label[0].toUpperCase() + label.slice(1)
+                  : label
+              }...`
+            : null
+        }
         name={label}
         value={value}
         onChange={onChange}
@@ -37,7 +47,14 @@ export default function Input({
         <span className="placeholder required-field">*</span>
       )}
       {label && (
-        <label className={value ? 'input-label' : null} htmlFor={label}>
+        <label
+          className={
+            (value ? 'input-label' : '') +
+            ' ' +
+            (capitalizeLabel ? 'capitalize-label' : '')
+          }
+          htmlFor={label}
+        >
           {required && <span className="required-field">* </span>}
           {label}
         </label>

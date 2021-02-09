@@ -68,6 +68,50 @@ describe('RIV Property Info', () => {
         .click()
         .then(el => cy.get('.alert-success').should('have.length', 1))
     })
+
+    it('Shoud close the modal', () => {
+      cy.get('.close-form').click()
+    })
+  })
+
+  describe('Change Property Characteristics', () => {
+    it('Should render a modal', () => {
+      cy.get('.btn').contains('Change Property Characteristics').click()
+      cy.get('.modal-container')
+    })
+
+    it('Should allow you to select a new property type and months going back', () => {
+      cy.get('.input-row-container > .custom-select-container').eq(0).click()
+      cy.get('#react-select-2-option-1').click()
+      cy.get('.input-row-container > .custom-select-container').eq(1).click()
+      cy.get('#react-select-3-option-1').click()
+    })
+
+    it('Should validate the date inputs and display errors', () => {
+      cy.get('.input-group > input[name="As of date"]').clear().type('1234')
+      cy.get('#change-prop-characteristics > button').click()
+      cy.get('input[name="As of date"]')
+        .siblings('.error-input-message')
+        .contains('Date must be valid (MM/DD/YYYY)')
+      cy.get('.input-group > input[name="As of date"]')
+        .clear()
+        .type('01/01/2010')
+    })
+
+    it('Should allow you to change the source and a property characteristic', () => {
+      cy.get('.edit-prop-chars-container > .custom-select-container')
+        .eq(0)
+        .click()
+      cy.get('#react-select-4-option-0').click()
+      cy.get('input[name="yearBuilt"]').type('20')
+      cy.get('#change-prop-characteristics > button').click()
+      cy.get('input[name="yearBuilt"]')
+        .siblings('.error-input-message')
+        .contains('Date must be valid (YYYY)')
+      cy.get('input[name="yearBuilt"]').clear().type('2010')
+      cy.get('#change-prop-characteristics > button').click()
+      cy.get('#change-prop-characteristics > .alert-success')
+    })
   })
 
   after(() => {
