@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSortBy, useTable, useFlexLayout } from 'react-table'
 
 interface Props {
@@ -18,10 +18,11 @@ export default function Table({
   lightMode = false,
   width
 }: Props) {
+  const [tableData, setTableData] = useState([])
   const { getTableProps, headerGroups, rows, prepareRow } = useTable(
     {
       columns,
-      data: data.reverse(),
+      data: tableData,
       disableSortRemove: true,
       initialState: {
         sortBy: [
@@ -37,6 +38,10 @@ export default function Table({
     useSortBy,
     useFlexLayout
   )
+
+  useEffect(() => {
+    setTableData(data.slice().reverse())
+  }, [data])
 
   useEffect(() => {
     fetchData()
