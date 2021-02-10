@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListingHistoryTable should match snapshot 1`] = `
+<div
+  className="listing-history-table"
+>
+  <Table
+    columns={Array []}
+    data={Array []}
+    fetchData={[Function]}
+  />
+  <div
+    className="property-display-container"
+  />
+</div>
+`;

@@ -23,7 +23,7 @@ exports[`CompPhoto should match snapshot 1`] = `
         }
       >
         #
-        1
+        --
       </span>
       <span
         style={
@@ -32,14 +32,14 @@ exports[`CompPhoto should match snapshot 1`] = `
           }
         }
       >
-        view for $547,804
+        view for --
       </span>
     </div>
     <div
       className="icon-row"
     >
       <span>
-        0.41
+        --
          miles
       </span>
       <Checkbox
@@ -51,75 +51,16 @@ exports[`CompPhoto should match snapshot 1`] = `
       />
     </div>
   </div>
-  <div
-    className="photo-container"
-  >
-    <div
-      className="photo-wrapper"
-    >
-      <img
-        alt="property"
-        className="photo"
-      />
-    </div>
-    <div
-      className="info-row"
-    >
-      <span
-        style={
-          Object {
-            "width": 70,
-          }
-        }
-      >
-        1
-         of 
-        0
-      </span>
-      <div
-        className="info-row"
-      >
-        <img
-          alt="left button"
-          className="icon"
-          onClick={[Function]}
-          src="undefined/images/left.svg"
-        />
-        <img
-          alt="play/pause"
-          className="icon"
-          onClick={[Function]}
-          src="undefined/images/play.svg"
-        />
-        <img
-          alt="right button"
-          className="icon"
-          onClick={[Function]}
-          src="undefined/images/right.svg"
-        />
-      </div>
-      <span
-        className="icon-row"
-        onClick={[Function]}
-      >
-        <img
-          alt="external link"
-          className="icon"
-          src="undefined/images/external.svg"
-        />
-        <span>
-          All Photos
-        </span>
-      </span>
-    </div>
-  </div>
+  <PhotoPlay
+    photos={Array []}
+  />
   <div
     className="detail-container"
   >
     <div
       className="address"
     >
-      62030 Mariam Parkways
+      --
     </div>
     <div
       className="label-row"
@@ -130,7 +71,7 @@ exports[`CompPhoto should match snapshot 1`] = `
         Subdivision:
       </div>
       <span>
-        Soft Table Village
+        --
       </span>
     </div>
     <div
@@ -142,7 +83,7 @@ exports[`CompPhoto should match snapshot 1`] = `
         School District:
       </div>
       <span>
-        Avon County Public Schools
+        --
       </span>
     </div>
     <div
@@ -186,7 +127,7 @@ exports[`CompPhoto should match snapshot 1`] = `
             Bed
           </div>
           <span>
-            5
+            --
           </span>
         </div>
         <div
@@ -198,7 +139,7 @@ exports[`CompPhoto should match snapshot 1`] = `
             Bath
           </div>
           <span>
-            3
+            --
           </span>
         </div>
         <div
@@ -210,7 +151,7 @@ exports[`CompPhoto should match snapshot 1`] = `
             A.G. SQFT
           </div>
           <span>
-            2205
+            --
           </span>
         </div>
         <div
@@ -222,7 +163,7 @@ exports[`CompPhoto should match snapshot 1`] = `
             Total SQFT
           </div>
           <span>
-            2043
+            --
           </span>
         </div>
         <div
@@ -234,7 +175,7 @@ exports[`CompPhoto should match snapshot 1`] = `
             AVE SQFT
           </div>
           <span>
-            2168
+            --
           </span>
         </div>
         <div
@@ -246,7 +187,7 @@ exports[`CompPhoto should match snapshot 1`] = `
             Year Built
           </div>
           <span>
-            2006
+            --
           </span>
         </div>
         <div
@@ -258,7 +199,7 @@ exports[`CompPhoto should match snapshot 1`] = `
             Basement
           </div>
           <span>
-            Full
+            --
           </span>
         </div>
         <div
@@ -270,7 +211,7 @@ exports[`CompPhoto should match snapshot 1`] = `
             Pool
           </div>
           <span>
-            Community
+            --
           </span>
         </div>
         <div
@@ -282,7 +223,7 @@ exports[`CompPhoto should match snapshot 1`] = `
             Waterfront
           </div>
           <span>
-            Water Oriented: No
+            --
           </span>
         </div>
       </div>
@@ -298,7 +239,7 @@ exports[`CompPhoto should match snapshot 1`] = `
             Concessions
           </div>
           <span>
-            $16,044
+            --
           </span>
         </div>
         <div
@@ -310,7 +251,7 @@ exports[`CompPhoto should match snapshot 1`] = `
             COE Date
           </div>
           <span>
-            1/19/2020
+            --
           </span>
         </div>
         <div
@@ -322,7 +263,7 @@ exports[`CompPhoto should match snapshot 1`] = `
             List Date
           </div>
           <span>
-            4/22/2020
+            --
           </span>
         </div>
         <div
@@ -334,7 +275,7 @@ exports[`CompPhoto should match snapshot 1`] = `
             ACT DOM
           </div>
           <span>
-            239
+            --
           </span>
         </div>
         <div
@@ -346,7 +287,7 @@ exports[`CompPhoto should match snapshot 1`] = `
             TOT DOM
           </div>
           <span>
-            116
+            --
           </span>
         </div>
         <div
@@ -358,7 +299,7 @@ exports[`CompPhoto should match snapshot 1`] = `
             List Price
           </div>
           <span>
-            $547,804
+            --
           </span>
         </div>
         <div
@@ -372,7 +313,7 @@ exports[`CompPhoto should match snapshot 1`] = `
           <span
             className="link"
           >
-            MDMC695755
+            --
           </span>
         </div>
       </div>

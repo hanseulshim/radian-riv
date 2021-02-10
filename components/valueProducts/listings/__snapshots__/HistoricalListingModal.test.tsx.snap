@@ -1,0 +1,202 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HistoricalListingModal should match snapshot 1`] = `
+<Modal
+  closeModal={[Function]}
+  id="historical-listing-modal"
+  percent={95}
+  title=""
+>
+  <div
+    className="top-row"
+  >
+    <h2>
+      test
+       #
+    </h2>
+    <button
+      className="btn btn-icon dark"
+      onClick={[Function]}
+    >
+      <span>
+        Print
+      </span>
+      <span
+        className="icon-container"
+      >
+        <img
+          alt="print"
+          src="undefined/images/print.svg"
+        />
+      </span>
+    </button>
+  </div>
+  <div
+    className="listing-info"
+  >
+    <div
+      className="listing-image"
+    >
+      <div
+        className="image-container"
+      >
+        <img
+          alt="unavilable"
+          className="image"
+          src="undefined/images/photo-unavailable.svg"
+        />
+        <div
+          className="overlay"
+          onClick={[Function]}
+        >
+          <img
+            alt="print"
+            src="undefined/images/search.svg"
+          />
+        </div>
+      </div>
+      <button
+        className="btn btn-small"
+        onClick={[Function]}
+      >
+        View All Photos
+      </button>
+    </div>
+    <div>
+      <HistoricalListingTable
+        tableData={
+          Array [
+            Object {
+              "actDom": null,
+              "address": null,
+              "agSqft": null,
+              "area": null,
+              "areaParameter": null,
+              "asOfDate": null,
+              "basement": null,
+              "bath": null,
+              "bed": null,
+              "calculatedPrice": null,
+              "changeDate": null,
+              "city": null,
+              "coe2Date": null,
+              "coe2Price": null,
+              "coeDate": null,
+              "coePrice": null,
+              "compsGoingBack": null,
+              "concessions": null,
+              "cumulativeListDays": null,
+              "daysFromFlip": null,
+              "description": null,
+              "distressed": null,
+              "distressedMarket": null,
+              "dnaSource": null,
+              "exportMls": null,
+              "garage": null,
+              "geoAccuracy": null,
+              "id": null,
+              "lat": null,
+              "listingDate": null,
+              "listingNumber": null,
+              "listingPrice": null,
+              "listingPricePerSqft": null,
+              "listingSheetSelected": null,
+              "lng": null,
+              "loanNumber": null,
+              "lock": null,
+              "lotSize": null,
+              "marketArea": null,
+              "mlsComments": null,
+              "mlsName": null,
+              "order": null,
+              "photos": Array [],
+              "pool": null,
+              "poolName": null,
+              "propertyType": null,
+              "reo": null,
+              "retailMarket": null,
+              "rivDate": null,
+              "saleType": null,
+              "schoolDistrict": null,
+              "showMls": null,
+              "soldPrice": null,
+              "source": null,
+              "sqft": null,
+              "sqftPrice": null,
+              "state": null,
+              "status": null,
+              "subdivision": null,
+              "summaryComments": null,
+              "targetDistance": null,
+              "totDom": null,
+              "totalSqft": null,
+              "units": null,
+              "valuationPercent": null,
+              "waterfront": null,
+              "yearBuilt": null,
+              "zip": null,
+            },
+          ]
+        }
+      />
+      <div
+        className="info-container"
+      >
+        <div
+          style={
+            Object {
+              "flex": 0.5,
+              "marginRight": "1em",
+            }
+          }
+        >
+          <div
+            className="label"
+          >
+            Address:
+          </div>
+          <div />
+          <div />
+          <div
+            className="label space"
+          >
+            Listing Date:
+          </div>
+          <div />
+          <div
+            className="label space"
+          >
+            MLS Name:
+          </div>
+          <div />
+        </div>
+        <div
+          style={
+            Object {
+              "flex": 1,
+            }
+          }
+        >
+          <div
+            className="label"
+          >
+            MLS Comments:
+          </div>
+          <div />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="listing-history"
+  >
+    <h2>
+      Listing History
+    </h2>
+    <ListingHistoryTable
+      setListingHistory={[Function]}
+      tableData={Array []}
+    />
+  </div>
+</Modal>
+`;

@@ -53,8 +53,18 @@ export default function Table({
         props,
         {
           style: {
-            justifyContent: align === 'right' ? 'flex-end' : 'flex-start',
-            textAlign: align === 'right' ? 'right' : 'left'
+            justifyContent:
+              align === 'right'
+                ? 'flex-end'
+                : align === 'center'
+                ? 'center'
+                : 'flex-start',
+            textAlign:
+              align === 'right'
+                ? 'right'
+                : align === 'center'
+                ? 'center'
+                : 'left'
           }
         }
       ]

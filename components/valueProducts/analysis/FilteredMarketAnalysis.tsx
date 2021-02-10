@@ -183,11 +183,11 @@ export default function FilteredMarketAnalysis() {
       </div>
       <div style={{ display: 'flex', marginBottom: '1em' }}>
         <ListPriceTable
-          listPrice={marketListings.finalListPrice}
+          listingPrice={marketListings.finalListPrice}
           type="FINAL"
         />
         <ListPriceTable
-          listPrice={marketListings.originalListPrice}
+          listingPrice={marketListings.originalListPrice}
           type="ORIGINAL"
         />
       </div>

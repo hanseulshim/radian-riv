@@ -20,7 +20,7 @@ export default function Checkbox({
   return (
     <div className="checkbox-container">
       <label>
-        {leftLabel && (
+        {leftLabel && label && (
           <span className={`left-label${disabled ? ' disabled' : ''}`}>
             {label}
           </span>
@@ -45,7 +45,7 @@ export default function Checkbox({
             />
           </svg>
         </div>
-        {!leftLabel && (
+        {!leftLabel && label && (
           <span className={`label${disabled ? ' disabled' : ''}`}>{label}</span>
         )}
       </label>

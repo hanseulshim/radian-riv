@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PhotoPlay should match snapshot 1`] = `
+<div
+  className="play-photo-container"
+>
+  <div
+    className="photo-wrapper"
+  >
+    <img
+      alt="property"
+      className="photo"
+      src="undefined/images/photo-unavailable.svg"
+    />
+  </div>
+  <div
+    className="photo-button-row empty"
+  >
+    <span>
+      1 of 1
+    </span>
+  </div>
+</div>
+`;

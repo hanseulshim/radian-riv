@@ -101,11 +101,11 @@ export default function MarketAnalysis() {
       </div>
       <div style={{ display: 'flex' }}>
         <ListPriceTable
-          listPrice={marketListings.finalListPrice}
+          listingPrice={marketListings.finalListPrice}
           type="FINAL"
         />
         <ListPriceTable
-          listPrice={marketListings.originalListPrice}
+          listingPrice={marketListings.originalListPrice}
           type="ORIGINAL"
         />
       </div>

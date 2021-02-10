@@ -12,6 +12,7 @@ export interface PropertyInterface {
   bath: number
   bed: number
   calculatedPrice: number
+  changeDate: string
   city: string
   coeDate: string
   coePrice: number
@@ -19,25 +20,29 @@ export interface PropertyInterface {
   coe2Price: number
   compsGoingBack: string
   concessions: number
+  cumulativeListDays: number
   daysFromFlip: number
   description: string
   distressed: boolean
   distressedMarket: number
   dnaSource: string
+  exportMls: boolean
   garage: number
   geoAccuracy: string
   id: string
   lat: number
-  listDate: string
+  listingDate: string
   listingNumber: string
   listingSheetSelected: boolean
-  listPrice: number
-  listPricePerSqft: number
+  listingPrice: number
+  listingPricePerSqft: number
   lng: number
   lock: boolean
   loanNumber: string
   lotSize: number
   marketArea: string
+  mlsName: string
+  mlsComments: string
   order: number
   pool: string
   photos: string[]
@@ -46,14 +51,17 @@ export interface PropertyInterface {
   reo: boolean
   retailMarket: number
   rivDate: string
+  saleType: string
   schoolDistrict: string
+  showMls: boolean
   soldPrice: number
   source: string
   sqft: number
   sqftPrice: number
+  state: string
+  status: string
   subdivision: string
   summaryComments: string
-  state: string
   targetDistance: number
   totalSqft: number
   totDom: number
@@ -65,10 +73,10 @@ export interface PropertyInterface {
 }
 
 export const getPropertyInfo = async (
-  propertyInfoId: string
+  propertyId: string
 ): Promise<PropertyInterface> => {
   const properties = generateProperties(1)
-  properties[0].id = propertyInfoId
+  properties[0].id = propertyId
   return properties[0]
 }
 
@@ -112,13 +120,13 @@ const daysData = () => [
 ]
 
 export const getMarketAnalysisDays = async (
-  propertyInfoId: string
+  propertyId: string
 ): Promise<DaysTable[]> => {
   return daysData()
 }
 
 export const getFilteredMarketAnalysisDays = async (
-  propertyInfoId: string
+  propertyId: string
 ): Promise<DaysTable[]> => {
   return daysData()
 }
@@ -182,12 +190,12 @@ interface SoldDaysTable {
 }
 
 export const getMarketAnalysisSoldDays = async (
-  propertyInfoId: string
+  propertyId: string
 ): Promise<SoldDaysTable[]> => {
   return soldData()
 }
 export const getFilteredMarketAnalysisSoldDays = async (
-  propertyInfoId: string
+  propertyId: string
 ): Promise<SoldDaysTable[]> => {
   return soldData()
 }
@@ -227,13 +235,13 @@ const listings = () => ({
 })
 
 export const getMarketAnalysisListings = async (
-  propertyInfoId: string
+  propertyId: string
 ): Promise<MarketListings> => {
   return listings()
 }
 
 export const getFilteredMarketAnalysisListings = async (
-  propertyInfoId: string
+  propertyId: string
 ): Promise<MarketListings> => {
   return listings()
 }
@@ -250,7 +258,7 @@ export interface FilteredMarketAnalysisFilters {
 }
 
 export const getFilteredMarketAnalysisFilters = async (
-  propertyInfoId: string
+  propertyId: string
 ): Promise<FilteredMarketAnalysisFilters> => {
   return {
     minSqft: faker.random.number({ min: 2000, max: 3000 }),
@@ -275,7 +283,7 @@ interface FilteredMarketAnalysisDepressedMarketGrid {
 }
 
 export const getFilteredMarketAnalysisDepressedMarketGrid = async (
-  propertyInfoId: string
+  propertyId: string
 ): Promise<FilteredMarketAnalysisDepressedMarketGrid[]> => {
   return [
     {
@@ -328,7 +336,7 @@ export interface MedianSalePriceInterface {
 }
 
 export const getMedianSalePrice = async (
-  propertyInfoId: string
+  propertyId: string
 ): Promise<MedianSalePriceInterface> => {
   return {
     oneMonth: [
@@ -745,7 +753,7 @@ const generatePropertyPhotos = (): string[] => {
   return data
 }
 
-const generateProperties = (num = 15): PropertyInterface[] => {
+export const generateProperties = (num = 15): PropertyInterface[] => {
   const data: PropertyInterface[] = []
   for (let i = 1; i <= num; i++) {
     data.push({
@@ -762,6 +770,9 @@ const generateProperties = (num = 15): PropertyInterface[] => {
       bed: faker.random.number({ min: 4, max: 5 }),
       calculatedPrice: faker.random.number({ min: 500000, max: 700000 }),
       city: faker.address.city(),
+      changeDate: faker.date
+        .between('2020-01-01', '2020-12-31')
+        .toLocaleDateString(),
       coeDate: faker.date
         .between('2020-01-01', '2020-12-31')
         .toLocaleDateString(),
@@ -772,27 +783,34 @@ const generateProperties = (num = 15): PropertyInterface[] => {
       coe2Price: faker.random.number({ min: 500000, max: 600000 }),
       compsGoingBack: '3 months',
       concessions: faker.random.number({ min: 10000, max: 20000 }),
+      cumulativeListDays: faker.random.number(200),
       daysFromFlip: faker.random.number({ min: 10, max: 50 }),
       description: faker.lorem.paragraph(5),
       distressed: faker.random.boolean(),
       distressedMarket: +faker.finance.amount(0.4, 0.9, 4),
       dnaSource: 'User',
+      exportMls: false,
       garage: faker.random.number(2),
       geoAccuracy: 'PREMISE LEVEl. Excellent',
-      id: faker.finance.amount(200000, 500000),
+      id: `${faker.random.number({
+        min: 20000000,
+        max: 50000000
+      })}-${faker.random.number({ min: 1, max: 9 })}`,
       lat: +faker.address.latitude(39.050498, 39.057319),
-      listDate: faker.date
+      listingDate: faker.date
         .between('2020-01-01', '2020-12-31')
         .toLocaleDateString(),
       listingNumber: `MDMC${faker.random.number({ min: 645679, max: 698371 })}`,
       listingSheetSelected: false,
-      listPrice: faker.random.number({ min: 500000, max: 600000 }),
-      listPricePerSqft: faker.random.number({ min: 2000, max: 5000 }),
+      listingPrice: faker.random.number({ min: 500000, max: 600000 }),
+      listingPricePerSqft: faker.random.number({ min: 2000, max: 5000 }),
       lng: +faker.address.longitude(-77.224241, -77.243871),
       lock: faker.random.boolean(),
       loanNumber: 'test',
       lotSize: +faker.finance.amount(0, 1, 2),
       marketArea: 'Radian Interactive Value Default - 1 mile',
+      mlsName: faker.company.companyName(),
+      mlsComments: faker.lorem.paragraph(10),
       order: i,
       pool: faker.random.arrayElement(['Community', 'None']),
       poolName: 'DEFAULT',
@@ -807,7 +825,9 @@ const generateProperties = (num = 15): PropertyInterface[] => {
       rivDate: faker.date
         .between('2020-01-01', '2020-12-31')
         .toLocaleDateString(),
+      saleType: faker.random.arrayElement(['Retail', 'Commercial']),
       schoolDistrict: `${faker.address.county()} County Public Schools`,
+      showMls: faker.random.boolean(),
       soldPrice: faker.random.number({ min: 500000, max: 600000 }),
       source: faker.random.arrayElement([
         'User',
@@ -821,6 +841,12 @@ const generateProperties = (num = 15): PropertyInterface[] => {
       subdivision: `${faker.commerce.productMaterial()} ${faker.commerce.product()} Village`,
       summaryComments: faker.lorem.paragraph(5),
       state: faker.address.stateAbbr(),
+      status: faker.random.arrayElement([
+        'Sold',
+        'Under Contract',
+        'Price Change',
+        'Listed'
+      ]),
       targetDistance: +faker.finance.amount(0.4, 0.9, 2),
       totalSqft: faker.random.number({ min: 2000, max: 5000 }),
       totDom: faker.random.number({ min: 5, max: 300 }),
@@ -835,17 +861,17 @@ const generateProperties = (num = 15): PropertyInterface[] => {
 }
 
 export const getSoldProperties = async (
-  propertyInfoId: string
+  propertyId: string
 ): Promise<PropertyInterface[]> => {
   return generateProperties()
 }
 export const getListedProperties = async (
-  propertyInfoId: string
+  propertyId: string
 ): Promise<PropertyInterface[]> => {
   return generateProperties()
 }
 export const getContractProperties = async (
-  propertyInfoId: string
+  propertyId: string
 ): Promise<PropertyInterface[]> => {
   return generateProperties()
 }
@@ -872,7 +898,7 @@ export interface FlipAnalysisInterface {
 }
 
 export const getFlipAnalysis = async (
-  propertyInfoId: string
+  propertyId: string
 ): Promise<FlipAnalysisInterface> => {
   const flipSoldAnalysis = [
     'Number of Sold Flips',
@@ -944,6 +970,11 @@ export const exportPdf = async (
   return 'Request Submitted!'
 }
 
+export const getListingHistory = async (
+  propertyId: string
+): Promise<PropertyInterface[]> => {
+  return generateProperties(10)
+}
 export const getPropertyTypeOptions = async (): Promise<Option[]> => {
   const options = [
     {

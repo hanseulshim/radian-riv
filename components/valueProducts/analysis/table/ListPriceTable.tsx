@@ -3,7 +3,7 @@ import Table from 'components/common/Table'
 import { formatPercent } from 'utils'
 
 interface Props {
-  listPrice: {
+  listingPrice: {
     '0-90': number
     '91-180': number
     '180-270': number
@@ -12,12 +12,12 @@ interface Props {
   type: string
 }
 
-export default function ListPriceTable({ type, listPrice }: Props) {
+export default function ListPriceTable({ type, listingPrice }: Props) {
   const [data, setData] = useState([])
   const [columns, setColumns] = useState([])
 
   const fetchData = useCallback(async () => {
-    const tableData = [{ ...listPrice }]
+    const tableData = [{ ...listingPrice }]
     setColumns([
       {
         Header: `MEDIAN SOLD PRICE AS % OF ${type} LIST PRICE`,
@@ -49,7 +49,7 @@ export default function ListPriceTable({ type, listPrice }: Props) {
       }
     ])
     setData(tableData)
-  }, [listPrice])
+  }, [listingPrice])
 
   return (
     <div style={{ marginRight: type === 'FINAL' ? '1em' : 0 }}>

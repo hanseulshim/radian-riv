@@ -53,8 +53,8 @@ export default function CompPhotosModal({
             />
           ))}
         </div>
+        <button className="btn btn-small">Submit</button>
       </div>
-      <button className="btn btn-small">Submit</button>
     </Modal>
   )
 }

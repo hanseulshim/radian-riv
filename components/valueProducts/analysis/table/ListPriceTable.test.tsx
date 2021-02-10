@@ -8,7 +8,7 @@ describe('ListPriceTable', () => {
   let component
   beforeAll(() => {
     const props = {
-      listPrice: {
+      listingPrice: {
         '0-90': 1,
         '91-180': 1,
         '180-270': 1,

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ValueProductLayout from 'components/layouts/ValueProductLayout'
-import SoldProperties from 'components/valueProducts/listings/SoldProperties'
+import PropertiesTable from 'components/valueProducts/listings/PropertiesTable'
 import ListedProperties from 'components/valueProducts/listings/ListedProperties'
 import ContractProperties from 'components/valueProducts/listings/ContractProperties'
 import CompPhotosModal from 'components/valueProducts/listings/CompPhotosModal'
@@ -135,7 +135,7 @@ export default function PropertyInfoPage() {
           ))}
         </ul>
         {currentView === 'Sold' ? (
-          <SoldProperties properties={soldProperties} />
+          <PropertiesTable tableData={soldProperties} type="Sold" />
         ) : currentView === 'Listed' ? (
           <ListedProperties properties={listedProperties} />
         ) : (

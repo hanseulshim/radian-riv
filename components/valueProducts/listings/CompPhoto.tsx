@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { PropertyInterface } from 'api'
 import { formatNullString, formatPrice } from 'utils'
 import Checkbox from 'components/common/Checkbox'
-import GalleryModal from 'components/valueProducts/listings/GalleryModal'
+import PhotoPlay from './PhotoPlay'
 
 interface Props {
   property: PropertyInterface
@@ -17,12 +17,8 @@ export default function CompPhoto({
   checkedProperties,
   setCheckedProperties
 }: Props) {
-  const [photoIndex, setPhotoIndex] = useState(0)
-  const [playMode, setPlayMode] = useState(false)
   const [listingChecked, setListingChecked] = useState(false)
   const [showDetails, toggleShowDetails] = useState(true)
-  const [galleryModal, setGalleryModal] = useState(false)
-  const photoLength = property.photos.length
   const getImagePath = (): string => {
     let icon = ''
     icon =
@@ -32,37 +28,6 @@ export default function CompPhoto({
         ? 'sold'
         : 'listed'
     return property.distressed ? `distressed-${icon}` : icon
-  }
-  useEffect(() => {
-    if (playMode) {
-      setTimeout(() => {
-        if (photoIndex + 1 === photoLength) {
-          setPhotoIndex(0)
-        } else {
-          setPhotoIndex(photoIndex + 1)
-        }
-      }, 2000)
-    }
-  }, [playMode, photoIndex])
-  const prevImage = () => {
-    if (playMode) return
-    if (photoIndex - 1 < 0) {
-      setPhotoIndex(photoLength - 1)
-    } else {
-      setPhotoIndex(photoIndex - 1)
-    }
-  }
-  const nextImage = () => {
-    if (playMode) return
-    if (photoIndex + 1 === photoLength) {
-      setPhotoIndex(0)
-    } else {
-      setPhotoIndex(photoIndex + 1)
-    }
-  }
-
-  const toggleGalleryModal = () => {
-    setGalleryModal(!galleryModal)
   }
 
   const checked = checkedProperties.includes(property.listingNumber)
@@ -84,7 +49,7 @@ export default function CompPhoto({
               ? view
               : `${view} for ${formatNullString(
                   formatPrice(
-                    view === 'Sold' ? property.soldPrice : property.listPrice
+                    view === 'Sold' ? property.soldPrice : property.listingPrice
                   )
                 )}`}
           </span>
@@ -113,50 +78,7 @@ export default function CompPhoto({
           />
         </div>
       </div>
-      <div className="photo-container">
-        <div className="photo-wrapper">
-          <img
-            className="photo"
-            src={property.photos[photoIndex]}
-            alt="property"
-          />
-        </div>
-        <div className="info-row">
-          <span style={{ width: 70 }}>
-            {photoIndex + 1} of {property.photos.length}
-          </span>
-          <div className="info-row">
-            <img
-              className="icon"
-              src={`${process.env.baseUrl}/images/left.svg`}
-              alt="left button"
-              onClick={prevImage}
-            />
-            <img
-              className="icon"
-              src={`${process.env.baseUrl}/images/${
-                playMode ? 'pause' : 'play'
-              }.svg`}
-              alt="play/pause"
-              onClick={() => setPlayMode(!playMode)}
-            />
-            <img
-              className="icon"
-              src={`${process.env.baseUrl}/images/right.svg`}
-              alt="right button"
-              onClick={nextImage}
-            />
-          </div>
-          <span className="icon-row" onClick={toggleGalleryModal}>
-            <img
-              className="icon"
-              src={`${process.env.baseUrl}/images/external.svg`}
-              alt="external link"
-            />
-            <span>All Photos</span>
-          </span>
-        </div>
-      </div>
+      <PhotoPlay photos={property.photos} />
       <div className="detail-container">
         <div className="address">{formatNullString(property.address)}</div>
         <div className="label-row">
@@ -238,7 +160,7 @@ export default function CompPhoto({
               </div>
               <div className="label-row">
                 <div className="label">List Date</div>
-                <span>{formatNullString(property.listDate)}</span>
+                <span>{formatNullString(property.listingDate)}</span>
               </div>
               <div className="label-row">
                 <div className="label">ACT DOM</div>
@@ -250,7 +172,9 @@ export default function CompPhoto({
               </div>
               <div className="label-row">
                 <div className="label">List Price</div>
-                <span>{formatNullString(formatPrice(property.listPrice))}</span>
+                <span>
+                  {formatNullString(formatPrice(property.listingPrice))}
+                </span>
               </div>
               <div className="label-row">
                 <div className="label">Listing #</div>
@@ -274,12 +198,6 @@ export default function CompPhoto({
           />
         </div>
       </div>
-      {galleryModal && (
-        <GalleryModal
-          closeModal={toggleGalleryModal}
-          photos={property.photos}
-        />
-      )}
     </div>
   )
 }
