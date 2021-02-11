@@ -1,5 +1,6 @@
 import { Option } from 'api'
 import faker from 'faker'
+import { formatDate } from './utility'
 
 export interface PropertyInterface {
   actDom: number
@@ -762,24 +763,16 @@ export const generateProperties = (num = 15): PropertyInterface[] => {
       agSqft: faker.random.number({ min: 2000, max: 5000 }),
       area: 'Default',
       areaParameter: null,
-      asOfDate: faker.date
-        .between('2020-01-01', '2020-12-31')
-        .toLocaleDateString(),
+      asOfDate: formatDate(faker.date.between('2020-01-01', '2020-12-31')),
       basement: faker.random.arrayElement(['Yes', 'Full', 'No']),
       bath: faker.random.number({ min: 2, max: 3 }),
       bed: faker.random.number({ min: 4, max: 5 }),
       calculatedPrice: faker.random.number({ min: 500000, max: 700000 }),
       city: faker.address.city(),
-      changeDate: faker.date
-        .between('2020-01-01', '2020-12-31')
-        .toLocaleDateString(),
-      coeDate: faker.date
-        .between('2020-01-01', '2020-12-31')
-        .toLocaleDateString(),
+      changeDate: formatDate(faker.date.between('2020-01-01', '2020-12-31')),
+      coeDate: formatDate(faker.date.between('2020-01-01', '2020-12-31')),
       coePrice: faker.random.number({ min: 500000, max: 600000 }),
-      coe2Date: faker.date
-        .between('2020-01-01', '2020-12-31')
-        .toLocaleDateString(),
+      coe2Date: formatDate(faker.date.between('2020-01-01', '2020-12-31')),
       coe2Price: faker.random.number({ min: 500000, max: 600000 }),
       compsGoingBack: '3 months',
       concessions: faker.random.number({ min: 10000, max: 20000 }),
@@ -797,9 +790,7 @@ export const generateProperties = (num = 15): PropertyInterface[] => {
         max: 50000000
       })}-${faker.random.number({ min: 1, max: 9 })}`,
       lat: +faker.address.latitude(39.050498, 39.057319),
-      listingDate: faker.date
-        .between('2020-01-01', '2020-12-31')
-        .toLocaleDateString(),
+      listingDate: formatDate(faker.date.between('2020-01-01', '2020-12-31')),
       listingNumber: `MDMC${faker.random.number({ min: 645679, max: 698371 })}`,
       listingSheetSelected: false,
       listingPrice: faker.random.number({ min: 500000, max: 600000 }),
@@ -822,9 +813,7 @@ export const generateProperties = (num = 15): PropertyInterface[] => {
       ]),
       reo: faker.random.boolean(),
       retailMarket: +faker.finance.amount(0.4, 0.9, 4),
-      rivDate: faker.date
-        .between('2020-01-01', '2020-12-31')
-        .toLocaleDateString(),
+      rivDate: formatDate(faker.date.between('2020-01-01', '2020-12-31')),
       saleType: faker.random.arrayElement(['Retail', 'Commercial']),
       schoolDistrict: `${faker.address.county()} County Public Schools`,
       showMls: faker.random.boolean(),

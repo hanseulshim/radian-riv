@@ -47,3 +47,11 @@ export const getAboutUs = async (): Promise<any[]> => {
   }
   return data
 }
+
+export const formatDate = dateString => {
+  return dateString.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  })
+}
