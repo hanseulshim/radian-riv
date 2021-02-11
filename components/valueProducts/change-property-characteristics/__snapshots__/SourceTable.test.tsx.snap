@@ -5,6 +5,6 @@ exports[`SourceTable should match snapshot 1`] = `
   columns={Array []}
   data={Array []}
   fetchData={[Function]}
-  width={1000}
+  width={1100}
 />
 `;

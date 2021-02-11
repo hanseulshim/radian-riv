@@ -94,7 +94,7 @@ export default function SourceTable({
         }
       })}
       fetchData={fetchData}
-      width={1000}
+      width={1100}
     />
   )
 }

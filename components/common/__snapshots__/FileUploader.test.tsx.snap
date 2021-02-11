@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileUploader should match snapshot 1`] = `
+<div
+  className="custom-file-uploader"
+>
+  <button
+    className="btn btn-small"
+    onClick={[Function]}
+  >
+    Choose File...
+  </button>
+  <input
+    onChange={[Function]}
+    style={
+      Object {
+        "display": "none",
+      }
+    }
+    type="file"
+  />
+</div>
+`;

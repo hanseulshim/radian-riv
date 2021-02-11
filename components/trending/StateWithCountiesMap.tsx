@@ -4,6 +4,7 @@ import Alert from 'components/common/Alert'
 import * as d3 from 'd3'
 import { getStateGeoJson, getCountiesGeoJson } from 'api'
 import MapLegend from './MapLegend'
+import { formatPercent } from 'utils'
 
 const width = 1100
 const height = 850
@@ -15,6 +16,7 @@ export default function StateWithCountiesMap() {
   const [stateGeo, setStateGeo] = useState(null)
   const [countyGeo, setCountyGeo] = useState(null)
   const [zoomLevel, setZoomLevel] = useState(null)
+  const [tooltip, setTooltip] = useState(null)
   const [error, setError] = useState(null)
   const router = useRouter()
   const { state: routerState } = router.query
@@ -98,47 +100,39 @@ export default function StateWithCountiesMap() {
                       county.properties.STATE_CODE + county.properties.GEO_ID
                     }`}
                     onClick={() => handleClick(county)}
-                  />
-                </React.Fragment>
-              )
-            })}
-
-          {countyGeo &&
-            countyGeo.map((county, i) => {
-              return (
-                <React.Fragment key={'countyLabel' + i}>
-                  <text
-                    x={path.centroid(county)[0]}
-                    y={path.centroid(county)[1]}
-                    fontSize={`${12 / zoomLevel}px`}
-                    textAnchor="middle"
-                    fill={'black'}
-                    fontWeight="800"
                     onMouseOver={e => {
-                      d3.select(
-                        `#${
-                          county.properties.STATE_CODE +
-                          county.properties.GEO_ID
-                        }`
-                      ).classed('active', true)
+                      setTooltip({
+                        left: `${e.pageX + 20}px`,
+                        top: `${e.pageY - 20}px`,
+                        county: `${county.properties.NAME}`,
+                        change: `${county.properties.MEDIAN_PERCENT_CHANGE}`
+                      })
                     }}
                     onMouseOut={e => {
-                      d3.select(
-                        `#${
-                          county.properties.STATE_CODE +
-                          county.properties.GEO_ID
-                        }`
-                      ).classed('active', false)
+                      setTooltip(null)
                     }}
-                    onClick={() => handleClick(county)}
-                  >
-                    {county.properties.NAME}
-                  </text>
+                  />
                 </React.Fragment>
               )
             })}
         </g>
       </svg>
+      <Tooltip tooltip={tooltip} />
+    </div>
+  )
+}
+
+const Tooltip = ({ tooltip }) => {
+  if (!tooltip) {
+    return null
+  }
+  return (
+    <div
+      className="tooltip"
+      style={{ left: `${tooltip.left}`, top: `${tooltip.top}` }}
+    >
+      <span>{tooltip.county}</span>
+      <span>{formatPercent(tooltip.change)}</span>
     </div>
   )
 }

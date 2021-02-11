@@ -1066,3 +1066,14 @@ export const changePropertyCharacteristics = async (
 ): Promise<PropertyInterface> => {
   return propertyInfo
 }
+
+interface UploadFileInterface {
+  filename: string
+  file: File
+}
+
+export const uploadAdditionalDocuments = async (
+  uploadForm: UploadFileInterface
+): Promise<string> => {
+  return 'File succesfully uploaded.'
+}

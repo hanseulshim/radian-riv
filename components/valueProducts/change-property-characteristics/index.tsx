@@ -65,6 +65,7 @@ export default function ChangePropertyCharacteristics({ closeModal }: Props) {
       setError(errorObj)
     } else {
       try {
+        setAlert(null)
         const isUserOrAppraisal =
           selectedSource === 'User' || selectedSource === 'Appraisal'
         const propertiesToPass = {}
@@ -129,7 +130,7 @@ export default function ChangePropertyCharacteristics({ closeModal }: Props) {
   return (
     <Modal
       title="Change Property Characteristics"
-      width={1100}
+      width={1200}
       closeModal={closeModal}
     >
       <Form id="change-prop-characteristics" onSubmit={onSubmit} alert={alert}>

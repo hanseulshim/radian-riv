@@ -113,13 +113,15 @@
       display: flex;
       align-items: center;
       flex-wrap: wrap;
+      margin-left: 25px;
       .custom-select-container {
         width: 300px;
-        margin-right: 10px;
+        margin-right: 40px;
       }
       .input-group {
-        width: 100px;
-        margin-right: 10px;
+        width: 75px;
+        margin-right: 25px;
+        font-size: 0.8em;
       }
     }
   }
@@ -526,5 +528,35 @@
         margin-right: 5px;
       }
     }
+  }
+}
+
+.additional-documents {
+  width: 100%;
+  margin-top: 2em;
+  h2 {
+    margin-bottom: 1em;
+  }
+  .custom-file-uploader {
+    margin-top: 1em;
+    button {
+      margin-bottom: 1em;
+      margin-top: 0;
+    }
+  }
+  .attachment-requirements {
+    background-color: var(--light-gray);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    p {
+      margin-bottom: 0;
+    }
+  }
+  button[type='submit'] {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

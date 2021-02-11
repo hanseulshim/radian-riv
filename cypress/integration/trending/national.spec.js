@@ -35,7 +35,7 @@ describe('National Level', () => {
   })
 
   it('Should route to a county on click', () => {
-    cy.get('text').contains('Travis').click()
+    cy.get('path[id="TX0500000US48453"]').click()
     cy.url().should('includes', '48453')
   })
   after(() => {

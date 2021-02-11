@@ -64,6 +64,19 @@
     }
   }
 
+  .tooltip {
+    position: absolute;
+    z-index: 5;
+    background-color: var(--white);
+    box-shadow: var(--box-shadow);
+    border-radius: 3px;
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   .home-price-form-container {
     display: flex;
     border-bottom: 1px solid var(--light-gray);

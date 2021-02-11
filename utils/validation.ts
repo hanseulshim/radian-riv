@@ -81,6 +81,10 @@ export const validateForm = (form: any, reqFields: any = {}): any => {
       if (form[key].length && !form[key].match(yearValidation)) {
         errorObj[key] = `Date must be valid (YYYY)`
       }
+    } else if (key === 'filename') {
+      if (form[key].length === 0) {
+        errorObj[key] = `Filename can't be empty`
+      }
     }
   })
   return errorObj
