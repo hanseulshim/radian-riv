@@ -347,7 +347,7 @@
             align-items: center;
             justify-content: center;
             &:hover {
-              opacity: 1;
+              opacity: 0.75;
             }
           }
         }
@@ -417,7 +417,7 @@
   }
   #zoom-photo {
     .form {
-      padding: 140px 70px;
+      padding: 3em;
       max-width: 1580px;
 
       .photo {
