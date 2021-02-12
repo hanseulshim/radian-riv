@@ -72,11 +72,11 @@ export default function AdditionalDocuments({ closeModal }: Props) {
           <FileUploader
             handleFile={e => handleInput(e, 'file')}
             selectedFile={form.file}
-            accept={'.xls, .xslx, .pdf'}
+            accept={'.xls, .xlsx, .pdf, .jpeg, .png, .gif'}
           />
           <div className="attachment-requirements">
             <h4>Attachment Requirements:</h4>
-            <p>*Must be PDF, XLS, or XLSX</p>
+            <p>*Must be PDF, XLS, XLSX, JPEG, PNG, or GIF</p>
           </div>
           <button className="btn" disabled={!form.file} type="submit">
             Upload
