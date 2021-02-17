@@ -13,6 +13,7 @@ import {
   PropertyInterface
 } from 'api'
 import ChangePropertyCharacteristics from 'components/valueProducts/change-property-characteristics'
+import { buildPropertyInfoWorkbook } from 'utils'
 
 export default function PropertyInfoPage() {
   const { propertyInfo } = useValueProduct()
@@ -100,6 +101,13 @@ export default function PropertyInfoPage() {
             className="icon"
             src={`${process.env.baseUrl}/images/download-excel.svg`}
             alt="download-excel"
+            onClick={() =>
+              buildPropertyInfoWorkbook(
+                [soldProperties, listedProperties, contractProperties],
+                propertyInfo,
+                'AVE_Comparables'
+              )
+            }
           />
           <img
             className="icon"
