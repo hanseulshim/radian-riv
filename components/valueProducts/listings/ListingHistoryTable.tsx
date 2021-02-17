@@ -4,6 +4,7 @@ import { formatPrice } from 'utils'
 import Checkbox from 'components/common/Checkbox'
 import Table from 'components/common/Table'
 import PhotoPlay from './PhotoPlay'
+import MlsSheetModal from './MlsSheetModal'
 
 interface Props {
   tableData: PropertyInterface[]
@@ -19,6 +20,7 @@ export default function ListingHistoryTable({
   const [selectedProperties, setSelectedProperties] = useState<
     PropertyInterface[]
   >([])
+  const [mlsNumber, setMlsNumber] = useState<string>(null)
 
   const showMlsProperties = tableData.filter(property => property.showMls)
     .length
@@ -98,6 +100,7 @@ export default function ListingHistoryTable({
             <button
               style={{ width: 80, minWidth: 80 }}
               className="btn btn-small"
+              onClick={() => setMlsNumber(row.listingNumber)}
             >
               View
             </button>
@@ -213,6 +216,12 @@ export default function ListingHistoryTable({
           </div>
         ))}
       </div>
+      {mlsNumber && (
+        <MlsSheetModal
+          closeModal={() => setMlsNumber(null)}
+          mlsNumber={mlsNumber}
+        />
+      )}
     </div>
   )
 }

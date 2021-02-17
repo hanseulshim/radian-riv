@@ -83,6 +83,31 @@ describe('RIV Property Info > Historical Listing', () => {
     cy.get('.th').contains('Cumulative List Days')
   })
 
+  describe('MLS Sheet', () => {
+    it('should open MLS Sheet Modal', () => {
+      cy.get('button').last().contains('View').click()
+      cy.get('#mls-sheet').should('exist')
+    })
+    it('should have export pdf buttons', () => {
+      cy.get('button > span').contains('Export PDF')
+    })
+    it('should have section headings', () => {
+      cy.get('h2').contains('MLS Sheet')
+      cy.get('h6').contains('Listing Detail')
+      cy.get('h6').contains('Address')
+      cy.get('h6').contains('MLS Comments')
+      cy.get('h6').contains('Interior Features')
+      cy.get('h6').contains('Additional Features')
+      cy.get('h6').contains('Property Information')
+      cy.get('h6').contains('Other')
+      cy.get('h6').contains('Schools')
+      cy.get('h6').contains('Exterior')
+      cy.get('h6').contains('Taxes')
+      cy.get('h6').contains('HOA')
+      cy.get('h6').contains('Contact Information')
+    })
+  })
+
   after(() => {
     cy.clearCookies()
   })

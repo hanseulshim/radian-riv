@@ -1,0 +1,2257 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MlsSheetModal should match snapshot 1`] = `
+<Modal
+  closeModal={[Function]}
+  id="mls-sheet"
+  percent={95}
+  title=""
+>
+  <div
+    className="mls-container"
+  >
+    <div
+      className="top-row"
+    >
+      <h2>
+        MLS Sheet
+      </h2>
+      <button
+        className="btn btn-icon dark"
+      >
+        <span>
+          Export PDF
+        </span>
+        <span
+          className="icon-container"
+        >
+          <img
+            alt="pdf"
+            src="undefined/images/export-pdf.svg"
+          />
+        </span>
+      </button>
+    </div>
+    <h6>
+      Listing Detail
+    </h6>
+    <div
+      className="row spacer"
+    >
+      <div
+        className="column"
+        key="0"
+      >
+        <div
+          className="label-row"
+          key="Status"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 110,
+              }
+            }
+          >
+            Status
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+        <div
+          className="label-row"
+          key="List Date"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 110,
+              }
+            }
+          >
+            List Date
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+        <div
+          className="label-row"
+          key="Sold Date"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 110,
+              }
+            }
+          >
+            Sold Date
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+        <div
+          className="label-row"
+          key="DOM"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 110,
+              }
+            }
+          >
+            DOM
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+      </div>
+      <div
+        className="column"
+        key="1"
+      >
+        <div
+          className="label-row"
+          key="Original List Price"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 190,
+              }
+            }
+          >
+            Original List Price
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+        <div
+          className="label-row"
+          key="Final List Price"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 190,
+              }
+            }
+          >
+            Final List Price
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+        <div
+          className="label-row"
+          key="Sold Price"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 190,
+              }
+            }
+          >
+            Sold Price
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+      </div>
+      <div
+        className="column"
+        key="2"
+      >
+        <div
+          className="label-row"
+          key="Short Sale"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 180,
+              }
+            }
+          >
+            Short Sale
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+        <div
+          className="label-row"
+          key="Financing/Terms"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 180,
+              }
+            }
+          >
+            Financing/Terms
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+        <div
+          className="label-row"
+          key="Financing Type"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 180,
+              }
+            }
+          >
+            Financing Type
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+      </div>
+      <div
+        className="column"
+        key="3"
+      >
+        <div
+          className="label-row"
+          key="MLS #"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 150,
+              }
+            }
+          >
+            MLS #
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+        <div
+          className="label-row"
+          key="REO"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 150,
+              }
+            }
+          >
+            REO
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+        <div
+          className="label-row"
+          key="Concessions"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 150,
+              }
+            }
+          >
+            Concessions
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="column"
+      >
+        <h6>
+          Address
+        </h6>
+        <div
+          className="row spacer"
+        >
+          <div
+            className="column"
+            key="0"
+          >
+            <div
+              className="label-row"
+              key="Address"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 110,
+                  }
+                }
+              >
+                Address
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="City"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 110,
+                  }
+                }
+              >
+                City
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="County"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 110,
+                  }
+                }
+              >
+                County
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+          </div>
+          <div
+            className="column"
+            key="1"
+          >
+            <div
+              className="label-row"
+              key="Unit #"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 75,
+                  }
+                }
+              >
+                Unit #
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="State"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 75,
+                  }
+                }
+              >
+                State
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Zip"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 75,
+                  }
+                }
+              >
+                Zip
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          className="row"
+        >
+          <PhotoPlay
+            photos={Array []}
+          />
+        </div>
+      </div>
+      <div
+        className="column"
+      >
+        <h6>
+          MLS Comments
+        </h6>
+        <div
+          className="row spacer"
+        />
+        <h6>
+          Interior Features
+        </h6>
+        <div
+          className="row spacer"
+        />
+        <h6>
+          Additional Features
+        </h6>
+        <div
+          className="row spacer"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="property-info"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="column"
+      >
+        <h6>
+          Property Information
+        </h6>
+        <div
+          className="row spacer"
+        >
+          <div
+            className="column"
+            key="0"
+          >
+            <div
+              className="label-row"
+              key="Property Type"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 185,
+                  }
+                }
+              >
+                Property Type
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Yr Built"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 185,
+                  }
+                }
+              >
+                Yr Built
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Bed"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 185,
+                  }
+                }
+              >
+                Bed
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Bath"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 185,
+                  }
+                }
+              >
+                Bath
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Total Sqft"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 185,
+                  }
+                }
+              >
+                Total Sqft
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Above Grade Sqft"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 185,
+                  }
+                }
+              >
+                Above Grade Sqft
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Lot Size"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 185,
+                  }
+                }
+              >
+                Lot Size
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Lot Size (SF)"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 185,
+                  }
+                }
+              >
+                Lot Size (SF)
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Lot Size (Ac)"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 185,
+                  }
+                }
+              >
+                Lot Size (Ac)
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Garage Type"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 185,
+                  }
+                }
+              >
+                Garage Type
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+          </div>
+          <div
+            className="column"
+            key="1"
+          >
+            <div
+              className="label-row"
+              key="Sub Type"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 185,
+                  }
+                }
+              >
+                Sub Type
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="# of Units"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 185,
+                  }
+                }
+              >
+                # of Units
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Style"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 185,
+                  }
+                }
+              >
+                Style
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Fireplace"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 185,
+                  }
+                }
+              >
+                Fireplace
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="SqFt Source"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 185,
+                  }
+                }
+              >
+                SqFt Source
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Stories"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 185,
+                  }
+                }
+              >
+                Stories
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Garage/Carport"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 185,
+                  }
+                }
+              >
+                Garage/Carport
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Parking Spaces"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 185,
+                  }
+                }
+              >
+                Parking Spaces
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Garage SF"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 185,
+                  }
+                }
+              >
+                Garage SF
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Opener"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 185,
+                  }
+                }
+              >
+                Opener
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+          </div>
+        </div>
+        <h6>
+          Other
+        </h6>
+        <div
+          className="row spacer"
+        >
+          <div
+            className="column"
+            key="0"
+          >
+            <div
+              className="label-row"
+              key="Flooring"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 115,
+                  }
+                }
+              >
+                Flooring
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Roofing"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 115,
+                  }
+                }
+              >
+                Roofing
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Basement"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 115,
+                  }
+                }
+              >
+                Basement
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+          </div>
+          <div
+            className="column"
+            key="1"
+          >
+            <div
+              className="label-row"
+              key="Below Grade Sqft"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 270,
+                  }
+                }
+              >
+                Below Grade Sqft
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Below Grade Finished Sqft"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 270,
+                  }
+                }
+              >
+                Below Grade Finished Sqft
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Basement Finished"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 270,
+                  }
+                }
+              >
+                Basement Finished
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Basement Finished %"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 270,
+                  }
+                }
+              >
+                Basement Finished %
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+          </div>
+          <div
+            className="label-row"
+          >
+            <span
+              className="label"
+              style={
+                Object {
+                  "width": 165,
+                }
+              }
+            >
+              Basement Entry
+            </span>
+            <span
+              className="value"
+            >
+              --
+            </span>
+          </div>
+        </div>
+        <h6>
+          Schools
+        </h6>
+        <div
+          className="row spacer"
+        >
+          <div
+            className="column"
+            key="0"
+          >
+            <div
+              className="label-row"
+              key="District"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 90,
+                  }
+                }
+              >
+                District
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Other"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 90,
+                  }
+                }
+              >
+                Other
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+          </div>
+          <div
+            className="column"
+            key="1"
+          >
+            <div
+              className="label-row"
+              key="High School"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 135,
+                  }
+                }
+              >
+                High School
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Junior High"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 135,
+                  }
+                }
+              >
+                Junior High
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Elementary"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 135,
+                  }
+                }
+              >
+                Elementary
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Private"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 135,
+                  }
+                }
+              >
+                Private
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="column"
+      >
+        <h6>
+          Exterior
+        </h6>
+        <div
+          className="row spacer"
+        >
+          <div
+            className="column"
+            key="0"
+          >
+            <div
+              className="label-row"
+              key="Site"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 160,
+                  }
+                }
+              >
+                Site
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Exterior"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 160,
+                  }
+                }
+              >
+                Exterior
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Outbuilding"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 160,
+                  }
+                }
+              >
+                Outbuilding
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="View"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 160,
+                  }
+                }
+              >
+                View
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Pool"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 160,
+                  }
+                }
+              >
+                Pool
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Details"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 160,
+                  }
+                }
+              >
+                Details
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Water Frontage"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 160,
+                  }
+                }
+              >
+                Water Frontage
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Water Footage"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 160,
+                  }
+                }
+              >
+                Water Footage
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+          </div>
+          <div
+            className="column"
+            key="1"
+          >
+            <div
+              className="label-row"
+              key="Lot Description"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 160,
+                  }
+                }
+              >
+                Lot Description
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Patio/Deck"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 160,
+                  }
+                }
+              >
+                Patio/Deck
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Barn/Stable"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 160,
+                  }
+                }
+              >
+                Barn/Stable
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Spa/Hot Tub"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 160,
+                  }
+                }
+              >
+                Spa/Hot Tub
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Details"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 160,
+                  }
+                }
+              >
+                Details
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Dock"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 160,
+                  }
+                }
+              >
+                Dock
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Water Access"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 160,
+                  }
+                }
+              >
+                Water Access
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Guest SF"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 160,
+                  }
+                }
+              >
+                Guest SF
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Guest House"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 160,
+                  }
+                }
+              >
+                Guest House
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+          </div>
+        </div>
+        <h6>
+          Taxes
+        </h6>
+        <div
+          className="row spacer"
+        >
+          <div
+            className="column"
+            key="0"
+          >
+            <div
+              className="label-row"
+              key="Project/Subdivision"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 205,
+                  }
+                }
+              >
+                Project/Subdivision
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Taxes"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 205,
+                  }
+                }
+              >
+                Taxes
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Tax ID (Parcel ID"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 205,
+                  }
+                }
+              >
+                Tax ID (Parcel ID
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Legal Description"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 205,
+                  }
+                }
+              >
+                Legal Description
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+          </div>
+          <div
+            className="column"
+            key="1"
+          >
+            <div
+              className="label-row"
+              key="Tax Year"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 110,
+                  }
+                }
+              >
+                Tax Year
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Zoning"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 110,
+                  }
+                }
+              >
+                Zoning
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Township"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 110,
+                  }
+                }
+              >
+                Township
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Section"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 110,
+                  }
+                }
+              >
+                Section
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+          </div>
+        </div>
+        <h6>
+          HOA
+        </h6>
+        <div
+          className="row spacer"
+        >
+          <div
+            className="column"
+            key="0"
+          >
+            <div
+              className="label-row"
+              key="HOA Name"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 150,
+                  }
+                }
+              >
+                HOA Name
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="HOA Fee"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 150,
+                  }
+                }
+              >
+                HOA Fee
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="HOA Contact"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 150,
+                  }
+                }
+              >
+                HOA Contact
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+          </div>
+          <div
+            className="column"
+            key="1"
+          >
+            <div
+              className="label-row"
+              key="HOA"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 170,
+                  }
+                }
+              >
+                HOA
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="Dues Frequency"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 170,
+                  }
+                }
+              >
+                Dues Frequency
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+            <div
+              className="label-row"
+              key="HOA Phone"
+            >
+              <span
+                className="label"
+                style={
+                  Object {
+                    "width": 170,
+                  }
+                }
+              >
+                HOA Phone
+              </span>
+              <span
+                className="value"
+              >
+                --
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h6>
+      Contact Information
+    </h6>
+    <div
+      className="row spacer"
+    >
+      <div
+        className="column"
+        key="0"
+      >
+        <div
+          className="label-row"
+          key="LA"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 150,
+              }
+            }
+          >
+            LA
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+        <div
+          className="label-row"
+          key="BKR"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 150,
+              }
+            }
+          >
+            BKR
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+        <div
+          className="label-row"
+          key="LA Email"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 150,
+              }
+            }
+          >
+            LA Email
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+        <div
+          className="label-row"
+          key="LA Tel"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 150,
+              }
+            }
+          >
+            LA Tel
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+        <div
+          className="label-row"
+          key="BKR Tel"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 150,
+              }
+            }
+          >
+            BKR Tel
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+      </div>
+      <div
+        className="column"
+        key="1"
+      >
+        <div
+          className="label-row"
+          key="SA"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 150,
+              }
+            }
+          >
+            SA
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+        <div
+          className="label-row"
+          key="S BKR"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 150,
+              }
+            }
+          >
+            S BKR
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+        <div
+          className="label-row"
+          key="SA Email"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 150,
+              }
+            }
+          >
+            SA Email
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+        <div
+          className="label-row"
+          key="SA Tel"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 150,
+              }
+            }
+          >
+            SA Tel
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+        <div
+          className="label-row"
+          key="CO LA"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 150,
+              }
+            }
+          >
+            CO LA
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+      </div>
+      <div
+        className="column"
+        key="2"
+      >
+        <div
+          className="label-row"
+          key="CO LA Tel"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 150,
+              }
+            }
+          >
+            CO LA Tel
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+        <div
+          className="label-row"
+          key="CO BKR"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 150,
+              }
+            }
+          >
+            CO BKR
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+        <div
+          className="label-row"
+          key="CO BKR Tel"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 150,
+              }
+            }
+          >
+            CO BKR Tel
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+        <div
+          className="label-row"
+          key="MGMT"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 150,
+              }
+            }
+          >
+            MGMT
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+        <div
+          className="label-row"
+          key="MGMT Tel"
+        >
+          <span
+            className="label"
+            style={
+              Object {
+                "width": 150,
+              }
+            }
+          >
+            MGMT Tel
+          </span>
+          <span
+            className="value"
+          >
+            --
+          </span>
+        </div>
+      </div>
+    </div>
+    <button
+      className="btn btn-icon dark"
+      style={
+        Object {
+          "margin": "auto",
+        }
+      }
+    >
+      <span>
+        Export PDF
+      </span>
+      <span
+        className="icon-container"
+      >
+        <img
+          alt="pdf"
+          src="undefined/images/export-pdf.svg"
+        />
+      </span>
+    </button>
+  </div>
+</Modal>
+`;
