@@ -1,4 +1,4 @@
-import ValueProductLayout from 'components/layouts/ValueProductLayout'
+import ValueProductPropertyLayout from 'components/layouts/ValueProductLayout'
 import AdditionalDocuments from 'components/valueProducts/AdditionalDocuments'
 import React, { useState } from 'react'
 
@@ -12,11 +12,11 @@ export default function Documents({}: Props) {
   }
 
   return (
-    <ValueProductLayout>
+    <ValueProductPropertyLayout>
       <button className="btn" onClick={toggleUploadModal}>
         Upload Documents
       </button>
       {uploadModal && <AdditionalDocuments closeModal={toggleUploadModal} />}
-    </ValueProductLayout>
+    </ValueProductPropertyLayout>
   )
 }

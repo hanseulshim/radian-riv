@@ -47,6 +47,7 @@ export default function EditPropertyCharacteristics({
         value={sourceOptions.find(opt => opt.value === selectedSource) || null}
         onChange={opt => setSelectedSource(opt.value)}
         label={'Select Source'}
+        classNamePrefix={'select-source'}
       />
       {Object.keys(characteristics).map(char => {
         return (

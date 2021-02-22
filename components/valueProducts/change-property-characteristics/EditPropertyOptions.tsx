@@ -92,6 +92,7 @@ export default function EditPropertyOptions({
         )}
         onChange={opt => handleSelect(opt, 'propertyType')}
         placeholder={'Select Property Type...'}
+        classNamePrefix={'property-type'}
       />
       <CustomSelect
         label="Months Back"
@@ -99,6 +100,7 @@ export default function EditPropertyOptions({
         value={monthsBackOptions.find(opt => opt.value === inputs.monthsBack)}
         onChange={opt => handleSelect(opt, 'monthsBack')}
         placeholder={'Select months back'}
+        classNamePrefix={'months-back'}
       />
       <Input
         value={inputs.asOfDate}

@@ -13,6 +13,7 @@ interface Props {
   label?: string
   placeholder?: string
   className?: string
+  classNamePrefix?: string
   disabled?: boolean
   isSearchable?: boolean
 }
@@ -52,6 +53,7 @@ export default function CustomSelect({
   label,
   placeholder,
   className,
+  classNamePrefix,
   disabled,
   isSearchable
 }: Props) {
@@ -67,6 +69,7 @@ export default function CustomSelect({
         isDisabled={disabled}
         styles={customStyles}
         isSearchable={isSearchable}
+        classNamePrefix={classNamePrefix}
       />
     </div>
   )

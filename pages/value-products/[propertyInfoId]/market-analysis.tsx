@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import ValueProductLayout from 'components/layouts/ValueProductLayout'
+import ValueProductPropertyLayout from 'components/layouts/ValueProductLayout'
 import MarketAnalysis from 'components/valueProducts/analysis/MarketAnalysis'
 import FilteredMarketAnalysis from 'components/valueProducts/analysis/FilteredMarketAnalysis'
 import PropertyTabs from 'components/valueProducts/analysis/table/PropertyInfoTable'
@@ -15,7 +15,7 @@ export default function MarketAnalysisPage() {
     'Flip Analysis'
   ]
   return (
-    <ValueProductLayout>
+    <ValueProductPropertyLayout>
       <div className="market-analysis">
         <h1>Market Analysis</h1>
         <PropertyTabs
@@ -33,6 +33,6 @@ export default function MarketAnalysisPage() {
           <FlipAnalysis />
         )}
       </div>
-    </ValueProductLayout>
+    </ValueProductPropertyLayout>
   )
 }

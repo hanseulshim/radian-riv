@@ -82,9 +82,9 @@ describe('RIV Property Info', () => {
 
     it('Should allow you to select a new property type and months going back', () => {
       cy.get('.input-row-container > .custom-select-container').eq(0).click()
-      cy.get('#react-select-2-option-1').click()
+      cy.get('.property-type__option').eq(0).click()
       cy.get('.input-row-container > .custom-select-container').eq(1).click()
-      cy.get('#react-select-3-option-1').click()
+      cy.get('.months-back__option').eq(0).click()
     })
 
     it('Should validate the date inputs and display errors', () => {
@@ -102,7 +102,7 @@ describe('RIV Property Info', () => {
       cy.get('.edit-prop-chars-container > .custom-select-container')
         .eq(0)
         .click()
-      cy.get('#react-select-4-option-0').click()
+      cy.get('.select-source__option').eq(0).click()
       cy.get('input[name="yearBuilt"]').type('20')
       cy.get('#change-prop-characteristics > button').click()
       cy.get('input[name="yearBuilt"]')

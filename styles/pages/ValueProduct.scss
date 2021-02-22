@@ -1,4 +1,41 @@
-.value-product {
+.value-products {
+  position: relative;
+  .testing-extras {
+    button {
+      margin-left: 1em;
+    }
+  }
+  .new-order-container {
+    .product-pool-selection {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      background-color: var(--nebula);
+      position: absolute;
+      left: 0;
+      right: 0;
+      padding: 1em 2em;
+
+      .custom-select-container {
+        margin-right: 1em;
+        .transparent__control {
+          background-color: transparent;
+        }
+      }
+      .input-group {
+        input {
+          background-color: transparent;
+        }
+      }
+      .custom-select-container,
+      .input-group {
+        max-width: 350px;
+      }
+    }
+  }
+}
+
+.value-product-property {
   .property-info {
     .property-info-header {
       display: flex;

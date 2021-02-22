@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import ValueProductLayout from 'components/layouts/ValueProductLayout'
+import ValueProductPropertyLayout from 'components/layouts/ValueProductLayout'
 import PropertiesTable from 'components/valueProducts/listings/PropertiesTable'
 import ListedProperties from 'components/valueProducts/listings/ListedProperties'
 import ContractProperties from 'components/valueProducts/listings/ContractProperties'
@@ -66,7 +66,7 @@ export default function PropertyInfoPage() {
   }
 
   return (
-    <ValueProductLayout>
+    <ValueProductPropertyLayout>
       <div className="property-info">
         <div className="property-info-header">
           <h1>RIV Property Info</h1>
@@ -174,6 +174,6 @@ export default function PropertyInfoPage() {
           <ChangePropertyCharacteristics closeModal={togglePropCharModal} />
         )}
       </div>
-    </ValueProductLayout>
+    </ValueProductPropertyLayout>
   )
 }

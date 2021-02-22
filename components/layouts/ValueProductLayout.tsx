@@ -5,14 +5,14 @@ import Breadcrumbs from 'components/common/Breadcrumbs'
 import Sidebar from 'components/Sidebar'
 import { useRouter } from 'next/router'
 import { getPropertyInfo } from 'api'
-import { getValueProductRoutes } from 'utils'
+import { getValueProductPropertyRoutes } from 'utils'
 import Modal from 'components/common/Modal'
 
 interface Props {
   children: React.ReactNode
 }
 
-function ValueProductLayout({ children }: Props) {
+function ValueProductPropertyLayout({ children }: Props) {
   const [hasError, setHasError] = useState(false)
   const { propertyInfo, setPropertyInfo } = useValueProduct()
   const router = useRouter()
@@ -46,11 +46,11 @@ function ValueProductLayout({ children }: Props) {
   return (
     propertyInfo.id && (
       <Sidebar
-        routes={getValueProductRoutes(propertyInfo.id)}
+        routes={getValueProductPropertyRoutes(propertyInfo.id)}
         label={propertyInfo.address}
         parentPath={`/value-products`}
       >
-        <div className="container value-product">
+        <div className="container value-product-property">
           <Breadcrumbs
             current={`${propertyInfo.address}`}
             parents={[{ path: '/value-products', name: 'Value Products' }]}
@@ -69,4 +69,4 @@ function ValueProductLayout({ children }: Props) {
   )
 }
 
-export default withAuth(ValueProductLayout)
+export default withAuth(ValueProductPropertyLayout)

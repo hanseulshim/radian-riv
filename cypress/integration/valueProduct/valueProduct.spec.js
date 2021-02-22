@@ -11,7 +11,7 @@ describe('Radian Interactive Value', () => {
 
   describe('Value Products', () => {
     it('Should have header', () => {
-      cy.get('h1').contains('Value Products')
+      cy.get('h1').contains('Orders')
     })
   })
 

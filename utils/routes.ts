@@ -113,7 +113,16 @@ export const getTrendingRoutes = (state: Option, county: Option): Route[] => [
   }
 ]
 
-export const getValueProductRoutes = (orderId: string): Route[] => [
+export const valueProductRoutes = [
+  {
+    label: 'Orders',
+    value: 'Orders',
+    path: `/value-products`,
+    parentPath: '/value-products'
+  }
+]
+
+export const getValueProductPropertyRoutes = (orderId: string): Route[] => [
   {
     label: 'RIV Property Info',
     value: 'RIV Property Info',
