@@ -1,5 +1,4 @@
 import { submitChangePassword } from 'api'
-import { useAuth } from 'context/auth/AuthProvider'
 import Form from 'components/common/Form'
 import Input from 'components/common/Input'
 import ProfileLayout from 'components/layouts/ProfileLayout'
@@ -12,9 +11,6 @@ const defaultState = {
 }
 
 export default function ChangePassword() {
-  const {
-    auth: { user }
-  } = useAuth()
   const [changePassword, setChangePassword] = useState({ ...defaultState })
   const [error, setError] = useState({ ...defaultState })
   const [alert, setAlert] = useState(null)
@@ -84,10 +80,7 @@ export default function ChangePassword() {
       })
     } else {
       try {
-        const message = await submitChangePassword({
-          pwd: changePassword.pwd,
-          userid_ssid: user.userid_ssid
-        })
+        const message = await submitChangePassword(changePassword.pwd)
         setAlert({ type: 'success', message })
       } catch (e) {
         setAlert({ type: 'error', message: e.message })

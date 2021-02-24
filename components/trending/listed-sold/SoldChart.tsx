@@ -13,11 +13,8 @@ import {
 import { formatPrice, formatValue } from 'utils'
 import { getListedSoldChart, ChartParam } from 'api'
 import DownloadData from '../DownloadData'
-interface Props {
-  view: string
-}
 
-export default function SoldChart({ view }: Props) {
+export default function SoldChart() {
   const {
     selectedState,
     selectedCounty,
@@ -26,6 +23,7 @@ export default function SoldChart({ view }: Props) {
     selectedType
   } = useTrending()
   const [data, setData] = useState<ChartParam[]>([])
+  const [tableData, setTableData] = useState([])
   const [range, setRange] = useState('5Yr')
 
   const [dataModal, setDataModal] = useState(false)
@@ -51,7 +49,7 @@ export default function SoldChart({ view }: Props) {
     })}`
   useEffect(() => {
     const getChartData = async () => {
-      const chartData = await getListedSoldChart({
+      const { chartData, tableData } = await getListedSoldChart({
         range,
         state: selectedState.value,
         county: selectedCounty?.value || null,
@@ -60,6 +58,7 @@ export default function SoldChart({ view }: Props) {
         msa: selectedMsa?.value || null
       })
       setData(chartData)
+      setTableData(tableData)
     }
     getChartData()
   }, [
@@ -173,7 +172,7 @@ export default function SoldChart({ view }: Props) {
         Download Data
       </button>
       {dataModal && (
-        <DownloadData closeModal={closeModal} view={view} range={range} />
+        <DownloadData closeModal={closeModal} tableData={tableData} />
       )}
     </>
   )

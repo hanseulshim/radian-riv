@@ -1,5 +1,6 @@
-import { getStates, submitProfile } from 'api'
+import { submitProfile } from 'api'
 import { useAuth } from 'context/auth/AuthProvider'
+import { useTrending } from 'context/TrendingProvider'
 import CustomSelect from 'components/common/CustomSelect'
 import Form from 'components/common/Form'
 import Input from 'components/common/Input'
@@ -21,7 +22,6 @@ const defaultState = {
   city: '',
   state: '',
   zip: '',
-  department: '',
   phone_mobile: '',
   phone_home: ''
 }
@@ -31,18 +31,19 @@ export default function Profile() {
     auth: { user },
     setAuth
   } = useAuth()
+  const { stateList } = useTrending()
   const [profile, setProfile] = useState({
-    name_first: user.name_first,
-    name_last: user.name_last,
-    title: user.title,
-    address: user.address,
-    city: user.city,
-    state: user.state,
-    zip: user.zip,
-    department: user.department,
-    phone_mobile: user.phone_mobile,
-    phone_home: user.phone_home
+    name_first: '',
+    name_last: '',
+    title: '',
+    address: '',
+    city: '',
+    state: '',
+    zip: '',
+    phone_mobile: '',
+    phone_home: ''
   })
+  const [department, setDepartment] = useState('')
   const [error, setError] = useState({ ...defaultState })
   const [alert, setAlert] = useState(null)
   const [states, setStates] = useState<State[]>([])
@@ -50,6 +51,21 @@ export default function Profile() {
     label: user.state,
     value: user.state
   })
+
+  useEffect(() => {
+    setProfile({
+      name_first: user.name_first === null ? '' : user.name_first,
+      name_last: user.name_last === null ? '' : user.name_last,
+      title: user.title === null ? '' : user.title,
+      address: user.address === null ? '' : user.address,
+      city: user.city === null ? '' : user.city,
+      state: user.state === null ? '' : user.state,
+      zip: user.zip === null ? '' : user.zip,
+      phone_mobile: user.phone_mobile === null ? '' : user.phone_mobile,
+      phone_home: user.phone_home === null ? '' : user.phone_home
+    })
+    setDepartment(user.department === null ? '' : user.department)
+  }, [user])
 
   const handleInput = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -74,8 +90,7 @@ export default function Profile() {
       try {
         const message = await submitProfile({
           ...profile,
-          state: selectedState.label,
-          userid_ssid: user.userid_ssid
+          state: selectedState.label
         })
         setAlert({ type: 'success', message })
         const authCookies = Cookies.get('auth')
@@ -88,16 +103,8 @@ export default function Profile() {
   }
 
   useEffect(() => {
-    const stateFetch = async () => {
-      try {
-        const states = await getStates()
-        setStates(states.map(state => ({ ...state, label: state.value })))
-      } catch (e) {
-        setAlert({ type: 'error', message: e.message })
-      }
-    }
-    stateFetch()
-  }, [])
+    setStates(stateList.map(state => ({ ...state, label: state.value })))
+  }, [stateList])
 
   return (
     <ProfileLayout label="User Profile" className="profile">
@@ -168,9 +175,10 @@ export default function Profile() {
             <div className="form-group">
               <Input
                 label="Department"
-                value={profile.department}
-                error={error.department}
-                onChange={e => handleInput(e, 'clientcode')}
+                value={department}
+                error={null}
+                disabled
+                onChange={() => {}}
               />
               <Input
                 label="Cell Phone"

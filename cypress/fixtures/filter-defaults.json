@@ -1,29 +1,26 @@
 {
   "success": true,
-  "status": 1,
-  "message": "string",
-  "detail": "string",
+  "status": 0,
+  "message": "",
+  "detail": "",
   "data": {
     "sqft": {
-      "value": 1,
-      "label": "by Min/Max"
+      "Value": 1,
+      "Label": "by Min/Max"
     },
-    "sqft_min": 12.5,
-    "sqft_max": 15,
-    "sqft_percent": {
-      "value": 2,
-      "label": "10%"
-    },
+    "sqft_min": 12.0,
+    "sqft_max": 15.0,
+    "sqft_percent": null,
     "comparable_retail": true,
     "comparable_distressed": false,
     "time_going_back": {
-      "value": 0,
-      "label": "3 Months"
+      "Value": 1,
+      "Label": "6 Months"
     },
     "comps_subdivision": true,
     "restrict_comps": {
-      "value": 1,
-      "label": "Single Family"
+      "Value": 1,
+      "Label": "Single Family"
     }
   }
 }

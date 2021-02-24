@@ -1,212 +1,212 @@
 {
   "success": true,
   "status": 1,
-  "message": "string",
-  "detail": "string",
+  "message": null,
+  "detail": null,
   "data": [
     {
-      "label": "Alabama",
-      "value": "AL"
+      "Code": "AK",
+      "Name": "ALASKA"
     },
     {
-      "label": "Alaska",
-      "value": "AK"
+      "Code": "AL",
+      "Name": "ALABAMA"
     },
     {
-      "label": "Arizona",
-      "value": "AZ"
+      "Code": "AR",
+      "Name": "ARKANSAS"
     },
     {
-      "label": "Arkansas",
-      "value": "AR"
+      "Code": "AZ",
+      "Name": "ARIZONA "
     },
     {
-      "label": "California",
-      "value": "CA"
+      "Code": "CA",
+      "Name": "CALIFORNIA "
     },
     {
-      "label": "Colorado",
-      "value": "CO"
+      "Code": "CO",
+      "Name": "COLORADO "
     },
     {
-      "label": "Connecticut",
-      "value": "CT"
+      "Code": "CT",
+      "Name": "CONNECTICUT"
     },
     {
-      "label": "Delaware",
-      "value": "DE"
+      "Code": "DC",
+      "Name": "DISTRICT of COLUMBIA"
     },
     {
-      "label": "District of Columbia",
-      "value": "DC"
+      "Code": "DE",
+      "Name": "DELAWARE"
     },
     {
-      "label": "Florida",
-      "value": "FL"
+      "Code": "FL",
+      "Name": "FLORIDA"
     },
     {
-      "label": "Georgia",
-      "value": "GA"
+      "Code": "GA",
+      "Name": "GEORGIA"
     },
     {
-      "label": "Hawaii",
-      "value": "HI"
+      "Code": "HI",
+      "Name": "HAWAII"
     },
     {
-      "label": "Idaho",
-      "value": "ID"
+      "Code": "IA",
+      "Name": "IOWA"
     },
     {
-      "label": "Illinois",
-      "value": "IL"
+      "Code": "ID",
+      "Name": "IDAHO"
     },
     {
-      "label": "Indiana",
-      "value": "IN"
+      "Code": "IL",
+      "Name": "ILLINOIS"
     },
     {
-      "label": "Iowa",
-      "value": "IA"
+      "Code": "IN",
+      "Name": "INDIANA"
     },
     {
-      "label": "Kansas",
-      "value": "KS"
+      "Code": "KS",
+      "Name": "KANSAS"
     },
     {
-      "label": "Kentucky",
-      "value": "KY"
+      "Code": "KY",
+      "Name": "KENTUCKY"
     },
     {
-      "label": "Louisiana",
-      "value": "LA"
+      "Code": "LA",
+      "Name": "LOUISIANA"
     },
     {
-      "label": "Maine",
-      "value": "ME"
+      "Code": "MA",
+      "Name": "MASSACHUSETTS"
     },
     {
-      "label": "Maryland",
-      "value": "MD"
+      "Code": "MD",
+      "Name": "MARYLAND"
     },
     {
-      "label": "Massachusetts",
-      "value": "MA"
+      "Code": "ME",
+      "Name": "MAINE"
     },
     {
-      "label": "Michigan",
-      "value": "MI"
+      "Code": "MI",
+      "Name": "MICHIGAN"
     },
     {
-      "label": "Minnesota",
-      "value": "MN"
+      "Code": "MN",
+      "Name": "MINNESOTA"
     },
     {
-      "label": "Mississippi",
-      "value": "MS"
+      "Code": "MO",
+      "Name": "MISSOURI"
     },
     {
-      "label": "Missouri",
-      "value": "MO"
+      "Code": "MS",
+      "Name": "MISSISSIPPI"
     },
     {
-      "label": "Montana",
-      "value": "MT"
+      "Code": "MT",
+      "Name": "MONTANA"
     },
     {
-      "label": "Nebraska",
-      "value": "NE"
+      "Code": "NC",
+      "Name": "NORTH CAROLINA"
     },
     {
-      "label": "Nevada",
-      "value": "NV"
+      "Code": "ND",
+      "Name": "NORTH DAKOTA"
     },
     {
-      "label": "New Hampshire",
-      "value": "NH"
+      "Code": "NE",
+      "Name": "NEBRASKA"
     },
     {
-      "label": "New Jersey",
-      "value": "NJ"
+      "Code": "NH",
+      "Name": "NEW HAMPSHIRE"
     },
     {
-      "label": "New Mexico",
-      "value": "NM"
+      "Code": "NJ",
+      "Name": "NEW JERSEY"
     },
     {
-      "label": "New York",
-      "value": "NY"
+      "Code": "NM",
+      "Name": "NEW MEXICO"
     },
     {
-      "label": "North Carolina",
-      "value": "NC"
+      "Code": "NV",
+      "Name": "NEVADA"
     },
     {
-      "label": "North Dakota",
-      "value": "ND"
+      "Code": "NY",
+      "Name": "NEW YORK"
     },
     {
-      "label": "Ohio",
-      "value": "OH"
+      "Code": "OH",
+      "Name": "OHIO"
     },
     {
-      "label": "Oklahoma",
-      "value": "OK"
+      "Code": "OK",
+      "Name": "OKLAHOMA"
     },
     {
-      "label": "Oregon",
-      "value": "OR"
+      "Code": "OR",
+      "Name": "OREGON"
     },
     {
-      "label": "Pennsylvania",
-      "value": "PA"
+      "Code": "PA",
+      "Name": "PENNSYLVANIA"
     },
     {
-      "label": "Rhode Island",
-      "value": "RI"
+      "Code": "RI",
+      "Name": "RHODE ISLAND"
     },
     {
-      "label": "South Carolina",
-      "value": "SC"
+      "Code": "SC",
+      "Name": "SOUTH CAROLINA"
     },
     {
-      "label": "South Dakota",
-      "value": "SD"
+      "Code": "SD",
+      "Name": "SOUTH DAKOTA"
     },
     {
-      "label": "Tennessee",
-      "value": "TN"
+      "Code": "TN",
+      "Name": "TENNESSEE"
     },
     {
-      "label": "Texas",
-      "value": "TX"
+      "Code": "TX",
+      "Name": "TEXAS"
     },
     {
-      "label": "Utah",
-      "value": "UT"
+      "Code": "UT",
+      "Name": "UTAH"
     },
     {
-      "label": "Vermont",
-      "value": "VT"
+      "Code": "VA",
+      "Name": "VIRGINIA "
     },
     {
-      "label": "Virginia",
-      "value": "VA"
+      "Code": "VT",
+      "Name": "VERMONT"
     },
     {
-      "label": "Washington",
-      "value": "WA"
+      "Code": "WA",
+      "Name": "WASHINGTON"
     },
     {
-      "label": "West Virginia",
-      "value": "WV"
+      "Code": "WI",
+      "Name": "WISCONSIN"
     },
     {
-      "label": "Wisconsin",
-      "value": "WI"
+      "Code": "WV",
+      "Name": "WEST VIRGINIA"
     },
     {
-      "label": "Wyoming",
-      "value": "WY"
+      "Code": "WY",
+      "Name": "WYOMING"
     }
   ]
 }

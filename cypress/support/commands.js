@@ -26,9 +26,10 @@
 
 Cypress.Commands.add('login', () => {
   cy.clearCookies()
-  cy.visit('http://localhost:3000')
+  cy.visit('http://localhost:3000/login')
   cy.intercept('POST', '/auth/login', { fixture: 'login' })
-  cy.intercept('GET', '/user', { fixture: 'user' })
+  cy.intercept('GET', '/user/get', { fixture: 'user' })
+  cy.intercept('GET', '/utility/states', { fixture: 'states' })
   cy.get('input[name="Username"]').type('test')
   cy.get('input[name="Password"]').type('test')
   cy.get('#login').submit()
@@ -40,14 +41,15 @@ Cypress.Commands.add('valueProduct', () => {
 })
 
 Cypress.Commands.add('profile', () => {
-  cy.intercept('GET', '/utility/states', { fixture: 'states' })
   cy.get('#profile-logo').click()
   cy.get('.menu-container').contains('Account').click()
   cy.url().should('contain', '/profile')
 })
 
 Cypress.Commands.add('trending', () => {
-  cy.intercept('GET', '/utility/states', { fixture: 'states' })
+  cy.intercept('GET', '/trending/homepricechangestate', {
+    fixture: 'homepricechangestate'
+  })
   cy.get('.route-link').contains('Trending').click()
   cy.url().should('contain', '/trending')
 })

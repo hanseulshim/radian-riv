@@ -1,20 +1,22 @@
 {
   "success": true,
   "status": 1,
-  "message": "string",
-  "detail": "string",
-  "data": [
-    {
-      "value": 0,
-      "label": ""
-    },
-    {
-      "value": 1,
-      "label": "by Min/Max"
-    },
-    {
-      "value": 2,
-      "label": "by Variance"
-    }
-  ]
+  "message": "",
+  "detail": "",
+  "data": {
+    "sqft": [
+      {
+        "Value": 0,
+        "Label": ""
+      },
+      {
+        "Value": 1,
+        "Label": "by Min/Max"
+      },
+      {
+        "Value": 2,
+        "Label": "by Variance"
+      }
+    ]
+  }
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, createContext, useContext } from 'react'
 import { getStates, Option } from 'api'
+import { useRouter } from 'next/router'
 
 export const defaultTrending = {
   stateList: [],
@@ -93,13 +94,21 @@ export const TrendingProvider = ({
     defaultTrending.countyFirstLoad
   )
 
+  const { route } = useRouter()
+
   useEffect(() => {
     const getStateList = async () => {
-      const states = await getStates()
-      setStateList(states)
+      if (route !== '/login' && stateList.length === 0) {
+        try {
+          const states = await getStates()
+          setStateList(states)
+        } catch (e) {
+          console.error(e)
+        }
+      }
     }
     getStateList()
-  }, [])
+  }, [route, stateList])
 
   return (
     <TrendingContext.Provider

@@ -31,17 +31,17 @@ export default function UnitedStatesMap() {
   }, [])
 
   const getStateFill = (num: number) => {
-    if (num < -0.2) {
+    if (num < -20) {
       return '#76143b'
-    } else if (num >= -0.2 && num <= -0.1) {
+    } else if (num >= -20 && num <= -10) {
       return '#bd2042'
-    } else if (num > -0.1 && num <= 0) {
+    } else if (num > -10 && num <= 10) {
       return '#bd6720'
-    } else if (num > 0 && num <= 0.1) {
+    } else if (num > 10 && num <= 10) {
       return '#a8bf31'
-    } else if (num > 0.1 && num <= 0.2) {
+    } else if (num > 10 && num <= 20) {
       return '#42c675'
-    } else if (num > 0.2) {
+    } else if (num > 20) {
       return '#068e26'
     }
   }

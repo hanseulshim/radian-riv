@@ -23,6 +23,14 @@ export default function TrendingFilters() {
   const [msas, setMsas] = useState<Option[]>([])
 
   useEffect(() => {
+    const typesFetch = async () => {
+      const types = await getPropertyTypes()
+      setTypes(types)
+    }
+    typesFetch()
+  }, [])
+
+  useEffect(() => {
     if (selectedState) {
       const zipcodeFetch = async () => {
         const zipcodes = await getZipcodes(selectedState.value)
@@ -34,11 +42,6 @@ export default function TrendingFilters() {
         setMsas(msas)
       }
       fetchMSA()
-      const typesFetch = async () => {
-        const types = await getPropertyTypes(selectedState.value)
-        setTypes(types)
-      }
-      typesFetch()
     }
   }, [selectedState])
 

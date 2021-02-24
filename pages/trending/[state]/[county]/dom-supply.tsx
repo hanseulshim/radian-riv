@@ -20,11 +20,7 @@ export default function DomSupply() {
           </li>
         ))}
       </ul>
-      {currentView === 'Supply' ? (
-        <SupplyChart view={currentView} />
-      ) : (
-        <DomChart view={currentView} />
-      )}
+      {currentView === 'Supply' ? <SupplyChart /> : <DomChart />}
     </CountyLayout>
   )
 }

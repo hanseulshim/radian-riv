@@ -1,28 +1,30 @@
 {
   "success": true,
   "status": 1,
-  "message": "string",
-  "detail": "string",
-  "data": [
-    {
-      "value": 0,
-      "label": "Default"
-    },
-    {
-      "value": 1,
-      "label": "Single Family"
-    },
-    {
-      "value": 2,
-      "label": "Multi Family"
-    },
-    {
-      "value": 3,
-      "label": "Condo"
-    },
-    {
-      "value": 4,
-      "label": "Mobile/Manufactured"
-    }
-  ]
+  "message": "",
+  "detail": "",
+  "data": {
+    "restrictComps": [
+      {
+        "Value": 0,
+        "Label": "Default"
+      },
+      {
+        "Value": 1,
+        "Label": "Single Family"
+      },
+      {
+        "Value": 2,
+        "Label": "Multi Family"
+      },
+      {
+        "Value": 1,
+        "Label": "Condo"
+      },
+      {
+        "Value": 1,
+        "Label": "Mobile/Manufactured"
+      }
+    ]
+  }
 }

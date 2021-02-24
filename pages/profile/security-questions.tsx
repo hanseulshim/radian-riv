@@ -1,5 +1,4 @@
 import { getSecurityQuestions, setSecurityQuestions } from 'api'
-import { useAuth } from 'context/auth/AuthProvider'
 import CustomSelect from 'components/common/CustomSelect'
 import Form from 'components/common/Form'
 import Input from 'components/common/Input'
@@ -20,9 +19,6 @@ const defaultQuestionState = {
 }
 
 export default function SecurityQuestions() {
-  const {
-    auth: { user }
-  } = useAuth()
   const [questionList, setQuestionList] = useState<Question[]>([])
   const [questions, setQuestions] = useState({ ...defaultQuestionState })
   const [answers, setAnswers] = useState({ ...defaultAnswerState })
@@ -69,7 +65,6 @@ export default function SecurityQuestions() {
     } else {
       try {
         const form = {
-          userid_ssid: user.userid_ssid,
           question1id: questions.question1 ? questions.question1.value : null,
           answer1: answers.answer1,
           question2id: questions.question2 ? questions.question2.value : null,

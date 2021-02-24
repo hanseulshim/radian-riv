@@ -38,7 +38,13 @@ exports[`CompPhoto should match snapshot 1`] = `
     <div
       className="icon-row"
     >
-      <span>
+      <span
+        style={
+          Object {
+            "marginRight": 10,
+          }
+        }
+      >
         --
          miles
       </span>

@@ -1,7 +1,7 @@
 {
   "success": true,
-  "status": 1,
-  "message": "swag",
-  "detail": null,
+  "status": 0,
+  "message": "Success!",
+  "detail": "",
   "data": null
 }

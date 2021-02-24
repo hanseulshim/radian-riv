@@ -1,0 +1,102 @@
+{
+  "success": true,
+  "status": 1,
+  "message": "",
+  "detail": "",
+  "data": {
+    "State": [
+      {
+        "Period": "11/01/2020",
+        "Num of Active Listings": 9018,
+        "Num of REO Active Listings": 253,
+        "Num of NONREO Active Listings": 8765,
+        "Num of New Listings": 2696,
+        "Num of REO New Listings": 82,
+        "Num of NONREO New Listings": 2614,
+        "Num of U/C": 5793,
+        "Num of REO UC": 178,
+        "Num of NonREO UC": 5615,
+        "Median Active List Price": 465000,
+        "Median New List Price": 415000,
+        "Median U/C Price": 439000
+      },
+      {
+        "Period": "12/01/2020",
+        "Num of Active Listings": 7015,
+        "Num of REO Active Listings": 181,
+        "Num of NONREO Active Listings": 6834,
+        "Num of New Listings": 2183,
+        "Num of REO New Listings": 60,
+        "Num of NONREO New Listings": 2123,
+        "Num of U/C": 4643,
+        "Num of REO UC": 136,
+        "Num of NonREO UC": 4507,
+        "Median Active List Price": 486000,
+        "Median New List Price": 430000,
+        "Median U/C Price": 449999
+      },
+      {
+        "Period": "01/01/2021",
+        "Num of Active Listings": 7016,
+        "Num of REO Active Listings": 178,
+        "Num of NONREO Active Listings": 6838,
+        "Num of New Listings": 2586,
+        "Num of REO New Listings": 58,
+        "Num of NONREO New Listings": 2528,
+        "Num of U/C": 5162,
+        "Num of REO UC": 142,
+        "Num of NonREO UC": 5020,
+        "Median Active List Price": 490900,
+        "Median New List Price": 439900,
+        "Median U/C Price": 465900
+      }
+    ],
+    "Table1": [
+      {
+        "Period": "11/01/2020",
+        "Num of Active Listings": 92,
+        "Num of REO Active Listings": 3,
+        "Num of NONREO Active Listings": 89,
+        "Num of New Listings": 37,
+        "Num of REO New Listings": 1,
+        "Num of NONREO New Listings": 36,
+        "Num of U/C": 68,
+        "Num of REO UC": 3,
+        "Num of NonREO UC": 65,
+        "Median Active List Price": 447675,
+        "Median New List Price": 395000,
+        "Median U/C Price": 435000
+      },
+      {
+        "Period": "12/01/2020",
+        "Num of Active Listings": 66,
+        "Num of REO Active Listings": 1,
+        "Num of NONREO Active Listings": 65,
+        "Num of New Listings": 25,
+        "Num of REO New Listings": 0,
+        "Num of NONREO New Listings": 25,
+        "Num of U/C": 50,
+        "Num of REO UC": 1,
+        "Num of NonREO UC": 49,
+        "Median Active List Price": 497450,
+        "Median New List Price": 449900,
+        "Median U/C Price": 490008
+      },
+      {
+        "Period": "01/01/2021",
+        "Num of Active Listings": 50,
+        "Num of REO Active Listings": 2,
+        "Num of NONREO Active Listings": 48,
+        "Num of New Listings": 17,
+        "Num of REO New Listings": 1,
+        "Num of NONREO New Listings": 16,
+        "Num of U/C": 39,
+        "Num of REO UC": 2,
+        "Num of NonREO UC": 37,
+        "Median Active List Price": 507975,
+        "Median New List Price": 356000,
+        "Median U/C Price": 490017
+      }
+    ]
+  }
+}

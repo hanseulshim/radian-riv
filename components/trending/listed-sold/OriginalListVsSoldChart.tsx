@@ -3,22 +3,17 @@ import { useTrending } from 'context/TrendingProvider'
 import {
   ComposedChart,
   Line,
-  Bar,
   CartesianGrid,
   XAxis,
   YAxis,
   Tooltip,
   ResponsiveContainer
 } from 'recharts'
-import { getListedSoldChart, ChartParam } from 'api'
+import { getListedSoldPercentChart, ChartParam } from 'api'
 import { formatPercent } from 'utils'
 import DownloadData from '../DownloadData'
 
-interface Props {
-  view: string
-}
-
-export default function OriginalListVsSoldChart({ view }: Props) {
+export default function OriginalListVsSoldChart() {
   const {
     selectedState,
     selectedCounty,
@@ -27,6 +22,7 @@ export default function OriginalListVsSoldChart({ view }: Props) {
     selectedType
   } = useTrending()
   const [data, setData] = useState<ChartParam[]>([])
+  const [tableData, setTableData] = useState([])
   const [range, setRange] = useState('5Yr')
 
   const [dataModal, setDataModal] = useState(false)
@@ -50,7 +46,7 @@ export default function OriginalListVsSoldChart({ view }: Props) {
   }
   useEffect(() => {
     const getChartData = async () => {
-      const chartData = await getListedSoldChart({
+      const { chartData, tableData } = await getListedSoldPercentChart({
         range,
         state: selectedState.value,
         county: selectedCounty?.value || null,
@@ -59,6 +55,7 @@ export default function OriginalListVsSoldChart({ view }: Props) {
         msa: selectedMsa?.value || null
       })
       setData(chartData)
+      setTableData(tableData)
     }
     getChartData()
   }, [
@@ -166,7 +163,7 @@ export default function OriginalListVsSoldChart({ view }: Props) {
         Download Data
       </button>
       {dataModal && (
-        <DownloadData closeModal={closeModal} view={view} range={range} />
+        <DownloadData closeModal={closeModal} tableData={tableData} />
       )}
     </>
   )

@@ -1,10 +1,10 @@
 {
   "success": true,
-  "status": 1,
-  "message": "string",
-  "detail": "string",
+  "status": 0,
+  "message": "",
+  "detail": "",
   "data": {
-    "question_text": "In what year was your father born?",
+    "question_text": "What is the name of the first school you attended?",
     "question_num": 3
   }
 }

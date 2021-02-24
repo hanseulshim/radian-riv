@@ -1,0 +1,312 @@
+{
+  "success": true,
+  "status": 1,
+  "message": "",
+  "detail": "",
+  "data": {
+    "State": [
+      {
+        "STate": "AK",
+        "PerChange": 4.13,
+        "Pct Change 1 Year Med Sold Price County Level": "153,255,51"
+      },
+      {
+        "STate": "AL",
+        "PerChange": 18.18,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "AR",
+        "PerChange": 13.37,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "AZ",
+        "PerChange": 18.31,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "CA",
+        "PerChange": 11.18,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "CO",
+        "PerChange": 11.3,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "CT",
+        "PerChange": 27.7,
+        "Pct Change 1 Year Med Sold Price County Level": "51,102,0"
+      },
+      {
+        "STate": "DC",
+        "PerChange": 14.55,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "DE",
+        "PerChange": 13.75,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "FL",
+        "PerChange": 15.47,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "GA",
+        "PerChange": 16.23,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "GU",
+        "PerChange": null,
+        "Pct Change 1 Year Med Sold Price County Level": "255,255,255"
+      },
+      {
+        "STate": "HI",
+        "PerChange": 16.67,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "IA",
+        "PerChange": 16.88,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "ID",
+        "PerChange": 25.23,
+        "Pct Change 1 Year Med Sold Price County Level": "51,102,0"
+      },
+      {
+        "STate": "IL",
+        "PerChange": 18.09,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "IN",
+        "PerChange": 13.89,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "KS",
+        "PerChange": 1.11,
+        "Pct Change 1 Year Med Sold Price County Level": "153,255,51"
+      },
+      {
+        "STate": "KY",
+        "PerChange": 19.43,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "LA",
+        "PerChange": 11.94,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "MA",
+        "PerChange": 16.14,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "MD",
+        "PerChange": 17.28,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "ME",
+        "PerChange": 18.22,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "MI",
+        "PerChange": 13.95,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "MN",
+        "PerChange": 10.62,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "MO",
+        "PerChange": 16.56,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "MS",
+        "PerChange": 17.66,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "MT",
+        "PerChange": 24.49,
+        "Pct Change 1 Year Med Sold Price County Level": "51,102,0"
+      },
+      {
+        "STate": "NC",
+        "PerChange": 15.0,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "ND",
+        "PerChange": 8.12,
+        "Pct Change 1 Year Med Sold Price County Level": "153,255,51"
+      },
+      {
+        "STate": "NE",
+        "PerChange": 14.8,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "NH",
+        "PerChange": 22.81,
+        "Pct Change 1 Year Med Sold Price County Level": "51,102,0"
+      },
+      {
+        "STate": "NJ",
+        "PerChange": 28.13,
+        "Pct Change 1 Year Med Sold Price County Level": "51,102,0"
+      },
+      {
+        "STate": "NM",
+        "PerChange": 13.38,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "NV",
+        "PerChange": 10.94,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "NY",
+        "PerChange": 23.41,
+        "Pct Change 1 Year Med Sold Price County Level": "51,102,0"
+      },
+      {
+        "STate": "OH",
+        "PerChange": 12.9,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "OK",
+        "PerChange": 17.56,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "OR",
+        "PerChange": 17.04,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "PA",
+        "PerChange": 20.21,
+        "Pct Change 1 Year Med Sold Price County Level": "51,102,0"
+      },
+      {
+        "STate": "PR",
+        "PerChange": null,
+        "Pct Change 1 Year Med Sold Price County Level": "255,255,255"
+      },
+      {
+        "STate": "RI",
+        "PerChange": 19.68,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "SC",
+        "PerChange": 16.68,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "SD",
+        "PerChange": 14.14,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "TN",
+        "PerChange": 12.05,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "TX",
+        "PerChange": 12.34,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "UT",
+        "PerChange": 19.57,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "VA",
+        "PerChange": 12.04,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "VT",
+        "PerChange": 24.58,
+        "Pct Change 1 Year Med Sold Price County Level": "51,102,0"
+      },
+      {
+        "STate": "WA",
+        "PerChange": 16.5,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "WI",
+        "PerChange": 11.2,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "WV",
+        "PerChange": 15.16,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "STate": "WY",
+        "PerChange": 6.25,
+        "Pct Change 1 Year Med Sold Price County Level": "153,255,51"
+      }
+    ],
+    "Legend": [
+      {
+        "Column1": 1,
+        "Column2": ">= 20%",
+        "Column3": "51,102,0"
+      },
+      {
+        "Column1": 2,
+        "Column2": "10% to 20%",
+        "Column3": "102,204,0"
+      },
+      {
+        "Column1": 3,
+        "Column2": "0% to 10%",
+        "Column3": "153,255,51"
+      },
+      {
+        "Column1": 4,
+        "Column2": "-10% to 0%",
+        "Column3": "255,255,0"
+      },
+      {
+        "Column1": 5,
+        "Column2": "-20% to -10.1%",
+        "Column3": "255,102,51"
+      },
+      {
+        "Column1": 6,
+        "Column2": "< -20%",
+        "Column3": "153,0,0"
+      },
+      {
+        "Column1": 7,
+        "Column2": "No Data",
+        "Column3": "255,255,255"
+      }
+    ]
+  }
+}

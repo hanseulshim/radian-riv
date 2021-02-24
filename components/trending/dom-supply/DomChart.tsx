@@ -11,14 +11,10 @@ import {
   ResponsiveContainer
 } from 'recharts'
 import Checkbox from 'components/common/Checkbox'
-import { getSupplyChart, ChartParam } from 'api'
+import { getDomChart, ChartParam } from 'api'
 import DownloadData from '../DownloadData'
 
-interface Props {
-  view: string
-}
-
-export default function DomChart({ view }: Props) {
+export default function DomChart() {
   const {
     selectedState,
     selectedCounty,
@@ -27,6 +23,7 @@ export default function DomChart({ view }: Props) {
     selectedType
   } = useTrending()
   const [data, setData] = useState<ChartParam[]>([])
+  const [tableData, setTableData] = useState([])
   const [range, setRange] = useState('5Yr')
   const [seriesState, setSeriesState] = useState({
     Sold: true,
@@ -50,7 +47,7 @@ export default function DomChart({ view }: Props) {
     })}`
   useEffect(() => {
     const getChartData = async () => {
-      const chartData = await getSupplyChart({
+      const { chartData, tableData } = await getDomChart({
         range,
         state: selectedState.value,
         county: selectedCounty?.value || null,
@@ -59,6 +56,7 @@ export default function DomChart({ view }: Props) {
         msa: selectedMsa?.value || null
       })
       setData(chartData)
+      setTableData(tableData)
     }
     getChartData()
   }, [
@@ -305,7 +303,7 @@ export default function DomChart({ view }: Props) {
         Download Data
       </button>
       {dataModal && (
-        <DownloadData closeModal={closeModal} view={view} range={range} />
+        <DownloadData closeModal={closeModal} tableData={tableData} />
       )}
     </>
   )

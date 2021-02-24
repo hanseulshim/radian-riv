@@ -55,7 +55,9 @@ export default function CompPhoto({
           </span>
         </div>
         <div className="icon-row">
-          <span>{formatNullString(property.targetDistance)} miles</span>
+          <span style={{ marginRight: 10 }}>
+            {formatNullString(property.targetDistance)} miles
+          </span>
           <Checkbox
             label=""
             checked={checked}

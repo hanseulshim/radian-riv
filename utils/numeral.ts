@@ -15,7 +15,7 @@ export const formatPercent = (value: number): string => {
   if (value === null) {
     return null
   }
-  return numeral(value).format('0[.]0[0]%')
+  return numeral(value / 100).format('0[.]0[0]%')
 }
 
 export const formatValue = (value: number, large = false): string => {

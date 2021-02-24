@@ -1,0 +1,167 @@
+{
+  "success": true,
+  "status": 1,
+  "message": "",
+  "detail": "",
+  "data": {
+    "State": [
+      {
+        "FIPS": 24001,
+        "perchange": 28.62,
+        "Pct Change 1 Year Med Sold Price County Level": "51,102,0"
+      },
+      {
+        "FIPS": 24003,
+        "perchange": 14.94,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "FIPS": 24005,
+        "perchange": 21.28,
+        "Pct Change 1 Year Med Sold Price County Level": "51,102,0"
+      },
+      {
+        "FIPS": 24009,
+        "perchange": 5.56,
+        "Pct Change 1 Year Med Sold Price County Level": "153,255,51"
+      },
+      {
+        "FIPS": 24011,
+        "perchange": 5.34,
+        "Pct Change 1 Year Med Sold Price County Level": "153,255,51"
+      },
+      {
+        "FIPS": 24013,
+        "perchange": 14.96,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "FIPS": 24015,
+        "perchange": 35.68,
+        "Pct Change 1 Year Med Sold Price County Level": "51,102,0"
+      },
+      {
+        "FIPS": 24017,
+        "perchange": 28.42,
+        "Pct Change 1 Year Med Sold Price County Level": "51,102,0"
+      },
+      {
+        "FIPS": 24019,
+        "perchange": 36.73,
+        "Pct Change 1 Year Med Sold Price County Level": "51,102,0"
+      },
+      {
+        "FIPS": 24021,
+        "perchange": 24.6,
+        "Pct Change 1 Year Med Sold Price County Level": "51,102,0"
+      },
+      {
+        "FIPS": 24023,
+        "perchange": 103.57,
+        "Pct Change 1 Year Med Sold Price County Level": "51,102,0"
+      },
+      {
+        "FIPS": 24025,
+        "perchange": 19.23,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "FIPS": 24027,
+        "perchange": 15.49,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "FIPS": 24029,
+        "perchange": 12.54,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "FIPS": 24031,
+        "perchange": 19.33,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "FIPS": 24033,
+        "perchange": 12.5,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "FIPS": 24035,
+        "perchange": 18.29,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "FIPS": 24037,
+        "perchange": 7.96,
+        "Pct Change 1 Year Med Sold Price County Level": "153,255,51"
+      },
+      {
+        "FIPS": 24039,
+        "perchange": 17.44,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "FIPS": 24041,
+        "perchange": 5.85,
+        "Pct Change 1 Year Med Sold Price County Level": "153,255,51"
+      },
+      {
+        "FIPS": 24043,
+        "perchange": 35.08,
+        "Pct Change 1 Year Med Sold Price County Level": "51,102,0"
+      },
+      {
+        "FIPS": 24045,
+        "perchange": 23.62,
+        "Pct Change 1 Year Med Sold Price County Level": "51,102,0"
+      },
+      {
+        "FIPS": 24047,
+        "perchange": 10.91,
+        "Pct Change 1 Year Med Sold Price County Level": "102,204,0"
+      },
+      {
+        "FIPS": 24510,
+        "perchange": 88.91,
+        "Pct Change 1 Year Med Sold Price County Level": "51,102,0"
+      }
+    ],
+    "Legend": [
+      {
+        "Column1": 1,
+        "Column2": ">= 20%",
+        "Column3": "51,102,0"
+      },
+      {
+        "Column1": 2,
+        "Column2": "10% to 20%",
+        "Column3": "102,204,0"
+      },
+      {
+        "Column1": 3,
+        "Column2": "0% to 10%",
+        "Column3": "153,255,51"
+      },
+      {
+        "Column1": 4,
+        "Column2": "-10% to 0%",
+        "Column3": "255,255,0"
+      },
+      {
+        "Column1": 5,
+        "Column2": "-20% to -10.1%",
+        "Column3": "255,102,51"
+      },
+      {
+        "Column1": 6,
+        "Column2": "< -20%",
+        "Column3": "153,0,0"
+      },
+      {
+        "Column1": 7,
+        "Column2": "No Data",
+        "Column3": "255,255,255"
+      }
+    ]
+  }
+}

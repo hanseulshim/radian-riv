@@ -11,15 +11,11 @@ import {
   ResponsiveContainer
 } from 'recharts'
 import Checkbox from 'components/common/Checkbox'
-import { getListedSoldChart, ChartParam } from 'api'
+import { getListedSoldListedChart, ChartParam } from 'api'
 import DownloadData from '../DownloadData'
 import { formatPrice, formatValue } from 'utils'
 
-interface Props {
-  view: string
-}
-
-export default function Listed({ view }: Props) {
+export default function Listed() {
   const {
     selectedState,
     selectedCounty,
@@ -28,6 +24,7 @@ export default function Listed({ view }: Props) {
     selectedType
   } = useTrending()
   const [data, setData] = useState<ChartParam[]>([])
+  const [tableData, setTableData] = useState([])
   const [range, setRange] = useState('5Yr')
   const [seriesState, setSeriesState] = useState({
     'Active Listings': true,
@@ -56,7 +53,7 @@ export default function Listed({ view }: Props) {
     })}`
   useEffect(() => {
     const getChartData = async () => {
-      const chartData = await getListedSoldChart({
+      const { chartData, tableData } = await getListedSoldListedChart({
         range,
         state: selectedState.value,
         county: selectedCounty?.value || null,
@@ -65,6 +62,7 @@ export default function Listed({ view }: Props) {
         msa: selectedMsa?.value || null
       })
       setData(chartData)
+      setTableData(tableData)
     }
     getChartData()
   }, [
@@ -274,7 +272,7 @@ export default function Listed({ view }: Props) {
         Download Data
       </button>
       {dataModal && (
-        <DownloadData closeModal={closeModal} view={view} range={range} />
+        <DownloadData closeModal={closeModal} tableData={tableData} />
       )}
     </>
   )

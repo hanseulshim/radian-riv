@@ -8,10 +8,6 @@ on:
 jobs:
   cypress_run:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        containers: [1, 2, 3, 4, 5, 6, 7]
     steps:
       - uses: actions/checkout@v2
       - uses: bahmutov/npm-install@v1
@@ -20,14 +16,8 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          record: true
-          parallel: true
           start: yarn dev
           wait-on: http://localhost:3000
-          group: 'Actions example'
-        env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   unit_test:
     runs-on: ubuntu-latest
     steps:

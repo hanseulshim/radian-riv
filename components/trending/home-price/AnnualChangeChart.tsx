@@ -23,6 +23,7 @@ export default function AnnualChangeChart() {
     selectedType
   } = useTrending()
   const [data, setData] = useState<ChartParam[]>([])
+  const [tableData, setTableData] = useState([])
   const [range, setRange] = useState('5Yr')
   const [seriesState, setSeriesState] = useState({
     state: true,
@@ -52,7 +53,7 @@ export default function AnnualChangeChart() {
   ]
   useEffect(() => {
     const getChartData = async () => {
-      const chartData = await getHomePriceChart({
+      const { chartData, tableData } = await getHomePriceChart({
         range,
         state: selectedState.value,
         county: selectedCounty?.value || null,
@@ -61,6 +62,7 @@ export default function AnnualChangeChart() {
         msa: selectedMsa?.value || null
       })
       setData(chartData)
+      setTableData(tableData)
     }
     getChartData()
   }, [
@@ -191,7 +193,7 @@ export default function AnnualChangeChart() {
         Download Data
       </button>
       {dataModal && (
-        <DownloadData closeModal={closeModal} range={range} view="Home Price" />
+        <DownloadData closeModal={closeModal} tableData={tableData} />
       )}
     </>
   )

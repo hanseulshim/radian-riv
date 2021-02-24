@@ -1,49 +1,30 @@
 import { useState, useCallback } from 'react'
-import { useTrending } from 'context/TrendingProvider'
 import Modal from 'components/common/Modal'
-import { downloadChartData } from 'api'
 import Table from 'components/common/Table'
 
 interface Props {
-  view: string
-  range: string
+  tableData: any[]
   closeModal: () => void
 }
 
-export default function DownloadData({ view, closeModal, range }: Props) {
+export default function DownloadData({ closeModal, tableData }: Props) {
   const [data, setData] = useState([])
   const [columns, setColumns] = useState([])
-  const {
-    selectedState,
-    selectedCounty,
-    selectedZip,
-    selectedType,
-    selectedMsa
-  } = useTrending()
 
   const fetchData = useCallback(async () => {
-    const tableData = await downloadChartData({
-      state: selectedState.value,
-      county: selectedCounty?.value || null,
-      zip: selectedZip?.value || null,
-      type: selectedType?.value || null,
-      msa: selectedMsa?.value || null,
-      view,
-      range
-    })
     if (tableData.length) {
       const tableColumns = Object.keys(tableData[0]).map(key => ({
         id: key,
         Header: key,
         accessor: row => {
-          if (key === 'PERIOD') {
+          if (key.toUpperCase() === 'PERIOD') {
             const date = new Date(row[key])
             return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`
           }
           return row[key]
         },
         sortType: (a, b) => {
-          if (key === 'PERIOD') {
+          if (key.toUpperCase() === 'PERIOD') {
             const firstDate = new Date(a.values[key])
             const secondDate = new Date(b.values[key])
             return secondDate > firstDate ? -1 : 1

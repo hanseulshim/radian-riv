@@ -1,8 +1,7 @@
 import Cookies from 'js-cookie'
-import { handleApi, fakeApi } from './index'
+import { handleApi } from './index'
 
 interface Profile {
-  userid_ssid: string
   name_first: string
   name_last: string
   title: string
@@ -10,42 +9,15 @@ interface Profile {
   city: string
   state: string
   zip: string
-  department: string
   phone_mobile: string
   phone_home: string
 }
 
 export const submitProfile = async (form: Profile): Promise<string> => {
-  // const data = await handleApi('/user/update', form)
-  const data = await fakeApi('/user/update')
+  const data = await handleApi('/user/update', form)
   const authCookies = Cookies.get('auth')
   const { token, user } = JSON.parse(authCookies)
   Cookies.set('auth', { token, user: { ...user, ...form } })
-  return data
-}
-
-interface SecurityQuestions {
-  userid_ssid: string
-  question1id: number
-  answer1: string
-  question2id: number
-  answer2: string
-  question3id: number
-  answer3: string
-}
-
-export const setSecurityQuestions = async (
-  form: SecurityQuestions
-): Promise<string> => {
-  if (
-    form.question1id === null ||
-    form.question2id === null ||
-    form.question3id === null
-  ) {
-    throw new Error(`Questions can't be blank`)
-  }
-  // const data = await handleApi('/user/questionsset', form)
-  const data = await fakeApi('/user/questionsset')
   return data
 }
 
@@ -78,107 +50,114 @@ interface FilterDefaultSet {
   restrict_comps: number
 }
 
-export const getFilterDefaults = async (
-  userid: string
-): Promise<FilterDefaults> => {
-  // const data = await handleApi(`/user/filter-defaults/${userid}`)
-  const data = await fakeApi(`/user/filter-defaults/${userid}`)
-  return data
+export const getFilterDefaults = async (): Promise<FilterDefaults> => {
+  // const data = await handleApi(`/user/filter-defaults`)
+  const data = {
+    sqft: {
+      Value: 1,
+      Label: 'by Min/Max'
+    },
+    sqft_min: 12.0,
+    sqft_max: 15.0,
+    sqft_percent: null,
+    comparable_retail: true,
+    comparable_distressed: false,
+    time_going_back: {
+      Value: 1,
+      Label: '6 Months'
+    },
+    comps_subdivision: true,
+    restrict_comps: {
+      Value: 1,
+      Label: 'Single Family'
+    }
+  }
+  return {
+    sqft: {
+      value: data.sqft.Value,
+      label: data.sqft.Label
+    },
+    sqft_min: data.sqft_min,
+    sqft_max: data.sqft_max,
+    sqft_percent: data.sqft_percent,
+    comparable_retail: data.comparable_retail,
+    comparable_distressed: data.comparable_distressed,
+    time_going_back: {
+      value: data.time_going_back.Value,
+      label: data.time_going_back.Label
+    },
+    comps_subdivision: data.comps_subdivision,
+    restrict_comps: {
+      value: data.restrict_comps.Value,
+      label: data.restrict_comps.Label
+    }
+  }
 }
 
 export const setFilterDefaults = async (
   form: FilterDefaultSet
 ): Promise<string> => {
-  // const data = await handleApi('/user/filter-defaults-set', form)
-  const data = await fakeApi('/user/filter-defaults-set')
+  const data = await handleApi('/user/filter-defaults-set', form)
   return data
 }
 
-export const getFilterDefaultsSquareFt = async (
-  userid: string
-): Promise<FilterDefaultOption[]> => {
-  // const data = await handleApi(`/user/filter-defaults-sqft/${userid}`)
-  const data = await fakeApi(`/user/filter-defaults-sqft/${userid}`)
-  return data
+export const getFilterDefaultsSquareFt = async (): Promise<
+  FilterDefaultOption[]
+> => {
+  const data = await handleApi('/user/filter-defaults-sqft')
+  return data.sqft.map(option => ({ label: option.Label, value: option.Value }))
 }
 
-export const getFilterDefaultsSquareFtPercent = async (
-  userid: string
-): Promise<FilterDefaultOption[]> => {
-  // const data = await handleApi(`/user/filter-defaults-sqft-percent/${userid}`)
-  const data = await fakeApi(`/user/filter-defaults-sqft-percent/${userid}`)
-  return data
+export const getFilterDefaultsSquareFtPercent = async (): Promise<
+  FilterDefaultOption[]
+> => {
+  const data = await handleApi('/user/filter-defaults-sqft-percent')
+  return data.sqft.map(option => ({ label: option.Label, value: option.Value }))
 }
 
-export const getFilterDefaultsRestrict = async (
-  userid: string
-): Promise<FilterDefaultOption[]> => {
-  // const data = await handleApi(`/user/filter-defaults-restrict-comps/${userid}`)
-  const data = await fakeApi(`/user/filter-defaults-restrict-comps/${userid}`)
-  return data
+export const getFilterDefaultsRestrict = async (): Promise<
+  FilterDefaultOption[]
+> => {
+  const data = await handleApi('/user/filter-defaults-restrict-comps')
+  return data.restrictComps.map(option => ({
+    label: option.Label,
+    value: option.Value
+  }))
 }
 
-export const getFilterDefaultsTime = async (
-  userid: string
-): Promise<FilterDefaultOption[]> => {
-  // const data = await handleApi(`/user/filter-defaults-time/${userid}`)
-  const data = await fakeApi(`/user/filter-defaults-time/${userid}`)
-  return data
+export const getFilterDefaultsTime = async (): Promise<
+  FilterDefaultOption[]
+> => {
+  const data = await handleApi('/user/filter-defaults-time')
+  return data.filterTime.map(option => ({
+    label: option.Label,
+    value: option.Value
+  }))
 }
 
-interface Department {
-  userid_ssid: string
-  department_id: number
-}
-interface SubjectProperty {
-  userid_ssid: string
-  subject_property_id: number
-}
-
-export const getDefaultSearchDepartments = async (
-  userid: string
-): Promise<FilterDefaultOption[]> => {
-  // const data = await handleApi(`/user/departments/${userid}`)
-  const data = await fakeApi(`/user/departments/${userid}`)
-  return data
+export const getSubjectPropertyDefault = async (): Promise<FilterDefaultOption> => {
+  const data = await handleApi('/user/subject-property')
+  return {
+    label: data.Label as string,
+    value: data.Value as number
+  }
 }
 
-export const getDefaultSearchDepartment = async (
-  userid: string
-): Promise<FilterDefaultOption[]> => {
-  // const data = await handleApi(`/user/department/${userid}`)
-  const data = await fakeApi(`/user/department/${userid}`)
-  return data
-}
-
-export const setDefaultSearchDepartment = async (
-  form: Department
-): Promise<any> => {
-  // const data = await handleApi('/user/department-set', form)
-  const data = await fakeApi('/user/department-set')
-  return data
-}
-
-export const getSubjectPropertyDefault = async (
-  userid: string
-): Promise<FilterDefaultOption[]> => {
-  // const data = await handleApi(`/user/subject-property/${userid}`)
-  const data = await fakeApi(`/user/subject-property/${userid}`)
-  return data
-}
-
-export const getSubjectPropertyDefaults = async (
-  userid: string
-): Promise<FilterDefaultOption[]> => {
-  // const data = await handleApi(`/user/subject-properties/${userid}`)
-  const data = await fakeApi(`/user/subject-properties/${userid}`)
-  return data
+export const getSubjectPropertyDefaults = async (): Promise<
+  FilterDefaultOption[]
+> => {
+  const data = await handleApi('/user/subject-properties')
+  return data.subjectProperties.map(option => ({
+    label: option.Label,
+    value: option.Value
+  }))
 }
 
 export const setSubjectPropertyDefault = async (
-  form: SubjectProperty
+  subject_property_id: number
 ): Promise<any> => {
-  // const data = await handleApi('/user/subject-properties-set', form)
-  const data = await fakeApi('/user/subject-properties-set')
+  const data = await handleApi('/user/subject-properties-set', {
+    subject_property_id
+  })
   return data
 }

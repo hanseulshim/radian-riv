@@ -1,0 +1,130 @@
+{
+  "success": true,
+  "status": 1,
+  "message": "",
+  "detail": "",
+  "data": {
+    "State": [
+      {
+        "period": "2020-02-01T00:00:00",
+        "Pct Change 1 Year Med Sold Price National Level": 0,
+        "Pct Change 1 Year Med Sold Price State Level": 5.85,
+        "Pct Change 1 Year Med Sold Price CBSA Level": 0.0,
+        "Pct Change 1 Year Med Sold Price County Level": -7.38,
+        "Pct Change 1 Year Med Sold Price Zip Level": 12.37,
+        "Pct Change 1 Year Med Sold Price OFHEO": 0,
+        "Pct Change 1 Year Med Sold Price Case Schiller": 0
+      },
+      {
+        "period": "2020-03-01T00:00:00",
+        "Pct Change 1 Year Med Sold Price National Level": 0,
+        "Pct Change 1 Year Med Sold Price State Level": 11.41,
+        "Pct Change 1 Year Med Sold Price CBSA Level": 0.0,
+        "Pct Change 1 Year Med Sold Price County Level": 31.11,
+        "Pct Change 1 Year Med Sold Price Zip Level": 13.14,
+        "Pct Change 1 Year Med Sold Price OFHEO": 0,
+        "Pct Change 1 Year Med Sold Price Case Schiller": 0
+      },
+      {
+        "period": "2020-04-01T00:00:00",
+        "Pct Change 1 Year Med Sold Price National Level": 0,
+        "Pct Change 1 Year Med Sold Price State Level": 15.1,
+        "Pct Change 1 Year Med Sold Price CBSA Level": 0.0,
+        "Pct Change 1 Year Med Sold Price County Level": -9.04,
+        "Pct Change 1 Year Med Sold Price Zip Level": 18.08,
+        "Pct Change 1 Year Med Sold Price OFHEO": 0,
+        "Pct Change 1 Year Med Sold Price Case Schiller": 0
+      },
+      {
+        "period": "2020-05-01T00:00:00",
+        "Pct Change 1 Year Med Sold Price National Level": 0,
+        "Pct Change 1 Year Med Sold Price State Level": 8.7,
+        "Pct Change 1 Year Med Sold Price CBSA Level": 0.0,
+        "Pct Change 1 Year Med Sold Price County Level": 20.44,
+        "Pct Change 1 Year Med Sold Price Zip Level": 9.29,
+        "Pct Change 1 Year Med Sold Price OFHEO": 0,
+        "Pct Change 1 Year Med Sold Price Case Schiller": 0
+      },
+      {
+        "period": "2020-06-01T00:00:00",
+        "Pct Change 1 Year Med Sold Price National Level": 0,
+        "Pct Change 1 Year Med Sold Price State Level": 0.0,
+        "Pct Change 1 Year Med Sold Price CBSA Level": 0.0,
+        "Pct Change 1 Year Med Sold Price County Level": 18.88,
+        "Pct Change 1 Year Med Sold Price Zip Level": 4.48,
+        "Pct Change 1 Year Med Sold Price OFHEO": 0,
+        "Pct Change 1 Year Med Sold Price Case Schiller": 0
+      },
+      {
+        "period": "2020-07-01T00:00:00",
+        "Pct Change 1 Year Med Sold Price National Level": 0,
+        "Pct Change 1 Year Med Sold Price State Level": 4.0,
+        "Pct Change 1 Year Med Sold Price CBSA Level": 0.0,
+        "Pct Change 1 Year Med Sold Price County Level": 14.47,
+        "Pct Change 1 Year Med Sold Price Zip Level": 16.9,
+        "Pct Change 1 Year Med Sold Price OFHEO": 0,
+        "Pct Change 1 Year Med Sold Price Case Schiller": 0
+      },
+      {
+        "period": "2020-08-01T00:00:00",
+        "Pct Change 1 Year Med Sold Price National Level": 0,
+        "Pct Change 1 Year Med Sold Price State Level": 9.35,
+        "Pct Change 1 Year Med Sold Price CBSA Level": 0.0,
+        "Pct Change 1 Year Med Sold Price County Level": 23.56,
+        "Pct Change 1 Year Med Sold Price Zip Level": 13.69,
+        "Pct Change 1 Year Med Sold Price OFHEO": 0,
+        "Pct Change 1 Year Med Sold Price Case Schiller": 0
+      },
+      {
+        "period": "2020-09-01T00:00:00",
+        "Pct Change 1 Year Med Sold Price National Level": 0,
+        "Pct Change 1 Year Med Sold Price State Level": 17.45,
+        "Pct Change 1 Year Med Sold Price CBSA Level": 0.0,
+        "Pct Change 1 Year Med Sold Price County Level": 20.13,
+        "Pct Change 1 Year Med Sold Price Zip Level": 19.02,
+        "Pct Change 1 Year Med Sold Price OFHEO": 0,
+        "Pct Change 1 Year Med Sold Price Case Schiller": 0
+      },
+      {
+        "period": "2020-10-01T00:00:00",
+        "Pct Change 1 Year Med Sold Price National Level": 0,
+        "Pct Change 1 Year Med Sold Price State Level": 17.95,
+        "Pct Change 1 Year Med Sold Price CBSA Level": 0.0,
+        "Pct Change 1 Year Med Sold Price County Level": 28.95,
+        "Pct Change 1 Year Med Sold Price Zip Level": 19.19,
+        "Pct Change 1 Year Med Sold Price OFHEO": 0,
+        "Pct Change 1 Year Med Sold Price Case Schiller": 0
+      },
+      {
+        "period": "2020-11-01T00:00:00",
+        "Pct Change 1 Year Med Sold Price National Level": 0,
+        "Pct Change 1 Year Med Sold Price State Level": 17.94,
+        "Pct Change 1 Year Med Sold Price CBSA Level": 0.0,
+        "Pct Change 1 Year Med Sold Price County Level": 28.3,
+        "Pct Change 1 Year Med Sold Price Zip Level": 19.27,
+        "Pct Change 1 Year Med Sold Price OFHEO": 0,
+        "Pct Change 1 Year Med Sold Price Case Schiller": 0
+      },
+      {
+        "period": "2020-12-01T00:00:00",
+        "Pct Change 1 Year Med Sold Price National Level": 0,
+        "Pct Change 1 Year Med Sold Price State Level": 16.39,
+        "Pct Change 1 Year Med Sold Price CBSA Level": 0.0,
+        "Pct Change 1 Year Med Sold Price County Level": 25.0,
+        "Pct Change 1 Year Med Sold Price Zip Level": 21.85,
+        "Pct Change 1 Year Med Sold Price OFHEO": 0,
+        "Pct Change 1 Year Med Sold Price Case Schiller": 0
+      },
+      {
+        "period": "2021-01-01T00:00:00",
+        "Pct Change 1 Year Med Sold Price National Level": 0,
+        "Pct Change 1 Year Med Sold Price State Level": 20.21,
+        "Pct Change 1 Year Med Sold Price CBSA Level": 0.0,
+        "Pct Change 1 Year Med Sold Price County Level": 30.0,
+        "Pct Change 1 Year Med Sold Price Zip Level": 17.88,
+        "Pct Change 1 Year Med Sold Price OFHEO": 0,
+        "Pct Change 1 Year Med Sold Price Case Schiller": 0
+      }
+    ]
+  }
+}

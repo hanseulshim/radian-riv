@@ -1,0 +1,64 @@
+{
+  "success": true,
+  "status": 1,
+  "message": null,
+  "detail": null,
+  "data": [
+    {
+      "MSAId": null,
+      "MSA": ""
+    },
+    {
+      "MSAId": 0,
+      "MSA": "Salisbury, MD-DE"
+    },
+    {
+      "MSAId": 1900,
+      "MSA": ""
+    },
+    {
+      "MSAId": 1900,
+      "MSA": "Cumberland, MD-WV    "
+    },
+    {
+      "MSAId": 1900,
+      "MSA": "Easton, MD     "
+    },
+    {
+      "MSAId": 6162,
+      "MSA": "Philadelphia-Camden-Wilmington, PA-NJ-DE-MD    "
+    },
+    {
+      "MSAId": 8872,
+      "MSA": ""
+    },
+    {
+      "MSAId": 8872,
+      "MSA": "Baltimore-Columbia-Towson, MD"
+    },
+    {
+      "MSAId": 8872,
+      "MSA": "California-Lexington Park, MD"
+    },
+    {
+      "MSAId": 8872,
+      "MSA": "Cambridge, MD     "
+    },
+    {
+      "MSAId": 8872,
+      "MSA": "Easton, MD     "
+    },
+    {
+      "MSAId": 8872,
+      "MSA": "Hagerstown-Martinsburg, MD-WV    "
+    },
+    {
+      "MSAId": 8872,
+      "MSA": "Salisbury, MD-DE"
+    },
+    {
+      "MSAId": 8872,
+      "MSA": "Washington-Arlington-Alexandria, DC-VA-MD-WV"
+    }
+  ]
+}

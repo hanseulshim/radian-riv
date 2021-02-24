@@ -1,0 +1,54 @@
+{
+  "success": true,
+  "status": 1,
+  "message": "",
+  "detail": "",
+  "data": {
+    "State": [
+      {
+        "Period": "11/01/2020",
+        "Num of Sold Props": 3739,
+        "Num of REO Sold Props": 118,
+        "Num of NONREO Sold Props": 3621,
+        "Median Sold Price": 410250
+      },
+      {
+        "Period": "12/01/2020",
+        "Num of Sold Props": 3554,
+        "Num of REO Sold Props": 117,
+        "Num of NONREO Sold Props": 3437,
+        "Median Sold Price": 419000
+      },
+      {
+        "Period": "01/01/2021",
+        "Num of Sold Props": 2116,
+        "Num of REO Sold Props": 55,
+        "Num of NONREO Sold Props": 2061,
+        "Median Sold Price": 418500
+      }
+    ],
+    "Table1": [
+      {
+        "Period": "11/01/2020",
+        "Num of Sold Props": 44,
+        "Num of REO Sold Props": 1,
+        "Num of NONREO Sold Props": 43,
+        "Median Sold Price": 424000
+      },
+      {
+        "Period": "12/01/2020",
+        "Num of Sold Props": 46,
+        "Num of REO Sold Props": 2,
+        "Num of NONREO Sold Props": 44,
+        "Median Sold Price": 418250
+      },
+      {
+        "Period": "01/01/2021",
+        "Num of Sold Props": 31,
+        "Num of REO Sold Props": 0,
+        "Num of NONREO Sold Props": 31,
+        "Median Sold Price": 440000
+      }
+    ]
+  }
+}

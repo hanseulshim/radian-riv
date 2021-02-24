@@ -9,7 +9,6 @@ import {
 import CustomSelect from 'components/common/CustomSelect'
 import Input from 'components/common/Input'
 import { setFilterDefaults } from 'api'
-import { useAuth } from 'context/auth/AuthProvider'
 import Checkbox from 'components/common/Checkbox'
 import Form from 'components/common/Form'
 
@@ -31,9 +30,6 @@ interface Option {
 }
 
 function AveFilterDefaults() {
-  const {
-    auth: { user }
-  } = useAuth()
   const [filterDefaults, setFilterDefaultState] = useState({
     ...defaultFilterState
   })
@@ -46,8 +42,7 @@ function AveFilterDefaults() {
   useEffect(() => {
     const fetchUserDefaults = async () => {
       try {
-        const { userid_ssid } = user
-        const defaults = await getFilterDefaults(userid_ssid)
+        const defaults = await getFilterDefaults()
         setFilterDefaultState({
           sqft: defaults.sqft || null,
           sqft_min: defaults.sqft_min.toString() || '',
@@ -69,13 +64,10 @@ function AveFilterDefaults() {
   useEffect(() => {
     const fetchFilterDefaultOptions = async () => {
       try {
-        const { userid_ssid } = user
-        const sqftOptions = await getFilterDefaultsSquareFt(userid_ssid)
-        const sqftPercentOptions = await getFilterDefaultsSquareFtPercent(
-          userid_ssid
-        )
-        const restrictOptions = await getFilterDefaultsRestrict(userid_ssid)
-        const timeOptions = await getFilterDefaultsTime(userid_ssid)
+        const sqftOptions = await getFilterDefaultsSquareFt()
+        const sqftPercentOptions = await getFilterDefaultsSquareFtPercent()
+        const restrictOptions = await getFilterDefaultsRestrict()
+        const timeOptions = await getFilterDefaultsTime()
         setSquareFootageOptions(sqftOptions)
         setPercentOptions(sqftPercentOptions)
         setRestrictCompOptions(restrictOptions)
@@ -100,12 +92,12 @@ function AveFilterDefaults() {
       } = filterDefaults
       const message = await setFilterDefaults({
         ...filterDefaults,
-        sqft: sqft.value,
+        sqft: sqft ? sqft.value : null,
         sqft_min: parseInt(sqft_min) || null,
         sqft_max: parseInt(sqft_max) || null,
         sqft_percent: sqft_percent ? sqft_percent.value : null,
-        time_going_back: time_going_back.value,
-        restrict_comps: restrict_comps.value
+        time_going_back: time_going_back ? time_going_back.value : null,
+        restrict_comps: restrict_comps ? restrict_comps.value : null
       })
       setAlert({ type: 'success', message: message })
     } catch (e) {

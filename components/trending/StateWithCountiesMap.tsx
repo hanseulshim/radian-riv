@@ -15,7 +15,6 @@ const path = d3.geoPath().projection(projection)
 export default function StateWithCountiesMap() {
   const [stateGeo, setStateGeo] = useState(null)
   const [countyGeo, setCountyGeo] = useState(null)
-  const [zoomLevel, setZoomLevel] = useState(null)
   const [tooltip, setTooltip] = useState(null)
   const [error, setError] = useState(null)
   const router = useRouter()
@@ -50,23 +49,21 @@ export default function StateWithCountiesMap() {
         .duration(750)
         .style('stroke-width', 1.5 / scale + 'px')
         .attr('transform', 'translate(' + translate + ')scale(' + scale + ')')
-
-      setZoomLevel(scale)
     }
   }, [stateGeo])
 
   const getCountyFill = (num: number) => {
-    if (num < -0.2) {
+    if (num < -20) {
       return '#76143b'
-    } else if (num >= -0.2 && num <= -0.1) {
+    } else if (num >= -20 && num <= -10) {
       return '#bd2042'
-    } else if (num > -0.1 && num <= 0) {
+    } else if (num > -10 && num <= 10) {
       return '#bd6720'
-    } else if (num > 0 && num <= 0.1) {
+    } else if (num > 10 && num <= 10) {
       return '#a8bf31'
-    } else if (num > 0.1 && num <= 0.2) {
+    } else if (num > 10 && num <= 20) {
       return '#42c675'
-    } else if (num > 0.2) {
+    } else if (num > 20) {
       return '#068e26'
     }
   }

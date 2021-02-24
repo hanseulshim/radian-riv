@@ -5,7 +5,6 @@ import {
   setSubjectPropertyDefault
 } from 'api'
 import CustomSelect from 'components/common/CustomSelect'
-import { useAuth } from 'context/auth/AuthProvider'
 import Form from 'components/common/Form'
 
 interface Option {
@@ -18,9 +17,6 @@ const defaultSubjectPropertyState = {
 }
 
 function SubjectPropertyDefaults() {
-  const {
-    auth: { user }
-  } = useAuth()
   const [selectedDefault, setSelectedDefault] = useState({
     ...defaultSubjectPropertyState
   })
@@ -32,9 +28,7 @@ function SubjectPropertyDefaults() {
   useEffect(() => {
     const fetchUserDefault = async () => {
       try {
-        const { userid_ssid } = user
-
-        const subjectProperty = await getSubjectPropertyDefault(userid_ssid)
+        const subjectProperty = await getSubjectPropertyDefault()
         setSelectedDefault({ property: subjectProperty })
       } catch (e) {
         setAlert({ type: 'error', message: e.message })
@@ -46,8 +40,7 @@ function SubjectPropertyDefaults() {
   useEffect(() => {
     const fetchSubjectPropertyDefaults = async () => {
       try {
-        const { userid_ssid } = user
-        const options = await getSubjectPropertyDefaults(userid_ssid)
+        const options = await getSubjectPropertyDefaults()
         setSubjectPropertyDefaults(options)
       } catch (e) {
         setAlert({ type: 'error', message: e.message })
@@ -59,11 +52,9 @@ function SubjectPropertyDefaults() {
   const submitDefaults = async () => {
     setAlert(null)
     try {
-      const { userid_ssid } = user
-      const message = await setSubjectPropertyDefault({
-        userid_ssid,
-        subject_property_id: selectedDefault.property.value
-      })
+      const message = await setSubjectPropertyDefault(
+        selectedDefault.property.value
+      )
       setAlert({ type: 'success', message })
     } catch (e) {
       setAlert({ type: 'error', message: e.message })

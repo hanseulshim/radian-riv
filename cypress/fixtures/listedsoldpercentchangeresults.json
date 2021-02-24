@@ -1,0 +1,48 @@
+{
+  "success": true,
+  "status": 1,
+  "message": "",
+  "detail": "",
+  "data": {
+    "State": [
+      {
+        "Period": "11/01/2020",
+        "CurrListtoFinalSold % Change": 100.31,
+        "OrigListtoFinalSold % Change": 100.09,
+        "DOM Sold Props": 48
+      },
+      {
+        "Period": "12/01/2020",
+        "CurrListtoFinalSold % Change": 100.96,
+        "OrigListtoFinalSold % Change": 100.96,
+        "DOM Sold Props": 49
+      },
+      {
+        "Period": "01/01/2021",
+        "CurrListtoFinalSold % Change": 100.87,
+        "OrigListtoFinalSold % Change": 102.07,
+        "DOM Sold Props": 52
+      }
+    ],
+    "Table1": [
+      {
+        "Period": "11/01/2020",
+        "CurrListtoFinalSold % Change": 101.07,
+        "OrigListtoFinalSold % Change": 99.88,
+        "DOM Sold Props": 42
+      },
+      {
+        "Period": "12/01/2020",
+        "CurrListtoFinalSold % Change": 105.35,
+        "OrigListtoFinalSold % Change": 104.82,
+        "DOM Sold Props": 47
+      },
+      {
+        "Period": "01/01/2021",
+        "CurrListtoFinalSold % Change": 100.24,
+        "OrigListtoFinalSold % Change": 100.24,
+        "DOM Sold Props": 49
+      }
+    ]
+  }
+}

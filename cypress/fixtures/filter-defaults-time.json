@@ -1,20 +1,22 @@
 {
   "success": true,
   "status": 1,
-  "message": "string",
-  "detail": "string",
-  "data": [
-    {
-      "value": 0,
-      "label": "3 months"
-    },
-    {
-      "value": 1,
-      "label": "6 months"
-    },
-    {
-      "value": 2,
-      "label": "12 months"
-    }
-  ]
+  "message": "",
+  "detail": "",
+  "data": {
+    "filterTime": [
+      {
+        "Value": 0,
+        "Label": "3 months"
+      },
+      {
+        "Value": 1,
+        "Label": "6 months"
+      },
+      {
+        "Value": 2,
+        "Label": "12 months"
+      }
+    ]
+  }
 }

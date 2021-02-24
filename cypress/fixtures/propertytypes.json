@@ -1,0 +1,40 @@
+{
+  "success": true,
+  "status": 1,
+  "message": null,
+  "detail": null,
+  "data": [
+    {
+      "PropertyTypId": 1,
+      "MSA": "Single Family"
+    },
+    {
+      "PropertyTypId": 2,
+      "MSA": "Multifamily"
+    },
+    {
+      "PropertyTypId": 3,
+      "MSA": "Condominium"
+    },
+    {
+      "PropertyTypId": 4,
+      "MSA": "Land"
+    },
+    {
+      "PropertyTypId": 5,
+      "MSA": "Rental"
+    },
+    {
+      "PropertyTypId": 6,
+      "MSA": "Mobile"
+    },
+    {
+      "PropertyTypId": 7,
+      "MSA": "Commercial"
+    },
+    {
+      "PropertyTypId": 8,
+      "MSA": "Unknown"
+    }
+  ]
+}
