@@ -37,7 +37,7 @@ export default function ProfileMenu() {
   }
 
   return (
-    <div className="profile-menu">
+    <div className="profile-menu dropdown-container">
       <img
         id="profile-logo"
         alt="profile"
@@ -45,7 +45,7 @@ export default function ProfileMenu() {
         onClick={openMenu}
       />
       {showMenu && (
-        <ul className="menu-container">
+        <ul className="dropdown">
           <Link href="/profile">
             <a>
               <li>Account</li>

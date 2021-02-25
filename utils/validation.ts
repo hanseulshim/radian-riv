@@ -71,7 +71,12 @@ export const validateForm = (form: any, reqFields: any = {}): any => {
       if (form[key].length === 0) {
         errorObj[key] = `Answer can't be blank`
       }
-    } else if (key === 'date' || key === 'asOfDate') {
+    } else if (
+      key === 'date' ||
+      key === 'asOfDate' ||
+      key === 'orderDateFrom' ||
+      key === 'orderDateTo'
+    ) {
       if (form[key].length === 0) {
         errorObj[key] = `Date can't be empty`
       } else if (!form[key].match(dateValidation)) {

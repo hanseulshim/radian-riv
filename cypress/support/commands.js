@@ -42,7 +42,7 @@ Cypress.Commands.add('valueProduct', () => {
 
 Cypress.Commands.add('profile', () => {
   cy.get('#profile-logo').click()
-  cy.get('.menu-container').contains('Account').click()
+  cy.get('a').contains('Account').click()
   cy.url().should('contain', '/profile')
 })
 

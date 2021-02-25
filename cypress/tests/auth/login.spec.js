@@ -46,7 +46,7 @@ export default () => {
     describe('After Login', () => {
       it('should logout', () => {
         cy.get('#profile-logo').click()
-        cy.get('.menu-container > li').contains('Logout').click()
+        cy.get('li').contains('Logout').click()
       })
     })
   })

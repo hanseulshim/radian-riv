@@ -5,7 +5,7 @@ import Breadcrumbs from 'components/common/Breadcrumbs'
 import Sidebar from 'components/Sidebar'
 import { valueProductRoutes } from 'utils'
 import NewOrder from 'components/valueProducts/NewOrder'
-import SearchOrders from 'components/valueProducts/SearchOrders'
+import SearchOrders from 'components/valueProducts/search-orders'
 import VideoTutorialModal from 'components/valueProducts/VideoTutorialModal'
 
 function ValueProducts() {

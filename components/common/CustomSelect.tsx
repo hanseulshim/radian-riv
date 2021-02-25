@@ -8,7 +8,7 @@ interface Option {
 
 interface Props {
   options: Option[]
-  value: Option
+  value: Option | Option[]
   onChange: (option: Option, key: string) => void
   label?: string
   placeholder?: string
@@ -16,6 +16,8 @@ interface Props {
   classNamePrefix?: string
   disabled?: boolean
   isSearchable?: boolean
+  isMulti?: boolean
+  id?: string
 }
 
 const customStyles = {
@@ -55,7 +57,9 @@ export default function CustomSelect({
   className,
   classNamePrefix,
   disabled,
-  isSearchable
+  isSearchable,
+  isMulti,
+  id
 }: Props) {
   return (
     <div className="custom-select-container">
@@ -70,6 +74,8 @@ export default function CustomSelect({
         styles={customStyles}
         isSearchable={isSearchable}
         classNamePrefix={classNamePrefix}
+        isMulti={isMulti}
+        id={id}
       />
     </div>
   )

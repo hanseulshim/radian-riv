@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrdersTable should match snapshot 1`] = `
+<div
+  style={
+    Object {
+      "marginTop": "2em",
+      "maxWidth": "1020px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "justifyContent": "space-between",
+      }
+    }
+  >
+    <h2
+      style={
+        Object {
+          "marginBottom": "0.5em",
+        }
+      }
+    >
+      Orders
+    </h2>
+    <span>
+      0
+       Orders
+    </span>
+  </div>
+  <Table
+    columns={Array []}
+    data={Array []}
+    fetchData={[Function]}
+  />
+</div>
+`;

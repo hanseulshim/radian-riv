@@ -2,7 +2,7 @@
 
 exports[`ProfileMenu should match snapshot after clicking image 1`] = `
 <div
-  className="profile-menu"
+  className="profile-menu dropdown-container"
 >
   <img
     alt="profile"
@@ -11,7 +11,7 @@ exports[`ProfileMenu should match snapshot after clicking image 1`] = `
     src="undefined/images/profile.svg"
   />
   <ul
-    className="menu-container"
+    className="dropdown"
   >
     <Link
       href="/profile"
@@ -36,7 +36,7 @@ exports[`ProfileMenu should match snapshot after clicking image 1`] = `
 
 exports[`ProfileMenu should match snapshot before clicking image 1`] = `
 <div
-  className="profile-menu"
+  className="profile-menu dropdown-container"
 >
   <img
     alt="profile"

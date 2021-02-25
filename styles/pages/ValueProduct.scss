@@ -33,6 +33,134 @@
       }
     }
   }
+
+  .search-orders-container {
+    display: flex;
+    flex-direction: column;
+    .btn-row {
+      width: 100%;
+      display: flex;
+      margin-bottom: 1em;
+      .btn-icon {
+        margin-right: 1em;
+      }
+    }
+    .form {
+      padding: 0;
+      .form-submit {
+        align-self: flex-start;
+      }
+    }
+    .filters-container {
+      margin: 1em 0 1em 0;
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      .custom-select-container,
+      .input-group {
+        margin-right: 1em;
+        width: 250px;
+      }
+      .custom-select-container {
+        position: relative;
+        bottom: 5px;
+      }
+      :nth-child(5) {
+        width: 500px;
+      }
+    }
+    .advanced-filters-container {
+      margin: 0em -1em 1em -1em;
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      background-color: var(--light-gray);
+      padding: 1em;
+      .custom-select-container,
+      .input-group {
+        margin-right: 1em;
+        width: 250px;
+      }
+      .custom-select-container {
+        position: relative;
+        bottom: 5px;
+        margin: 10px 20px 10px 0;
+        .transparent__control {
+          background-color: transparent;
+        }
+      }
+
+      .select-pools,
+      .reconcile-status {
+        width: 500px;
+        margin: 1em 0;
+      }
+      .input-group {
+        input {
+          background-color: transparent;
+        }
+      }
+      .full-width-row {
+        flex: 1 100%;
+        .custom-select-container {
+          margin: 2em 0;
+        }
+      }
+    }
+    #save-search-modal {
+      .form {
+        padding: 2em 3em;
+      }
+      .search-container {
+        margin: 1em 0;
+        width: 100%;
+        .search-name {
+          background: var(--prussian-blue);
+          color: var(--white);
+          padding: 10px;
+        }
+        .row {
+          display: flex;
+          align-items: center;
+          margin: 0.5em 0;
+          padding: 0 10px;
+          .icon {
+            margin-left: 10px;
+            margin-bottom: 15px;
+            cursor: pointer;
+          }
+          .input-group {
+            margin: 0;
+            input {
+              padding: 0;
+              margin: 0;
+            }
+            .input-label {
+              display: none;
+            }
+          }
+          .radio {
+            label {
+              margin-bottom: 15px;
+            }
+          }
+          .radio-input {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            &.inactive {
+              .input-group {
+                opacity: 0.5;
+              }
+            }
+            &.short {
+              margin-right: 34px;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 .value-product-property {

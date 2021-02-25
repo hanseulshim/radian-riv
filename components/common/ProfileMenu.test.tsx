@@ -22,7 +22,7 @@ describe('ProfileMenu', () => {
   })
   it('render menu container on click', () => {
     component.find('#profile-logo').simulate('click')
-    expect(component.find('ul.menu-container')).toHaveLength(1)
+    expect(component.find('ul.dropdown')).toHaveLength(1)
     expect(component.find('li')).toHaveLength(3)
   })
   it('should match snapshot after clicking image', () => {
