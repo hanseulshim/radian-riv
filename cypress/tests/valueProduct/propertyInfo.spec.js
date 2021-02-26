@@ -2,8 +2,9 @@
 export default () => {
   describe('Property Info', () => {
     before(() => {
-      cy.get('a').contains('18324 Tapwood Road').click()
-      cy.url().should('includes', '/value-products/31130765-5')
+      cy.get('.tab-container > li').contains('Search Orders').click()
+      cy.get('a').contains('123456789-0').click()
+      cy.url().should('includes', '/value-products/123456789-0')
     })
     beforeEach(() => {
       Cypress.Cookies.preserveOnce('auth')

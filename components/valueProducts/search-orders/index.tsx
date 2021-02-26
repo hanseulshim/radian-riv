@@ -53,11 +53,23 @@ export default function SearchOrders() {
     const setDefaults = () => {
       setFilters({
         ...filters,
-        orderDateFrom: formatDate(new Date()),
-        orderDateTo: formatDate(new Date(Date.now() + 12096e5))
+        orderDateFrom: formatDate(new Date(Date.now() - 12096e5)),
+        orderDateTo: formatDate(new Date())
       })
     }
     setDefaults()
+  }, [])
+
+  useEffect(() => {
+    const getFirstOrders = async () => {
+      const response = await getOrders({
+        ...filters,
+        orderDateFrom: formatDate(new Date(Date.now() - 12096e5)),
+        orderDateTo: formatDate(new Date())
+      })
+      setOrderList(response)
+    }
+    getFirstOrders()
   }, [])
 
   const onSubmit = async () => {
@@ -198,8 +210,8 @@ export default function SearchOrders() {
             </button>
           </div>
           <div className="form-submit">
-            <button className="btn" type="submit">
-              Submit
+            <button className="btn" type="submit" id="search-orders-button">
+              Search
             </button>
             <button className="btn btn-link" onClick={onClearAll} type="button">
               Clear All

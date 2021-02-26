@@ -119,6 +119,12 @@ export const valueProductRoutes = [
     value: 'Orders',
     path: `/value-products`,
     parentPath: '/value-products'
+  },
+  {
+    label: 'Video',
+    value: 'Video',
+    path: `/value-products/video`,
+    parentPath: '/value-products'
   }
 ]
 

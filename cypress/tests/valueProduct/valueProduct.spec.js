@@ -47,7 +47,7 @@ export default () => {
     })
 
     it('Should allow user to submit a search', () => {
-      cy.get('button').contains('Submit').click()
+      cy.get('#search-orders-button').click()
       cy.get('.styled-table-row').should('have.length.above', 0)
     })
   })

@@ -1524,7 +1524,22 @@ export interface Order {
 }
 
 export const getOrders = async (form: Filters): Promise<Order[]> => {
-  const arr = []
+  const arr = [
+    {
+      orderId: '123456789-0',
+      productType: 'RIV',
+      address: faker.address.streetAddress(),
+      city: faker.address.city(),
+      state: faker.address.stateAbbr(),
+      zip: faker.address.zipCode(),
+      reconcileStatus: 'Ready for QC',
+      client: 'Boost Labs',
+      orderedBy: `${faker.name.lastName()}, ${faker.name.firstName()}`,
+      orderDate: formatDate(faker.date.between('2020-01-01', '2020-12-31')),
+      dueDate: formatDate(faker.date.between('2020-01-01', '2020-12-31')),
+      price: faker.random.number({ min: 500000, max: 600000 })
+    }
+  ]
   for (let i = 0; i < 100; i++) {
     arr.push({
       orderId: `${faker.random.number({

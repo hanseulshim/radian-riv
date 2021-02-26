@@ -2,6 +2,10 @@
 
 export default () => {
   describe('Video Tutorial', () => {
+    before(() => {
+      cy.get('.route-link').contains('Video').click()
+      cy.url().should('contain', 'video')
+    })
     beforeEach(() => {
       Cypress.Cookies.preserveOnce('auth')
     })
@@ -24,6 +28,8 @@ export default () => {
     it('should close modal', () => {
       cy.get('.close-form').click()
       cy.get('#video-modal').should('not.exist')
+      cy.get('.route-link').contains('Orders').click()
+      cy.url().should('includes', '/value-products')
     })
   })
 }

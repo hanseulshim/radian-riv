@@ -3,7 +3,7 @@ export default () => {
   describe('Market Analysis', () => {
     before(() => {
       cy.get('.route-link').contains('Market Analysis').click()
-      cy.url().should('includes', '/value-products/31130765-5/market-analysis')
+      cy.url().should('includes', '/value-products/123456789-0/market-analysis')
     })
     beforeEach(() => {
       Cypress.Cookies.preserveOnce('auth')
