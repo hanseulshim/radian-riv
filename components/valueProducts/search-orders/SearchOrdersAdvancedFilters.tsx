@@ -86,7 +86,7 @@ export default function SearchOrdersAdvancedFilters({
         setFilters(initialFilter)
         setAlert(null)
       } catch (e) {
-        setAlert({ type: 'error', message: 'You blew it' })
+        setAlert({ type: 'error', message: e.message })
       }
     }
     geAllOptions()
