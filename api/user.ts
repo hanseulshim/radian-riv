@@ -51,27 +51,7 @@ interface FilterDefaultSet {
 }
 
 export const getFilterDefaults = async (): Promise<FilterDefaults> => {
-  // const data = await handleApi(`/user/filter-defaults`)
-  const data = {
-    sqft: {
-      Value: 1,
-      Label: 'by Min/Max'
-    },
-    sqft_min: 12.0,
-    sqft_max: 15.0,
-    sqft_percent: null,
-    comparable_retail: true,
-    comparable_distressed: false,
-    time_going_back: {
-      Value: 1,
-      Label: '6 Months'
-    },
-    comps_subdivision: true,
-    restrict_comps: {
-      Value: 1,
-      Label: 'Single Family'
-    }
-  }
+  const data = await handleApi(`/user/filter-defaults`)
   return {
     sqft: {
       value: data.sqft.Value,
