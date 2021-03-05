@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useValueProduct } from 'context/ValueProductProvider'
+import { useOrder } from 'context/OrderProvider'
 import DaysTable from './table/DaysTable'
 import SoldDaysTable from './table/SoldDaysTable'
 import ListPriceTable from './table/ListPriceTable'
@@ -21,12 +21,16 @@ export default function FilteredMarketAnalysis() {
   ] = useState<FilteredMarketAnalysisFilters>({
     minSqft: null,
     maxSqft: null,
-    minYrBlt: null,
-    maxYrBlt: null,
+    minYear: null,
+    maxYear: null,
     propertyType: null,
     minBed: null,
     maxBed: null,
-    comparableType: null
+    comparableType: null,
+    sqft: null,
+    year: null,
+    area: null,
+    areaParameter: null
   })
   const [daysTable, setDaysTable] = useState([])
   const [soldDaysTable, setSoldDaysTable] = useState([])
@@ -47,50 +51,44 @@ export default function FilteredMarketAnalysis() {
       '271-365': null
     }
   })
-  const { propertyInfo } = useValueProduct()
+  const { order } = useOrder()
 
   useEffect(() => {
-    if (propertyInfo.id) {
+    if (order.id) {
       const getData = async () => {
-        const filters = await getFilteredMarketAnalysisFilters(propertyInfo.id)
+        const filters = await getFilteredMarketAnalysisFilters(order.id)
         setMarketFilters(filters)
-        const days = await getFilteredMarketAnalysisDays(propertyInfo.id)
+        const days = await getFilteredMarketAnalysisDays(order.id)
         setDaysTable(days)
-        const soldDays = await getFilteredMarketAnalysisSoldDays(
-          propertyInfo.id
-        )
+        const soldDays = await getFilteredMarketAnalysisSoldDays(order.id)
         setSoldDaysTable(soldDays)
         const depressedMarket = await getFilteredMarketAnalysisDepressedMarketGrid(
-          propertyInfo.id
+          order.id
         )
         setDepressedMarketTable(depressedMarket)
-        const listings = await getFilteredMarketAnalysisListings(
-          propertyInfo.id
-        )
+        const listings = await getFilteredMarketAnalysisListings(order.id)
         setMarketListings(listings)
       }
       getData()
     }
-  }, [propertyInfo])
+  }, [order])
 
   return (
     <>
       <div className="analytics-container">
         <div className="analytics" style={{ width: 210 }}>
           <span className="label">Subject SQFT:</span>
-          <span>{propertyInfo.sqft !== null ? propertyInfo.sqft : '--'}</span>
+          <span>{marketFilters.sqft !== null ? marketFilters.sqft : '--'}</span>
         </div>
         <div className="analytics" style={{ width: 245 }}>
           <span className="label">Subject Year Built:</span>
-          <span>
-            {propertyInfo.yearBuilt !== null ? propertyInfo.yearBuilt : '--'}
-          </span>
+          <span>{marketFilters.year !== null ? marketFilters.year : '--'}</span>
         </div>
         <div className="analytics" style={{ width: 245 }}>
           <span className="label">Prop Type:</span>
           <span>
-            {propertyInfo.propertyType !== null
-              ? propertyInfo.propertyType
+            {marketFilters.propertyType !== null
+              ? marketFilters.propertyType
               : '--'}
           </span>
         </div>
@@ -98,13 +96,13 @@ export default function FilteredMarketAnalysis() {
       <div className="analytics-container">
         <div className="analytics" style={{ width: 210 }}>
           <span className="label">Area:</span>
-          <span>{propertyInfo.area !== null ? propertyInfo.area : '--'}</span>
+          <span>{marketFilters.area !== null ? marketFilters.area : '--'}</span>
         </div>
         <div className="analytics" style={{ width: 245 }}>
           <span className="label">Area Parameter:</span>
           <span>
-            {propertyInfo.areaParameter !== null
-              ? propertyInfo.areaParameter
+            {marketFilters.areaParameter !== null
+              ? marketFilters.areaParameter
               : '--'}
           </span>
         </div>
@@ -117,7 +115,7 @@ export default function FilteredMarketAnalysis() {
         <div className="analytics" style={{ width: 170 }}>
           <span className="label">Min YrBlt:</span>
           <span>
-            {marketFilters.minYrBlt !== null ? marketFilters.minYrBlt : '--'}
+            {marketFilters.minYear !== null ? marketFilters.minYear : '--'}
           </span>
         </div>
         <div className="analytics">
@@ -151,7 +149,7 @@ export default function FilteredMarketAnalysis() {
         <div className="analytics" style={{ width: 170 }}>
           <span className="label">Max YrBlt:</span>
           <span>
-            {marketFilters.maxYrBlt !== null ? marketFilters.maxYrBlt : '--'}
+            {marketFilters.maxYear !== null ? marketFilters.maxYear : '--'}
           </span>
         </div>
         <div className="analytics">
@@ -183,11 +181,11 @@ export default function FilteredMarketAnalysis() {
       </div>
       <div style={{ display: 'flex', marginBottom: '1em' }}>
         <ListPriceTable
-          listingPrice={marketListings.finalListPrice}
+          listPrice={marketListings.finalListPrice}
           type="FINAL"
         />
         <ListPriceTable
-          listingPrice={marketListings.originalListPrice}
+          listPrice={marketListings.originalListPrice}
           type="ORIGINAL"
         />
       </div>

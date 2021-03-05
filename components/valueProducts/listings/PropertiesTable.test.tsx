@@ -8,7 +8,7 @@ describe('PropertiesTable', () => {
   beforeAll(() => {
     const props = {
       tableData: [],
-      type: 'Sold'
+      view: 'Sold'
     }
     component = shallow(<PropertiesTable {...props} />)
   })

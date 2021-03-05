@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useValueProduct } from 'context/ValueProductProvider'
+import { useOrder } from 'context/OrderProvider'
 import DaysTable from './table/DaysTable'
 import SoldDaysTable from './table/SoldDaysTable'
 import ListPriceTable from './table/ListPriceTable'
@@ -7,10 +7,21 @@ import {
   getMarketAnalysisDays,
   getMarketAnalysisListings,
   MarketListings,
-  getMarketAnalysisSoldDays
+  getMarketAnalysisSoldDays,
+  MarketAnalysisInterface,
+  getMarketAnalysis
 } from 'api'
 
 export default function MarketAnalysis() {
+  const [marketAnalysis, setMarketAnalysis] = useState<MarketAnalysisInterface>(
+    {
+      sqft: null,
+      year: null,
+      propertyType: null,
+      area: null,
+      areaParameter: null
+    }
+  )
   const [daysTable, setDaysTable] = useState([])
   const [soldDaysTable, setSoldDaysTable] = useState([])
   const [marketListings, setMarketListings] = useState<MarketListings>({
@@ -29,40 +40,44 @@ export default function MarketAnalysis() {
       '271-365': null
     }
   })
-  const { propertyInfo } = useValueProduct()
+  const { order } = useOrder()
 
   useEffect(() => {
-    if (propertyInfo.id) {
+    if (order.id) {
       const getData = async () => {
-        const days = await getMarketAnalysisDays(propertyInfo.id)
+        const days = await getMarketAnalysisDays(order.id)
         setDaysTable(days)
-        const soldDays = await getMarketAnalysisSoldDays(propertyInfo.id)
+        const soldDays = await getMarketAnalysisSoldDays(order.id)
         setSoldDaysTable(soldDays)
-        const listings = await getMarketAnalysisListings(propertyInfo.id)
+        const listings = await getMarketAnalysisListings(order.id)
         setMarketListings(listings)
+        const market = await getMarketAnalysis(order.id)
+        setMarketAnalysis(market)
       }
       getData()
     }
-  }, [propertyInfo])
+  }, [order])
 
   return (
     <>
       <div className="analytics-container">
         <div className="analytics" style={{ width: 210 }}>
           <span className="label">Subject SQFT:</span>
-          <span>{propertyInfo.sqft !== null ? propertyInfo.sqft : '--'}</span>
+          <span>
+            {marketAnalysis.sqft !== null ? marketAnalysis.sqft : '--'}
+          </span>
         </div>
         <div className="analytics" style={{ width: 245 }}>
           <span className="label">Subject Year Built:</span>
           <span>
-            {propertyInfo.yearBuilt !== null ? propertyInfo.yearBuilt : '--'}
+            {marketAnalysis.year !== null ? marketAnalysis.year : '--'}
           </span>
         </div>
         <div className="analytics">
           <span className="label">Prop Type:</span>
           <span>
-            {propertyInfo.propertyType !== null
-              ? propertyInfo.propertyType
+            {marketAnalysis.propertyType !== null
+              ? marketAnalysis.propertyType
               : '--'}
           </span>
         </div>
@@ -70,13 +85,15 @@ export default function MarketAnalysis() {
       <div className="analytics-container">
         <div className="analytics" style={{ width: 210 }}>
           <span className="label">Area:</span>
-          <span>{propertyInfo.area !== null ? propertyInfo.area : '--'}</span>
+          <span>
+            {marketAnalysis.area !== null ? marketAnalysis.area : '--'}
+          </span>
         </div>
         <div className="analytics">
           <span className="label">Area Parameter:</span>
           <span>
-            {propertyInfo.areaParameter !== null
-              ? propertyInfo.areaParameter
+            {marketAnalysis.areaParameter !== null
+              ? marketAnalysis.areaParameter
               : '--'}
           </span>
         </div>
@@ -101,11 +118,11 @@ export default function MarketAnalysis() {
       </div>
       <div style={{ display: 'flex' }}>
         <ListPriceTable
-          listingPrice={marketListings.finalListPrice}
+          listPrice={marketListings.finalListPrice}
           type="FINAL"
         />
         <ListPriceTable
-          listingPrice={marketListings.originalListPrice}
+          listPrice={marketListings.originalListPrice}
           type="ORIGINAL"
         />
       </div>

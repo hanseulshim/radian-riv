@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react'
-import { Option, getPropertyTypeOptions, getMonthsBackOptions } from 'api'
-import { useValueProduct } from 'context/ValueProductProvider'
+import {
+  Option,
+  getPropertyTypeOptions,
+  getMonthsBackOptions,
+  OrderPropertyInterface
+} from 'api'
 import Input from 'components/common/Input'
 import CustomSelect from 'components/common/CustomSelect'
 
@@ -12,7 +16,7 @@ interface Inputs {
 
 interface Error {
   asOfDate: string
-  yearBuilt: string
+  year: string
 }
 
 interface Props {
@@ -20,15 +24,16 @@ interface Props {
   setInputs: (Inputs) => void
   error: Error
   setError: (Error) => void
+  orderProps: OrderPropertyInterface
 }
 
 export default function EditPropertyOptions({
   inputs,
   setInputs,
   error,
-  setError
+  setError,
+  orderProps
 }: Props) {
-  const { propertyInfo } = useValueProduct()
   const [propertyTypeOptions, setPropertyTypeOptions] = useState<Option[]>([])
   const [monthsBackOptions, setMonthsBackOptions] = useState<Option[]>([])
 
@@ -43,29 +48,29 @@ export default function EditPropertyOptions({
   }, [])
 
   useEffect(() => {
-    if (propertyTypeOptions.length && propertyInfo.id) {
+    if (propertyTypeOptions.length && orderProps.id) {
       const propertyType = propertyTypeOptions.find(
-        opt => opt.value === propertyInfo.propertyType
+        opt => opt.value === orderProps.propertyType
       )
       setInputs({
         ...inputs,
         propertyType: propertyType.value,
-        asOfDate: propertyInfo.asOfDate
+        asOfDate: orderProps.asOfDate
       })
     }
-  }, [propertyTypeOptions, propertyInfo])
+  }, [propertyTypeOptions, orderProps])
 
   useEffect(() => {
-    if (monthsBackOptions.length && propertyInfo.id) {
+    if (monthsBackOptions.length && orderProps.id) {
       const monthsBack = monthsBackOptions.find(
-        opt => opt.value === propertyInfo.compsGoingBack
+        opt => opt.value === orderProps.compsBack
       )
       setInputs({
         ...inputs,
         monthsBack: monthsBack.value
       })
     }
-  }, [monthsBackOptions, propertyInfo])
+  }, [monthsBackOptions, orderProps])
 
   const handleSelect = (opt: Option, key: string) => {
     const stateCopy = { ...inputs }

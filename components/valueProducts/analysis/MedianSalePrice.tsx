@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useValueProduct } from 'context/ValueProductProvider'
+import { useOrder } from 'context/OrderProvider'
 import MedianSalePriceTable from './table/MedianSalePriceTable'
 import { getMedianSalePrice, MedianSalePriceInterface } from 'api'
 
@@ -9,17 +9,17 @@ export default function MedianSalePrice() {
     twoMonths: [],
     threeMonths: []
   })
-  const { propertyInfo } = useValueProduct()
+  const { order } = useOrder()
 
   useEffect(() => {
-    if (propertyInfo.id) {
+    if (order.id) {
       const getData = async () => {
-        const tableData = await getMedianSalePrice(propertyInfo.id)
+        const tableData = await getMedianSalePrice(order.id)
         setData(tableData)
       }
       getData()
     }
-  }, [propertyInfo])
+  }, [order])
 
   return (
     <div className="median-sale-price">

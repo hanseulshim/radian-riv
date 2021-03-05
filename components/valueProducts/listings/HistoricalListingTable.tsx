@@ -1,8 +1,9 @@
 import React, { useState, useCallback } from 'react'
 import Table from 'components/common/Table'
+import { HistoricalListingPropertyInterface } from 'api'
 
 interface Props {
-  tableData: any[]
+  tableData: HistoricalListingPropertyInterface[]
 }
 
 export default function HistoricalListingTable({ tableData }: Props) {
@@ -43,7 +44,7 @@ export default function HistoricalListingTable({ tableData }: Props) {
       },
       {
         Header: 'Year Built',
-        accessor: 'yearBuilt',
+        accessor: 'year',
         align: 'right',
         width: 100
       },

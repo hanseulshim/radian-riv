@@ -2,22 +2,23 @@ import React, { useState, useCallback } from 'react'
 import Table from 'components/common/Table'
 import Link from 'next/link'
 import { formatPrice } from 'utils'
+import { SearchOrderInterface } from 'api'
 
 interface Props {
-  tableData: any[]
+  tableData: SearchOrderInterface[]
 }
 
 export default function OrdersTable({ tableData }: Props) {
-  const [data, setData] = useState([])
+  const [data, setData] = useState<SearchOrderInterface[]>([])
   const [columns, setColumns] = useState([])
 
   const fetchData = useCallback(async () => {
     setColumns([
       {
         Header: 'Order ID',
-        accessor: row => (
-          <Link href={`/value-products/${row.orderId}`}>
-            <a className="link">{row.orderId}</a>
+        accessor: (order: SearchOrderInterface) => (
+          <Link href={`/value-products/${order.id}`}>
+            <a className="link">{order.id}</a>
           </Link>
         ),
         align: 'right',
@@ -74,7 +75,7 @@ export default function OrdersTable({ tableData }: Props) {
       },
       {
         Header: 'Price',
-        accessor: row => formatPrice(row.price),
+        accessor: (order: SearchOrderInterface) => formatPrice(order.price),
         width: 100
       }
     ])

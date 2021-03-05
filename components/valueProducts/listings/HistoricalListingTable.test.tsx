@@ -2,13 +2,13 @@ import * as React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import HistoricalListingTable from './HistoricalListingTable'
-import { generateProperties } from '../../../api'
+import { getHistoricalListingProperty } from '../../../api'
 describe('HistoricalListingTable', () => {
   let component
-  beforeAll(() => {
-    const property = generateProperties(1)
+  beforeAll(async () => {
+    const property = await getHistoricalListingProperty('test123', '123')
     const props = {
-      tableData: property
+      tableData: [property]
     }
     component = shallow(<HistoricalListingTable {...props} />)
   })

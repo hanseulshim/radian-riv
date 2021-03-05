@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 interface Error {
   asOfDate: string
-  yearBuilt: string
+  year: string
 }
 interface Props {
   setSelectedSource: (source: string) => void
@@ -17,7 +17,7 @@ interface Props {
     units: string
     garage: string
     lotSize: string
-    yearBuilt: string
+    year: string
   }
   error: Error
 }
@@ -57,7 +57,7 @@ export default function EditPropertyCharacteristics({
             label={char}
             capitalizeLabel
             onChange={e => setCharacteristics(char, e.target.value)}
-            error={char === 'yearBuilt' ? error.yearBuilt : ''}
+            error={char === 'year' ? error.year : ''}
             key={'input' + char}
             disabled={
               selectedSource !== 'User' && selectedSource !== 'Appraisal'

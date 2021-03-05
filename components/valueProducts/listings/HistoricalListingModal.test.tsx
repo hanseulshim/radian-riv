@@ -2,14 +2,13 @@ import * as React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import HistoricalListingModal from './HistoricalListingModal'
-import { defaultPropertyInfo } from '../../../context/ValueProductProvider'
 describe('HistoricalListingModal', () => {
   let component
   beforeAll(() => {
     const props = {
       closeModal: () => {},
-      property: defaultPropertyInfo,
-      type: 'test'
+      propertyId: '123',
+      title: 'SDF'
     }
     component = shallow(<HistoricalListingModal {...props} />)
   })

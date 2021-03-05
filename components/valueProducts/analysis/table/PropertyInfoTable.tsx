@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react'
-import { useValueProduct } from 'context/ValueProductProvider'
+import { useOrder } from 'context/OrderProvider'
 import Table from 'components/common/Table'
 import { formatPrice } from 'utils'
 
@@ -16,12 +16,12 @@ export default function PropertyInfoTable({
 }: Props) {
   const [data, setData] = useState([])
   const [columns, setColumns] = useState([])
-  const { propertyInfo } = useValueProduct()
+  const { order } = useOrder()
 
   const fetchData = useCallback(async () => {
     const tableData = [
       {
-        ...propertyInfo
+        ...order
       }
     ]
     setColumns([
@@ -71,7 +71,7 @@ export default function PropertyInfoTable({
       }
     ])
     setData(tableData)
-  }, [propertyInfo])
+  }, [order])
 
   return (
     <div className="property-tabs">

@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react'
 import {
   changePropertyCharacteristics,
-  getPropertyCharacteristicsSources
+  getPropertyCharacteristicsSources,
+  getOrderProperties,
+  OrderPropertyInterface,
+  PropertyCharacteristicsInterface,
+  getOrder
 } from 'api'
-import { useValueProduct } from 'context/ValueProductProvider'
+import { useOrder } from 'context/OrderProvider'
 import { validateForm } from 'utils'
 import Modal from 'components/common/Modal'
 import Form from 'components/common/Form'
@@ -22,11 +26,25 @@ const defaultCharState = {
   units: '',
   garage: '',
   lotSize: '',
-  yearBuilt: ''
+  year: ''
 }
 
 export default function ChangePropertyCharacteristics({ closeModal }: Props) {
-  const { propertyInfo, setPropertyInfo } = useValueProduct()
+  const { order, setOrder } = useOrder()
+  const [orderProps, setOrderProps] = useState<OrderPropertyInterface>({
+    id: null,
+    bed: null,
+    bath: null,
+    sqft: null,
+    units: null,
+    garage: null,
+    lotSize: null,
+    year: null,
+    source: null,
+    propertyType: null,
+    compsBack: null,
+    asOfDate: null
+  })
   const [inputs, setInputs] = useState({
     propertyType: '',
     monthsBack: '',
@@ -37,8 +55,10 @@ export default function ChangePropertyCharacteristics({ closeModal }: Props) {
   const [characteristics, setCharacteristics] = useState({
     ...defaultCharState
   })
-  const [tableData, setTableData] = useState([])
-  const [error, setError] = useState({ asOfDate: '', yearBuilt: '' })
+  const [tableData, setTableData] = useState<
+    PropertyCharacteristicsInterface[]
+  >([])
+  const [error, setError] = useState({ asOfDate: '', year: '' })
   const [alert, setAlert] = useState(null)
 
   useEffect(() => {
@@ -50,15 +70,19 @@ export default function ChangePropertyCharacteristics({ closeModal }: Props) {
   }, [])
 
   useEffect(() => {
-    if (propertyInfo.id) {
-      setSelectedSource(propertyInfo.source)
+    const getOrderProps = async () => {
+      if (order.id) {
+        const orderProperties = await getOrderProperties(order.id)
+        setOrderProps(orderProperties)
+      }
     }
-  }, [propertyInfo])
+    getOrderProps()
+  }, [order])
 
   const onSubmit = async () => {
     const errorObj = validateForm({
       asOfDate: inputs.asOfDate,
-      yearBuilt: characteristics.yearBuilt
+      year: characteristics.year
     })
 
     if (Object.keys(errorObj).length) {
@@ -72,7 +96,7 @@ export default function ChangePropertyCharacteristics({ closeModal }: Props) {
         if (isUserOrAppraisal) {
           Object.keys(characteristics).map(prop => {
             propertiesToPass[prop] =
-              parseInt(characteristics[prop]) || propertyInfo[prop]
+              parseInt(characteristics[prop]) || order[prop]
           })
         } else {
           const sourceData = tableData.find(
@@ -83,30 +107,31 @@ export default function ChangePropertyCharacteristics({ closeModal }: Props) {
           })
         }
         const payload = {
-          ...propertyInfo,
+          ...orderProps,
           ...propertiesToPass,
           source: selectedSource,
           propertyType: inputs.propertyType,
-          compsGoingBack: inputs.monthsBack,
+          compsBack: inputs.monthsBack,
           asOfDate: inputs.asOfDate
         }
-        const newPropertyInfo = await changePropertyCharacteristics(payload)
-        setPropertyInfo(newPropertyInfo)
+        await changePropertyCharacteristics(payload)
+        const newOrder = await getOrder(order.id)
+        setOrder(newOrder)
         setAlert({
           type: 'success',
           message: 'Property characteristics successfully updated'
         })
       } catch (e) {
-        setAlert({ type: 'error', message: e })
+        setAlert({ type: 'error', message: e.message })
       }
     }
   }
 
   const setCharacteristicState = (key: string, value: number) => {
-    if (key === 'yearBuilt') {
+    if (key === 'year') {
       setError({
         ...error,
-        yearBuilt: ''
+        year: ''
       })
     }
     const stateCopy = {
@@ -116,16 +141,7 @@ export default function ChangePropertyCharacteristics({ closeModal }: Props) {
     setCharacteristics(stateCopy)
   }
 
-  const {
-    bed,
-    bath,
-    sqft,
-    units,
-    garage,
-    lotSize,
-    yearBuilt,
-    source
-  } = propertyInfo
+  const { bed, bath, sqft, units, garage, lotSize, year, source } = orderProps
 
   return (
     <Modal
@@ -166,7 +182,7 @@ export default function ChangePropertyCharacteristics({ closeModal }: Props) {
             </div>
             <div className="stat">
               <span className="title">Yr. Built:</span>
-              {yearBuilt}
+              {year}
             </div>
           </div>
           <EditPropertyOptions
@@ -174,6 +190,7 @@ export default function ChangePropertyCharacteristics({ closeModal }: Props) {
             setInputs={setInputs}
             error={error}
             setError={setError}
+            orderProps={orderProps}
           />
           <SourceTable
             tableData={tableData}
@@ -188,7 +205,12 @@ export default function ChangePropertyCharacteristics({ closeModal }: Props) {
             error={error}
           />
         </div>
-        <button className="btn" onClick={onSubmit} type="submit">
+        <button
+          className="btn"
+          onClick={onSubmit}
+          type="submit"
+          disabled={selectedSource === ''}
+        >
           Submit
         </button>
       </Form>

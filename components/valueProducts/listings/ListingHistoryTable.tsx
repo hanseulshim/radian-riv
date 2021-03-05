@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react'
-import { PropertyInterface } from 'api'
+import { HistoricalListingInterface } from 'api'
 import { formatPrice } from 'utils'
 import Checkbox from 'components/common/Checkbox'
 import Table from 'components/common/Table'
@@ -7,8 +7,10 @@ import PhotoPlay from './PhotoPlay'
 import MlsSheetModal from './MlsSheetModal'
 
 interface Props {
-  tableData: PropertyInterface[]
-  setListingHistory: React.Dispatch<React.SetStateAction<PropertyInterface[]>>
+  tableData: HistoricalListingInterface[]
+  setListingHistory: React.Dispatch<
+    React.SetStateAction<HistoricalListingInterface[]>
+  >
 }
 
 export default function ListingHistoryTable({
@@ -18,7 +20,7 @@ export default function ListingHistoryTable({
   const [data, setData] = useState([])
   const [columns, setColumns] = useState([])
   const [selectedProperties, setSelectedProperties] = useState<
-    PropertyInterface[]
+    HistoricalListingInterface[]
   >([])
   const [mlsNumber, setMlsNumber] = useState<string>(null)
 
@@ -95,7 +97,7 @@ export default function ListingHistoryTable({
       },
       {
         Header: 'MLS Sheet',
-        accessor: (row: PropertyInterface) =>
+        accessor: (row: HistoricalListingInterface) =>
           row.showMls && (
             <button
               style={{ width: 80, minWidth: 80 }}
@@ -121,7 +123,7 @@ export default function ListingHistoryTable({
             />
           </div>
         ),
-        accessor: (row: PropertyInterface) =>
+        accessor: (row: HistoricalListingInterface) =>
           row.showMls && (
             <Checkbox
               label=""
@@ -144,7 +146,7 @@ export default function ListingHistoryTable({
       },
       {
         Header: 'List Date',
-        accessor: 'listingDate',
+        accessor: 'listDate',
         width: 110
       },
       {
@@ -154,7 +156,8 @@ export default function ListingHistoryTable({
       },
       {
         Header: 'List Price',
-        accessor: (row: PropertyInterface) => formatPrice(row.listingPrice),
+        accessor: (row: HistoricalListingInterface) =>
+          formatPrice(row.listPrice),
         width: 120
       },
       {
@@ -169,7 +172,8 @@ export default function ListingHistoryTable({
       },
       {
         Header: 'Sold Price',
-        accessor: (row: PropertyInterface) => formatPrice(row.soldPrice),
+        accessor: (row: HistoricalListingInterface) =>
+          formatPrice(row.soldPrice),
         width: 120
       },
       {

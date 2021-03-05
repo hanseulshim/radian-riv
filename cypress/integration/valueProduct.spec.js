@@ -1,7 +1,6 @@
 /// <reference types="cypress" />
-import valueProduct from '../tests/valueProduct/valueProduct.spec'
+import orders from '../tests/valueProduct/orders.spec'
 import videoTutorial from '../tests/valueProduct/videoTutorial.spec'
-import propertyInfo from '../tests/valueProduct/propertyInfo.spec'
 import photoComp from '../tests/valueProduct/photoComp.spec'
 import historicalListing from '../tests/valueProduct/historicalListing.spec'
 import marketAnalysis from '../tests/valueProduct/marketAnalysis.spec'
@@ -15,9 +14,8 @@ describe('Radian Interactive Value', () => {
     Cypress.Cookies.preserveOnce('auth')
   })
 
-  valueProduct()
   videoTutorial()
-  propertyInfo()
+  orders()
   photoComp()
   historicalListing()
   marketAnalysis()

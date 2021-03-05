@@ -1,4 +1,4 @@
-import ValueProductPropertyLayout from 'components/layouts/ValueProductLayout'
+import ValueProductPropertyLayout from 'components/layouts/OrderLayout'
 import React from 'react'
 
 interface Props {}

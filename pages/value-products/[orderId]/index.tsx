@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from 'react'
-import ValueProductPropertyLayout from 'components/layouts/ValueProductLayout'
+import OrderLayout from 'components/layouts/OrderLayout'
 import PropertiesTable from 'components/valueProducts/listings/PropertiesTable'
-import ListedProperties from 'components/valueProducts/listings/ListedProperties'
-import ContractProperties from 'components/valueProducts/listings/ContractProperties'
 import CompPhotosModal from 'components/valueProducts/listings/CompPhotosModal'
 import ExportPdf from 'components/valueProducts/listings/ExportPdf'
-import { useValueProduct } from 'context/ValueProductProvider'
+import { useOrder } from 'context/OrderProvider'
 import {
   getSoldProperties,
   getListedProperties,
   getContractProperties,
-  PropertyInterface
+  CompPropertyInterface
 } from 'api'
 import ChangePropertyCharacteristics from 'components/valueProducts/change-property-characteristics'
 import { buildPropertyInfoWorkbook } from 'utils'
 
 export default function PropertyInfoPage() {
-  const { propertyInfo } = useValueProduct()
-  const [soldProperties, setSoldProperties] = useState<PropertyInterface[]>([])
-  const [listedProperties, setListedProperties] = useState<PropertyInterface[]>(
+  const { order } = useOrder()
+  const [soldProperties, setSoldProperties] = useState<CompPropertyInterface[]>(
     []
   )
+  const [listedProperties, setListedProperties] = useState<
+    CompPropertyInterface[]
+  >([])
   const [contractProperties, setContractProperties] = useState<
-    PropertyInterface[]
+    CompPropertyInterface[]
   >([])
   const [pdfModal, setPdfModal] = useState(false)
   const [propertyCharModal, setPropertyCharModal] = useState(false)
@@ -37,18 +37,18 @@ export default function PropertyInfoPage() {
   const views = ['Sold', 'Listed', 'Under Contract']
 
   useEffect(() => {
-    if (propertyInfo.id) {
+    if (order.id) {
       const getProperties = async () => {
-        const sold = await getSoldProperties(propertyInfo.id)
+        const sold = await getSoldProperties(order.id)
         setSoldProperties(sold)
-        const listed = await getListedProperties(propertyInfo.id)
+        const listed = await getListedProperties(order.id)
         setListedProperties(listed)
-        const contract = await getContractProperties(propertyInfo.id)
+        const contract = await getContractProperties(order.id)
         setContractProperties(contract)
       }
       getProperties()
     }
-  }, [propertyInfo])
+  }, [order])
 
   const toggleCompPhotosModal = () => {
     if (checkedProperties.length) {
@@ -66,7 +66,7 @@ export default function PropertyInfoPage() {
   }
 
   return (
-    <ValueProductPropertyLayout>
+    <OrderLayout>
       <div className="property-info">
         <div className="property-info-header">
           <h1>RIV Property Info</h1>
@@ -104,7 +104,7 @@ export default function PropertyInfoPage() {
             onClick={() =>
               buildPropertyInfoWorkbook(
                 [soldProperties, listedProperties, contractProperties],
-                propertyInfo,
+                order,
                 'AVE_Comparables'
               )
             }
@@ -143,24 +143,16 @@ export default function PropertyInfoPage() {
           ))}
         </ul>
         {currentView === 'Sold' ? (
-          <PropertiesTable tableData={soldProperties} type="Sold" />
+          <PropertiesTable tableData={soldProperties} view={currentView} />
         ) : currentView === 'Listed' ? (
-          <ListedProperties properties={listedProperties} />
+          <PropertiesTable tableData={listedProperties} view={currentView} />
         ) : (
-          <ContractProperties properties={contractProperties} />
+          <PropertiesTable tableData={contractProperties} view={currentView} />
         )}
         {compPhotosModal && (
           <CompPhotosModal
             closeModal={toggleCompPhotosModal}
-            checkedProperties={checkedProperties}
-            setCheckedProperties={setCheckedProperties}
-            properties={
-              currentView === 'Sold'
-                ? soldProperties
-                : currentView === 'Listed'
-                ? listedProperties
-                : contractProperties
-            }
+            orderId={order.id}
             view={currentView}
           />
         )}
@@ -174,6 +166,6 @@ export default function PropertyInfoPage() {
           <ChangePropertyCharacteristics closeModal={togglePropCharModal} />
         )}
       </div>
-    </ValueProductPropertyLayout>
+    </OrderLayout>
   )
 }

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { withAuth } from 'context/auth/AuthRoute'
-import { useValueProduct } from 'context/ValueProductProvider'
+import { useOrder } from 'context/OrderProvider'
 import Breadcrumbs from 'components/common/Breadcrumbs'
 import Sidebar from 'components/Sidebar'
 import { useRouter } from 'next/router'
-import { getPropertyInfo } from 'api'
+import { getOrder } from 'api'
 import { getValueProductPropertyRoutes } from 'utils'
 import Modal from 'components/common/Modal'
 
@@ -12,25 +12,27 @@ interface Props {
   children: React.ReactNode
 }
 
-function ValueProductPropertyLayout({ children }: Props) {
+function OrderLayout({ children }: Props) {
   const [hasError, setHasError] = useState(false)
-  const { propertyInfo, setPropertyInfo } = useValueProduct()
+  const { order, setOrder } = useOrder()
   const router = useRouter()
-  const { propertyInfoId } = router.query
+  const { orderId } = router.query
 
   useEffect(() => {
-    const getOrder = async () => {
-      if (propertyInfoId) {
+    const getCurrentOrder = async () => {
+      if (orderId) {
         try {
-          const propertyInfo = await getPropertyInfo(propertyInfoId as string)
-          setPropertyInfo(propertyInfo)
+          const order = await getOrder(orderId as string)
+          console.log(order)
+          setOrder(order)
         } catch (e) {
+          console.log(e)
           setHasError(true)
         }
       }
     }
-    getOrder()
-  }, [propertyInfoId])
+    getCurrentOrder()
+  }, [orderId])
 
   const toggleErrorModal = () => {
     setHasError(!hasError)
@@ -44,15 +46,15 @@ function ValueProductPropertyLayout({ children }: Props) {
   }
 
   return (
-    propertyInfo.id && (
+    order.id && (
       <Sidebar
-        routes={getValueProductPropertyRoutes(propertyInfo.id)}
-        label={propertyInfo.address}
+        routes={getValueProductPropertyRoutes(order.id)}
+        label={order.address}
         parentPath={`/value-products`}
       >
         <div className="container value-product-property">
           <Breadcrumbs
-            current={`${propertyInfo.address}`}
+            current={`${order.address}`}
             parents={[{ path: '/value-products', name: 'Value Products' }]}
           >
             <img
@@ -69,4 +71,4 @@ function ValueProductPropertyLayout({ children }: Props) {
   )
 }
 
-export default withAuth(ValueProductPropertyLayout)
+export default withAuth(OrderLayout)

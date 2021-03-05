@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import ValueProductPropertyLayout from 'components/layouts/ValueProductLayout'
+import ValueProductPropertyLayout from 'components/layouts/OrderLayout'
 import MarketAnalysis from 'components/valueProducts/analysis/MarketAnalysis'
 import FilteredMarketAnalysis from 'components/valueProducts/analysis/FilteredMarketAnalysis'
 import PropertyTabs from 'components/valueProducts/analysis/table/PropertyInfoTable'

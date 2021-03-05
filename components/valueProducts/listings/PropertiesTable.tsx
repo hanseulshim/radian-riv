@@ -2,22 +2,17 @@ import React, { useState, useCallback } from 'react'
 import Table from 'components/common/Table'
 import HistoricalListingModal from './HistoricalListingModal'
 import { formatPrice } from 'utils'
-import { PropertyInterface } from 'api'
-import GalleryModal from './GalleryModal'
+import { CompPropertyInterface } from 'api'
 
 interface Props {
-  tableData: PropertyInterface[]
-  type: string
+  tableData: CompPropertyInterface[]
+  view: string
 }
 
-export default function PropertiesTable({ tableData, type }: Props) {
+export default function PropertiesTable({ tableData, view }: Props) {
   const [data, setData] = useState([])
   const [columns, setColumns] = useState([])
-  const [selectedProperty, setSelectedProperty] = useState<PropertyInterface>(
-    null
-  )
-  const [historicalListingModal, setHistoricalListingModal] = useState(false)
-  const [galleryModal, setGalleryModal] = useState(false)
+  const [property, setProperty] = useState<CompPropertyInterface>(null)
   const fetchData = useCallback(async () => {
     setColumns([
       {
@@ -70,7 +65,7 @@ export default function PropertiesTable({ tableData, type }: Props) {
       },
       {
         Header: 'Year Built',
-        accessor: 'yearBuilt',
+        accessor: 'year',
         align: 'right',
         width: 110
       },
@@ -82,12 +77,13 @@ export default function PropertiesTable({ tableData, type }: Props) {
       },
       {
         Header: 'List Date',
-        accessor: 'listingDate',
+        accessor: 'listDate',
         align: 'right'
       },
       {
         Header: 'List Price',
-        accessor: row => formatPrice(row.listingPrice),
+        accessor: (property: CompPropertyInterface) =>
+          formatPrice(property.listPrice),
         align: 'right',
         width: 175
       },
@@ -98,7 +94,8 @@ export default function PropertiesTable({ tableData, type }: Props) {
       },
       {
         Header: 'Sold Price',
-        accessor: row => formatPrice(row.soldPrice),
+        accessor: (property: CompPropertyInterface) =>
+          formatPrice(property.soldPrice),
         align: 'right',
         width: 175
       },
@@ -123,38 +120,22 @@ export default function PropertiesTable({ tableData, type }: Props) {
         align: 'right'
       },
       {
-        Header: 'Property Info',
-        accessor: (row: PropertyInterface) => (
-          <span
-            className="link"
-            onClick={() => {
-              setHistoricalListingModal(true)
-              setSelectedProperty(row)
-            }}
-          >
-            Learn More
-          </span>
-        ),
-        align: 'right'
-      },
-      {
-        Header: 'Images',
-        accessor: row => (
+        Header: 'Image & Info',
+        accessor: (property: CompPropertyInterface) => (
           <img
             className="link"
             src={`${process.env.baseUrl}/images/photos-link.svg`}
-            onClick={() => {
-              setGalleryModal(true)
-              setSelectedProperty(row)
-            }}
             alt="photos"
+            onClick={() => {
+              setProperty(property)
+            }}
           />
         ),
-        align: 'right'
+        align: 'center'
       },
       {
-        Header: '',
-        accessor: 'order',
+        Header: 'Rank',
+        accessor: 'rank',
         align: 'right'
       }
     ])
@@ -164,23 +145,11 @@ export default function PropertiesTable({ tableData, type }: Props) {
   return (
     <div className="table-spacer">
       <Table columns={columns} data={data} fetchData={fetchData} width={1050} />
-      {selectedProperty && historicalListingModal && (
+      {property && (
         <HistoricalListingModal
-          closeModal={() => {
-            setHistoricalListingModal(false)
-            setSelectedProperty(null)
-          }}
-          property={selectedProperty}
-          type={type}
-        />
-      )}
-      {selectedProperty && galleryModal && (
-        <GalleryModal
-          photos={selectedProperty.photos}
-          closeModal={() => {
-            setGalleryModal(false)
-            setSelectedProperty(null)
-          }}
+          closeModal={() => setProperty(null)}
+          propertyId={property.id}
+          title={`${view} #${property.rank}`}
         />
       )}
     </div>

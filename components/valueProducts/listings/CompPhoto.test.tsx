@@ -2,13 +2,42 @@ import * as React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import CompPhoto from './CompPhoto'
-import { defaultPropertyInfo } from '../../../context/ValueProductProvider'
 
 describe('CompPhoto', () => {
   let component
   beforeAll(() => {
+    const property = {
+      id: null,
+      address: null,
+      subdivision: null,
+      schoolDistrict: null,
+      bed: null,
+      bath: null,
+      agSqft: null,
+      totalSqft: null,
+      aveSqft: null,
+      year: null,
+      basement: null,
+      pool: null,
+      waterfront: null,
+      concessions: null,
+      coeDate: null,
+      listDate: null,
+      actDom: null,
+      totDom: null,
+      listPrice: null,
+      soldPrice: null,
+      listingNumber: null,
+      exportMls: null,
+      distressed: null,
+      targetDistance: null,
+      description: null,
+      photos: [],
+      rank: null,
+      checked: null
+    }
     const props = {
-      property: defaultPropertyInfo,
+      property,
       view: 'view',
       checkedProperties: [],
       setCheckedProperties: () => {}

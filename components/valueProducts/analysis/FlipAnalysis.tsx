@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import FlipAnalysisTable from './table/FlipAnalysisTable'
 import FlipTable from './table/FlipTable'
-import { useValueProduct } from 'context/ValueProductProvider'
+import { useOrder } from 'context/OrderProvider'
 import { getFlipAnalysis, FlipAnalysisInterface } from 'api'
 import GoogleMapReact from 'google-map-react'
 import Marker from 'components/common/Marker'
@@ -20,12 +20,12 @@ export default function FlipAnalysis() {
   const [flipForSale, setFlipForSale] = useState(false)
   const [flipRented, setFlipRented] = useState(false)
   const [flipForRent, setFlipForRent] = useState(false)
-  const { propertyInfo } = useValueProduct()
+  const { order } = useOrder()
 
   useEffect(() => {
-    if (propertyInfo.id) {
+    if (order.id) {
       const getData = async () => {
-        const tableData = await getFlipAnalysis(propertyInfo.id)
+        const tableData = await getFlipAnalysis(order.id)
         setData(tableData)
         if (tableData.flipSold.length) {
           setFlipSold(true)
@@ -42,11 +42,11 @@ export default function FlipAnalysis() {
       }
       getData()
     }
-  }, [propertyInfo])
+  }, [order])
 
   const resizeMap = (map, maps) => {
     const bounds = new maps.LatLngBounds()
-    bounds.extend(new maps.LatLng(propertyInfo.lat, propertyInfo.lng))
+    bounds.extend(new maps.LatLng(order.lat, order.lng))
     if (flipSold) {
       data.flipSold.forEach(property => {
         bounds.extend(new maps.LatLng(property.lat, property.lng))
@@ -71,7 +71,7 @@ export default function FlipAnalysis() {
   }
 
   return (
-    propertyInfo.id && (
+    order.id && (
       <div className="flip-analysis">
         <div className="table-container">
           <FlipAnalysisTable
@@ -87,8 +87,8 @@ export default function FlipAnalysis() {
           <GoogleMapReact
             bootstrapURLKeys={{ key: process.env.googleMapsApiKey }}
             defaultCenter={{
-              lat: propertyInfo.lat,
-              lng: propertyInfo.lng
+              lat: order.lat,
+              lng: order.lng
             }}
             defaultZoom={1}
             yesIWantToUseGoogleMapApiInternals
@@ -96,15 +96,15 @@ export default function FlipAnalysis() {
           >
             <Marker
               type="marker-subject"
-              lat={propertyInfo.lat}
-              lng={propertyInfo.lng}
-              order={propertyInfo.order}
+              lat={order.lat}
+              lng={order.lng}
+              order={0}
             />
             {flipSold &&
               data.flipSold.map(property => (
                 <Marker
                   key={property.id}
-                  order={property.order}
+                  order={property.rank}
                   type="marker-flip-sold"
                   lat={property.lat}
                   lng={property.lng}
@@ -114,7 +114,7 @@ export default function FlipAnalysis() {
               data.flipForSale.map(property => (
                 <Marker
                   key={property.id}
-                  order={property.order}
+                  order={property.rank}
                   type="marker-flip-sale"
                   lat={property.lat}
                   lng={property.lng}
@@ -124,7 +124,7 @@ export default function FlipAnalysis() {
               data.flipRented.map(property => (
                 <Marker
                   key={property.id}
-                  order={property.order}
+                  order={property.rank}
                   type="marker-flip-rented"
                   lat={property.lat}
                   lng={property.lng}
@@ -134,7 +134,7 @@ export default function FlipAnalysis() {
               data.flipForRent.map(property => (
                 <Marker
                   key={property.id}
-                  order={property.order}
+                  order={property.rank}
                   type="marker-flip-rent"
                   lat={property.lat}
                   lng={property.lng}

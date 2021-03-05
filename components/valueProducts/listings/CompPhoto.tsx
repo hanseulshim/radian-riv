@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { PropertyInterface } from 'api'
+import { CompPhotoPropertyInterface } from 'api'
 import { formatNullString, formatPrice } from 'utils'
 import Checkbox from 'components/common/Checkbox'
 import PhotoPlay from './PhotoPlay'
 
 interface Props {
-  property: PropertyInterface
+  property: CompPhotoPropertyInterface
   view: string
   checkedProperties: string[]
   setCheckedProperties: React.Dispatch<React.SetStateAction<string[]>>
@@ -42,14 +42,14 @@ export default function CompPhoto({
             alt="property type"
           />
           <span style={{ fontWeight: 'bold' }}>
-            #{formatNullString(property.order)}
+            #{formatNullString(property.rank)}
           </span>
           <span style={{ marginLeft: '10px' }}>
             {view === 'Under Contract'
               ? view
               : `${view} for ${formatNullString(
                   formatPrice(
-                    view === 'Sold' ? property.soldPrice : property.listingPrice
+                    view === 'Sold' ? property.soldPrice : property.listPrice
                   )
                 )}`}
           </span>
@@ -130,11 +130,11 @@ export default function CompPhoto({
               </div>
               <div className="label-row">
                 <div className="label">AVE SQFT</div>
-                <span>{formatNullString(property.sqft)}</span>
+                <span>{formatNullString(property.aveSqft)}</span>
               </div>
               <div className="label-row">
                 <div className="label">Year Built</div>
-                <span>{formatNullString(property.yearBuilt)}</span>
+                <span>{formatNullString(property.year)}</span>
               </div>
               <div className="label-row">
                 <div className="label">Basement</div>
@@ -162,7 +162,7 @@ export default function CompPhoto({
               </div>
               <div className="label-row">
                 <div className="label">List Date</div>
-                <span>{formatNullString(property.listingDate)}</span>
+                <span>{formatNullString(property.listDate)}</span>
               </div>
               <div className="label-row">
                 <div className="label">ACT DOM</div>
@@ -174,9 +174,7 @@ export default function CompPhoto({
               </div>
               <div className="label-row">
                 <div className="label">List Price</div>
-                <span>
-                  {formatNullString(formatPrice(property.listingPrice))}
-                </span>
+                <span>{formatNullString(formatPrice(property.listPrice))}</span>
               </div>
               <div className="label-row">
                 <div className="label">Listing #</div>

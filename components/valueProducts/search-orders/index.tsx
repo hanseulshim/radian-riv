@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
-import { validateForm } from 'utils'
-import { formatDate } from 'api/utility'
+import { validateForm, formatDate } from 'utils'
 import Checkbox from 'components/common/Checkbox'
 import SearchFilters from './SearchOrdersFilters'
 import Form from 'components/common/Form'
@@ -10,7 +9,7 @@ import {
   Search,
   getSavedSearches,
   getOrders,
-  Order
+  SearchOrderInterface
 } from 'api'
 import SearchOrdersAdvancedFilters from './SearchOrdersAdvancedFilters'
 import SaveSearchModal from './SaveSearchModal'
@@ -47,7 +46,7 @@ export default function SearchOrders() {
   const [savedSearches, setSavedSearches] = useState<Search[]>([])
   const [showMenu, setShowMenu] = useState(false)
   const [showSaveSearch, setSaveSearch] = useState(false)
-  const [orderList, setOrderList] = useState<Order[]>([])
+  const [orderList, setOrderList] = useState<SearchOrderInterface[]>([])
 
   useEffect(() => {
     const setDefaults = () => {

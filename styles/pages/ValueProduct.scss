@@ -567,6 +567,9 @@
   #mls-sheet {
     .form {
       padding: 0;
+      h2 {
+        border: 0;
+      }
       #zoom-photo {
         .form {
           padding: 3em;

@@ -38,7 +38,7 @@ export default function MlsSheetModal({ closeModal, mlsNumber }: Props) {
     additionalFeatures: null,
     propertyInformation: {
       propertyType: null,
-      yearBuilt: null,
+      year: null,
       bed: null,
       bath: null,
       totalSqft: null,
@@ -203,7 +203,7 @@ export default function MlsSheetModal({ closeModal, mlsNumber }: Props) {
         width: 185,
         values: [
           { label: 'Property Type', value: 'propertyType' },
-          { label: 'Yr Built', value: 'yearBuilt' },
+          { label: 'Yr Built', value: 'year' },
           { label: 'Bed', value: 'bed' },
           { label: 'Bath', value: 'bath' },
           { label: 'Total Sqft', value: 'totalSqft' },

@@ -4,28 +4,58 @@ import HistoricalListingTable from './HistoricalListingTable'
 import HistoricalListingZoomPhotoModal from './HistoricalListingZoomPhotoModal'
 import GalleryModal from './GalleryModal'
 import ListingHistoryTable from './ListingHistoryTable'
-import { getListingHistory, PropertyInterface } from 'api'
+import {
+  getHistoricalListingHistory,
+  getHistoricalListingProperty,
+  HistoricalListingPropertyInterface,
+  HistoricalListingInterface
+} from 'api'
+import { useOrder } from 'context/OrderProvider'
 
 interface Props {
   closeModal: () => void
-  property: PropertyInterface
-  type: string
+  propertyId: string
+  title: string
 }
 
 export default function HistoricalListingModal({
   closeModal,
-  property,
-  type
+  propertyId,
+  title
 }: Props) {
+  const { order } = useOrder()
   const [galleryModal, setGalleryModal] = useState(false)
   const [zoomPhoto, setZoomPhoto] = useState(false)
-  const [listingHistory, setListingHistory] = useState<PropertyInterface[]>([])
-  const listingPhoto =
-    property.photos && property.photos.length ? property.photos[0] : null
+  const [
+    currentProperty,
+    setCurrentProperty
+  ] = useState<HistoricalListingPropertyInterface>({
+    address: null,
+    bath: null,
+    bed: null,
+    garage: null,
+    listDate: null,
+    lotSize: null,
+    mlsComments: null,
+    mlsName: null,
+    saleType: null,
+    sqft: null,
+    year: null,
+    zip: null,
+    photos: []
+  })
+  const [listingHistory, setListingHistory] = useState<
+    HistoricalListingInterface[]
+  >([])
 
   useEffect(() => {
+    const getCurrentProperty = async () => {
+      const property = await getHistoricalListingProperty(propertyId, order.id)
+      setCurrentProperty(property)
+    }
+    getCurrentProperty()
     const listingHistory = async () => {
-      const history = await getListingHistory(property.id)
+      const history = await getHistoricalListingHistory(propertyId, order.id)
       setListingHistory(history)
     }
     listingHistory()
@@ -39,9 +69,7 @@ export default function HistoricalListingModal({
       id="historical-listing-modal"
     >
       <div className="top-row">
-        <h2>
-          {type} #{property.order}
-        </h2>
+        <h2>{title}</h2>
         <button onClick={() => window.print()} className="btn btn-icon dark">
           <span>Print</span>
           <span className="icon-container">
@@ -52,8 +80,12 @@ export default function HistoricalListingModal({
       <div className="listing-info">
         <div className="listing-image">
           <div className="image-container">
-            {listingPhoto ? (
-              <img className="image" src={property.photos[0]} alt="property" />
+            {currentProperty && currentProperty.photos[0] ? (
+              <img
+                className="image"
+                src={currentProperty.photos[0]}
+                alt="property"
+              />
             ) : (
               <img
                 className="image"
@@ -76,34 +108,38 @@ export default function HistoricalListingModal({
           </button>
         </div>
         <div>
-          <HistoricalListingTable tableData={[property]} />
+          {currentProperty && (
+            <HistoricalListingTable tableData={[currentProperty]} />
+          )}
           <div className="info-container">
             <div style={{ flex: 0.5, marginRight: '1em' }}>
               <div className="label">Address:</div>
-              <div>{property.address}</div>
-              <div>{property.zip}</div>
+              <div>{currentProperty?.address || null}</div>
+              <div>{currentProperty?.zip || null}</div>
               <div className="label space">Listing Date:</div>
-              <div>{property.listingDate}</div>
+              <div>{currentProperty?.listDate || null}</div>
               <div className="label space">MLS Name:</div>
-              <div>{property.mlsName}</div>
+              <div>{currentProperty?.mlsName || null}</div>
             </div>
             <div style={{ flex: 1 }}>
               <div className="label">MLS Comments:</div>
-              <div>{property.mlsComments}</div>
+              <div>{currentProperty?.mlsComments || null}</div>
             </div>
           </div>
         </div>
       </div>
       <div className="listing-history">
         <h2>Listing History</h2>
-        <ListingHistoryTable
-          tableData={listingHistory}
-          setListingHistory={setListingHistory}
-        />
+        {listingHistory && (
+          <ListingHistoryTable
+            tableData={listingHistory}
+            setListingHistory={setListingHistory}
+          />
+        )}
       </div>
       {galleryModal && (
         <GalleryModal
-          photos={property.photos}
+          photos={currentProperty.photos}
           closeModal={() => {
             setGalleryModal(false)
           }}
@@ -111,7 +147,7 @@ export default function HistoricalListingModal({
       )}
       {zoomPhoto && (
         <HistoricalListingZoomPhotoModal
-          photo={listingPhoto}
+          photo={currentProperty.photos[0]}
           closeModal={() => {
             setZoomPhoto(false)
           }}

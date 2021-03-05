@@ -1,9 +1,9 @@
 import React, { useState, useCallback } from 'react'
 import Table from 'components/common/Table'
 import Radio from 'components/common/Radio'
-
+import { PropertyCharacteristicsInterface } from 'api'
 interface Props {
-  tableData: any[]
+  tableData: PropertyCharacteristicsInterface[]
   setSelectedSource: (source: string) => void
   selectedSource: string
 }
@@ -71,7 +71,7 @@ export default function SourceTable({
         Header: 'Yr. Built',
         width,
         align: 'left',
-        accessor: 'yearBuilt'
+        accessor: 'year'
       }
     ])
     setData(tableData)

@@ -50,5 +50,9 @@ export default () => {
       cy.get('#search-orders-button').click()
       cy.get('.styled-table-row').should('have.length.above', 0)
     })
+    it('Should route to property info page', () => {
+      cy.get('.link').contains('123456789-0').click()
+      cy.url().should('includes', '/value-products/123456789-0')
+    })
   })
 }

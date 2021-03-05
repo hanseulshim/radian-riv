@@ -1,6 +1,5 @@
 import React from 'react'
 import Modal from 'components/common/Modal'
-
 interface Props {
   closeModal: () => void
   photos: string[]

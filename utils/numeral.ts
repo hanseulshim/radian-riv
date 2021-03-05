@@ -24,3 +24,11 @@ export const formatValue = (value: number, large = false): string => {
   }
   return large ? numeral(value).format('0[.]0a') : numeral(value).format('0,0')
 }
+
+export const formatDate = dateString => {
+  return dateString.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  })
+}

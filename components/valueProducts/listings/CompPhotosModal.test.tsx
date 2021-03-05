@@ -2,16 +2,13 @@ import * as React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
 import CompPhotosModal from './CompPhotosModal'
-import { defaultPropertyInfo } from '../../../context/ValueProductProvider'
 describe('CompPhotosModal', () => {
   let component
   beforeAll(() => {
     const props = {
       closeModal: () => {},
-      setCheckedProperties: () => {},
-      checkedProperties: [],
       view: 'test',
-      properties: [defaultPropertyInfo]
+      orderId: 'test'
     }
     component = shallow(<CompPhotosModal {...props} />)
   })

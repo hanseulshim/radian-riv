@@ -1,24 +1,38 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Modal from 'components/common/Modal'
-import { PropertyInterface } from 'api'
+import {
+  CompPhotoPropertyInterface,
+  getSoldCompProperties,
+  getListedCompProperties,
+  getContractCompProperties
+} from 'api'
 import CompPhoto from './CompPhoto'
 import Checkbox from 'components/common/Checkbox'
 
 interface Props {
   closeModal: () => void
-  setCheckedProperties: React.Dispatch<React.SetStateAction<string[]>>
-  checkedProperties: string[]
-  properties: PropertyInterface[]
   view: string
+  orderId: string
 }
 
-export default function CompPhotosModal({
-  closeModal,
-  view,
-  properties,
-  checkedProperties,
-  setCheckedProperties
-}: Props) {
+export default function CompPhotosModal({ closeModal, view, orderId }: Props) {
+  const [checkedProperties, setCheckedProperties] = useState([])
+  const [properties, setProperties] = useState<CompPhotoPropertyInterface[]>([])
+  useEffect(() => {
+    const getCompProperties = async () => {
+      if (view === 'Sold') {
+        const props = await getSoldCompProperties(orderId)
+        setProperties(props)
+      } else if (view === 'Listed') {
+        const props = await getListedCompProperties(orderId)
+        setProperties(props)
+      } else if (view === 'Under Contract') {
+        const props = await getContractCompProperties(orderId)
+        setProperties(props)
+      }
+    }
+    getCompProperties()
+  }, [])
   return (
     <Modal closeModal={closeModal} title={''} percent={90} id="comp-modal">
       <div className="comp-photos-modal">

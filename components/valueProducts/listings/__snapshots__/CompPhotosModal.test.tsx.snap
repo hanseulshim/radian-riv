@@ -22,7 +22,7 @@ exports[`CompPhotosModal should match snapshot 1`] = `
         className="check"
       >
         <Checkbox
-          checked={false}
+          checked={true}
           label="Check/Uncheck All"
           leftLabel={true}
           onChange={[Function]}
@@ -31,86 +31,7 @@ exports[`CompPhotosModal should match snapshot 1`] = `
     </div>
     <div
       className="comp-photo-container"
-    >
-      <CompPhoto
-        checkedProperties={Array []}
-        key="null"
-        property={
-          Object {
-            "actDom": null,
-            "address": null,
-            "agSqft": null,
-            "area": null,
-            "areaParameter": null,
-            "asOfDate": null,
-            "basement": null,
-            "bath": null,
-            "bed": null,
-            "calculatedPrice": null,
-            "changeDate": null,
-            "city": null,
-            "coe2Date": null,
-            "coe2Price": null,
-            "coeDate": null,
-            "coePrice": null,
-            "compsGoingBack": null,
-            "concessions": null,
-            "cumulativeListDays": null,
-            "daysFromFlip": null,
-            "description": null,
-            "distressed": null,
-            "distressedMarket": null,
-            "dnaSource": null,
-            "exportMls": null,
-            "garage": null,
-            "geoAccuracy": null,
-            "id": null,
-            "lat": null,
-            "listingDate": null,
-            "listingNumber": null,
-            "listingPrice": null,
-            "listingPricePerSqft": null,
-            "listingSheetSelected": null,
-            "lng": null,
-            "loanNumber": null,
-            "lock": null,
-            "lotSize": null,
-            "marketArea": null,
-            "mlsComments": null,
-            "mlsName": null,
-            "order": null,
-            "photos": Array [],
-            "pool": null,
-            "poolName": null,
-            "propertyType": null,
-            "reo": null,
-            "retailMarket": null,
-            "rivDate": null,
-            "saleType": null,
-            "schoolDistrict": null,
-            "showMls": null,
-            "soldPrice": null,
-            "source": null,
-            "sqft": null,
-            "sqftPrice": null,
-            "state": null,
-            "status": null,
-            "subdivision": null,
-            "summaryComments": null,
-            "targetDistance": null,
-            "totDom": null,
-            "totalSqft": null,
-            "units": null,
-            "valuationPercent": null,
-            "waterfront": null,
-            "yearBuilt": null,
-            "zip": null,
-          }
-        }
-        setCheckedProperties={[Function]}
-        view="test"
-      />
-    </div>
+    />
     <button
       className="btn btn-small"
     >

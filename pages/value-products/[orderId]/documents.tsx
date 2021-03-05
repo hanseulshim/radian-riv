@@ -1,4 +1,4 @@
-import ValueProductPropertyLayout from 'components/layouts/ValueProductLayout'
+import ValueProductPropertyLayout from 'components/layouts/OrderLayout'
 import AdditionalDocuments from 'components/valueProducts/AdditionalDocuments'
 import React, { useState } from 'react'
 

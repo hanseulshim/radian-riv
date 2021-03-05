@@ -1,32 +1,32 @@
 import XSLX from 'xlsx'
 const { utils } = XSLX
 const { json_to_sheet } = utils
-import { PropertyInterface } from 'api'
+import { CompPropertyInterface, OrderInterface } from 'api'
 import { formatPercent, formatPrice } from 'utils'
 
 export const buildPropertyInfoWorkbook = (
-  data: Array<PropertyInterface[]>,
-  propertyInfo: PropertyInterface,
+  data: Array<CompPropertyInterface[]>,
+  order: OrderInterface,
   filename: string
 ) => {
   const wb = utils.book_new()
   const propertyInfoJson = [
     {
-      PoolName: propertyInfo.poolName,
-      LoanNumber: propertyInfo.loanNumber,
-      ID: propertyInfo.id,
-      Subject: propertyInfo.address,
-      Zip: propertyInfo.zip,
-      Bed: propertyInfo.bed,
-      Bath: propertyInfo.bath,
-      SqFt: propertyInfo.sqft,
-      Garage: propertyInfo.garage,
-      LotSize: propertyInfo.lotSize,
-      YearBuilt: propertyInfo.yearBuilt,
-      REO: propertyInfo.reo,
+      PoolName: order.poolName,
+      LoanNumber: order.loanNumber,
+      ID: order.id,
+      Subject: order.address,
+      Zip: order.zip,
+      Bed: order.bed,
+      Bath: order.bath,
+      SqFt: order.sqft,
+      Garage: order.garage,
+      LotSize: order.lotSize,
+      YearBuilt: order.year,
+      REO: order.reo,
       RestrictComps: '',
-      CompsGoingBack: propertyInfo.compsGoingBack,
-      AsOfDate: propertyInfo.asOfDate
+      CompsGoingBack: order.compsBack,
+      AsOfDate: order.asOfDate
     },
     {
       PoolName: '',
@@ -47,7 +47,7 @@ export const buildPropertyInfoWorkbook = (
     },
     {
       PoolName: 'Ave Date:',
-      LoanNumber: propertyInfo.rivDate,
+      LoanNumber: order.rivDate,
       ID: '',
       Subject: '',
       Zip: '',
@@ -64,7 +64,7 @@ export const buildPropertyInfoWorkbook = (
     },
     {
       PoolName: 'Caluclated Price:',
-      LoanNumber: propertyInfo.calculatedPrice + ' ' + '(RETAIL Value)',
+      LoanNumber: order.calculatedPrice + ' ' + '(RETAIL Value)',
       ID: '',
       Subject: '',
       Zip: '',
@@ -81,7 +81,7 @@ export const buildPropertyInfoWorkbook = (
     },
     {
       PoolName: 'Value Per SQFT:',
-      LoanNumber: formatPrice(propertyInfo.sqftPrice),
+      LoanNumber: formatPrice(order.sqftPrice),
       ID: '',
       Subject: '',
       Zip: '',
@@ -132,9 +132,9 @@ export const buildPropertyInfoWorkbook = (
     },
     {
       PoolName: 'Retail Market:',
-      LoanNumber: formatPercent(propertyInfo.retailMarket),
+      LoanNumber: formatPercent(order.retailMarket),
       ID: 'Distressed Market:',
-      Subject: formatPercent(propertyInfo.distressedMarket),
+      Subject: formatPercent(order.distressedMarket),
       Zip: '',
       Bed: '',
       Bath: '',
@@ -176,11 +176,11 @@ export const buildPropertyInfoWorkbook = (
       'sqft',
       'garage',
       'lotSize',
-      'yearBuilt',
+      'year',
       'reo',
       'targetDistance',
-      'listingDate',
-      'listingPrice',
+      'listDate',
+      'listPrice',
       'coeDate',
       'soldPrice',
       'actDom',

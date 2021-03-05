@@ -6,7 +6,7 @@ export default () => {
     })
 
     it('should open historical listing modal', () => {
-      cy.get('.link').contains('Learn More').last().click()
+      cy.get('img.link').last().click()
       cy.get('#historical-listing-modal')
     })
 

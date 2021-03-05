@@ -1,21 +1,17 @@
 import React, { useState, useCallback } from 'react'
 import Table from 'components/common/Table'
-import GalleryModal from 'components/valueProducts/listings/GalleryModal'
+import HistoricalListingModal from 'components/valueProducts/listings/HistoricalListingModal'
 import { formatPrice } from 'utils'
+import { FlipPropertyInterface } from 'api'
 
 interface Props {
-  tableData: any[]
+  tableData: FlipPropertyInterface[]
 }
 
 export default function FlipTable({ tableData }: Props) {
   const [data, setData] = useState([])
   const [columns, setColumns] = useState([])
-  const [galleryModal, setGalleryModal] = useState(false)
-  const [photos, setPhotos] = useState([])
-
-  const toggleGalleryModal = () => {
-    setGalleryModal(!galleryModal)
-  }
+  const [property, setProperty] = useState<FlipPropertyInterface>(null)
 
   const fetchData = useCallback(async () => {
     setColumns([
@@ -69,7 +65,7 @@ export default function FlipTable({ tableData }: Props) {
       },
       {
         Header: 'Year Built',
-        accessor: 'yearBuilt',
+        accessor: 'year',
         align: 'right',
         width: 110
       },
@@ -81,23 +77,25 @@ export default function FlipTable({ tableData }: Props) {
       },
       {
         Header: 'COE 1 Sold Date',
-        accessor: 'coeDate',
+        accessor: 'coe1SoldDate',
         align: 'right'
       },
       {
         Header: 'COE 1 Sold Price',
-        accessor: row => formatPrice(row.coePrice),
+        accessor: (property: FlipPropertyInterface) =>
+          formatPrice(property.coe1SoldPrice),
         align: 'right',
         width: 175
       },
       {
         Header: 'COE 2 Sold Date',
-        accessor: 'coe2Date',
+        accessor: 'coe2SoldDate',
         align: 'right'
       },
       {
         Header: 'COE 2 Sold Price',
-        accessor: row => formatPrice(row.coe2Price),
+        accessor: (property: FlipPropertyInterface) =>
+          formatPrice(property.coe2SoldPrice),
         align: 'right',
         width: 175
       },
@@ -107,24 +105,18 @@ export default function FlipTable({ tableData }: Props) {
         align: 'right'
       },
       {
-        Header: 'Property Info',
-        accessor: () => <span className="link">Learn More</span>,
-        align: 'right'
-      },
-      {
-        Header: 'Images',
-        accessor: row => (
+        Header: 'Image & Info',
+        accessor: (property: FlipPropertyInterface) => (
           <img
             className="link"
             src={`${process.env.baseUrl}/images/photos-link.svg`}
             alt="photos"
             onClick={() => {
-              toggleGalleryModal()
-              setPhotos(row.photos)
+              setProperty(property)
             }}
           />
         ),
-        align: 'right'
+        align: 'center'
       }
     ])
     setData(tableData)
@@ -133,8 +125,12 @@ export default function FlipTable({ tableData }: Props) {
   return (
     <div className="flip-table">
       <Table columns={columns} data={data} fetchData={fetchData} width={1050} />
-      {galleryModal && (
-        <GalleryModal closeModal={toggleGalleryModal} photos={photos} />
+      {property && (
+        <HistoricalListingModal
+          closeModal={() => setProperty(null)}
+          propertyId={property.id}
+          title={property.address}
+        />
       )}
     </div>
   )
