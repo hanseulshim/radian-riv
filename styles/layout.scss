@@ -10,7 +10,6 @@
   #main {
     flex: 1;
     display: flex;
-    margin-top: -1px;
 
     .container {
       padding: 3em 2em;
@@ -100,40 +99,29 @@
 }
 
 #header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 50px;
+  align-items: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   img {
     width: 150px;
   }
-  .header-spacer {
-    padding: 10px 50px 0em 50px;
-    &.primary-background {
-      padding: 1em;
-      background: var(--prussian-blue);
-      color: var(--white);
-      text-align: center;
-    }
-  }
-  .header-row {
+  .profile-row {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding-bottom: 10px;
-
-    .profile-row {
+    .profile-menu {
       display: flex;
       align-items: center;
-      .profile-menu {
-        display: flex;
-        align-items: center;
-        .dropdown {
-          left: -105px;
-          width: 150px;
-        }
-        #profile-logo {
-          width: 25px;
-          height: 25px;
-          margin-left: 1em;
-          cursor: pointer;
-        }
+      .dropdown {
+        left: -105px;
+        width: 150px;
+      }
+      #profile-logo {
+        width: 25px;
+        height: 25px;
+        margin-left: 1em;
+        cursor: pointer;
       }
     }
   }

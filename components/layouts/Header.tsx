@@ -9,19 +9,17 @@ export default function Header() {
 
   return (
     <div id="header">
-      <div className="header-spacer header-row">
-        <img src={`${process.env.baseUrl}/images/header-logo.svg`} alt="logo" />
+      <img src={`${process.env.baseUrl}/images/header-logo.svg`} alt="logo" />
+      <h5>Radian Interactive Value</h5>
+      <div className="profile-row">
         {token && (
-          <div className="profile-row">
+          <>
             <span>
               Hello {user.name_first} {user.name_last}
             </span>
             <ProfileMenu />
-          </div>
+          </>
         )}
-      </div>
-      <div className="header-spacer primary-background">
-        <h2>Radian Interactive Value</h2>
       </div>
     </div>
   )
