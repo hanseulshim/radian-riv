@@ -98,35 +98,6 @@
   }
 }
 
-#header {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 50px;
-  align-items: center;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  img {
-    width: 150px;
-  }
-  .profile-row {
-    display: flex;
-    align-items: center;
-    .profile-menu {
-      display: flex;
-      align-items: center;
-      .dropdown {
-        left: -105px;
-        width: 150px;
-      }
-      #profile-logo {
-        width: 25px;
-        height: 25px;
-        margin-left: 1em;
-        cursor: pointer;
-      }
-    }
-  }
-}
-
 #footer {
   max-width: calc(1100px + 310px);
   width: 100%;

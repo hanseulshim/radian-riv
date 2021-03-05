@@ -8,13 +8,20 @@ export default function Header() {
   } = useAuth()
 
   return (
-    <div id="header">
-      <img src={`${process.env.baseUrl}/images/header-logo.svg`} alt="logo" />
+    <div
+      id="header"
+      className="flex justify-between items-center py-2 px-10 shadow"
+    >
+      <img
+        className="w-150"
+        src={`${process.env.baseUrl}/images/header-logo.svg`}
+        alt="logo"
+      />
       <h5>Radian Interactive Value</h5>
-      <div className="profile-row">
+      <div className="flex items-center">
         {token && (
           <>
-            <span>
+            <span id="user-name">
               Hello {user.name_first} {user.name_last}
             </span>
             <ProfileMenu />

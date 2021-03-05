@@ -48,7 +48,7 @@ export default () => {
       cy.intercept('POST', '/user/update', { fixture: 'successful' })
       cy.get('#profile').submit()
       cy.get('.alert-success')
-      cy.get('.profile-row > span').contains('Hello Hingle McCringleberry')
+      cy.get('#user-name').contains('Hello Hingle McCringleberry')
     })
   })
 }

@@ -37,15 +37,16 @@ export default function ProfileMenu() {
   }
 
   return (
-    <div className="profile-menu dropdown-container">
+    <div className="flex items-center dropdown-container">
       <img
         id="profile-logo"
+        className="w-6 h-6 ml-2 cursor-pointer"
         alt="profile"
         src={`${process.env.baseUrl}/images/profile.svg`}
         onClick={openMenu}
       />
       {showMenu && (
-        <ul className="dropdown">
+        <ul className="dropdown -left-105" style={{ width: 150 }}>
           <Link href="/profile">
             <a>
               <li>Account</li>

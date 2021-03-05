@@ -9,9 +9,6 @@ describe('ProfileMenu', () => {
   beforeAll(() => {
     component = shallow(<ProfileMenu />)
   })
-  it('renders profile-menu', () => {
-    expect(component.find('.profile-menu')).toHaveLength(1)
-  })
   it('renders profile image', () => {
     expect(component.find('img#profile-logo').prop('src')).toContain(
       'profile.svg'

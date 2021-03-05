@@ -2,16 +2,22 @@
 
 exports[`ProfileMenu should match snapshot after clicking image 1`] = `
 <div
-  className="profile-menu dropdown-container"
+  className="flex items-center dropdown-container"
 >
   <img
     alt="profile"
+    className="w-6 h-6 ml-2 cursor-pointer"
     id="profile-logo"
     onClick={[Function]}
     src="undefined/images/profile.svg"
   />
   <ul
-    className="dropdown"
+    className="dropdown -left-105"
+    style={
+      Object {
+        "width": 150,
+      }
+    }
   >
     <Link
       href="/profile"
@@ -36,10 +42,11 @@ exports[`ProfileMenu should match snapshot after clicking image 1`] = `
 
 exports[`ProfileMenu should match snapshot before clicking image 1`] = `
 <div
-  className="profile-menu dropdown-container"
+  className="flex items-center dropdown-container"
 >
   <img
     alt="profile"
+    className="w-6 h-6 ml-2 cursor-pointer"
     id="profile-logo"
     onClick={[Function]}
     src="undefined/images/profile.svg"
