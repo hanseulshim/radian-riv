@@ -5,6 +5,7 @@ export default () => {
     before(() => {
       cy.intercept('GET', '/utility/states', { fixture: 'states' })
       cy.intercept('GET', '/auth/questions', { fixture: 'questions' })
+      cy.get('#sidebar').click()
       cy.get('.route-link').contains('Change Security Questions').click()
       cy.url().should('contain', '/profile/security-questions')
     })

@@ -10,6 +10,7 @@ export default () => {
       cy.intercept('POST', '/trending/listedsoldlistedresult', {
         fixture: 'listedsoldlistedresult'
       })
+      cy.get('#sidebar').click()
       cy.get('.route-link').contains('Listed/Sold').click()
       cy.url().should('contain', '/trending/MD/24031/listed-sold')
     })

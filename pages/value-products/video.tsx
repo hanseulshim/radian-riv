@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { withAuth } from 'context/auth/AuthRoute'
 import Breadcrumbs from 'components/common/Breadcrumbs'
-import Sidebar from 'components/Sidebar'
 import { valueProductRoutes } from 'utils'
 import VideoTutorialModal from 'components/valueProducts/VideoTutorialModal'
 
@@ -11,18 +10,21 @@ function Video() {
     setVideoModal(!videoModal)
   }
   return (
-    <Sidebar routes={valueProductRoutes} label="Value Products" parentPath="/">
-      <div className="container value-products">
+    <div id="main">
+      <div className="content value-products">
         <Breadcrumbs
-          current="Video"
+          routes={valueProductRoutes}
           parents={[{ path: '/value-products', name: 'Value Products' }]}
+          label="Video"
+          current="Video"
+          parentPath="/value-products"
         />
         <button onClick={toggleVideoModal} className="btn">
           Video Tutorials
         </button>
         {videoModal && <VideoTutorialModal closeModal={toggleVideoModal} />}
       </div>
-    </Sidebar>
+    </div>
   )
 }
 

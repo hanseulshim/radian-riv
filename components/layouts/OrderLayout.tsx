@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { withAuth } from 'context/auth/AuthRoute'
 import { useOrder } from 'context/OrderProvider'
 import Breadcrumbs from 'components/common/Breadcrumbs'
-import Sidebar from 'components/Sidebar'
 import { useRouter } from 'next/router'
 import { getOrder } from 'api'
 import { getValueProductPropertyRoutes } from 'utils'
@@ -23,10 +22,8 @@ function OrderLayout({ children }: Props) {
       if (orderId) {
         try {
           const order = await getOrder(orderId as string)
-          console.log(order)
           setOrder(order)
         } catch (e) {
-          console.log(e)
           setHasError(true)
         }
       }
@@ -47,26 +44,18 @@ function OrderLayout({ children }: Props) {
 
   return (
     order.id && (
-      <Sidebar
-        routes={getValueProductPropertyRoutes(order.id)}
-        label={order.address}
-        parentPath={`/value-products`}
-      >
-        <div className="container value-product-property">
+      <div id="main">
+        <div className="content value-product-property">
           <Breadcrumbs
-            current={`${order.address}`}
             parents={[{ path: '/value-products', name: 'Value Products' }]}
-          >
-            <img
-              className="icon"
-              style={{ marginLeft: 10 }}
-              src={`${process.env.baseUrl}/images/edit-property-info.svg`}
-              alt="logo"
-            />
-          </Breadcrumbs>
+            parentPath="/value-products"
+            routes={getValueProductPropertyRoutes(order.id)}
+            label={`Order ID #${order.id}`}
+            current={`Order ID #${order.id}`}
+          />
           {children}
         </div>
-      </Sidebar>
+      </div>
     )
   )
 }

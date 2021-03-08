@@ -1,6 +1,5 @@
 import { withAuth } from 'context/auth/AuthRoute'
 import Breadcrumbs from 'components/common/Breadcrumbs'
-import Sidebar from 'components/Sidebar'
 import { profileRoutes } from 'utils'
 
 interface Props {
@@ -11,12 +10,18 @@ interface Props {
 
 function ProfileLayout({ children, label, className }: Props) {
   return (
-    <Sidebar routes={profileRoutes} label="Account" parentPath="/">
-      <div className={`container ${className}`}>
-        <Breadcrumbs current={label} />
+    <div id="main">
+      <div className={`content ${className}`}>
+        <Breadcrumbs
+          parentPath="/profile"
+          parents={[{ path: '/profile', name: 'User Profile' }]}
+          routes={profileRoutes}
+          label={'Account'}
+          current={label}
+        />
         {children}
       </div>
-    </Sidebar>
+    </div>
   )
 }
 

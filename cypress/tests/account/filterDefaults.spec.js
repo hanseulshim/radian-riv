@@ -25,6 +25,7 @@ export default () => {
       cy.intercept('GET', '/user/filter-defaults-time', {
         fixture: 'filter-defaults-time'
       })
+      cy.get('#sidebar').click()
       cy.get('.route-link').contains('Change Filter Defaults').click()
       cy.url().should('contain', '/profile/filter-defaults')
     })

@@ -1,6 +1,7 @@
 import { Option } from 'api'
 import { formatDate } from 'utils'
 import faker from 'faker'
+import { generateProps } from '.'
 
 export interface Filters {
   orderDateFrom: string
@@ -82,40 +83,37 @@ export interface SearchOrderInterface {
 export const getOrders = async (
   form: Filters
 ): Promise<SearchOrderInterface[]> => {
-  const arr = [
-    {
-      id: '123456789-0',
-      productType: 'RIV',
-      address: faker.address.streetAddress(),
-      city: faker.address.city(),
-      state: faker.address.stateAbbr(),
-      zip: faker.address.zipCode(),
-      reconcileStatus: 'Ready for QC',
-      client: 'Boost Labs',
-      orderedBy: `${faker.name.lastName()}, ${faker.name.firstName()}`,
-      orderDate: formatDate(faker.date.between('2020-01-01', '2020-12-31')),
-      dueDate: formatDate(faker.date.between('2020-01-01', '2020-12-31')),
-      price: faker.random.number({ min: 500000, max: 600000 })
-    }
-  ]
+  const obj: SearchOrderInterface = generateProps([
+    'productType',
+    'address',
+    'city',
+    'state',
+    'zip',
+    'reconcileStatus',
+    'client',
+    'orderedBy',
+    'orderDate',
+    'dueDate',
+    'price'
+  ])
+  obj.id = '12345678'
+  const arr = [{ ...obj }]
   for (let i = 0; i < 100; i++) {
-    arr.push({
-      id: `${faker.random.number({
-        min: 20000000,
-        max: 50000000
-      })}-${faker.random.number({ min: 1, max: 9 })}`,
-      productType: 'RIV',
-      address: faker.address.streetAddress(),
-      city: faker.address.city(),
-      state: faker.address.stateAbbr(),
-      zip: faker.address.zipCode(),
-      reconcileStatus: 'Ready for QC',
-      client: 'Boost Labs',
-      orderedBy: `${faker.name.lastName()}, ${faker.name.firstName()}`,
-      orderDate: formatDate(faker.date.between('2020-01-01', '2020-12-31')),
-      dueDate: formatDate(faker.date.between('2020-01-01', '2020-12-31')),
-      price: faker.random.number({ min: 500000, max: 600000 })
-    })
+    const obj1: SearchOrderInterface = generateProps([
+      'id',
+      'productType',
+      'address',
+      'city',
+      'state',
+      'zip',
+      'reconcileStatus',
+      'client',
+      'orderedBy',
+      'orderDate',
+      'dueDate',
+      'price'
+    ])
+    arr.push(obj1)
   }
   return arr
 }

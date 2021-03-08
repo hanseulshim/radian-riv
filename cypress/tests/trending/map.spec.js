@@ -10,10 +10,10 @@ export default () => {
         cy.get('.trending > h1').contains('National Level Annual Price Change')
       })
       it('Should have section label = "Trending"', () => {
-        cy.get('.active').contains('Trending')
+        cy.get('#sidebar').click()
+        cy.get('div').contains('Trending')
       })
       it('Should have default route = "United States"', () => {
-        cy.get('.route-link > .label-icon')
         cy.get('.route-link > span').contains('United States')
       })
       it('Should render a map of the United States', () => {

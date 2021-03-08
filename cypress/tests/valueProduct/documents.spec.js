@@ -3,8 +3,9 @@
 export default () => {
   describe('Documents', () => {
     before(() => {
+      cy.get('#sidebar').click()
       cy.get('.route-link').contains('Documents').click()
-      cy.url().should('includes', '/value-products/123456789-0/documents')
+      cy.url().should('includes', '/value-products/12345678/documents')
     })
     beforeEach(() => {
       Cypress.Cookies.preserveOnce('auth')

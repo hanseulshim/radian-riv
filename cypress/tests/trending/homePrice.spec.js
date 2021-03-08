@@ -6,6 +6,7 @@ export default () => {
       cy.intercept('GET', '/trending/homepricechangecounty/MD', {
         fixture: 'homepricechangecountymd'
       })
+      cy.get('#sidebar').click()
       cy.get('.route-link').contains('MARYLAND').click()
       cy.url().should('includes', '/trending/MD')
       cy.intercept('GET', '/utility/zips/MD', { fixture: 'zips' })

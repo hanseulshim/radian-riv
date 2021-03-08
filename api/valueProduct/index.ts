@@ -44,6 +44,8 @@ export const generateProps = (props: string[]): any => {
       case 'coe1SoldDate':
       case 'coe2SoldDate':
       case 'listDate':
+      case 'orderDate':
+      case 'dueDate':
       case 'rivDate':
         obj[prop] = formatDate(faker.date.between('2020-01-01', '2020-12-31'))
         break
@@ -65,6 +67,9 @@ export const generateProps = (props: string[]): any => {
       case 'city':
         obj[prop] = faker.address.city()
         break
+      case 'client':
+        obj[prop] = faker.company.companyName()
+        break
       case 'coePrice':
       case 'coe1SoldPrice':
       case 'coe2SoldPrice':
@@ -72,6 +77,7 @@ export const generateProps = (props: string[]): any => {
       case 'soldPrice':
       case 'asIsSalePrice':
       case 'quickSalePrice':
+      case 'price':
         obj[prop] = faker.random.number({ min: 500000, max: 600000 })
         break
       case 'compsBack':
@@ -122,9 +128,9 @@ export const generateProps = (props: string[]): any => {
       case 'id':
       case 'loanNumber':
         obj[prop] = `${faker.random.number({
-          min: 20000000,
-          max: 50000000
-        })}-${faker.random.number({ min: 1, max: 9 })}`
+          min: 2000000,
+          max: 5000000
+        })}`
         break
       case 'lat':
         obj[prop] = +faker.address.latitude(39.050498, 39.057319)
@@ -153,6 +159,9 @@ export const generateProps = (props: string[]): any => {
       case 'mlsComments':
         obj[prop] = faker.lorem.paragraph(10)
         break
+      case 'orderedBy':
+        obj[prop] = `${faker.name.firstName()} ${faker.name.lastName()}`
+        break
       case 'pool':
         obj[prop] = faker.random.arrayElement(['Community', 'None'])
         break
@@ -166,12 +175,18 @@ export const generateProps = (props: string[]): any => {
       case 'photos':
         obj[prop] = generatePropertyPhotos()
         break
+      case 'productType':
+        obj[prop] = faker.random.arrayElement(['RIV', 'Rental Analysis'])
+        break
       case 'propertyType':
         obj[prop] = faker.random.arrayElement([
           'Single Family',
           'Multi Family',
           'Duplex'
         ])
+        break
+      case 'reconcileStatus':
+        obj[prop] = 'Ready for QC'
         break
       case 'retailMarket':
         obj[prop] = +faker.finance.amount(0.4, 0.9, 4)

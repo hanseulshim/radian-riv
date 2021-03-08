@@ -7,27 +7,6 @@ export interface Route {
   parentPath: string
 }
 
-export const rootRoutes = [
-  {
-    label: 'Home',
-    value: 'Home',
-    path: '/',
-    parentPath: ''
-  },
-  {
-    label: 'Trending',
-    value: 'Trending',
-    path: '/trending',
-    parentPath: '/'
-  },
-  {
-    label: 'Radian Interactive Value',
-    value: 'Radian Interactive Value',
-    path: '/value-products',
-    parentPath: '/'
-  }
-]
-
 export const profileRoutes = [
   {
     label: 'User Profile',

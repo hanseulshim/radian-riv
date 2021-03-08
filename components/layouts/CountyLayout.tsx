@@ -1,7 +1,6 @@
 import { withAuth } from 'context/auth/AuthRoute'
 import { useTrending } from 'context/TrendingProvider'
 import Breadcrumbs from 'components/common/Breadcrumbs'
-import Sidebar from 'components/Sidebar'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { getTrendingRoutes } from 'utils'
@@ -71,12 +70,8 @@ function CountyLayout({ children, label }: Props) {
   }
 
   return county ? (
-    <Sidebar
-      routes={getTrendingRoutes(state, county)}
-      label={county.label}
-      parentPath={`/trending/${state.value}`}
-    >
-      <div className="container trending">
+    <div id="main">
+      <div className="content trending">
         <Breadcrumbs
           current={`${county.label} County ${label}`}
           parents={[
@@ -86,13 +81,16 @@ function CountyLayout({ children, label }: Props) {
               name: `${state.label} County Level`
             }
           ]}
+          routes={getTrendingRoutes(state, county)}
+          label={county.label}
+          parentPath={`/trending/${state.value}`}
         />
         <h1>{county.label} County Real Estate Trending</h1>
         <h2 className="county-view">{label}</h2>
         <TrendingFilters />
         {children}
       </div>
-    </Sidebar>
+    </div>
   ) : null
 }
 

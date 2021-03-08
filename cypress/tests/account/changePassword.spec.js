@@ -4,6 +4,7 @@ export default () => {
   describe('Change Password', () => {
     before(() => {
       cy.intercept('GET', '/utility/states', { fixture: 'states' })
+      cy.get('#sidebar').click()
       cy.get('.route-link').contains('Change Password').click()
       cy.url().should('contain', '/profile/password')
     })

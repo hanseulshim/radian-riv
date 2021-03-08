@@ -3,8 +3,8 @@ export default () => {
   describe('Property Info', () => {
     before(() => {
       cy.get('.tab-container > li').contains('Search Orders').click()
-      cy.get('a').contains('123456789-0').click()
-      cy.url().should('includes', '/value-products/123456789-0')
+      cy.get('a').contains('12345678').click()
+      cy.url().should('includes', '/value-products/12345678')
     })
     beforeEach(() => {
       Cypress.Cookies.preserveOnce('auth')

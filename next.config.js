@@ -13,10 +13,10 @@ module.exports = {
   env: {
     baseUrl: isAlpha || isBeta ? '/radian-riv' : '',
     rootUrl: isAlpha
-      ? 'https://alpha.boostlabs.com/radian-riv/'
+      ? 'https://alpha.boostlabs.com/radian-riv'
       : isBeta
-      ? 'https://beta.boostlabs.com/radian-riv/'
-      : '',
+      ? 'https://beta.boostlabs.com/radian-riv'
+      : 'http://localhost:3000',
     api: 'https://uat-orders.redbellre.com/rbapi',
     googleMapsApiKey: 'AIzaSyCDqsUhKCXYQ3T_ErIXnVt0xoQa4wo_KOE'
   }

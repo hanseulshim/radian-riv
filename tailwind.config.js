@@ -8,10 +8,20 @@ module.exports = {
         none: 'none'
       },
       width: {
-        150: '150px'
+        150: '150px',
+        200: '200px',
+        300: '300px'
       },
       inset: {
         '-105': '-105px'
+      },
+      colors: {
+        patina: '#6a978e',
+        'prussian-blue': '#002b49',
+        'robins-egg': '#09b9b3',
+        'sidebar-0': '#0f3654',
+        'sidebar-1': '#1f445f',
+        'sidebar-2': '#33556d'
       }
     }
   },

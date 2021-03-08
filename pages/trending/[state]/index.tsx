@@ -1,7 +1,6 @@
 import { withAuth } from 'context/auth/AuthRoute'
 import { useTrending } from 'context/TrendingProvider'
 import Breadcrumbs from 'components/common/Breadcrumbs'
-import Sidebar from 'components/Sidebar'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { getCounties } from 'api'
@@ -60,23 +59,20 @@ function State() {
     )
   }
   return countyList.length && state ? (
-    <>
-      <Sidebar
-        routes={getCountyRoutes(state, countyList)}
-        label={state.label}
-        parentPath="/trending"
-      >
-        <div className="container trending">
-          <Breadcrumbs
-            current={`${state.label} County Level`}
-            parents={[{ path: '/trending', name: 'National Level' }]}
-          />
-          <h1>{state.label} County Level Annual Price Change</h1>
-          <h2>Single Family Only</h2>
-          <StateWithCountiesMap />
-        </div>
-      </Sidebar>
-    </>
+    <div id="main">
+      <div className="content trending">
+        <Breadcrumbs
+          current={`${state.label} County Level`}
+          parents={[{ path: '/trending', name: 'National Level' }]}
+          routes={getCountyRoutes(state, countyList)}
+          label={state.label}
+          parentPath="/trending"
+        />
+        <h1>{state.label} County Level Annual Price Change</h1>
+        <h2>Single Family Only</h2>
+        <StateWithCountiesMap />
+      </div>
+    </div>
   ) : null
 }
 

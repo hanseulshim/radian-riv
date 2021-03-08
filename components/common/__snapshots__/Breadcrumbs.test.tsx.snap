@@ -1,31 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Breadcrumbs should match snapshot 1`] = `
-<div
-  id="breadcrumbs"
->
-  <Link
-    href="/"
+<Fragment>
+  <div
+    className="flex mb-4 space-x-2"
   >
-    <a>
-      Home
-    </a>
-  </Link>
-  <span>
-    /
-  </span>
-  <Link
-    href="parent"
-  >
-    <a>
-      parent
-    </a>
-  </Link>
-  <div>
+    <img
+      alt="hamburger"
+      className="mr-4 cursor-pointer"
+      id="sidebar"
+      onClick={[Function]}
+      src="undefined/images/hamburger.svg"
+    />
+    <Link
+      href="/"
+    >
+      <a
+        className="underline text-patina"
+      >
+        Home
+      </a>
+    </Link>
     <span>
       /
     </span>
-    Test
+    <Link
+      href="parent"
+    >
+      <a
+        className="underline text-patina"
+      >
+        parent
+      </a>
+    </Link>
+    <span>
+      /
+    </span>
+    <span>
+      Test
+    </span>
   </div>
-</div>
+  <SidebarNew
+    label="county"
+    parentPath="/"
+    routes={Array []}
+    toggleMenu={[Function]}
+    xPosition={-310}
+  />
+</Fragment>
 `;

@@ -1,18 +1,17 @@
 import { withAuth } from 'context/auth/AuthRoute'
-import Sidebar from 'components/Sidebar'
-import { rootRoutes } from 'utils'
+import MainSidebar from 'components/Sidebar/MainSidebar'
 
 function Main() {
   return (
     <div id="main">
-      <Sidebar parent routes={rootRoutes} />
+      <MainSidebar />
       <div id="home-page">
         <img
           src={`${process.env.baseUrl}/images/house.png`}
           alt="RIV-Background"
           className="background-image"
         />
-        <div className="container">
+        <div className="flex-1 p-20">
           <h1>Welcome to Radian Interactive Value</h1>
           <div>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nisl,
