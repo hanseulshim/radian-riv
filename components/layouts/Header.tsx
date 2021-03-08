@@ -10,13 +10,9 @@ export default function Header() {
   return (
     <div
       id="header"
-      className="flex justify-between items-center py-2 px-10 shadow"
+      className="flex justify-between items-center py-4 px-10 shadow"
     >
-      <img
-        className="w-150"
-        src={`${process.env.baseUrl}/images/header-logo.svg`}
-        alt="logo"
-      />
+      <img src={`${process.env.baseUrl}/images/header-logo.svg`} alt="logo" />
       <h5>Radian Interactive Value</h5>
       <div className="flex items-center">
         {token && (
