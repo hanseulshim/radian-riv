@@ -3,8 +3,10 @@
 export default () => {
   describe('Video Tutorial', () => {
     before(() => {
-      cy.get('#sidebar').click()
-      cy.get('.route-link').contains('Video').click()
+      cy.intercept('GET', '/utility/states', {
+        fixture: 'states'
+      })
+      cy.visit('http://localhost:3000/value-products/video')
       cy.url().should('contain', 'video')
     })
     beforeEach(() => {
@@ -31,7 +33,6 @@ export default () => {
       cy.get('#video-modal').should('not.exist')
       cy.get('#sidebar').click()
       cy.get('.route-link').contains('Orders').click()
-      cy.url().should('includes', '/value-products')
     })
   })
 }

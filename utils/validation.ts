@@ -77,14 +77,14 @@ export const validateForm = (form: any, reqFields: any = {}): any => {
       key === 'orderDateFrom' ||
       key === 'orderDateTo'
     ) {
-      if (form[key].length === 0) {
+      if (reqFields[key] && form[key].length === 0) {
         errorObj[key] = `Date can't be empty`
-      } else if (!form[key].match(dateValidation)) {
+      } else if (form[key].length !== 0 && !form[key].match(dateValidation)) {
         errorObj[key] = `Date must be valid (MM/DD/YYYY)`
       }
     } else if (key === 'year') {
       if (form[key].length && !form[key].match(yearValidation)) {
-        errorObj[key] = `Date must be valid (YYYY)`
+        errorObj[key] = `Year must be valid (YYYY)`
       }
     } else if (key === 'filename') {
       if (form[key].length === 0) {

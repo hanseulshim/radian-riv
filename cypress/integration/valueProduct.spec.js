@@ -14,12 +14,12 @@ describe('Radian Interactive Value', () => {
     Cypress.Cookies.preserveOnce('auth')
   })
 
-  videoTutorial()
   orders()
   photoComp()
   historicalListing()
   marketAnalysis()
   documents()
+  videoTutorial()
 
   after(() => {
     cy.clearCookies()

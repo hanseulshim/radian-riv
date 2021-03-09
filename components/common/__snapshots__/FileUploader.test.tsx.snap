@@ -7,6 +7,7 @@ exports[`FileUploader should match snapshot 1`] = `
   <button
     className="btn btn-small"
     onClick={[Function]}
+    type="button"
   >
     Choose File...
   </button>

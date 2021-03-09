@@ -8,6 +8,7 @@ export * from './compPhotos'
 export * from './mls'
 export * from './document'
 export * from './searchOrder'
+export * from './newOrder'
 
 import { formatDate } from 'utils'
 import faker from 'faker'
@@ -155,6 +156,12 @@ export const generateProps = (props: string[]): any => {
         break
       case 'mlsName':
         obj[prop] = faker.company.companyName()
+        break
+      case 'mlsNumber':
+        obj[prop] = `${faker.random.number({
+          min: 20000000,
+          max: 50000000
+        })}-${faker.random.number({ min: 1, max: 9 })}`
         break
       case 'mlsComments':
         obj[prop] = faker.lorem.paragraph(10)

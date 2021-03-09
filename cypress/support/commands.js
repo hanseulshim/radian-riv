@@ -36,6 +36,18 @@ Cypress.Commands.add('login', () => {
 })
 
 Cypress.Commands.add('valueProduct', () => {
+  cy.intercept('GET', '/utility/states', {
+    fixture: 'states'
+  })
+  cy.intercept('GET', '/user/filter-defaults-restrict-comps', {
+    fixture: 'filter-defaults-restrict-comps'
+  })
+  cy.intercept('GET', '/user/filter-defaults', {
+    fixture: 'filter-defaults'
+  })
+  cy.intercept('GET', '/user/filter-defaults-time', {
+    fixture: 'filter-defaults-time'
+  })
   cy.get('.route-link').contains('Radian Interactive Value').click()
   cy.url().should('includes', '/value-products')
 })

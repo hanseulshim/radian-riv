@@ -8,6 +8,8 @@ interface Props {
   sortTable?: boolean
   lightMode?: boolean
   width?: number
+  handleRowClick?: (row: any) => void
+  highlightHoveredRow?: boolean
 }
 
 export default function Table({
@@ -16,7 +18,9 @@ export default function Table({
   fetchData,
   sortTable = false,
   lightMode = false,
-  width
+  width,
+  handleRowClick,
+  highlightHoveredRow = false
 }: Props) {
   const [tableData, setTableData] = useState([])
   const { getTableProps, headerGroups, rows, prepareRow } = useTable(
@@ -120,7 +124,15 @@ export default function Table({
           {rows.map(row => {
             prepareRow(row)
             return (
-              <div {...row.getRowProps()} className="tr styled-table-row">
+              <div
+                {...row.getRowProps()}
+                className={`tr styled-table-row ${
+                  highlightHoveredRow ? 'with-hover' : ''
+                }`}
+                onClick={
+                  handleRowClick ? () => handleRowClick(row.values) : null
+                }
+              >
                 {row.cells.map(cell => (
                   <div {...cell.getCellProps(cellProps)} className="td">
                     {cell.value !== null ? cell.render('Cell') : '--'}

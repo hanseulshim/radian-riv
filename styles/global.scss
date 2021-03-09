@@ -241,9 +241,11 @@ textarea {
 
 .radio {
   input {
+    cursor: pointer;
     margin-right: 10px;
   }
   label {
+    cursor: pointer;
     display: flex;
     align-items: center;
     margin-bottom: 1em;
@@ -533,6 +535,15 @@ ul {
 
     .tr:nth-child(even) {
       background-color: var(--geyser-light);
+    }
+
+    .tr,
+    .with-hover {
+      &:hover {
+        background-color: var(--prussian-blue);
+        color: var(--white);
+        cursor: pointer;
+      }
     }
 
     .td {

@@ -1,5 +1,6 @@
 import Cookies from 'js-cookie'
 import { handleApi } from './index'
+import { Option } from './index'
 
 interface Profile {
   name_first: string
@@ -21,21 +22,16 @@ export const submitProfile = async (form: Profile): Promise<string> => {
   return data
 }
 
-interface FilterDefaultOption {
-  label: string
-  value: string | number
-}
-
 interface FilterDefaults {
-  sqft?: FilterDefaultOption
+  sqft?: Option
   sqft_min?: number
   sqft_max?: number
-  sqft_percent?: FilterDefaultOption
+  sqft_percent?: Option
   comparable_retail: boolean
   comparable_distressed: boolean
-  time_going_back: FilterDefaultOption
+  time_going_back: Option
   comps_subdivision: boolean
-  restrict_comps: FilterDefaultOption
+  restrict_comps: Option
 }
 
 interface FilterDefaultSet {
@@ -54,7 +50,7 @@ export const getFilterDefaults = async (): Promise<FilterDefaults> => {
   const data = await handleApi(`/user/filter-defaults`)
   return {
     sqft: {
-      value: data.sqft.Value,
+      value: data.sqft.Value.toString(),
       label: data.sqft.Label
     },
     sqft_min: data.sqft_min,
@@ -63,12 +59,12 @@ export const getFilterDefaults = async (): Promise<FilterDefaults> => {
     comparable_retail: data.comparable_retail,
     comparable_distressed: data.comparable_distressed,
     time_going_back: {
-      value: data.time_going_back.Value,
+      value: data.time_going_back.Value.toString(),
       label: data.time_going_back.Label
     },
     comps_subdivision: data.comps_subdivision,
     restrict_comps: {
-      value: data.restrict_comps.Value,
+      value: data.restrict_comps.Value.toString(),
       label: data.restrict_comps.Label
     }
   }
@@ -81,23 +77,17 @@ export const setFilterDefaults = async (
   return data
 }
 
-export const getFilterDefaultsSquareFt = async (): Promise<
-  FilterDefaultOption[]
-> => {
+export const getFilterDefaultsSquareFt = async (): Promise<Option[]> => {
   const data = await handleApi('/user/filter-defaults-sqft')
   return data.sqft.map(option => ({ label: option.Label, value: option.Value }))
 }
 
-export const getFilterDefaultsSquareFtPercent = async (): Promise<
-  FilterDefaultOption[]
-> => {
+export const getFilterDefaultsSquareFtPercent = async (): Promise<Option[]> => {
   const data = await handleApi('/user/filter-defaults-sqft-percent')
   return data.sqft.map(option => ({ label: option.Label, value: option.Value }))
 }
 
-export const getFilterDefaultsRestrict = async (): Promise<
-  FilterDefaultOption[]
-> => {
+export const getFilterDefaultsRestrict = async (): Promise<Option[]> => {
   const data = await handleApi('/user/filter-defaults-restrict-comps')
   return data.restrictComps.map(option => ({
     label: option.Label,
@@ -105,9 +95,7 @@ export const getFilterDefaultsRestrict = async (): Promise<
   }))
 }
 
-export const getFilterDefaultsTime = async (): Promise<
-  FilterDefaultOption[]
-> => {
+export const getFilterDefaultsTime = async (): Promise<Option[]> => {
   const data = await handleApi('/user/filter-defaults-time')
   return data.filterTime.map(option => ({
     label: option.Label,
@@ -115,17 +103,15 @@ export const getFilterDefaultsTime = async (): Promise<
   }))
 }
 
-export const getSubjectPropertyDefault = async (): Promise<FilterDefaultOption> => {
+export const getSubjectPropertyDefault = async (): Promise<Option> => {
   const data = await handleApi('/user/subject-property')
   return {
     label: data.Label as string,
-    value: data.Value as number
+    value: data.Value as string
   }
 }
 
-export const getSubjectPropertyDefaults = async (): Promise<
-  FilterDefaultOption[]
-> => {
+export const getSubjectPropertyDefaults = async (): Promise<Option[]> => {
   const data = await handleApi('/user/subject-properties')
   return data.subjectProperties.map(option => ({
     label: option.Label,

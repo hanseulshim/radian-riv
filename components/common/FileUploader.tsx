@@ -23,7 +23,7 @@ export default function FileUploader({
   }
   return (
     <div className="custom-file-uploader">
-      <button className="btn btn-small" onClick={handleClick}>
+      <button className="btn btn-small" onClick={handleClick} type="button">
         Choose File...
       </button>
       {selectedFile && <span>{selectedFile.name}</span>}

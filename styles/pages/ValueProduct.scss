@@ -4,17 +4,15 @@
     .product-pool-selection {
       display: flex;
       align-items: center;
-      width: 100%;
       background-color: var(--nebula);
-      position: absolute;
-      left: 0;
-      right: 0;
       padding: 1em 2em;
-
+      margin-left: -2em;
+      margin-right: -2em;
       .custom-select-container {
         margin-right: 1em;
         .transparent__control {
           background-color: transparent;
+          color: black;
         }
       }
       .input-group {
@@ -25,6 +23,117 @@
       .custom-select-container,
       .input-group {
         max-width: 350px;
+      }
+    }
+
+    .radio-row {
+      display: flex;
+      margin: 1em 0;
+      .radio {
+        margin-right: 1em;
+      }
+    }
+
+    .user-defaults {
+      margin: 2em 0 1em 0;
+    }
+    .option-container {
+      margin-top: 1em;
+      .btn {
+        margin-bottom: 1em;
+      }
+      .checkbox-container {
+        margin-bottom: 15px;
+      }
+      .billable-row {
+        display: flex;
+        align-items: center;
+        .input-group {
+          width: 150px;
+          margin-left: 20px;
+          position: relative;
+          bottom: 15px;
+        }
+      }
+      .upload-row {
+        display: flex;
+        .link {
+          margin-left: 10px;
+        }
+      }
+    }
+    .single-order {
+      .basic-filters {
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+        .custom-select-container,
+        .input-group {
+          margin-right: 10px;
+          margin-bottom: 2em;
+        }
+        .custom-select-container {
+          position: relative;
+          bottom: 5px;
+          width: 250px;
+        }
+        .input-group {
+          width: 250px;
+        }
+        .street-address {
+          width: 350px;
+          margin-right: 10px;
+          .input-group {
+            width: 100%;
+          }
+        }
+      }
+      .advanced-filters {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--light-gray);
+        padding: 20px 10px;
+        margin: 0 -10px;
+        margin-bottom: 2em;
+
+        .input-group {
+          input {
+            background-color: transparent;
+          }
+        }
+        .top-row {
+          display: flex;
+          flex-wrap: wrap;
+          .input-group {
+            width: 150px;
+            margin-right: 10px;
+          }
+        }
+        .bottom-row {
+          display: flex;
+          flex-wrap: wrap;
+          .input-group {
+            width: 300px;
+            margin-right: 10px;
+          }
+        }
+      }
+
+      .suggestions-container {
+        margin-top: 1em;
+        .table-container {
+          margin-left: 0;
+          margin-bottom: 2em;
+        }
+      }
+    }
+
+    .bulk-order {
+      .submit {
+        margin-top: 2em;
+      }
+      .upload-row {
+        margin: 1em 0 0.5em 0;
       }
     }
   }

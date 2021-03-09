@@ -80,10 +80,14 @@ export default function ChangePropertyCharacteristics({ closeModal }: Props) {
   }, [order])
 
   const onSubmit = async () => {
-    const errorObj = validateForm({
-      asOfDate: inputs.asOfDate,
-      year: characteristics.year
-    })
+    const reqFields = { asOfDate: true }
+    const errorObj = validateForm(
+      {
+        asOfDate: inputs.asOfDate,
+        year: characteristics.year
+      },
+      reqFields
+    )
 
     if (Object.keys(errorObj).length) {
       setError(errorObj)
