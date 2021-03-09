@@ -18,6 +18,7 @@ exports[`MlsSheetModal should match snapshot 1`] = `
       </h2>
       <button
         className="btn btn-icon dark"
+        onClick={[Function]}
       >
         <span>
           Export PDF
@@ -2234,6 +2235,7 @@ exports[`MlsSheetModal should match snapshot 1`] = `
     </div>
     <button
       className="btn btn-icon dark"
+      onClick={[Function]}
       style={
         Object {
           "margin": "auto",

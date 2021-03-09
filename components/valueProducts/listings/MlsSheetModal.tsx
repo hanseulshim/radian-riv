@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Modal from 'components/common/Modal'
-import { MlsSheetInterface, getMlsSheet } from 'api'
+import { MlsSheetInterface, getMlsSheet, getMlsExportLink } from 'api'
 import { formatNullString, formatPrice } from 'utils'
 import PhotoPlay from './PhotoPlay'
 interface Props {
@@ -390,12 +390,17 @@ export default function MlsSheetModal({ closeModal, mlsNumber }: Props) {
     ))
   }
 
+  const fetchPdf = async () => {
+    const response = await getMlsExportLink(mlsNumber)
+    window.open(response)
+  }
+
   return (
     <Modal closeModal={closeModal} title={''} percent={95} id="mls-sheet">
       <div className="mls-container">
         <div className="top-row">
           <h2>MLS Sheet</h2>
-          <button className="btn btn-icon dark">
+          <button className="btn btn-icon dark" onClick={() => fetchPdf()}>
             <span>Export PDF</span>
             <span className="icon-container">
               <img
@@ -458,7 +463,11 @@ export default function MlsSheetModal({ closeModal, mlsNumber }: Props) {
         </div>
         <h6>Contact Information</h6>
         <div className="row spacer">{generateColumns('contact')}</div>
-        <button className="btn btn-icon dark" style={{ margin: 'auto' }}>
+        <button
+          className="btn btn-icon dark"
+          style={{ margin: 'auto' }}
+          onClick={() => fetchPdf()}
+        >
           <span>Export PDF</span>
           <span className="icon-container">
             <img

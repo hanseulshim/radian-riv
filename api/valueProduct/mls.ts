@@ -264,3 +264,7 @@ export const getMlsSheet = async (
     ]
   }
 }
+
+export const getMlsExportLink = async (mlsNumber: string): Promise<string> => {
+  return 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'
+}

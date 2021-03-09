@@ -9,6 +9,20 @@ import {
 import CompPhoto from './CompPhoto'
 import Checkbox from 'components/common/Checkbox'
 
+interface WarningProps {
+  closeModal: () => void
+}
+
+const WarningModal = ({ closeModal }: WarningProps) => {
+  return (
+    <Modal title="" closeModal={closeModal}>
+      <p className="my-10">
+        Three or more comparables must be checked to recalculate value.
+      </p>
+    </Modal>
+  )
+}
+
 interface Props {
   closeModal: () => void
   view: string
@@ -17,6 +31,7 @@ interface Props {
 
 export default function CompPhotosModal({ closeModal, view, orderId }: Props) {
   const [checkedProperties, setCheckedProperties] = useState([])
+  const [warningModal, setWarningModal] = useState(false)
   const [properties, setProperties] = useState<CompPhotoPropertyInterface[]>([])
   useEffect(() => {
     const getCompProperties = async () => {
@@ -33,11 +48,26 @@ export default function CompPhotosModal({ closeModal, view, orderId }: Props) {
     }
     getCompProperties()
   }, [])
+
+  const toggleWarningModal = () => {
+    setWarningModal(!warningModal)
+  }
+
+  const onSubmit = () => {
+    if (checkedProperties.length < 3) {
+      toggleWarningModal()
+    } else {
+      console.log('submitted')
+    }
+  }
+
   return (
     <Modal closeModal={closeModal} title={''} percent={90} id="comp-modal">
       <div className="comp-photos-modal">
         <div className="top-row">
-          <button className="btn btn-small">Submit</button>
+          <button className="btn btn-small" onClick={onSubmit}>
+            Submit
+          </button>
           <div className="check">
             <Checkbox
               label="Check/Uncheck All"
@@ -67,8 +97,11 @@ export default function CompPhotosModal({ closeModal, view, orderId }: Props) {
             />
           ))}
         </div>
-        <button className="btn btn-small">Submit</button>
+        <button className="btn btn-small" onClick={onSubmit}>
+          Submit
+        </button>
       </div>
+      {warningModal && <WarningModal closeModal={toggleWarningModal} />}
     </Modal>
   )
 }

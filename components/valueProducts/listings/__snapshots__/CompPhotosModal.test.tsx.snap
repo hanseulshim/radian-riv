@@ -15,6 +15,7 @@ exports[`CompPhotosModal should match snapshot 1`] = `
     >
       <button
         className="btn btn-small"
+        onClick={[Function]}
       >
         Submit
       </button>
@@ -34,6 +35,7 @@ exports[`CompPhotosModal should match snapshot 1`] = `
     />
     <button
       className="btn btn-small"
+      onClick={[Function]}
     >
       Submit
     </button>
