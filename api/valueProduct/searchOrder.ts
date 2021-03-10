@@ -1,7 +1,7 @@
 import { Option } from 'api'
-import { formatDate } from 'utils'
 import faker from 'faker'
 import { generateProps } from '.'
+import { OrderInterface } from '.'
 
 export interface Filters {
   orderDateFrom: string
@@ -79,6 +79,8 @@ export interface SearchOrderInterface {
   dueDate: string
   price: number
 }
+
+type Test = Pick<OrderInterface, 'id'>
 
 export const getOrders = async (
   form: Filters

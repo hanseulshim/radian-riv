@@ -1,45 +1,45 @@
 import { generateProps } from '.'
 
 export interface OrderInterface {
-  id: string
-  loanNumber: string
-  poolName: string
-  retailMarket: number
-  distressedMarket: number
-  marketArea: string
-  compsBack: string
-  asOfDate: string
-  lock: boolean
-  photo: string
-  address: string
-  city: string
-  state: string
-  zip: string
-  dnaSource: string
-  bed: number
-  bedEstimate: boolean
-  bath: number
-  bathEstimate: boolean
-  sqftPrice: number
-  sqft: number
-  sqftEstimate: boolean
-  lotSize: number
-  lotSizeEstimate: boolean
-  garage: number
-  garageEstimate: boolean
-  year: number
-  yearEstimate: boolean
-  propertyType: string
-  propertyTypeEstimate: boolean
-  calculatedPrice: number
-  asIsSalePrice: number
-  quickSalePrice: number
-  lat: number
-  lng: number
-  geoAccuracy: string
-  reo: boolean
-  rivDate: string
-  subdivision: string
+  id: string // ordersID
+  loanNumber: string // loanNum
+  poolName: string // from lookup table
+  retailMarket: number // need mapping - is it confidenceRatio?
+  distressedMarket: number // need mapping - is it confidence Ratio?
+  marketArea: string // radius
+  compsBack: string // monthsBack
+  asOfDate: string // asOfDate
+  lock: boolean // locked
+  photo: string // imageUrl
+  address: string // address
+  city: string // city
+  state: string // state
+  zip: string // zip
+  dnaSource: string // dnaSource
+  bed: number // bed
+  bedEstimate: boolean // estBed
+  bath: number // bath
+  bathEstimate: boolean // estBath
+  sqftPrice: number // need mapping - do we calculate? or is there another table?
+  sqft: number // sqft
+  sqftEstimate: boolean // estSqft
+  lotSize: number // lotSize
+  lotSizeEstimate: boolean // need mapping - there is NO estLotSize - is this an actual editable field? if it is then do we not need to track if it's an estimate?
+  garage: number // garage
+  garageEstimate: boolean // estGarage
+  year: number //yrBuilt
+  yearEstimate: boolean // estYrBuilt
+  propertyType: string // from lookup table
+  propertyTypeEstimate: boolean // need mapping - doesn't exist in table - is this an actual editable field? if it is then do we not need to track if it's an estimate?
+  calculatedPrice: number // need mapping
+  asIsSalePrice: number // need mapping
+  quickSalePrice: number // need mapping
+  lat: number // lat
+  lng: number // long
+  geoAccuracy: string // need mapping
+  reo: boolean // reo
+  rivDate: string // need confirmation - is it orderDate?
+  subdivision: string // need mapping
 }
 
 export const getOrder = async (orderId: string): Promise<OrderInterface> => {

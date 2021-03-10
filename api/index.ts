@@ -6,7 +6,7 @@ export * from './valueProduct'
 import Cookies from 'js-cookie'
 export interface Option {
   label: string
-  value: string
+  value: string | number
 }
 
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
