@@ -1,4 +1,5 @@
 import { generateProps } from '.'
+
 export interface CompPropertyInterface {
   id: string
   address: string

@@ -1,6 +1,7 @@
 import { generateProps } from './'
 import { Option } from '../index'
 import faker from 'faker'
+import { handleApi } from '..'
 
 export interface SingleOrderForm {
   orderedBy: Option
@@ -32,19 +33,20 @@ export interface SingleOrderForm {
   comment: string
 }
 
-export interface NewOrderSuggestionsInterface {
-  mlsNumber: string
-  address: string
-  city: string
-  state: string
-  zip: string
-  bed: string
-  bath: string
-  sqft: string
-  garage: string
-  lotSize: string
-  year: string
-}
+export type NewOrderSuggestionsInterface = Pick<
+  IOrders,
+  | 'mlsNumber'
+  | 'address'
+  | 'city'
+  | 'state'
+  | 'zip'
+  | 'bed'
+  | 'bath'
+  | 'sqft'
+  | 'garage'
+  | 'lotSize'
+  | 'year'
+>
 
 export const getSingleOrderPropertiesTable = async (
   form: SingleOrderForm
@@ -74,4 +76,40 @@ export const submitSingleOrder = async (
   form: SingleOrderForm
 ): Promise<string> => {
   return 'Success'
+}
+
+export const getProductTypes = async (): Promise<Option[]> => {
+  // const data = await handleApi('/value/producttypes')
+  return [
+    {
+      value: 0,
+      label: 'Radian Interactive Value'
+    },
+    {
+      value: 1,
+      label: 'Rental Analysis'
+    }
+  ]
+}
+
+export const getOrderedByUsers = async (): Promise<Option[]> => {
+  // const data = await handleApi('/value/orderedbyusers')
+  return [
+    {
+      value: 0,
+      label: 'Kevin Ingalls'
+    },
+    {
+      value: 1,
+      label: 'John Oneil'
+    },
+    {
+      value: 2,
+      label: 'Scott Cashon'
+    },
+    {
+      value: 3,
+      label: 'Hanseul Shim'
+    }
+  ]
 }
