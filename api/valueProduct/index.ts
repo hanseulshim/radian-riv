@@ -9,6 +9,8 @@ export * from './mls'
 export * from './document'
 export * from './searchOrder'
 export * from './newOrder'
+export * from './orders'
+export * from './results'
 
 import { formatDate } from 'utils'
 import faker from 'faker'
@@ -157,7 +159,7 @@ export const generateProps = (props: string[]): any => {
       case 'mlsName':
         obj[prop] = faker.company.companyName()
         break
-      case 'mlsNumber':
+      case 'mlsListNo':
         obj[prop] = `${faker.random.number({
           min: 20000000,
           max: 50000000
@@ -244,7 +246,7 @@ export const generateProps = (props: string[]): any => {
       case 'waterfront':
         obj[prop] = 'Water Oriented: No'
         break
-      case 'year':
+      case 'yrBuilt':
       case 'minYear':
       case 'maxYear':
         obj[prop] = faker.random.number({ min: 1980, max: 2010 })

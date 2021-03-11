@@ -138,6 +138,24 @@ h6 {
   }
 }
 
+.error-message,
+.error-input-message {
+  font-size: 0.6em;
+  color: var(--red);
+  display: block;
+  margin-top: 5px;
+  height: 0.6em;
+  width: 100%;
+}
+.success-message {
+  font-size: 0.6em;
+  color: var(--oracle);
+  display: block;
+  margin-top: 5px;
+  height: 0.6em;
+  width: 100%;
+}
+
 input:focus,
 textarea:focus,
 select:focus,
@@ -237,6 +255,7 @@ textarea {
   font-family: inherit;
   font-size: inherit;
   color: var(--prussian-blue);
+  border: 1px solid var(--prussian-blue);
 }
 
 .radio {

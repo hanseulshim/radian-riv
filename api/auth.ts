@@ -8,6 +8,7 @@ interface Login {
 export const submitLogin = async (form: Login): Promise<void> => {
   const { token } = await handleApi('/auth/login', form, true)
   const user = await handleApi('/user/get', null, true, token)
+  user.clientid_ssid = `${user.client_id}-${user.client_sid}`
   const auth = {
     token,
     user

@@ -21,14 +21,12 @@ export interface IOrders {
   sqft: number
   estSqft: boolean
   lotSize: number
-  estLotSize: boolean // need mapping - there is NO estLotSize - is this an actual editable field? if it is then do we not need to track if it's an estimate?
   garage: number
   estGarage: boolean
   yrBuilt: number
   estYrBuilt: boolean
   propertyTypeId: number
   propertyType: string // from lookup table
-  estPropertyType: boolean // need mapping - doesn't exist in table - is this an actual editable field? if it is then do we not need to track if it's an estimate?
   calculatedPrice: number // need mapping
   asIsSalePrice: number // need mapping
   quickSalePrice: number // need mapping
@@ -40,5 +38,4 @@ export interface IOrders {
   dnaSource: number
   dnaSourceValue: string // from lookup table
   subdivision: string // need mapping
-  orderByIdUser:
 }

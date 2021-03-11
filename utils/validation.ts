@@ -82,7 +82,7 @@ export const validateForm = (form: any, reqFields: any = {}): any => {
       } else if (form[key].length !== 0 && !form[key].match(dateValidation)) {
         errorObj[key] = `Date must be valid (MM/DD/YYYY)`
       }
-    } else if (key === 'year') {
+    } else if (key === 'year' || key === 'yrBuilt') {
       if (form[key].length && !form[key].match(yearValidation)) {
         errorObj[key] = `Year must be valid (YYYY)`
       }

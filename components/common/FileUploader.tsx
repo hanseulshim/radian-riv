@@ -26,7 +26,7 @@ export default function FileUploader({
       <button className="btn btn-small" onClick={handleClick} type="button">
         Choose File...
       </button>
-      {selectedFile && <span>{selectedFile.name}</span>}
+      <span>{selectedFile ? selectedFile.name : 'No file chosen'}</span>
       <input
         type="file"
         ref={hiddenFileInput}

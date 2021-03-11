@@ -38,6 +38,32 @@ export const getPropertyTypes = async (): Promise<Option[]> => {
   )
 }
 
+export const getMonthsBack = async (): Promise<Option[]> => {
+  // const data = await handleApi('/utility/monthsBack')
+  return [
+    {
+      value: 0,
+      label: '3 Months'
+    },
+    {
+      value: 1,
+      label: '6 Months'
+    },
+    {
+      value: 2,
+      label: '12 Months'
+    },
+    {
+      value: 3,
+      label: '24 Months'
+    },
+    {
+      value: 4,
+      label: '36 Months'
+    }
+  ]
+}
+
 export const getMsas = async (state: string): Promise<Option[]> => {
   const data = await handleApi(`/utility/msas/${state}`)
   return data.map(({ MSAId, MSA }: { MSAId: number; MSA: string }) => ({

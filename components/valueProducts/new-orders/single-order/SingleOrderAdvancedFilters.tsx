@@ -1,25 +1,23 @@
-import { SingleOrderForm } from 'api'
+import { ISingleOrderForm } from 'api'
 import Input from 'components/common/Input'
 
 interface Props {
-  form: SingleOrderForm
-  setForm: (e: any) => void
+  form: ISingleOrderForm
   handleInputChange: (
     e: React.ChangeEvent<HTMLInputElement>,
     key: string
   ) => void
-  error: SingleOrderForm
+  error: ISingleOrderForm
 }
 
 export default function SingleOrderAdvancedFilters({
   form,
-  setForm,
   handleInputChange,
   error
 }: Props) {
   return (
-    <div className="advanced-filters">
-      <div className="top-row">
+    <div className="flex-col w-full mb-4 bg-light-gray px-4 -ml-4">
+      <div className="flex space-x-4 transparent">
         <Input
           value={form.bed}
           label="Bed"
@@ -51,13 +49,13 @@ export default function SingleOrderAdvancedFilters({
           error={error.garage}
         />
         <Input
-          value={form.year}
+          value={form.yrBuilt}
           label="Year Built"
-          onChange={e => handleInputChange(e, 'year')}
-          error={error.year}
+          onChange={e => handleInputChange(e, 'yrBuilt')}
+          error={error.yrBuilt}
         />
       </div>
-      <div className="bottom-row">
+      <div className="flex space-x-4 transparent">
         <Input
           value={form.asOfDate}
           label="As of Date"

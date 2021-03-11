@@ -1,72 +1,71 @@
 import React, { useState, useEffect } from 'react'
 import {
   getFilterDefaults,
-  getFilterDefaultsRestrict,
-  getFilterDefaultsTime,
-  SingleOrderForm,
-  Option
+  ISingleOrderOptions,
+  getSingleOrderOptions,
+  submitSingleOrder,
+  IGreenForm,
+  ISingleOrderForm
 } from 'api'
 import CustomSelect from 'components/common/CustomSelect'
 import Input from 'components/common/Input'
 import { useTrending } from 'context/TrendingProvider'
 import SingleOrderAdvancedFilters from './SingleOrderAdvancedFilters'
-
-interface Alert {
-  type: string
-  message: string
-}
+import Checkbox from 'components/common/Checkbox'
+import SetUserDefaultsModal from '../SetUserDefaultsModal'
+import { validateForm } from 'utils/validation'
+import Alert from 'components/common/Alert'
+import Suggestions from './Suggestions'
 
 interface Props {
-  form: SingleOrderForm
-  setForm: (e: any) => void
-  onSubmit: () => void
-  handleSelectChange: (opt: Option, key: string) => void
-  handleInputChange: (
-    e: React.ChangeEvent<HTMLInputElement>,
-    key: string
-  ) => void
-  showFilters: boolean
-  error: SingleOrderForm
-  setAlert: (alert: Alert) => void
+  greenForm: IGreenForm
 }
 
-export default function SingleOrder({
-  form,
-  setForm,
-  onSubmit,
-  handleSelectChange,
-  handleInputChange,
-  showFilters,
-  error,
-  setAlert
-}: Props) {
+const defaultState = {
+  loanNum: '',
+  zip: '',
+  address: '',
+  city: '',
+  propertyTypeId: '',
+  monthsBack: '',
+  bed: '',
+  bath: '',
+  sqft: '',
+  lotSize: '',
+  garage: '',
+  yrBuilt: '',
+  asOfDate: '',
+  contactName: '',
+  contactPhone: '',
+  clientName: ''
+}
+
+export default function SingleOrder({ greenForm }: Props) {
   const { stateList } = useTrending()
-  const [restrictCompOptions, setRestrictCompOptions] = useState<Option[]>([])
-  const [compsGoingBackOptions, setCompsGoingBackOptions] = useState<Option[]>(
-    []
-  )
+  const [
+    singleOrderOptions,
+    setSingleOrderOptions
+  ] = useState<ISingleOrderOptions>({
+    restrictComps: [],
+    monthsBack: []
+  })
+  const [state, setSelectedState] = useState(null)
+  const [restrictComps, setRestrictComps] = useState(null)
+  const [monthsBack, setMonthsBack] = useState(null)
+  const [showFilters, setShowFilters] = useState(false)
+  const [form, setForm] = useState<ISingleOrderForm>({ ...defaultState })
+  const [error, setError] = useState({ ...defaultState })
+  const [alert, setAlert] = useState(null)
+  const [userDefaultsModal, setUserDefaultsModal] = useState(false)
 
   useEffect(() => {
     const geAllOptions = async () => {
       try {
-        const formCopy = { ...form }
-        const resultArray = await Promise.all([
-          await getFilterDefaultsRestrict(),
-          await getFilterDefaultsTime()
-        ])
+        const options = await getSingleOrderOptions()
         const filterDefaults = await getFilterDefaults()
-
-        resultArray.forEach((response, index) => {
-          if (index === 0) {
-            setRestrictCompOptions(response)
-            formCopy.restrictComps = filterDefaults.restrict_comps
-          } else if (index === 1) {
-            setCompsGoingBackOptions(response)
-            formCopy.compsBack = filterDefaults.time_going_back
-          }
-        })
-        setForm(formCopy)
-        setAlert(null)
+        setSingleOrderOptions(options)
+        setRestrictComps(filterDefaults.restrict_comps)
+        setMonthsBack(filterDefaults.time_going_back)
       } catch (e) {
         setAlert({ type: 'error', message: e.message })
       }
@@ -74,22 +73,86 @@ export default function SingleOrder({
     geAllOptions()
   }, [])
 
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    key = 'string'
+  ) => {
+    if (error[key]) {
+      setError({ ...error, [key]: '' })
+    }
+    setForm({ ...form, [key]: e.target.value })
+  }
+
+  const toggleUserDefaultModal = () => {
+    setUserDefaultsModal(!userDefaultsModal)
+  }
+
+  const onSubmit = async () => {
+    setAlert(null)
+    const errorCopy = { ...defaultState }
+    const reqFields = {
+      loanNum: true,
+      address: true,
+      zip: true,
+      city: true
+    }
+    const errorObj = validateForm(form, reqFields)
+    const errorArr = Object.keys(errorObj)
+    if (errorArr.length) {
+      errorArr.forEach(key => {
+        errorCopy[key] = errorObj[key]
+      })
+    } else if (!state) {
+      setAlert({ type: 'error', message: 'You must select a state' })
+    } else {
+      try {
+        const response = await submitSingleOrder(
+          {
+            ...form,
+            state: state.value,
+            propertyTypeId: restrictComps.value,
+            monthsBack: monthsBack.value
+          },
+          greenForm
+        )
+        if (response) {
+          setAlert({ type: 'success', message: response })
+        }
+      } catch (e) {
+        setAlert({ type: 'error', message: e.message })
+      }
+    }
+    setError(errorCopy)
+  }
+
   return (
-    <div className="single-order">
-      <div className="basic-filters">
-        <Input
-          value={form.loanNumber}
-          label="Loan Number"
-          onChange={e => handleInputChange(e, 'loanNumber')}
-          error={error.loanNumber}
-        />
-        <Input
-          value={form.zip}
-          label="Zip"
-          onChange={e => handleInputChange(e, 'zip')}
-          error={error.zip}
-        />
-        <div className="street-address">
+    <div className="flex-col">
+      <button className="btn btn-small mb-8" onClick={toggleUserDefaultModal}>
+        Set User Defaults
+      </button>
+      <Checkbox
+        label="Show Advanced Filters"
+        checked={showFilters}
+        onChange={e => setShowFilters(e.target.checked)}
+      />
+      <div className="flex my-4 space-x-4">
+        <div className="w-3/5">
+          <Input
+            value={form.loanNum}
+            label="Loan Number"
+            onChange={e => handleInputChange(e, 'loanNum')}
+            error={error.loanNum}
+          />
+        </div>
+        <div className="w-2/5">
+          <Input
+            value={form.zip}
+            label="Zip"
+            onChange={e => handleInputChange(e, 'zip')}
+            error={error.zip}
+          />
+        </div>
+        <div className="w-4/5">
           <Input
             value={form.address}
             label="Street Address"
@@ -97,55 +160,60 @@ export default function SingleOrder({
             error={error.address}
           />
         </div>
-        <Input
-          value={form.city}
-          label="City"
-          onChange={e => handleInputChange(e, 'city')}
-          error={error.city}
-        />
+        <div className="w-3/5">
+          <Input
+            value={form.city}
+            label="City"
+            onChange={e => handleInputChange(e, 'city')}
+            error={error.city}
+          />
+        </div>
+        <div className="w-2/5 relative top-4">
+          <CustomSelect
+            value={state}
+            label="State"
+            placeholder="State"
+            onChange={opt => setSelectedState(opt)}
+            options={stateList}
+            classNamePrefix="transparent"
+          />
+        </div>
+      </div>
+      <div className="flex my-4 space-x-4 w-1/2">
         <CustomSelect
-          value={form.state}
-          label="State"
-          placeholder="State"
-          onChange={opt => handleSelectChange(opt, 'state')}
-          options={stateList}
-          classNamePrefix="transparent"
-        />
-        <CustomSelect
-          options={restrictCompOptions}
-          value={form.restrictComps}
+          options={singleOrderOptions.restrictComps}
+          value={restrictComps}
           label={'Restrict Comps'}
-          onChange={opt => handleSelectChange(opt, 'restrictComps')}
+          onChange={opt => setRestrictComps(opt)}
         />
         <CustomSelect
-          options={compsGoingBackOptions}
-          value={form.compsBack}
+          options={singleOrderOptions.monthsBack}
+          value={monthsBack}
           label={'Comps Going Back'}
-          onChange={opt => handleSelectChange(opt, 'compsGoingBack')}
+          onChange={opt => setMonthsBack(opt)}
         />
       </div>
       {showFilters && (
         <SingleOrderAdvancedFilters
           form={form}
-          setForm={setForm}
           handleInputChange={handleInputChange}
           error={error}
         />
       )}
-      <button
-        className="btn"
-        type="submit"
-        onClick={onSubmit}
-        disabled={
-          !form.loanNumber ||
-          !form.address ||
-          !form.zip ||
-          !form.city ||
-          !form.state
-        }
-      >
+      <button className="btn" type="submit" onClick={onSubmit}>
         Submit
       </button>
+      <div className="mt-4">
+        {alert && <Alert type={alert.type} message={alert.message} />}
+      </div>
+      <Suggestions
+        form={form}
+        setForm={setForm}
+        setSelectedState={setSelectedState}
+      />
+      {userDefaultsModal && (
+        <SetUserDefaultsModal closeModal={toggleUserDefaultModal} />
+      )}
     </div>
   )
 }

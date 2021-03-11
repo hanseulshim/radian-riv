@@ -17,7 +17,10 @@ export const defaultAuth = {
     zip: '',
     phone_home: '',
     phone_mobile: '',
-    title: ''
+    title: '',
+    client_id: 0,
+    client_sid: 0,
+    clientid_ssid: ''
   },
   token: ''
 }
@@ -38,6 +41,9 @@ export type User = {
   phone_home: string
   phone_mobile: string
   title: string
+  client_id: number
+  client_sid: number
+  clientid_ssid: string
 }
 
 export type AuthType = {

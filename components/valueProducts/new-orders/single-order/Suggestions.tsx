@@ -1,18 +1,20 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, memo } from 'react'
 import {
   getSingleOrderPropertiesTable,
-  SingleOrderForm,
-  NewOrderSuggestionsInterface
+  ISingleOrderForm,
+  NewOrderSuggestionsInterface,
+  Option
 } from 'api'
 import { useTrending } from 'context/TrendingProvider'
 import Table from 'components/common/Table'
 
 interface Props {
-  form: SingleOrderForm
+  form: ISingleOrderForm
   setForm: (e: any) => void
+  setSelectedState: React.Dispatch<React.SetStateAction<Option>>
 }
 
-export default function Suggestions({ form, setForm }: Props) {
+function Suggestions({ form, setForm, setSelectedState }: Props) {
   const { stateList } = useTrending()
   const [suggestions, setSuggestions] = useState<
     NewOrderSuggestionsInterface[]
@@ -31,7 +33,7 @@ export default function Suggestions({ form, setForm }: Props) {
     const tableData = suggestions
     if (tableData.length) {
       const cols = [
-        'mlsNumber',
+        'mlsListNo',
         'address',
         'city',
         'state',
@@ -41,7 +43,7 @@ export default function Suggestions({ form, setForm }: Props) {
         'sqft',
         'garage',
         'lotSize',
-        'year'
+        'yrBuilt'
       ]
       const tableColumns = cols.map(key => ({
         Header: key.charAt(0).toUpperCase() + key.slice(1),
@@ -53,6 +55,7 @@ export default function Suggestions({ form, setForm }: Props) {
 
   const handleRowClick = (row: NewOrderSuggestionsInterface) => {
     const {
+      mlsListNo,
       zip,
       address,
       city,
@@ -62,22 +65,23 @@ export default function Suggestions({ form, setForm }: Props) {
       sqft,
       garage,
       lotSize,
-      year
+      yrBuilt
     } = row
     const stateMatch = stateList.find(stateObj => stateObj.value === state)
+    setSelectedState(stateMatch)
 
     setForm({
       ...form,
+      mlsListNo,
       zip,
       address,
       city,
-      state: stateMatch,
       bed,
       bath,
       sqft,
       garage,
       lotSize,
-      year
+      yrBuilt
     })
   }
 
@@ -99,3 +103,5 @@ export default function Suggestions({ form, setForm }: Props) {
     </div>
   )
 }
+
+export default memo(Suggestions)

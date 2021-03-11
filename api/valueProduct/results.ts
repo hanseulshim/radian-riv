@@ -26,6 +26,7 @@ export interface IResults {
   isSubject: boolean
   assetId: number
   city: string
+  state: string
   dom: number
   actDom: number
   schDisc: string
