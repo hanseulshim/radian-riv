@@ -4,11 +4,14 @@ export interface IResults {
   compType: number
   compTypeValue: string
   address: string
+  city: string
+  state: string
   zip: number
   bed: number
   bath: number
   sqft: number
   garage: number
+  lotSize: string
   yrBuilt: number
   propType: number
   proximity: number
@@ -19,14 +22,8 @@ export interface IResults {
   lat: number
   lng: number // LONG in DB - radian needs to recast
   imageUrl: string
-  mlsComments: string
-  mlsListing: string
-  lotSize: string
-  mlsName: string
   isSubject: boolean
   assetId: number
-  city: string
-  state: string
   dom: number
   actDom: number
   schDisc: string
@@ -35,4 +32,7 @@ export interface IResults {
   waterfront: string
   pooldetails: string
   mlsListNo: string
+  mlsName: string
+  mlsComments: string
+  mlsListing: string
 }

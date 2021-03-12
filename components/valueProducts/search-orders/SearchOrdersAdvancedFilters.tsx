@@ -103,105 +103,113 @@ export default function SearchOrdersAdvancedFilters({
   }, [filters.state])
 
   return (
-    <div className="advanced-filters-container">
-      <Input
-        value={filters.city}
-        label="City"
-        onChange={e => handleInputChange(e, 'city')}
-        error={error.city}
-      />
-      <CustomSelect
-        value={filters.state}
-        label="State"
-        placeholder="State"
-        onChange={opt => handleSelectChange(opt, 'state')}
-        options={stateList}
-        classNamePrefix="transparent"
-        id="AF-select-state"
-      />
-      <CustomSelect
-        value={filters.propertyType}
-        label="Property Type"
-        placeholder="Property Type"
-        onChange={opt => handleSelectChange(opt, 'propertyType')}
-        options={propertyTypes}
-        classNamePrefix="transparent"
-        id="AF-select-property-type"
-      />
-      <CustomSelect
-        value={filters.msa}
-        label="MSA"
-        placeholder="MSA"
-        onChange={opt => handleSelectChange(opt, 'msa')}
-        options={msas}
-        classNamePrefix="transparent"
-        disabled={!filters.state}
-        id="AF-select-msa"
-      />
-      <CustomSelect
-        value={filters.client}
-        label="Client"
-        placeholder="Client"
-        onChange={opt => handleSelectChange(opt, 'client')}
-        options={clients}
-        classNamePrefix="transparent"
-        id="AF-select-client"
-      />
-      <Input
-        value={filters.baseClient}
-        label="Base Client"
-        onChange={e => handleInputChange(e, 'baseClient')}
-        error={error.baseClient}
-      />
-      <Input
-        value={filters.completeDateFrom}
-        label="Complete Date From"
-        onChange={e => handleInputChange(e, 'completeDateFrom')}
-        error={error.completeDateFrom}
-      />
-      <Input
-        value={filters.completeDateTo}
-        label="Complete Date To"
-        onChange={e => handleInputChange(e, 'completeDateTo')}
-        error={error.completeDateTo}
-      />
-      <CustomSelect
-        value={filters.products}
-        label="Products"
-        placeholder="Products"
-        onChange={opt => handleSelectChange(opt, 'products')}
-        options={products}
-        classNamePrefix="transparent"
-        id="AF-select-products"
-      />
-      <CustomSelect
-        value={filters.department}
-        label="Department"
-        placeholder="Department"
-        onChange={opt => handleSelectChange(opt, 'department')}
-        options={departments}
-        classNamePrefix="transparent"
-        id="AF-select-department"
-      />
-      <CustomSelect
-        value={filters.orderedBy}
-        label="Ordered By"
-        placeholder="Ordered By"
-        onChange={opt => handleSelectChange(opt, 'orderedBy')}
-        options={orderedByUsers}
-        classNamePrefix="transparent"
-        id="AF-select-orderedBy"
-      />
-      <CustomSelect
-        value={filters.rivStatus}
-        label="Radian Interactive Value Status"
-        placeholder="RIV Status"
-        onChange={opt => handleSelectChange(opt, 'rivStatus')}
-        options={rivStatuses}
-        classNamePrefix="transparent"
-        id="AF-select-rivStatus"
-      />
-      <div className="full-width-row">
+    <div className="bg-light-gray p-4 -mx-4 transparent advanced-filters">
+      <div className="flex space-x-4 w-3/4">
+        <Input
+          value={filters.city}
+          label="City"
+          onChange={e => handleInputChange(e, 'city')}
+          error={error.city}
+        />
+        <CustomSelect
+          value={filters.state}
+          label="State"
+          placeholder="State"
+          onChange={opt => handleSelectChange(opt, 'state')}
+          options={stateList}
+          classNamePrefix="transparent"
+          id="AF-select-state"
+        />
+        <CustomSelect
+          value={filters.propertyType}
+          label="Property Type"
+          placeholder="Property Type"
+          onChange={opt => handleSelectChange(opt, 'propertyType')}
+          options={propertyTypes}
+          classNamePrefix="transparent"
+          id="AF-select-property-type"
+        />
+      </div>
+      <div className="flex space-x-4 w-3/4">
+        <CustomSelect
+          value={filters.msa}
+          label="MSA"
+          placeholder="MSA"
+          onChange={opt => handleSelectChange(opt, 'msa')}
+          options={msas}
+          classNamePrefix="transparent"
+          disabled={!filters.state}
+          id="AF-select-msa"
+        />
+        <CustomSelect
+          value={filters.client}
+          label="Client"
+          placeholder="Client"
+          onChange={opt => handleSelectChange(opt, 'client')}
+          options={clients}
+          classNamePrefix="transparent"
+          id="AF-select-client"
+        />
+        <Input
+          value={filters.baseClient}
+          label="Base Client"
+          onChange={e => handleInputChange(e, 'baseClient')}
+          error={error.baseClient}
+        />
+      </div>
+      <div className="flex space-x-4 w-3/4">
+        <Input
+          value={filters.completeDateFrom}
+          label="Complete Date From"
+          onChange={e => handleInputChange(e, 'completeDateFrom')}
+          error={error.completeDateFrom}
+        />
+        <Input
+          value={filters.completeDateTo}
+          label="Complete Date To"
+          onChange={e => handleInputChange(e, 'completeDateTo')}
+          error={error.completeDateTo}
+        />
+        <CustomSelect
+          value={filters.products}
+          label="Products"
+          placeholder="Products"
+          onChange={opt => handleSelectChange(opt, 'products')}
+          options={products}
+          classNamePrefix="transparent"
+          id="AF-select-products"
+        />
+      </div>
+      <div className="flex space-x-4 w-3/4">
+        <CustomSelect
+          value={filters.department}
+          label="Department"
+          placeholder="Department"
+          onChange={opt => handleSelectChange(opt, 'department')}
+          options={departments}
+          classNamePrefix="transparent"
+          id="AF-select-department"
+        />
+        <CustomSelect
+          value={filters.orderedBy}
+          label="Ordered By"
+          placeholder="Ordered By"
+          onChange={opt => handleSelectChange(opt, 'orderedBy')}
+          options={orderedByUsers}
+          classNamePrefix="transparent"
+          id="AF-select-orderedBy"
+        />
+        <CustomSelect
+          value={filters.rivStatus}
+          label="Radian Interactive Value Status"
+          placeholder="RIV Status"
+          onChange={opt => handleSelectChange(opt, 'rivStatus')}
+          options={rivStatuses}
+          classNamePrefix="transparent"
+          id="AF-select-rivStatus"
+        />
+      </div>
+      <div className="flex w-1/2 space-x-4 my-8">
         <CustomSelect
           value={filters.reconcileStatus}
           label="Reconcile Status"

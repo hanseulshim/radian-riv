@@ -125,7 +125,7 @@ export default function SearchOrders() {
         onChange={() => showAdvancedFilters(!advancedFilters)}
       />
       <Form onSubmit={onSubmit} alert={alert} id={'search-orders'}>
-        <div className="form">
+        <div>
           <SearchFilters
             filters={filters}
             handleInputChange={handleInputChange}
@@ -140,7 +140,7 @@ export default function SearchOrders() {
               error={error}
             />
           )}
-          <div className="btn-row">
+          <div className="flex my-4 space-x-4">
             <div className="dropdown-container">
               <button
                 type="button"

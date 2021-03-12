@@ -1,5 +1,14 @@
 import { Option } from '../index'
-import { getPropertyTypes, getMonthsBack, IResults, generateProps } from '..'
+import {
+  getPropertyTypes,
+  getMonthsBack,
+  IResults,
+  generateProps,
+  getOrderedByUsers,
+  getClients,
+  getProductTypes,
+  getPools
+} from '..'
 import faker from 'faker'
 export interface ISingleOrderForm {
   loanNum: string
@@ -7,6 +16,7 @@ export interface ISingleOrderForm {
   address: string
   city: string
   propertyTypeId: string
+  state: string
   monthsBack: string
   bed: string
   bath: string
@@ -49,47 +59,15 @@ export interface INewOrderOptions {
 
 export const newOrderOptions = async (): Promise<INewOrderOptions> => {
   // const data = await handleApi('/value/neworderoptions')
+  const orderedByUsers = await getOrderedByUsers()
+  const clients = await getClients()
+  const productTypes = await getProductTypes()
+  const pools = await getPools()
   return {
-    orderedByUsers: [
-      {
-        value: '25996-1',
-        label: 'Kevin Ingalls'
-      },
-      {
-        value: '26002-1',
-        label: 'John Oneil'
-      },
-      {
-        value: '26005-1',
-        label: 'Scott Cashon'
-      },
-      {
-        value: '26001-1',
-        label: 'Hanseul Shim'
-      }
-    ],
-    clients: [
-      {
-        value: '46240-1',
-        label: 'Boost Labs'
-      }
-    ],
-    productTypes: [
-      {
-        value: 0,
-        label: 'Radian Interactive Value'
-      },
-      {
-        value: 1,
-        label: 'Rental Analysis'
-      }
-    ],
-    pools: [
-      {
-        value: 0,
-        label: 'Pool 1'
-      }
-    ]
+    orderedByUsers,
+    clients,
+    productTypes,
+    pools
   }
 }
 
@@ -129,8 +107,9 @@ export type NewOrderSuggestionsInterface = Pick<
 >
 
 export const getSingleOrderPropertiesTable = async (
-  form: ISingleOrderForm
+  form: ISingleOrderForm & { state: string }
 ): Promise<NewOrderSuggestionsInterface[]> => {
+  // const data = await handleApi('/value/singleorderproperties')
   const propertiesLength = faker.random.number({ min: 2, max: 15 })
   const data: NewOrderSuggestionsInterface[] = []
   for (let i = 1; i <= propertiesLength; i++) {

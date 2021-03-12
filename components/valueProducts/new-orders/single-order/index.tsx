@@ -26,6 +26,7 @@ const defaultState = {
   zip: '',
   address: '',
   city: '',
+  state: '',
   propertyTypeId: '',
   monthsBack: '',
   bed: '',
@@ -106,15 +107,7 @@ export default function SingleOrder({ greenForm }: Props) {
       setAlert({ type: 'error', message: 'You must select a state' })
     } else {
       try {
-        const response = await submitSingleOrder(
-          {
-            ...form,
-            state: state.value,
-            propertyTypeId: restrictComps.value,
-            monthsBack: monthsBack.value
-          },
-          greenForm
-        )
+        const response = await submitSingleOrder(form, greenForm)
         if (response) {
           setAlert({ type: 'success', message: response })
         }
@@ -173,7 +166,10 @@ export default function SingleOrder({ greenForm }: Props) {
             value={state}
             label="State"
             placeholder="State"
-            onChange={opt => setSelectedState(opt)}
+            onChange={opt => {
+              setForm({ ...form, state: opt.value })
+              setSelectedState(opt)
+            }}
             options={stateList}
             classNamePrefix="transparent"
           />
@@ -184,13 +180,19 @@ export default function SingleOrder({ greenForm }: Props) {
           options={singleOrderOptions.restrictComps}
           value={restrictComps}
           label={'Restrict Comps'}
-          onChange={opt => setRestrictComps(opt)}
+          onChange={opt => {
+            setForm({ ...form, propertyTypeId: opt.value })
+            setRestrictComps(opt)
+          }}
         />
         <CustomSelect
           options={singleOrderOptions.monthsBack}
           value={monthsBack}
           label={'Comps Going Back'}
-          onChange={opt => setMonthsBack(opt)}
+          onChange={opt => {
+            setForm({ ...form, monthsBack: opt.value })
+            setMonthsBack(opt)
+          }}
         />
       </div>
       {showFilters && (

@@ -87,3 +87,59 @@ export const getAboutUs = async (): Promise<any[]> => {
   }
   return data
 }
+
+export const getOrderedByUsers = async (): Promise<Option[]> => {
+  // const data = await handleApi('/utility/orderedbyusers')
+  return [
+    {
+      value: '25996-1',
+      label: 'Kevin Ingalls'
+    },
+    {
+      value: '26002-1',
+      label: 'John Oneil'
+    },
+    {
+      value: '26005-1',
+      label: 'Scott Cashon'
+    },
+    {
+      value: '26001-1',
+      label: 'Hanseul Shim'
+    }
+  ]
+}
+
+export const getClients = async (): Promise<Option[]> => {
+  // const data = await handleApi('/utility/clients')
+  return [
+    {
+      value: '46240-1',
+      label: 'Boost Labs'
+    }
+  ]
+}
+
+export const getProductTypes = async (): Promise<Option[]> => {
+  // const data = await handleApi('/utility/producttypes')
+  return [
+    {
+      value: 0,
+      label: 'Radian Interactive Value'
+    },
+    {
+      value: 1,
+      label: 'Rental Analysis'
+    }
+  ]
+}
+
+export const getPools = async (): Promise<Option[]> => {
+  // const data = await handleApi('/utility/pools')
+  return [
+    {
+      value: 0,
+      label: 'Pool 1'
+    }
+  ]
+}
