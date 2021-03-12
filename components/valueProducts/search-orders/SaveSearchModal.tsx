@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { Filters, Search, saveSavedSearches } from 'api'
+import { ISearchOrderFilters, saveSearch } from 'api'
 import Modal from 'components/common/Modal'
 import Input from 'components/common/Input'
 import Radio from 'components/common/Radio'
 
 interface Props {
   closeModal: () => void
-  savedSearches: Search[]
-  filters: Filters
-  setSavedSearches: React.Dispatch<React.SetStateAction<Search[]>>
+  savedSearches: ISearchOrderFilters[]
+  filters: ISearchOrderFilters
+  setSavedSearches: React.Dispatch<React.SetStateAction<ISearchOrderFilters[]>>
 }
 
 export default function SaveSearchModal({
@@ -18,14 +18,14 @@ export default function SaveSearchModal({
   setSavedSearches
 }: Props) {
   const [selectedSearch, setSelectedSearch] = useState(null)
-  const [searchList, setSearchList] = useState<Search[]>([])
+  const [searchList, setSearchList] = useState<ISearchOrderFilters[]>([])
   const [searchListError, setSearchListError] = useState([])
 
   useEffect(() => {
     const arr = savedSearches.slice()
     arr.push({
-      name: '',
-      filters
+      ...filters,
+      name: ''
     })
     setSearchList(arr)
     setSearchListError(arr.map(() => ''))
@@ -39,12 +39,12 @@ export default function SaveSearchModal({
     setSearchListError(arr.map(() => ''))
   }
 
-  const saveSearch = async () => {
+  const submitSearch = async () => {
     if (searchList.length - 1 !== savedSearches.length) {
       const arr = searchList.slice()
       arr.pop()
       setSavedSearches(arr)
-      await saveSavedSearches(arr)
+      await saveSearch(arr)
       closeModal()
       return
     }
@@ -65,9 +65,9 @@ export default function SaveSearchModal({
       if (selectedSearch !== searchList.length - 1) {
         arr.pop()
       }
-      arr[selectedSearch].filters = filters
+      arr[selectedSearch] = { ...filters }
       setSavedSearches(arr)
-      await saveSavedSearches(arr)
+      await saveSearch(arr)
       closeModal()
     }
   }
@@ -80,22 +80,24 @@ export default function SaveSearchModal({
       width={600}
     >
       <h2>Save Search</h2>
-      <div className="search-container">
-        <div className="search-name">Search Name</div>
+      <div className="flex flex-col w-full">
+        <div className="bg-prussian-blue text-white py-4 px-8">Search Name</div>
         {searchList.map((search, index) => (
-          <div className="row" key={index}>
+          <div className="flex px-4" key={index}>
             <div
-              className={`radio-input${
-                selectedSearch === index ? '' : ' inactive'
-              }${index === searchList.length - 1 ? ' short' : ''}`}
+              className={`flex flex-1 items-center${
+                selectedSearch === index ? '' : ' opacity-50'
+              }${index === searchList.length - 1 ? ' mr-8' : ''}`}
               onClick={() => setSelectedSearch(index)}
             >
-              <Radio
-                onChange={() => {}}
-                value=""
-                checked={selectedSearch === index}
-                label={''}
-              />
+              <div className="mt-4">
+                <Radio
+                  onChange={() => {}}
+                  value=""
+                  checked={selectedSearch === index}
+                  label={''}
+                />
+              </div>
               <Input
                 value={search.name}
                 label={index === searchList.length - 1 ? 'Search Name' : ''}
@@ -107,7 +109,7 @@ export default function SaveSearchModal({
             </div>
             {index !== searchList.length - 1 && (
               <img
-                className="icon"
+                className="ml-4"
                 src={`${process.env.baseUrl}/images/icon_x_circle_fill.svg`}
                 onClick={() => {
                   const arr = searchList.slice()
@@ -121,7 +123,7 @@ export default function SaveSearchModal({
           </div>
         ))}
       </div>
-      <button className="btn" onClick={saveSearch} id="save-search">
+      <button className="btn" onClick={submitSearch} id="save-search">
         Save
       </button>
       <button className="btn btn-link" onClick={closeModal}>

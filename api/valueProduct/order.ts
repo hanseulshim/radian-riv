@@ -2,7 +2,7 @@ import { generateProps } from '.'
 
 export interface OrderInterface {
   id: string // ordersID
-  loanNumber: string // loanNum
+  loanNum: string // loanNum
   poolName: string // from lookup table
   retailMarket: number // need mapping - is it confidenceRatio?
   distressedMarket: number // need mapping - is it confidence Ratio?
@@ -70,7 +70,7 @@ const generateOrders = (num = 15): OrderInterface[] => {
       'lat',
       'lng',
       'lock',
-      'loanNumber',
+      'loanNum',
       'lotSize',
       'lotSizeEstimate',
       'marketArea',

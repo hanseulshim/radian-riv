@@ -1,91 +1,135 @@
 import { Option } from 'api'
 import faker from 'faker'
 import { generateProps } from '.'
-import { OrderInterface } from '.'
+import {
+  getOrderedByUsers,
+  getClients,
+  getProductTypes,
+  getPools,
+  getPropertyTypes,
+  getDepartments,
+  getRivStatuses,
+  getReconcileStatuses
+} from '..'
+import { IOrders } from './orders'
 
-export interface Filters {
-  orderDateFrom: string
-  orderDateTo: string
-  clientLoanNumber: string
-  orderId: string
+export interface ISearchOrderFilters {
+  name: string
+  loanNum: string
+  ordersId: string
   address: string
   zip: string
   city: string
-  state: Option
-  msa: Option
-  client: Option
-  baseClient: string
-  propertyType: Option
-  completeDateFrom: string
-  completeDateTo: string
-  products: Option
-  department: Option
-  orderedBy: Option
-  rivStatus: Option
-  reconcileStatus: Option
-  selectedPools: Option[]
+  state: string
+  propertyTypeId: string
+  initialCompleteDate: string
+  completeDate: string
+  orderByIdUser: string
+  status: string
+  reconcileStatusId: string
+  orderDateFrom: string
+  orderDateTo: string
+  msaId: string
+  clientIds: string[]
+  productId: string
+  departmentId: string
+  poolIds: string[]
 }
-export interface Search {
-  name: string
-  filters: Filters
+
+export interface ISearchOrderOptions {
+  propertyTypes: Option[]
+  clients: Option[]
+  productTypes: Option[]
+  departments: Option[]
+  orderedByUsers: Option[]
+  statuses: Option[]
+  reconcileStatuses: Option[]
+  pools: Option[]
 }
-export const getSavedSearches = async (): Promise<Search[]> => {
-  const arr = []
+
+export const getSearchOrderOptions = async (): Promise<ISearchOrderOptions> => {
+  const propertyTypes = await getPropertyTypes()
+  const clients = await getClients()
+  const productTypes = await getProductTypes()
+  const departments = await getDepartments()
+  const orderedByUsers = await getOrderedByUsers()
+  const pools = await getPools()
+  const statuses = await getRivStatuses()
+  const reconcileStatuses = await getReconcileStatuses()
+  return {
+    propertyTypes,
+    clients,
+    productTypes,
+    departments,
+    orderedByUsers,
+    statuses,
+    reconcileStatuses,
+    pools
+  }
+}
+
+export const getSavedSearches = async (): Promise<ISearchOrderFilters[]> => {
+  // const data = await handleApi('/value/savedsearches')
+  const arr: ISearchOrderFilters[] = []
   for (let i = 0; i < 5; i++) {
+    const obj = generateProps([
+      'loanNum',
+      'ordersId',
+      'address',
+      'city',
+      'state',
+      'zip',
+      'client',
+      'completeDate',
+      'initialCompleteDate',
+      'orderByUser',
+      'orderDateTo',
+      'orderDateFrom'
+    ])
     arr.push({
       name: `${faker.name.firstName()}'s House`,
-      filters: {
-        orderDateFrom: null,
-        orderDateTo: null,
-        clientLoanNumber: null,
-        orderId: null,
-        address: faker.address.streetAddress(),
-        zip: faker.address.zipCode(),
-        city: null,
-        state: null,
-        msa: null,
-        client: null,
-        baseClient: null,
-        propertyType: null,
-        completeDateFrom: null,
-        completeDateTo: null,
-        products: null,
-        department: null,
-        orderedBy: null,
-        rivStatus: null,
-        reconcileStatus: null,
-        selectedPools: null
-      }
+      propertyTypeId: 0,
+      orderByIdUser: '26005-1',
+      status: 0,
+      reconcileStatusId: 0,
+      msaId: 0,
+      clientIds: [],
+      productId: 0,
+      departmentId: 0,
+      poolIds: [],
+      ...obj
     })
   }
   return arr
 }
 
-export const saveSavedSearches = async (form: Search[]): Promise<string> => {
+export const saveSearch = async (
+  form: ISearchOrderFilters[]
+): Promise<string> => {
+  // const data = await handleApi('/value/savesearch', param)
   return 'Success'
 }
 
-export interface SearchOrderInterface {
-  id: string
-  productType: string
-  address: string
-  city: string
-  state: string
-  zip: string
-  reconcileStatus: string
-  client: string
-  orderedBy: string
-  orderDate: string
-  dueDate: string
-  price: number
-}
-
-type Test = Pick<OrderInterface, 'id'>
+export type ISearchOrders = Pick<
+  IOrders,
+  | 'ordersId'
+  | 'productType'
+  | 'address'
+  | 'city'
+  | 'state'
+  | 'zip'
+  | 'reconcileStatus'
+  | 'client'
+  | 'orderByUser'
+  | 'orderDate'
+  | 'completeDate'
+  | 'calculatedPrice'
+>
 
 export const getOrders = async (
-  form: Filters
-): Promise<SearchOrderInterface[]> => {
-  const obj: SearchOrderInterface = generateProps([
+  form: ISearchOrderFilters
+): Promise<ISearchOrders[]> => {
+  const obj: ISearchOrders = generateProps([
     'productType',
     'address',
     'city',
@@ -93,16 +137,16 @@ export const getOrders = async (
     'zip',
     'reconcileStatus',
     'client',
-    'orderedBy',
+    'orderByUser',
     'orderDate',
-    'dueDate',
-    'price'
+    'completeDate',
+    'calculatedPrice'
   ])
-  obj.id = '12345678'
+  obj.ordersId = 12345678
   const arr = [{ ...obj }]
   for (let i = 0; i < 100; i++) {
-    const obj1: SearchOrderInterface = generateProps([
-      'id',
+    const obj1: ISearchOrders = generateProps([
+      'ordersId',
       'productType',
       'address',
       'city',
@@ -110,138 +154,12 @@ export const getOrders = async (
       'zip',
       'reconcileStatus',
       'client',
-      'orderedBy',
+      'orderByUser',
       'orderDate',
-      'dueDate',
-      'price'
+      'completeDate',
+      'calculatedPrice'
     ])
     arr.push(obj1)
   }
   return arr
-}
-
-export const getClientList = async (): Promise<Option[]> => {
-  const options = [
-    {
-      label: 'Client 1',
-      value: 'Client 1'
-    },
-    {
-      label: 'Client 2',
-      value: 'Client 2'
-    },
-    {
-      label: 'Client 3',
-      value: 'Client 3'
-    }
-  ]
-  return options
-}
-
-export const getProducts = async (): Promise<Option[]> => {
-  const options = [
-    {
-      label: 'All',
-      value: 'All'
-    },
-    {
-      label: 'Radian Interactive Value',
-      value: 'Radian Interactive Value'
-    },
-    {
-      label: 'Rental Analysis',
-      value: 'Rental Analysis'
-    }
-  ]
-  return options
-}
-
-export const getDepartments = async (): Promise<Option[]> => {
-  const options = [
-    {
-      label: 'All',
-      value: 'All'
-    },
-    {
-      label: 'Department 2',
-      value: 'Department 2'
-    },
-    {
-      label: 'Department 3',
-      value: 'Department 3'
-    }
-  ]
-  return options
-}
-
-export const getOrderedByUsers = async (): Promise<Option[]> => {
-  const options = [
-    {
-      label: 'All',
-      value: 'All'
-    },
-    {
-      label: 'User 2',
-      value: 'User 2'
-    },
-    {
-      label: 'User 3',
-      value: 'User 3'
-    }
-  ]
-  return options
-}
-
-export const getRivStatuses = async (): Promise<Option[]> => {
-  const options = [
-    {
-      label: 'All',
-      value: 'All'
-    },
-    {
-      label: '60 days',
-      value: '60 days'
-    },
-    {
-      label: '90 days',
-      value: '90 days'
-    }
-  ]
-  return options
-}
-
-export const getReconcileStatuses = async (): Promise<Option[]> => {
-  const options = [
-    {
-      label: 'All',
-      value: 'All'
-    },
-    {
-      label: 'Status 2',
-      value: 'Status 2'
-    },
-    {
-      label: 'Status 3',
-      value: 'Status 3'
-    }
-  ]
-  return options
-}
-
-export const getPools = async (): Promise<Option[]> => {
-  const options = [
-    {
-      label: 'Pool 1',
-      value: 'Pool 1'
-    },
-    {
-      label: 'Pool 2',
-      value: 'Pool 2'
-    },
-    {
-      label: 'Pool 3',
-      value: 'Pool 3'
-    }
-  ]
-  return options
 }

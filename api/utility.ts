@@ -116,6 +116,10 @@ export const getClients = async (): Promise<Option[]> => {
     {
       value: '46240-1',
       label: 'Boost Labs'
+    },
+    {
+      value: '46241-1',
+      label: 'Coost Labs'
     }
   ]
 }
@@ -140,6 +144,76 @@ export const getPools = async (): Promise<Option[]> => {
     {
       value: 0,
       label: 'Pool 1'
+    },
+    {
+      value: 1,
+      label: 'Pool 2'
+    },
+    {
+      value: 2,
+      label: 'Pool 3'
+    },
+    {
+      value: 3,
+      label: 'Pool 4'
+    },
+    {
+      value: 4,
+      label: 'Pool 5'
+    }
+  ]
+}
+
+export const getDepartments = async (): Promise<Option[]> => {
+  // const data = await handleApi('/utility/departments')
+  return [
+    {
+      value: 0,
+      label: 'All'
+    },
+    {
+      value: 1,
+      label: 'Department 1'
+    },
+    {
+      value: 2,
+      label: 'Department 2'
+    }
+  ]
+}
+
+export const getRivStatuses = async (): Promise<Option[]> => {
+  // const data = await handleApi('/utility/rivstatus')
+  return [
+    {
+      value: 0,
+      label: 'All'
+    },
+    {
+      value: 1,
+      label: '60 days'
+    },
+    {
+      value: 2,
+      label: '90 days'
+    }
+  ]
+}
+
+export const getReconcileStatuses = async (): Promise<Option[]> => {
+  // const data = await handleApi('/utility/reconcilestatus')
+  return [
+    {
+      label: 'All',
+      value: 'All'
+    },
+    {
+      label: 'Status 2',
+      value: 'Status 2'
+    },
+    {
+      label: 'Status 3',
+      value: 'Status 3'
     }
   ]
 }

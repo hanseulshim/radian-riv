@@ -18,7 +18,7 @@ export default function NewOrder() {
     productTypes: [],
     pools: []
   })
-  const [orderedByUser, setOrderedByUser] = useState(null)
+  const [orderByUser, setOrderedByUser] = useState(null)
   const [client, setClient] = useState(null)
   const [productType, setProductType] = useState(null)
   const [selectedPool, setSelectedPool] = useState(null)
@@ -64,7 +64,7 @@ export default function NewOrder() {
 
   useEffect(() => {
     setGreenForm({
-      orderedByUserId: orderedByUser ? orderedByUser.value : null,
+      orderedByUserId: orderByUser ? orderByUser.value : null,
       clientId: client ? client.value : null,
       productTypeId: productType ? productType.value : null,
       poolId: selectedPool ? selectedPool.value : null,
@@ -74,7 +74,7 @@ export default function NewOrder() {
       comment
     })
   }, [
-    orderedByUser,
+    orderByUser,
     client,
     productType,
     selectedPool,
@@ -108,7 +108,7 @@ export default function NewOrder() {
               label="Ordered By"
               placeholder="Ordered By..."
               onChange={opt => setOrderedByUser(opt)}
-              value={orderedByUser}
+              value={orderByUser}
               options={options.orderedByUsers}
               classNamePrefix="transparent"
             />

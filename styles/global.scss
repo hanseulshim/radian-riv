@@ -556,8 +556,7 @@ ul {
       background-color: var(--geyser-light);
     }
 
-    .tr,
-    .with-hover {
+    .tr.with-hover {
       &:hover {
         background-color: var(--prussian-blue);
         color: var(--white);

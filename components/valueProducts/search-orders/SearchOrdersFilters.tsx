@@ -1,9 +1,9 @@
-import { Filters } from 'api'
+import { ISearchOrderFilters } from 'api'
 import Input from 'components/common/Input'
 
 interface Props {
-  filters: Filters
-  error: Filters
+  filters: ISearchOrderFilters
+  error: ISearchOrderFilters
   handleInputChange: (
     e: React.ChangeEvent<HTMLInputElement>,
     key: string
@@ -31,16 +31,16 @@ export default function SearchOrdersFilters({
           error={error.orderDateTo}
         />
         <Input
-          value={filters.clientLoanNumber}
+          value={filters.loanNum}
           label="Client Loan #"
-          onChange={e => handleInputChange(e, 'clientLoanNumber')}
-          error={error.clientLoanNumber}
+          onChange={e => handleInputChange(e, 'loanNum')}
+          error={error.loanNum}
         />
         <Input
-          value={filters.orderId}
+          value={filters.ordersId}
           label="Order ID #"
-          onChange={e => handleInputChange(e, 'orderId')}
-          error={error.orderId}
+          onChange={e => handleInputChange(e, 'ordersId')}
+          error={error.ordersId}
         />
       </div>
       <div className="flex space-x-4 w-1/2">

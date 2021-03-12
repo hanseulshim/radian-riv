@@ -2,23 +2,23 @@ import React, { useState, useCallback } from 'react'
 import Table from 'components/common/Table'
 import Link from 'next/link'
 import { formatPrice } from 'utils'
-import { SearchOrderInterface } from 'api'
+import { ISearchOrders } from 'api'
 
 interface Props {
-  tableData: SearchOrderInterface[]
+  tableData: ISearchOrders[]
 }
 
 export default function OrdersTable({ tableData }: Props) {
-  const [data, setData] = useState<SearchOrderInterface[]>([])
+  const [data, setData] = useState<ISearchOrders[]>([])
   const [columns, setColumns] = useState([])
 
   const fetchData = useCallback(async () => {
     setColumns([
       {
         Header: 'Order ID',
-        accessor: (order: SearchOrderInterface) => (
-          <Link href={`/value-products/${order.id}`}>
-            <a className="link">{order.id}</a>
+        accessor: (order: ISearchOrders) => (
+          <Link href={`/value-products/${order.ordersId}`}>
+            <a className="link">{order.ordersId}</a>
           </Link>
         ),
         align: 'right',
@@ -60,7 +60,7 @@ export default function OrdersTable({ tableData }: Props) {
       },
       {
         Header: 'Ordered By',
-        accessor: 'orderedBy',
+        accessor: 'orderByUser',
         width: 150
       },
       {
@@ -70,12 +70,12 @@ export default function OrdersTable({ tableData }: Props) {
       },
       {
         Header: 'Due Date',
-        accessor: 'dueDate',
+        accessor: 'completeDate',
         width: 130
       },
       {
         Header: 'Price',
-        accessor: (order: SearchOrderInterface) => formatPrice(order.price),
+        accessor: (order: ISearchOrders) => formatPrice(order.calculatedPrice),
         width: 100
       }
     ])

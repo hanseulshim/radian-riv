@@ -32,7 +32,7 @@ export default function PropertyInfoTable({
       },
       {
         Header: 'Loan Number',
-        accessor: 'loanNumber',
+        accessor: 'loanNum',
         width: 125
       },
       {

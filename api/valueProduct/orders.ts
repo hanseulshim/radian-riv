@@ -1,5 +1,5 @@
 export interface IOrders {
-  orderID: number
+  ordersId: number
   loanNum: string
   poolId: number
   poolName: string // from lookup table
@@ -35,7 +35,16 @@ export interface IOrders {
   geoAccuracy: string // need mapping
   reo: boolean // listed as int in DB - also exists in prod but not UAT
   orderDate: string
+  completeDate: string
+  initialCompleteDate: string
   dnaSource: number
   dnaSourceValue: string // from lookup table
   subdivision: string // need mapping
+  orderByIdUser: string
+  orderByUser: string
+  status: number
+  reconcileStatusId: number
+  reconcileStatus: string
+  productType: string
+  client: string
 }

@@ -13,7 +13,7 @@ export const buildPropertyInfoWorkbook = (
   const propertyInfoJson = [
     {
       PoolName: order.poolName,
-      LoanNumber: order.loanNumber,
+      LoanNumber: order.loanNum,
       ID: order.id,
       Subject: order.address,
       Zip: order.zip,

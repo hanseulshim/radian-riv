@@ -50,6 +50,10 @@ export const generateProps = (props: string[]): any => {
       case 'orderDate':
       case 'dueDate':
       case 'rivDate':
+      case 'initialCompleteDate':
+      case 'completeDate':
+      case 'orderDateTo':
+      case 'orderDateFrom':
         obj[prop] = formatDate(faker.date.between('2020-01-01', '2020-12-31'))
         break
       case 'basement':
@@ -129,7 +133,8 @@ export const generateProps = (props: string[]): any => {
         obj[prop] = 'PREMISE LEVEl. Excellent'
         break
       case 'id':
-      case 'loanNumber':
+      case 'ordersId':
+      case 'loanNum':
         obj[prop] = `${faker.random.number({
           min: 2000000,
           max: 5000000
@@ -168,7 +173,7 @@ export const generateProps = (props: string[]): any => {
       case 'mlsComments':
         obj[prop] = faker.lorem.paragraph(10)
         break
-      case 'orderedBy':
+      case 'orderByUser':
         obj[prop] = `${faker.name.firstName()} ${faker.name.lastName()}`
         break
       case 'pool':

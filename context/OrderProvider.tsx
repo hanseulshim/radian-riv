@@ -3,7 +3,7 @@ import { OrderInterface } from 'api'
 
 export const defaultOrder = {
   id: null,
-  loanNumber: null,
+  loanNum: null,
   poolName: null,
   retailMarket: null,
   distressedMarket: null,
