@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { withAuth } from 'context/auth/AuthRoute'
 import Breadcrumbs from 'components/common/Breadcrumbs'
 import { valueProductRoutes } from 'utils'
-import NewOrder from 'components/valueProducts/new-orders/NewOrder'
+import NewOrder from 'components/valueProducts/new-orders'
 import SearchOrders from 'components/valueProducts/search-orders'
 
 function ValueProducts() {
