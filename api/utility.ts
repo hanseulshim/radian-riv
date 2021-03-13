@@ -201,7 +201,7 @@ export const getRivStatuses = async (): Promise<Option[]> => {
 }
 
 export const getReconcileStatuses = async (): Promise<Option[]> => {
-  // const data = await handleApi('/utility/reconcilestatus')
+  // const data = await handleApi('/utility/reconcilestatuses')
   return [
     {
       label: 'All',
