@@ -183,7 +183,7 @@ export const getDepartments = async (): Promise<Option[]> => {
 }
 
 export const getRivStatuses = async (): Promise<Option[]> => {
-  // const data = await handleApi('/utility/rivstatus')
+  // const data = await handleApi('/utility/rivstatuses')
   return [
     {
       value: 0,
