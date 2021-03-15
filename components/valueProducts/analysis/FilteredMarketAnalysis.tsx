@@ -5,20 +5,16 @@ import SoldDaysTable from './table/SoldDaysTable'
 import ListPriceTable from './table/ListPriceTable'
 import DepressedMarketGrid from './table/DepressedMarketGridTable'
 import {
-  getFilteredMarketAnalysisFilters,
-  getFilteredMarketAnalysisDays,
-  getFilteredMarketAnalysisListings,
-  getFilteredMarketAnalysisSoldDays,
+  getFilteredMarketAnalysisData,
   IMarketListings,
-  FilteredMarketAnalysisFilters,
-  getFilteredMarketAnalysisDepressedMarketGrid
+  IFilteredMarketAnalysisFilters
 } from 'api'
 
 export default function FilteredMarketAnalysis() {
   const [
     marketFilters,
     setMarketFilters
-  ] = useState<FilteredMarketAnalysisFilters>({
+  ] = useState<IFilteredMarketAnalysisFilters>({
     minSqft: null,
     maxSqft: null,
     minYear: null,
@@ -56,18 +52,12 @@ export default function FilteredMarketAnalysis() {
   useEffect(() => {
     if (order.ordersId) {
       const getData = async () => {
-        const filters = await getFilteredMarketAnalysisFilters(order.ordersId)
-        setMarketFilters(filters)
-        const days = await getFilteredMarketAnalysisDays(order.ordersId)
-        setDaysTable(days)
-        const soldDays = await getFilteredMarketAnalysisSoldDays(order.ordersId)
-        setSoldDaysTable(soldDays)
-        const depressedMarket = await getFilteredMarketAnalysisDepressedMarketGrid(
-          order.ordersId
-        )
-        setDepressedMarketTable(depressedMarket)
-        const listings = await getFilteredMarketAnalysisListings(order.ordersId)
-        setMarketListings(listings)
+        const data = await getFilteredMarketAnalysisData(order.ordersId)
+        setMarketFilters(data.subjectProperty)
+        setDaysTable(data.daysData)
+        setSoldDaysTable(data.soldDaysData)
+        setDepressedMarketTable(data.depressedMarket)
+        setMarketListings(data.marketListings)
       }
       getData()
     }

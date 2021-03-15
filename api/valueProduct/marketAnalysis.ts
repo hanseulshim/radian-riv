@@ -43,7 +43,7 @@ export interface IMarketListings {
     '271-365': number
   }
 }
-export interface MarketAnalysisInterfaceData {
+interface MarketAnalysisInterfaceData {
   subjectProperty: IMarketAnalysis
   daysData: IDaysData[]
   soldDaysData: ISoldDaysData[]
@@ -65,6 +65,65 @@ export const getMarketAnalysisData = async (
     subjectProperty,
     daysData: daysData(),
     soldDaysData: soldData(),
+    marketListings: listings()
+  }
+}
+
+export type IFilteredMarketAnalysisFilters = Pick<
+  IResults,
+  'propTypeValue' | 'sqft' | 'yrBuilt' | 'compTypeValue'
+> & {
+  minSqft: number
+  maxSqft: number
+  minYear: number
+  maxYear: number
+  minBed: number
+  maxBed: number
+  area: string
+  areaParameter: string
+}
+
+interface IFilteredMarketAnalysisDepressedMarketGrid {
+  category: string
+  listingsCount: number
+  listingsPercent: number
+  pendingsCount: number
+  pendingsPercent: number
+  soldsCount: number
+  soldsPercent: number
+}
+
+interface IFilteredMarketAnalysisData {
+  subjectProperty: IFilteredMarketAnalysisFilters
+  daysData: IDaysData[]
+  soldDaysData: ISoldDaysData[]
+  depressedMarket: IFilteredMarketAnalysisDepressedMarketGrid[]
+  marketListings: IMarketListings
+}
+
+export const getFilteredMarketAnalysisData = async (
+  ordersId: number
+): Promise<IFilteredMarketAnalysisData> => {
+  // const data = await handleApi('/value/filteredmarketanalysis')
+  const subjectProperty: IFilteredMarketAnalysisFilters = generateProps([
+    'minSqft',
+    'maxSqft',
+    'minYear',
+    'maxYear',
+    'minBed',
+    'maxBed',
+    'compTypeValue',
+    'sqft',
+    'propTypeValue',
+    'area',
+    'areaParameter',
+    'yrBuilt'
+  ])
+  return {
+    subjectProperty,
+    daysData: daysData(),
+    soldDaysData: soldData(),
+    depressedMarket: depressedMarket(),
     marketListings: listings()
   }
 }
@@ -164,58 +223,35 @@ const listings = () => ({
     '271-365': +faker.finance.amount(0.9, 1, 4)
   }
 })
-
-export const getFilteredMarketAnalysisSoldDays = async (
-  ordersId: number
-): Promise<ISoldDaysData[]> => {
-  return soldData()
-}
-
-export const getFilteredMarketAnalysisDays = async (
-  ordersId: number
-): Promise<IDaysData[]> => {
-  return daysData()
-}
-
-export const getFilteredMarketAnalysisListings = async (
-  ordersId: number
-): Promise<IMarketListings> => {
-  return listings()
-}
-
-export type FilteredMarketAnalysisFilters = Pick<
-  IResults,
-  'propTypeValue' | 'sqft' | 'yrBuilt' | 'compTypeValue'
-> & {
-  minSqft: number
-  maxSqft: number
-  minYear: number
-  maxYear: number
-  minBed: number
-  maxBed: number
-  area: string
-  areaParameter: string
-}
-
-export const getFilteredMarketAnalysisFilters = async (
-  ordersId: number
-): Promise<FilteredMarketAnalysisFilters> => {
-  const obj: FilteredMarketAnalysisFilters = generateProps([
-    'minSqft',
-    'maxSqft',
-    'minYear',
-    'maxYear',
-    'minBed',
-    'maxBed',
-    'compTypeValue',
-    'sqft',
-    'propTypeValue',
-    'area',
-    'areaParameter',
-    'yrBuilt'
-  ])
-  return obj
-}
+const depressedMarket = () => [
+  {
+    category: 'Retail',
+    listingsCount: faker.random.number(10),
+    listingsPercent: +faker.finance.amount(0, 1, 4),
+    pendingsCount: faker.random.number(5),
+    pendingsPercent: +faker.finance.amount(0, 1, 4),
+    soldsCount: faker.random.number(100),
+    soldsPercent: +faker.finance.amount(0, 1, 4)
+  },
+  {
+    category: 'Short Sale',
+    listingsCount: faker.random.number(10),
+    listingsPercent: +faker.finance.amount(0, 1, 4),
+    pendingsCount: faker.random.number(5),
+    pendingsPercent: +faker.finance.amount(0, 1, 4),
+    soldsCount: faker.random.number(100),
+    soldsPercent: +faker.finance.amount(0, 1, 4)
+  },
+  {
+    category: 'REO',
+    listingsCount: faker.random.number(10),
+    listingsPercent: +faker.finance.amount(0, 1, 4),
+    pendingsCount: faker.random.number(5),
+    pendingsPercent: +faker.finance.amount(0, 1, 4),
+    soldsCount: faker.random.number(100),
+    soldsPercent: +faker.finance.amount(0, 1, 4)
+  }
+]
 
 export interface MedianSalePriceInterface {
   oneMonth: {
@@ -732,50 +768,6 @@ export const getFlipAnalysis = async (
     flipRented: generateProperties(),
     flipForRent: generateProperties()
   }
-}
-
-interface FilteredMarketAnalysisDepressedMarketGrid {
-  category: string
-  listingsCount: number
-  listingsPercent: number
-  pendingsCount: number
-  pendingsPercent: number
-  soldsCount: number
-  soldsPercent: number
-}
-
-export const getFilteredMarketAnalysisDepressedMarketGrid = async (
-  ordersId: number
-): Promise<FilteredMarketAnalysisDepressedMarketGrid[]> => {
-  return [
-    {
-      category: 'Retail',
-      listingsCount: faker.random.number(10),
-      listingsPercent: +faker.finance.amount(0, 1, 4),
-      pendingsCount: faker.random.number(5),
-      pendingsPercent: +faker.finance.amount(0, 1, 4),
-      soldsCount: faker.random.number(100),
-      soldsPercent: +faker.finance.amount(0, 1, 4)
-    },
-    {
-      category: 'Short Sale',
-      listingsCount: faker.random.number(10),
-      listingsPercent: +faker.finance.amount(0, 1, 4),
-      pendingsCount: faker.random.number(5),
-      pendingsPercent: +faker.finance.amount(0, 1, 4),
-      soldsCount: faker.random.number(100),
-      soldsPercent: +faker.finance.amount(0, 1, 4)
-    },
-    {
-      category: 'REO',
-      listingsCount: faker.random.number(10),
-      listingsPercent: +faker.finance.amount(0, 1, 4),
-      pendingsCount: faker.random.number(5),
-      pendingsPercent: +faker.finance.amount(0, 1, 4),
-      soldsCount: faker.random.number(100),
-      soldsPercent: +faker.finance.amount(0, 1, 4)
-    }
-  ]
 }
 
 const generateProperties = (): IFlipProperty[] => {
