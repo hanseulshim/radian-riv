@@ -10,14 +10,14 @@ export interface CompPropertyInterface {
   sqft: number
   garage: number
   lotSize: number
-  year: number
-  targetDistance: number
+  yrBuilt: number
+  proximity: number
   listDate: string
   listPrice: number
   coeDate: string
   soldPrice: number
   actDom: number
-  totDom: number
+  dom: number
   sqftPrice: number
   listPriceSqft: number
   valuationPercent: number
@@ -39,14 +39,14 @@ const generateOrders = (): CompPropertyInterface[] => {
       'sqft',
       'garage',
       'lotSize',
-      'year',
-      'targetDistance',
+      'yrBuilt',
+      'proximity',
       'listDate',
       'listPrice',
       'coeDate',
       'soldPrice',
       'actDom',
-      'totDom',
+      'dom',
       'sqftPrice',
       'listPriceSqft',
       'valuationPercent'
@@ -58,17 +58,17 @@ const generateOrders = (): CompPropertyInterface[] => {
 }
 
 export const getSoldProperties = async (
-  orderId: string
+  ordersId: number
 ): Promise<CompPropertyInterface[]> => {
   return generateOrders()
 }
 export const getListedProperties = async (
-  orderId: string
+  ordersId: number
 ): Promise<CompPropertyInterface[]> => {
   return generateOrders()
 }
 export const getContractProperties = async (
-  orderId: string
+  ordersId: number
 ): Promise<CompPropertyInterface[]> => {
   return generateOrders()
 }

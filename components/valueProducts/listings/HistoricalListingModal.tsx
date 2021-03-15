@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Modal from 'components/common/Modal'
 import HistoricalListingTable from './HistoricalListingTable'
-import HistoricalListingZoomPhotoModal from './HistoricalListingZoomPhotoModal'
 import GalleryModal from './GalleryModal'
 import ListingHistoryTable from './ListingHistoryTable'
 import {
@@ -14,13 +13,13 @@ import { useOrder } from 'context/OrderProvider'
 
 interface Props {
   closeModal: () => void
-  propertyId: string
+  resultsId: number
   title: string
 }
 
 export default function HistoricalListingModal({
   closeModal,
-  propertyId,
+  resultsId,
   title
 }: Props) {
   const { order } = useOrder()
@@ -38,11 +37,11 @@ export default function HistoricalListingModal({
     lotSize: null,
     mlsComments: null,
     mlsName: null,
-    saleType: null,
+    financeTypeValue: null,
     sqft: null,
-    year: null,
+    yrBuilt: null,
     zip: null,
-    photos: []
+    imageUrls: []
   })
   const [listingHistory, setListingHistory] = useState<
     HistoricalListingInterface[]
@@ -50,12 +49,18 @@ export default function HistoricalListingModal({
 
   useEffect(() => {
     const getCurrentProperty = async () => {
-      const property = await getHistoricalListingProperty(propertyId, order.id)
+      const property = await getHistoricalListingProperty(
+        resultsId,
+        order.ordersId
+      )
       setCurrentProperty(property)
     }
     getCurrentProperty()
     const listingHistory = async () => {
-      const history = await getHistoricalListingHistory(propertyId, order.id)
+      const history = await getHistoricalListingHistory(
+        resultsId,
+        order.ordersId
+      )
       setListingHistory(history)
     }
     listingHistory()
@@ -80,10 +85,10 @@ export default function HistoricalListingModal({
       <div className="listing-info">
         <div className="listing-image">
           <div className="image-container">
-            {currentProperty && currentProperty.photos[0] ? (
+            {currentProperty && currentProperty.imageUrls[0] ? (
               <img
                 className="image"
-                src={currentProperty.photos[0]}
+                src={currentProperty.imageUrls[0]}
                 alt="property"
               />
             ) : (
@@ -139,19 +144,28 @@ export default function HistoricalListingModal({
       </div>
       {galleryModal && (
         <GalleryModal
-          photos={currentProperty.photos}
+          photos={currentProperty.imageUrls}
           closeModal={() => {
             setGalleryModal(false)
           }}
         />
       )}
       {zoomPhoto && (
-        <HistoricalListingZoomPhotoModal
-          photo={currentProperty.photos[0]}
+        <Modal
           closeModal={() => {
             setZoomPhoto(false)
           }}
-        />
+          title={''}
+          percent={75}
+          id="zoom-photo"
+          dark
+        >
+          <img
+            className="photo"
+            src={currentProperty.imageUrls[0]}
+            alt="photo"
+          />
+        </Modal>
       )}
     </Modal>
   )

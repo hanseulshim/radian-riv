@@ -44,7 +44,7 @@ export const getStateRoutes = (stateList: Option[]): Route[] => {
     },
     ...stateList.map(({ label, value }) => ({
       label,
-      value,
+      value: value as string,
       path: `/trending/${value}`,
       parentPath: '/trending'
     }))
@@ -64,7 +64,7 @@ export const getCountyRoutes = (
     },
     ...countyList.map(({ label, value }) => ({
       label,
-      value,
+      value: value as string,
       path: `/trending/${state.value}/${value}`,
       parentPath: `/trending/${state.value}`
     }))
@@ -107,7 +107,7 @@ export const valueProductRoutes = [
   }
 ]
 
-export const getValueProductPropertyRoutes = (orderId: string): Route[] => [
+export const getValueProductPropertyRoutes = (orderId: number): Route[] => [
   {
     label: 'RIV Property Info',
     value: 'RIV Property Info',

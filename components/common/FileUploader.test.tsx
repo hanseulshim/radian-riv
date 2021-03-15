@@ -17,7 +17,7 @@ describe('FileUploader', () => {
     expect(component.find('.custom-file-uploader')).toHaveLength(1)
   })
   it('has no label if no file is selected', () => {
-    expect(component.find('span').exists()).toBeFalsy()
+    expect(component.find('span').text()).toEqual('No file chosen')
   })
   it('should match snapshot', () => {
     expect(toJson(component)).toMatchSnapshot()

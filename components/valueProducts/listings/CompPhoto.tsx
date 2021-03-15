@@ -30,7 +30,7 @@ export default function CompPhoto({
     return property.distressed ? `distressed-${icon}` : icon
   }
 
-  const checked = checkedProperties.includes(property.listingNumber)
+  const checked = checkedProperties.includes(property.mlsListNo)
 
   return (
     <div className="comp-photo">
@@ -56,7 +56,7 @@ export default function CompPhoto({
         </div>
         <div className="icon-row">
           <span style={{ marginRight: 10 }}>
-            {formatNullString(property.targetDistance)} miles
+            {formatNullString(property.proximity)} miles
           </span>
           <Checkbox
             label=""
@@ -64,11 +64,11 @@ export default function CompPhoto({
             onChange={() => {
               if (!checked) {
                 const arr = checkedProperties.slice()
-                arr.push(property.listingNumber)
+                arr.push(property.mlsListNo)
                 setCheckedProperties(arr)
               } else {
                 const index = checkedProperties.findIndex(
-                  num => num === property.listingNumber
+                  num => num === property.mlsListNo
                 )
                 const arr = checkedProperties.slice()
                 arr.splice(index, 1)
@@ -80,7 +80,7 @@ export default function CompPhoto({
           />
         </div>
       </div>
-      <PhotoPlay photos={property.photos} />
+      <PhotoPlay photos={property.imageUrls} />
       <div className="detail-container">
         <div className="address">{formatNullString(property.address)}</div>
         <div className="label-row">
@@ -89,7 +89,7 @@ export default function CompPhoto({
         </div>
         <div className="label-row">
           <div className="label">School District:</div>
-          <span>{formatNullString(property.schoolDistrict)}</span>
+          <span>{formatNullString(property.schDisc)}</span>
         </div>
         <div className="toggle-button-container">
           <span className="spacer" />
@@ -130,11 +130,11 @@ export default function CompPhoto({
               </div>
               <div className="label-row">
                 <div className="label">AVE SQFT</div>
-                <span>{formatNullString(property.aveSqft)}</span>
+                <span>{formatNullString(property.sqft)}</span>
               </div>
               <div className="label-row">
                 <div className="label">Year Built</div>
-                <span>{formatNullString(property.year)}</span>
+                <span>{formatNullString(property.yrBuilt)}</span>
               </div>
               <div className="label-row">
                 <div className="label">Basement</div>
@@ -170,7 +170,7 @@ export default function CompPhoto({
               </div>
               <div className="label-row">
                 <div className="label">TOT DOM</div>
-                <span>{formatNullString(property.totDom)}</span>
+                <span>{formatNullString(property.dom)}</span>
               </div>
               <div className="label-row">
                 <div className="label">List Price</div>
@@ -179,13 +179,13 @@ export default function CompPhoto({
               <div className="label-row">
                 <div className="label">Listing #</div>
                 <span className="link">
-                  {formatNullString(property.listingNumber)}
+                  {formatNullString(property.mlsListNo)}
                 </span>
               </div>
             </div>
           </div>
         ) : (
-          <div className="description-container">{property.description}</div>
+          <div className="description-container">{property.mlsComments}</div>
         )}
         <div className="listing-export">
           <Checkbox

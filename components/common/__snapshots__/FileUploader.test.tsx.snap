@@ -11,6 +11,9 @@ exports[`FileUploader should match snapshot 1`] = `
   >
     Choose File...
   </button>
+  <span>
+    No file chosen
+  </span>
   <input
     onChange={[Function]}
     style={

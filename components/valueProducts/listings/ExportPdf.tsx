@@ -22,7 +22,7 @@ export default function ExportPdf({ closeModal, listingSheets }: Props) {
   const [form, setForm] = useState({
     subjectPhotosType: 'primaryOnly',
     subjectListingSheets: false,
-    comparableType: 'selectedComparables',
+    compTypeValue: 'selectedComparables',
     selectedCompPhotosType: 'primaryOnly',
     selectedCompListingSheets: false,
     allCompPhotosType: null,
@@ -31,7 +31,7 @@ export default function ExportPdf({ closeModal, listingSheets }: Props) {
   })
 
   const onRadioChange = (e: any) => {
-    if (e.target.name === 'comparableType') {
+    if (e.target.name === 'compTypeValue') {
       if (e.target.value === 'selectedComparables') {
         setForm({
           ...form,
@@ -66,7 +66,7 @@ export default function ExportPdf({ closeModal, listingSheets }: Props) {
   const {
     subjectPhotosType,
     subjectListingSheets,
-    comparableType,
+    compTypeValue,
     selectedCompPhotosType,
     selectedCompListingSheets,
     allCompPhotosType,
@@ -111,18 +111,18 @@ export default function ExportPdf({ closeModal, listingSheets }: Props) {
         />
         <Radio
           value="selectedComparables"
-          checked={comparableType === 'selectedComparables'}
+          checked={compTypeValue === 'selectedComparables'}
           onChange={onRadioChange}
           label="Selected Comparables"
           className="section-title"
-          name="comparableType"
+          name="compTypeValue"
         />
         <Radio
           value="primaryOnly"
           checked={selectedCompPhotosType === 'primaryOnly'}
           onChange={onRadioChange}
           label="Primary Photograph Only"
-          disabled={comparableType !== 'selectedComparables'}
+          disabled={compTypeValue !== 'selectedComparables'}
           name="selectedCompPhotosType"
         />
         <Radio
@@ -130,7 +130,7 @@ export default function ExportPdf({ closeModal, listingSheets }: Props) {
           checked={selectedCompPhotosType === 'allAvailable'}
           onChange={onRadioChange}
           label="All Available Photographs"
-          disabled={comparableType !== 'selectedComparables'}
+          disabled={compTypeValue !== 'selectedComparables'}
           name="selectedCompPhotosType"
         />
         <Checkbox
@@ -142,22 +142,22 @@ export default function ExportPdf({ closeModal, listingSheets }: Props) {
             )
           }
           checked={selectedCompListingSheets}
-          disabled={comparableType !== 'selectedComparables' || selected === 0}
+          disabled={compTypeValue !== 'selectedComparables' || selected === 0}
         />
         <Radio
           value="allComparables"
-          checked={comparableType === 'allComparables'}
+          checked={compTypeValue === 'allComparables'}
           onChange={onRadioChange}
           label="All Comparables"
           className="section-title"
-          name="comparableType"
+          name="compTypeValue"
         />
         <Radio
           value="primaryOnly"
           checked={allCompPhotosType === 'primaryOnly'}
           onChange={onRadioChange}
           label="Primary Photograph Only"
-          disabled={comparableType !== 'allComparables'}
+          disabled={compTypeValue !== 'allComparables'}
           name="allCompPhotosType"
         />
         <Radio
@@ -165,7 +165,7 @@ export default function ExportPdf({ closeModal, listingSheets }: Props) {
           checked={allCompPhotosType === 'allAvailable'}
           onChange={onRadioChange}
           label="All Available Photographs"
-          disabled={comparableType !== 'allComparables'}
+          disabled={compTypeValue !== 'allComparables'}
           name="allCompPhotosType"
         />
         <Checkbox
@@ -174,7 +174,7 @@ export default function ExportPdf({ closeModal, listingSheets }: Props) {
             onCheckboxChange('allCompListingSheets', !allCompListingSheets)
           }
           checked={allCompListingSheets}
-          disabled={comparableType !== 'allComparables' || all === 0}
+          disabled={compTypeValue !== 'allComparables' || all === 0}
         />
         <div className="unchecked-manual-comparables">
           <Checkbox
@@ -204,7 +204,7 @@ interface ChooseDeliveryProps {
   exportForm: {
     subjectPhotosType: string
     subjectListingSheets: boolean
-    comparableType: string
+    compTypeValue: string
     selectedCompPhotosType: string | null
     selectedCompListingSheets: boolean
     allCompPhotosType: string | null

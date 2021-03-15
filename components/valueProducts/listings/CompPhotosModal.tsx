@@ -75,7 +75,7 @@ export default function CompPhotosModal({ closeModal, view, orderId }: Props) {
               onChange={() => {
                 if (!(checkedProperties.length === properties.length)) {
                   const listings = properties.map(
-                    property => property.listingNumber
+                    property => property.mlsListNo
                   )
                   setCheckedProperties(listings)
                 } else {
@@ -89,7 +89,7 @@ export default function CompPhotosModal({ closeModal, view, orderId }: Props) {
         <div className="comp-photo-container">
           {properties.map(property => (
             <CompPhoto
-              key={property.listingNumber}
+              key={property.mlsListNo}
               property={property}
               setCheckedProperties={setCheckedProperties}
               checkedProperties={checkedProperties}

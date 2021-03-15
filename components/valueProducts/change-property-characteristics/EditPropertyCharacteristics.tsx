@@ -1,24 +1,27 @@
 import CustomSelect from 'components/common/CustomSelect'
 import Input from 'components/common/Input'
 import { useState } from 'react'
+import { OrderPropertyInterface } from 'api'
+
+interface Characteristics {
+  bed: string
+  bath: string
+  sqft: string
+  units: string
+  garage: string
+  lotSize: string
+  yrBuilt: string
+}
 
 interface Error {
+  yrBuilt: string
   asOfDate: string
-  year: string
 }
 interface Props {
   setSelectedSource: (source: string) => void
   selectedSource: string
-  setCharacteristics: (key: string, value: string | number) => void
-  characteristics: {
-    bed: string
-    bath: string
-    sqft: string
-    units: string
-    garage: string
-    lotSize: string
-    year: string
-  }
+  setCharacteristics: (key: string, value: string) => void
+  characteristics: Characteristics
   error: Error
 }
 
@@ -57,7 +60,7 @@ export default function EditPropertyCharacteristics({
             label={char}
             capitalizeLabel
             onChange={e => setCharacteristics(char, e.target.value)}
-            error={char === 'year' ? error.year : ''}
+            error={char === 'yrBuilt' ? error.yrBuilt : ''}
             key={'input' + char}
             disabled={
               selectedSource !== 'User' && selectedSource !== 'Appraisal'

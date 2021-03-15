@@ -30,7 +30,7 @@ export default function ListingHistoryTable({
     property => property.showMls && property.exportMls
   ).length
 
-  const toggleSelect = (id: string) => {
+  const toggleSelect = (id: string | number) => {
     const selectedArr = selectedProperties.slice()
     if (id === 'all') {
       if (showMlsProperties === selectedProperties.length) {
@@ -39,8 +39,8 @@ export default function ListingHistoryTable({
         setSelectedProperties(tableData.filter(property => property.showMls))
       }
     } else {
-      const index = selectedArr.findIndex(property => property.id === id)
-      const property = tableData.find(property => property.id === id)
+      const index = selectedArr.findIndex(property => property.resultsId === id)
+      const property = tableData.find(property => property.resultsId === id)
       if (index > -1) {
         selectedArr.splice(index, 1)
       } else {
@@ -50,10 +50,12 @@ export default function ListingHistoryTable({
     }
   }
 
-  const toggleExportMls = (id: string) => {
+  const toggleExportMls = (id: string | number) => {
     const arr = tableData.slice().map(property => ({
       ...property,
-      selected: !!selectedProperties.find(prop => prop.id === property.id)
+      selected: !!selectedProperties.find(
+        prop => prop.resultsId === property.resultsId
+      )
     }))
     if (id === 'all') {
       arr.forEach(property => {
@@ -62,7 +64,7 @@ export default function ListingHistoryTable({
         }
       })
     } else {
-      const property = arr.find(property => property.id === id)
+      const property = arr.find(property => property.resultsId === id)
       property.exportMls = !property.exportMls
     }
     setListingHistory(arr)
@@ -83,12 +85,12 @@ export default function ListingHistoryTable({
             />
           </div>
         ),
-        accessor: row =>
+        accessor: (row: HistoricalListingInterface) =>
           row.showMls && (
             <Checkbox
               label=""
               checked={row.selected}
-              onChange={() => toggleSelect(row.id)}
+              onChange={() => toggleSelect(row.resultsId)}
               small
             />
           ),
@@ -102,7 +104,7 @@ export default function ListingHistoryTable({
             <button
               style={{ width: 80, minWidth: 80 }}
               className="btn btn-small"
-              onClick={() => setMlsNumber(row.listingNumber)}
+              onClick={() => setMlsNumber(row.mlsListNo)}
             >
               View
             </button>
@@ -128,7 +130,7 @@ export default function ListingHistoryTable({
             <Checkbox
               label=""
               checked={row.exportMls}
-              onChange={() => toggleExportMls(row.id)}
+              onChange={() => toggleExportMls(row.resultsId)}
               small
             />
           ),
@@ -178,7 +180,7 @@ export default function ListingHistoryTable({
       },
       {
         Header: 'Sale Type',
-        accessor: 'saleType',
+        accessor: 'financeTypeValue',
         width: 90
       },
       {
@@ -191,7 +193,9 @@ export default function ListingHistoryTable({
     setData(
       tableData.map(property => ({
         ...property,
-        selected: !!selectedProperties.find(prop => prop.id === property.id)
+        selected: !!selectedProperties.find(
+          prop => prop.resultsId === property.resultsId
+        )
       }))
     )
   }, [tableData, selectedProperties])
@@ -201,15 +205,15 @@ export default function ListingHistoryTable({
       <Table columns={columns} data={data} fetchData={fetchData} />
       <div className="property-display-container">
         {selectedProperties.map(property => (
-          <div className="property-display">
-            <PhotoPlay photos={property.photos} />
+          <div className="property-display" key={property.resultsId}>
+            <PhotoPlay photos={property.imageUrls} />
             <div className="info-container">
               <div className="label">COE Date:</div>
               <div>{property.coeDate}</div>
               <div className="label">Sold Price:</div>
               <div>{formatPrice(property.soldPrice)}</div>
               <div className="label">Sale Type:</div>
-              <div>{property.saleType}</div>
+              <div>{property.financeTypeValue}</div>
               <div className="label">MLS Name:</div>
               <div>{property.mlsName}</div>
             </div>

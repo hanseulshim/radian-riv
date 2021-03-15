@@ -1,7 +1,7 @@
 interface ExportForm {
   subjectPhotosType: string
   subjectListingSheets: boolean
-  comparableType: string
+  compTypeValue: string
   selectedCompPhotosType: string | null
   selectedCompListingSheets: boolean
   allCompPhotosType: string | null

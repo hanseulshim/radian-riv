@@ -1,12 +1,12 @@
 import XSLX from 'xlsx'
 const { utils } = XSLX
 const { json_to_sheet } = utils
-import { CompPropertyInterface, OrderInterface } from 'api'
+import { CompPropertyInterface, IOrders } from 'api'
 import { formatPercent, formatPrice } from 'utils'
 
 export const buildPropertyInfoWorkbook = (
   data: Array<CompPropertyInterface[]>,
-  order: OrderInterface,
+  order: IOrders,
   filename: string
 ) => {
   const wb = utils.book_new()
@@ -14,7 +14,7 @@ export const buildPropertyInfoWorkbook = (
     {
       PoolName: order.poolName,
       LoanNumber: order.loanNum,
-      ID: order.id,
+      ID: order.ordersId,
       Subject: order.address,
       Zip: order.zip,
       Bed: order.bed,
@@ -22,10 +22,10 @@ export const buildPropertyInfoWorkbook = (
       SqFt: order.sqft,
       Garage: order.garage,
       LotSize: order.lotSize,
-      YearBuilt: order.year,
+      YearBuilt: order.yrBuilt,
       REO: order.reo,
       RestrictComps: '',
-      CompsGoingBack: order.compsBack,
+      CompsGoingBack: order.monthsBack,
       AsOfDate: order.asOfDate
     },
     {
@@ -47,7 +47,7 @@ export const buildPropertyInfoWorkbook = (
     },
     {
       PoolName: 'Ave Date:',
-      LoanNumber: order.rivDate,
+      LoanNumber: order.orderDate,
       ID: '',
       Subject: '',
       Zip: '',
@@ -132,9 +132,9 @@ export const buildPropertyInfoWorkbook = (
     },
     {
       PoolName: 'Retail Market:',
-      LoanNumber: formatPercent(order.retailMarket),
+      LoanNumber: formatPercent(1 - order.confidenceRatio),
       ID: 'Distressed Market:',
-      Subject: formatPercent(order.distressedMarket),
+      Subject: formatPercent(order.confidenceRatio),
       Zip: '',
       Bed: '',
       Bath: '',
@@ -178,13 +178,13 @@ export const buildPropertyInfoWorkbook = (
       'lotSize',
       'year',
       'reo',
-      'targetDistance',
+      'proximity',
       'listDate',
       'listPrice',
       'coeDate',
       'soldPrice',
       'actDom',
-      'totDom',
+      'dom',
       'sqftPrice',
       'valuationPercent'
     ]

@@ -1,8 +1,6 @@
 export * from './propertyCharacteristics'
-export * from './order'
 export * from './marketAnalysis'
 export * from './listingHistory'
-export * from './gallery'
 export * from './property'
 export * from './compPhotos'
 export * from './mls'
@@ -20,7 +18,7 @@ export const generateProps = (props: string[]): any => {
   props.forEach(prop => {
     switch (prop) {
       case 'actDom':
-      case 'totDom':
+      case 'dom':
         obj[prop] = faker.random.number({ min: 5, max: 300 })
         break
       case 'address':
@@ -63,6 +61,7 @@ export const generateProps = (props: string[]): any => {
       case 'bed':
       case 'minBed':
       case 'maxBed':
+      case 'radius':
         obj[prop] = faker.random.number({ min: 3, max: 5 })
         break
       case 'calculatedPrice':
@@ -87,13 +86,16 @@ export const generateProps = (props: string[]): any => {
       case 'price':
         obj[prop] = faker.random.number({ min: 500000, max: 600000 })
         break
-      case 'compsBack':
-        obj[prop] = '3 months'
+      case 'confidenceRatio':
+        obj[prop] = faker.finance.amount(0, 1, 2)
+        break
+      case 'monthsBack':
+        obj[prop] = faker.random.number(24)
         break
       case 'concessions':
         obj[prop] = faker.random.number({ min: 10000, max: 20000 })
         break
-      case 'comparableType':
+      case 'compTypeValue':
         obj[prop] = 'All'
         break
       case 'cumulativeListDays':
@@ -106,24 +108,21 @@ export const generateProps = (props: string[]): any => {
         obj[prop] = faker.lorem.paragraph(5)
         break
       case 'distressed':
-      case 'lock':
+      case 'locked':
       case 'reo':
       case 'showMls':
-      case 'bedEstimate':
-      case 'bathEstimate':
+      case 'estBed':
+      case 'estBath':
       case 'exportMls':
-      case 'sqftEstimate':
-      case 'lotSizeEstimate':
-      case 'garageEstimate':
-      case 'yearEstimate':
+      case 'estSqft':
+      case 'lotSizeEstimate': // delete
+      case 'estGarage':
+      case 'estYrBuilt':
       case 'propertyTypeEstimate':
       case 'checked':
         obj[prop] = faker.random.boolean()
         break
-      case 'distressedMarket':
-        obj[prop] = +faker.finance.amount(0.4, 0.9, 4)
-        break
-      case 'dnaSource':
+      case 'dnaSourceValue':
         obj[prop] = 'User'
         break
       case 'garage':
@@ -134,7 +133,9 @@ export const generateProps = (props: string[]): any => {
         break
       case 'id':
       case 'ordersId':
+      case 'resultsId':
       case 'loanNum':
+      case 'poolId':
         obj[prop] = `${faker.random.number({
           min: 2000000,
           max: 5000000
@@ -182,17 +183,20 @@ export const generateProps = (props: string[]): any => {
       case 'poolName':
         obj[prop] = 'DEFAULT'
         break
-      case 'photo':
+      case 'photo': // delete
+      case 'imageUrl':
         const photos = generatePropertyPhotos()
         obj[prop] = photos[0]
         break
-      case 'photos':
+      case 'photos': // delete
+      case 'imageUrls':
         obj[prop] = generatePropertyPhotos()
         break
       case 'productType':
         obj[prop] = faker.random.arrayElement(['RIV', 'Rental Analysis'])
         break
       case 'propertyType':
+      case 'propTypeValue':
         obj[prop] = faker.random.arrayElement([
           'Single Family',
           'Multi Family',
@@ -202,13 +206,10 @@ export const generateProps = (props: string[]): any => {
       case 'reconcileStatus':
         obj[prop] = 'Ready for QC'
         break
-      case 'retailMarket':
-        obj[prop] = +faker.finance.amount(0.4, 0.9, 4)
-        break
-      case 'saleType':
+      case 'financeTypeValue':
         obj[prop] = faker.random.arrayElement(['Retail', 'Commercial'])
         break
-      case 'schoolDistrict':
+      case 'schDisc':
         obj[prop] = `${faker.address.county()} County Public Schools`
         break
       case 'source':
@@ -239,7 +240,15 @@ export const generateProps = (props: string[]): any => {
           'Listed'
         ])
         break
-      case 'targetDistance':
+      case 'propertyTypeId':
+      case 'dnaSource':
+      case 'orderByIdUser':
+      case 'reconcileStatusId':
+      case 'financeType':
+      case 'monthsBackId':
+        obj[prop] = 1
+        break
+      case 'proximity':
         obj[prop] = +faker.finance.amount(0.4, 0.9, 2)
         break
       case 'units':

@@ -10,10 +10,13 @@ export interface IResults {
   bed: number
   bath: number
   sqft: number
+  agSqft: number
+  totalSqft: number
   garage: number
   lotSize: string
   yrBuilt: number
   propType: number
+  propTypeValue: string
   proximity: number
   listDate: string
   listPrice: number
@@ -22,6 +25,7 @@ export interface IResults {
   lat: number
   lng: number // LONG in DB - radian needs to recast
   imageUrl: string
+  imageUrls: string[]
   isSubject: boolean
   assetId: number
   dom: number
@@ -35,4 +39,16 @@ export interface IResults {
   mlsName: string
   mlsComments: string
   mlsListing: string
+  financeType: number
+  financeTypeValue: string
+  coeDate: string
+  changeDate: string
+  cumulativeListDays: number
+  exportMls: boolean
+  showMls: boolean
+  basement: string
+  concessions: number
+  distressed: boolean
+  rank: number
+  checked: boolean
 }

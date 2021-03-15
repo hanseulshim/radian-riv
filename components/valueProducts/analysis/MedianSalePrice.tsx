@@ -12,9 +12,9 @@ export default function MedianSalePrice() {
   const { order } = useOrder()
 
   useEffect(() => {
-    if (order.id) {
+    if (order.ordersId) {
       const getData = async () => {
-        const tableData = await getMedianSalePrice(order.id)
+        const tableData = await getMedianSalePrice(order.ordersId)
         setData(tableData)
       }
       getData()

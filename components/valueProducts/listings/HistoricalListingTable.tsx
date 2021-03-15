@@ -50,7 +50,7 @@ export default function HistoricalListingTable({ tableData }: Props) {
       },
       {
         Header: 'Sale Type',
-        accessor: 'saleType',
+        accessor: 'financeTypeValue',
         align: 'right',
         width: 125
       }

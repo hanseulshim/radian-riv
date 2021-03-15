@@ -1,49 +1,50 @@
-import { generateProps } from '.'
-export interface CompPhotoPropertyInterface {
-  id: string
-  address: string
-  subdivision: string
-  schoolDistrict: string
-  bed: number
-  bath: number
-  agSqft: number
-  totalSqft: number
-  aveSqft: number
-  year: number
-  basement: string
-  pool: string
-  waterfront: string
-  concessions: number
-  coeDate: string
-  listDate: string
-  actDom: number
-  totDom: number
-  listPrice: number
-  soldPrice: number
-  listingNumber: string
-  exportMls: boolean
-  distressed: boolean
-  targetDistance: number
-  description: string
-  photos: string[]
-  rank: number
-  checked: boolean
-}
+import { generateProps, IResults } from '.'
+export type CompPhotoPropertyInterface = Pick<
+  IResults,
+  | 'resultsId'
+  | 'address'
+  | 'subdivision'
+  | 'schDisc'
+  | 'bed'
+  | 'bath'
+  | 'agSqft'
+  | 'totalSqft'
+  | 'sqft'
+  | 'yrBuilt'
+  | 'basement'
+  | 'pool'
+  | 'waterfront'
+  | 'concessions'
+  | 'coeDate'
+  | 'listDate'
+  | 'actDom'
+  | 'dom'
+  | 'listPrice'
+  | 'soldPrice'
+  | 'mlsListNo'
+  | 'exportMls'
+  | 'distressed'
+  | 'proximity'
+  | 'mlsComments'
+  | 'imageUrls'
+  | 'rank'
+  | 'checked'
+>
 
 const generateOrders = (): CompPhotoPropertyInterface[] => {
   const data: CompPhotoPropertyInterface[] = []
   for (let i = 1; i <= 15; i++) {
     const obj: CompPhotoPropertyInterface = generateProps([
-      'id',
+      'resultsId',
       'address',
       'subdivision',
-      'schoolDistrict',
+      'schDisc',
       'bed',
       'bath',
       'agSqft',
       'totalSqft',
-      'aveSqft',
-      'year',
+      'sqft',
+      'yrBuilt',
       'basement',
       'pool',
       'waterfront',
@@ -51,15 +52,15 @@ const generateOrders = (): CompPhotoPropertyInterface[] => {
       'coeDate',
       'listDate',
       'actDom',
-      'totDom',
+      'dom',
       'listPrice',
       'soldPrice',
-      'listingNumber',
-      'distressed',
+      'mlsListNo',
       'exportMls',
-      'description',
-      'targetDistance',
-      'photos',
+      'distressed',
+      'proximity',
+      'mlsComments',
+      'imageUrls',
       'checked'
     ])
     obj.rank = i

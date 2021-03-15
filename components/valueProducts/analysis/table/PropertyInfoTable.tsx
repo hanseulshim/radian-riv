@@ -37,7 +37,7 @@ export default function PropertyInfoTable({
       },
       {
         Header: 'ID',
-        accessor: 'id',
+        accessor: 'ordersId',
         width: 125
       },
       {
@@ -54,7 +54,7 @@ export default function PropertyInfoTable({
       },
       {
         Header: 'Radian Interactive Value Date',
-        accessor: 'rivDate',
+        accessor: 'orderDate',
         width: 180
       },
       {

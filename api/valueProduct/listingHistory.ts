@@ -1,23 +1,25 @@
-import { generateProps } from './'
-export interface HistoricalListingPropertyInterface {
-  address: string
-  bath: number
-  bed: number
-  garage: number
-  listDate: string
-  lotSize: number
-  mlsComments: string
-  mlsName: string
-  saleType: string
-  sqft: number
-  year: number
-  zip: string
-  photos: string[]
-}
+import { generateProps, IResults } from './'
+
+export type HistoricalListingPropertyInterface = Pick<
+  IResults,
+  | 'address'
+  | 'bath'
+  | 'bed'
+  | 'garage'
+  | 'listDate'
+  | 'lotSize'
+  | 'mlsComments'
+  | 'mlsName'
+  | 'financeTypeValue'
+  | 'sqft'
+  | 'yrBuilt'
+  | 'zip'
+  | 'imageUrls'
+>
 
 export const getHistoricalListingProperty = async (
-  orderId: string,
-  propertyId: string
+  resultsId: number,
+  ordersId: number
 ): Promise<HistoricalListingPropertyInterface> => {
   const obj: HistoricalListingPropertyInterface = generateProps([
     'address',
@@ -28,55 +30,60 @@ export const getHistoricalListingProperty = async (
     'lotSize',
     'mlsComments',
     'mlsName',
-    'saleType',
+    'financeTypeValue',
     'sqft',
-    'year',
+    'yrBuilt',
     'zip',
-    'photos'
+    'imageUrls'
   ])
   return obj
 }
-export interface HistoricalListingInterface {
-  changeDate: string
-  coeDate: string
-  cumulativeListDays: number
-  exportMls: boolean
-  id: string
-  listDate: string
-  listingNumber: string
-  listPrice: number
-  mlsComments: string
-  mlsName: string
-  photos: string[]
-  saleType: string
-  showMls: boolean
-  soldPrice: number
-  status: string
+
+export type HistoricalListingInterface = Pick<
+  IResults,
+  | 'resultsId'
+  | 'changeDate'
+  | 'coeDate'
+  | 'cumulativeListDays'
+  | 'exportMls'
+  | 'listDate'
+  | 'mlsListNo'
+  | 'listPrice'
+  | 'mlsComments'
+  | 'mlsName'
+  | 'imageUrls'
+  | 'financeTypeValue'
+  | 'showMls'
+  | 'soldPrice'
+  | 'compTypeValue'
+> & {
+  selected: boolean
 }
 
 export const getHistoricalListingHistory = async (
-  orderId: string,
-  propertyId: string
+  resultsId: number,
+  orderId: number
 ): Promise<HistoricalListingInterface[]> => {
   const data: HistoricalListingInterface[] = []
   for (let i = 1; i <= 6; i++) {
     const obj: HistoricalListingInterface = generateProps([
-      'cumulativeListDays',
+      'resultsId',
       'changeDate',
       'coeDate',
+      'cumulativeListDays',
       'exportMls',
-      'id',
       'listDate',
-      'listingNumber',
+      'mlsListNo',
       'listPrice',
       'mlsComments',
       'mlsName',
-      'photos',
-      'saleType',
+      'imageUrls',
+      'financeTypeValue',
       'showMls',
       'soldPrice',
-      'status'
+      'compTypeValue'
     ])
+    obj.selected = false
     data.push(obj)
   }
   return data

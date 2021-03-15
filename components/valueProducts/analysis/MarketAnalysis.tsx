@@ -4,27 +4,24 @@ import DaysTable from './table/DaysTable'
 import SoldDaysTable from './table/SoldDaysTable'
 import ListPriceTable from './table/ListPriceTable'
 import {
-  getMarketAnalysisDays,
-  getMarketAnalysisListings,
-  MarketListings,
-  getMarketAnalysisSoldDays,
-  MarketAnalysisInterface,
-  getMarketAnalysis
+  getMarketAnalysisData,
+  IMarketListings,
+  IMarketAnalysis,
+  IDaysData,
+  ISoldDaysData
 } from 'api'
 
 export default function MarketAnalysis() {
-  const [marketAnalysis, setMarketAnalysis] = useState<MarketAnalysisInterface>(
-    {
-      sqft: null,
-      year: null,
-      propertyType: null,
-      area: null,
-      areaParameter: null
-    }
-  )
-  const [daysTable, setDaysTable] = useState([])
-  const [soldDaysTable, setSoldDaysTable] = useState([])
-  const [marketListings, setMarketListings] = useState<MarketListings>({
+  const [marketAnalysis, setMarketAnalysis] = useState<IMarketAnalysis>({
+    sqft: null,
+    yrBuilt: null,
+    propTypeValue: null,
+    area: null,
+    areaParameter: null
+  })
+  const [daysTable, setDaysTable] = useState<IDaysData[]>([])
+  const [soldDaysTable, setSoldDaysTable] = useState<ISoldDaysData[]>([])
+  const [marketListings, setMarketListings] = useState<IMarketListings>({
     activeListings: null,
     pendings: null,
     finalListPrice: {
@@ -43,16 +40,13 @@ export default function MarketAnalysis() {
   const { order } = useOrder()
 
   useEffect(() => {
-    if (order.id) {
+    if (order.ordersId) {
       const getData = async () => {
-        const days = await getMarketAnalysisDays(order.id)
-        setDaysTable(days)
-        const soldDays = await getMarketAnalysisSoldDays(order.id)
-        setSoldDaysTable(soldDays)
-        const listings = await getMarketAnalysisListings(order.id)
-        setMarketListings(listings)
-        const market = await getMarketAnalysis(order.id)
-        setMarketAnalysis(market)
+        const data = await getMarketAnalysisData(order.ordersId)
+        setMarketAnalysis(data.subjectProperty)
+        setDaysTable(data.daysData)
+        setSoldDaysTable(data.soldDaysData)
+        setMarketListings(data.marketListings)
       }
       getData()
     }
@@ -70,14 +64,14 @@ export default function MarketAnalysis() {
         <div className="analytics" style={{ width: 245 }}>
           <span className="label">Subject Year Built:</span>
           <span>
-            {marketAnalysis.year !== null ? marketAnalysis.year : '--'}
+            {marketAnalysis.yrBuilt !== null ? marketAnalysis.yrBuilt : '--'}
           </span>
         </div>
         <div className="analytics">
           <span className="label">Prop Type:</span>
           <span>
-            {marketAnalysis.propertyType !== null
-              ? marketAnalysis.propertyType
+            {marketAnalysis.propTypeValue !== null
+              ? marketAnalysis.propTypeValue
               : '--'}
           </span>
         </div>

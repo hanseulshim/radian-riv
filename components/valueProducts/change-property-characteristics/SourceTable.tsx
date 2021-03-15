@@ -29,7 +29,7 @@ export default function SourceTable({
         Header: 'SELECT SOURCE ',
         width: 250,
         align: 'left',
-        accessor: 'source'
+        accessor: 'dnaSourceValue'
       },
       {
         Header: 'Bed',
@@ -71,7 +71,7 @@ export default function SourceTable({
         Header: 'Yr. Built',
         width,
         align: 'left',
-        accessor: 'year'
+        accessor: 'yrBuilt'
       }
     ])
     setData(tableData)
@@ -85,8 +85,8 @@ export default function SourceTable({
           input: (
             <Radio
               onChange={e => setSelectedSource(e.target.value)}
-              value={row.source}
-              checked={selectedSource === row.source}
+              value={row.dnaSourceValue}
+              checked={selectedSource === row.dnaSourceValue}
               label={''}
             />
           ),

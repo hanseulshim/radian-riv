@@ -21,9 +21,10 @@ function OrderLayout({ children }: Props) {
     const getCurrentOrder = async () => {
       if (orderId) {
         try {
-          const order = await getOrder(orderId as string)
+          const order = await getOrder(+orderId)
           setOrder(order)
         } catch (e) {
+          console.log(e)
           setHasError(true)
         }
       }
@@ -43,15 +44,15 @@ function OrderLayout({ children }: Props) {
   }
 
   return (
-    order.id && (
+    order.ordersId && (
       <div id="main">
         <div className="content value-product-property">
           <Breadcrumbs
             parents={[{ path: '/value-products', name: 'Value Products' }]}
             parentPath="/value-products"
-            routes={getValueProductPropertyRoutes(order.id)}
-            label={`Order ID #${order.id}`}
-            current={`Order ID #${order.id}`}
+            routes={getValueProductPropertyRoutes(order.ordersId)}
+            label={`Order ID #${order.ordersId}`}
+            current={`Order ID #${order.ordersId}`}
           />
           {children}
         </div>

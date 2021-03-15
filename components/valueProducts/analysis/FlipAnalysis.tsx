@@ -23,9 +23,9 @@ export default function FlipAnalysis() {
   const { order } = useOrder()
 
   useEffect(() => {
-    if (order.id) {
+    if (order.ordersId) {
       const getData = async () => {
-        const tableData = await getFlipAnalysis(order.id)
+        const tableData = await getFlipAnalysis(order.ordersId)
         setData(tableData)
         if (tableData.flipSold.length) {
           setFlipSold(true)
@@ -71,7 +71,7 @@ export default function FlipAnalysis() {
   }
 
   return (
-    order.id && (
+    order.ordersId && (
       <div className="flip-analysis">
         <div className="table-container">
           <FlipAnalysisTable
@@ -103,7 +103,7 @@ export default function FlipAnalysis() {
             {flipSold &&
               data.flipSold.map(property => (
                 <Marker
-                  key={property.id}
+                  key={property.resultsId}
                   order={property.rank}
                   type="marker-flip-sold"
                   lat={property.lat}
@@ -113,7 +113,7 @@ export default function FlipAnalysis() {
             {flipForSale &&
               data.flipForSale.map(property => (
                 <Marker
-                  key={property.id}
+                  key={property.resultsId}
                   order={property.rank}
                   type="marker-flip-sale"
                   lat={property.lat}
@@ -123,7 +123,7 @@ export default function FlipAnalysis() {
             {flipRented &&
               data.flipRented.map(property => (
                 <Marker
-                  key={property.id}
+                  key={property.resultsId}
                   order={property.rank}
                   type="marker-flip-rented"
                   lat={property.lat}
@@ -133,7 +133,7 @@ export default function FlipAnalysis() {
             {flipForRent &&
               data.flipForRent.map(property => (
                 <Marker
-                  key={property.id}
+                  key={property.resultsId}
                   order={property.rank}
                   type="marker-flip-rent"
                   lat={property.lat}

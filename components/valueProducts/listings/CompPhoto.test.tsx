@@ -30,7 +30,7 @@ describe('CompPhoto', () => {
       listingNumber: null,
       exportMls: null,
       distressed: null,
-      targetDistance: null,
+      proximity: null,
       description: null,
       photos: [],
       rank: null,

@@ -2,16 +2,16 @@ import React, { useState, useCallback } from 'react'
 import Table from 'components/common/Table'
 import HistoricalListingModal from 'components/valueProducts/listings/HistoricalListingModal'
 import { formatPrice } from 'utils'
-import { FlipPropertyInterface } from 'api'
+import { IFlipProperty } from 'api'
 
 interface Props {
-  tableData: FlipPropertyInterface[]
+  tableData: IFlipProperty[]
 }
 
 export default function FlipTable({ tableData }: Props) {
   const [data, setData] = useState([])
   const [columns, setColumns] = useState([])
-  const [property, setProperty] = useState<FlipPropertyInterface>(null)
+  const [property, setProperty] = useState<IFlipProperty>(null)
 
   const fetchData = useCallback(async () => {
     setColumns([
@@ -65,13 +65,13 @@ export default function FlipTable({ tableData }: Props) {
       },
       {
         Header: 'Year Built',
-        accessor: 'year',
+        accessor: 'yrBuilt',
         align: 'right',
         width: 110
       },
       {
         Header: 'Target Distance',
-        accessor: 'targetDistance',
+        accessor: 'proximity',
         align: 'right',
         width: 100
       },
@@ -82,7 +82,7 @@ export default function FlipTable({ tableData }: Props) {
       },
       {
         Header: 'COE 1 Sold Price',
-        accessor: (property: FlipPropertyInterface) =>
+        accessor: (property: IFlipProperty) =>
           formatPrice(property.coe1SoldPrice),
         align: 'right',
         width: 175
@@ -94,7 +94,7 @@ export default function FlipTable({ tableData }: Props) {
       },
       {
         Header: 'COE 2 Sold Price',
-        accessor: (property: FlipPropertyInterface) =>
+        accessor: (property: IFlipProperty) =>
           formatPrice(property.coe2SoldPrice),
         align: 'right',
         width: 175
@@ -106,7 +106,7 @@ export default function FlipTable({ tableData }: Props) {
       },
       {
         Header: 'Image & Info',
-        accessor: (property: FlipPropertyInterface) => (
+        accessor: (property: IFlipProperty) => (
           <img
             className="link"
             src={`${process.env.baseUrl}/images/photos-link.svg`}
@@ -128,7 +128,7 @@ export default function FlipTable({ tableData }: Props) {
       {property && (
         <HistoricalListingModal
           closeModal={() => setProperty(null)}
-          propertyId={property.id}
+          resultsId={property.resultsId}
           title={property.address}
         />
       )}

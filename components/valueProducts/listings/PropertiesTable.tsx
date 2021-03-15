@@ -71,7 +71,7 @@ export default function PropertiesTable({ tableData, view }: Props) {
       },
       {
         Header: 'Target Distance',
-        accessor: 'targetDistance',
+        accessor: 'proximity',
         align: 'right',
         width: 100
       },
@@ -106,7 +106,7 @@ export default function PropertiesTable({ tableData, view }: Props) {
       },
       {
         Header: 'TOT DOM',
-        accessor: 'totDom',
+        accessor: 'dom',
         align: 'right'
       },
       {
@@ -148,7 +148,7 @@ export default function PropertiesTable({ tableData, view }: Props) {
       {property && (
         <HistoricalListingModal
           closeModal={() => setProperty(null)}
-          propertyId={property.id}
+          resultsId={+property.id}
           title={`${view} #${property.rank}`}
         />
       )}

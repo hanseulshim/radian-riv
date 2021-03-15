@@ -9,7 +9,7 @@ import {
   getFilteredMarketAnalysisDays,
   getFilteredMarketAnalysisListings,
   getFilteredMarketAnalysisSoldDays,
-  MarketListings,
+  IMarketListings,
   FilteredMarketAnalysisFilters,
   getFilteredMarketAnalysisDepressedMarketGrid
 } from 'api'
@@ -23,19 +23,19 @@ export default function FilteredMarketAnalysis() {
     maxSqft: null,
     minYear: null,
     maxYear: null,
-    propertyType: null,
+    propTypeValue: null,
     minBed: null,
     maxBed: null,
-    comparableType: null,
+    compTypeValue: null,
     sqft: null,
-    year: null,
+    yrBuilt: null,
     area: null,
     areaParameter: null
   })
   const [daysTable, setDaysTable] = useState([])
   const [soldDaysTable, setSoldDaysTable] = useState([])
   const [depressedMarketTable, setDepressedMarketTable] = useState([])
-  const [marketListings, setMarketListings] = useState<MarketListings>({
+  const [marketListings, setMarketListings] = useState<IMarketListings>({
     activeListings: null,
     pendings: null,
     finalListPrice: {
@@ -54,19 +54,19 @@ export default function FilteredMarketAnalysis() {
   const { order } = useOrder()
 
   useEffect(() => {
-    if (order.id) {
+    if (order.ordersId) {
       const getData = async () => {
-        const filters = await getFilteredMarketAnalysisFilters(order.id)
+        const filters = await getFilteredMarketAnalysisFilters(order.ordersId)
         setMarketFilters(filters)
-        const days = await getFilteredMarketAnalysisDays(order.id)
+        const days = await getFilteredMarketAnalysisDays(order.ordersId)
         setDaysTable(days)
-        const soldDays = await getFilteredMarketAnalysisSoldDays(order.id)
+        const soldDays = await getFilteredMarketAnalysisSoldDays(order.ordersId)
         setSoldDaysTable(soldDays)
         const depressedMarket = await getFilteredMarketAnalysisDepressedMarketGrid(
-          order.id
+          order.ordersId
         )
         setDepressedMarketTable(depressedMarket)
-        const listings = await getFilteredMarketAnalysisListings(order.id)
+        const listings = await getFilteredMarketAnalysisListings(order.ordersId)
         setMarketListings(listings)
       }
       getData()
@@ -82,13 +82,15 @@ export default function FilteredMarketAnalysis() {
         </div>
         <div className="analytics" style={{ width: 245 }}>
           <span className="label">Subject Year Built:</span>
-          <span>{marketFilters.year !== null ? marketFilters.year : '--'}</span>
+          <span>
+            {marketFilters.yrBuilt !== null ? marketFilters.yrBuilt : '--'}
+          </span>
         </div>
         <div className="analytics" style={{ width: 245 }}>
           <span className="label">Prop Type:</span>
           <span>
-            {marketFilters.propertyType !== null
-              ? marketFilters.propertyType
+            {marketFilters.propTypeValue !== null
+              ? marketFilters.propTypeValue
               : '--'}
           </span>
         </div>
@@ -121,8 +123,8 @@ export default function FilteredMarketAnalysis() {
         <div className="analytics">
           <span className="label">Property Type:</span>
           <span>
-            {marketFilters.propertyType !== null
-              ? marketFilters.propertyType
+            {marketFilters.propTypeValue !== null
+              ? marketFilters.propTypeValue
               : '--'}
           </span>
         </div>
@@ -155,8 +157,8 @@ export default function FilteredMarketAnalysis() {
         <div className="analytics">
           <span className="label">Comparable Type:</span>
           <span>
-            {marketFilters.comparableType !== null
-              ? marketFilters.comparableType
+            {marketFilters.compTypeValue !== null
+              ? marketFilters.compTypeValue
               : '--'}
           </span>
         </div>

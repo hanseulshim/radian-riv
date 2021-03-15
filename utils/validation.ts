@@ -75,7 +75,9 @@ export const validateForm = (form: any, reqFields: any = {}): any => {
       key === 'date' ||
       key === 'asOfDate' ||
       key === 'orderDateFrom' ||
-      key === 'orderDateTo'
+      key === 'orderDateTo' ||
+      key === 'completeDate' ||
+      key === 'initialCompleteDate'
     ) {
       if (reqFields[key] && form[key].length === 0) {
         errorObj[key] = `Date can't be empty`
@@ -89,6 +91,22 @@ export const validateForm = (form: any, reqFields: any = {}): any => {
     } else if (key === 'filename') {
       if (form[key].length === 0) {
         errorObj[key] = `Filename can't be empty`
+      }
+    } else if (key === 'loanNum') {
+      if (reqFields[key] && form[key].length === 0) {
+        errorObj[key] = `Loan number can't be empty`
+      }
+    } else if (key === 'zip') {
+      if (reqFields[key] && form[key].length === 0) {
+        errorObj[key] = `Zip can't be empty`
+      }
+    } else if (key === 'address') {
+      if (reqFields[key] && form[key].length === 0) {
+        errorObj[key] = `Address can't be empty`
+      }
+    } else if (key === 'city') {
+      if (reqFields[key] && form[key].length === 0) {
+        errorObj[key] = `City can't be empty`
       }
     }
   })

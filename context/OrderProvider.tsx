@@ -1,37 +1,36 @@
 import React, { useState, createContext, useContext } from 'react'
-import { OrderInterface } from 'api'
+import { IOrders } from 'api'
 
 export const defaultOrder = {
-  id: null,
+  ordersId: null,
   loanNum: null,
+  poolId: null,
   poolName: null,
-  retailMarket: null,
-  distressedMarket: null,
-  marketArea: null,
-  compsBack: null,
+  confidenceRatio: null,
+  radius: null,
+  monthsBack: null,
+  monthsBackId: null,
   asOfDate: null,
-  lock: null,
-  photo: null,
+  locked: null,
+  imageUrl: null,
   address: null,
   city: null,
   state: null,
   zip: null,
-  dnaSource: null,
   bed: null,
-  bedEstimate: null,
+  estBed: null,
   bath: null,
-  bathEstimate: null,
-  sqft: null,
+  estBath: null,
   sqftPrice: null,
-  sqftEstimate: null,
+  sqft: null,
+  estSqft: null,
   lotSize: null,
-  lotSizeEstimate: null,
   garage: null,
-  garageEstimate: null,
-  year: null,
-  yearEstimate: null,
+  estGarage: null,
+  yrBuilt: null,
+  estYrBuilt: null,
+  propertyTypeId: null,
   propertyType: null,
-  propertyTypeEstimate: null,
   calculatedPrice: null,
   asIsSalePrice: null,
   quickSalePrice: null,
@@ -39,13 +38,25 @@ export const defaultOrder = {
   lng: null,
   geoAccuracy: null,
   reo: null,
-  rivDate: null,
-  subdivision: null
+  orderDate: null,
+  completeDate: null,
+  initialCompleteDate: null,
+  dnaSource: null,
+  dnaSourceValue: null,
+  subdivision: null,
+  orderByIdUser: null,
+  orderByUser: null,
+  status: null,
+  reconcileStatusId: null,
+  reconcileStatus: null,
+  productType: null,
+  client: null,
+  units: null
 }
 
 type OrderContextType = {
-  order: OrderInterface
-  setOrder: React.Dispatch<React.SetStateAction<OrderInterface>>
+  order: IOrders
+  setOrder: React.Dispatch<React.SetStateAction<IOrders>>
 }
 
 const OrderContext = createContext<OrderContextType>({
@@ -59,7 +70,7 @@ export const OrderProvider = ({
 }: {
   children: React.ReactNode
 }): React.ReactElement => {
-  const [order, setOrder] = useState<OrderInterface>(defaultOrder)
+  const [order, setOrder] = useState<IOrders>(defaultOrder)
 
   return (
     <OrderContext.Provider

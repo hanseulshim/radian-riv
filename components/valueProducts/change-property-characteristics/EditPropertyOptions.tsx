@@ -1,22 +1,22 @@
 import { useEffect, useState } from 'react'
 import {
   Option,
-  getPropertyTypeOptions,
-  getMonthsBackOptions,
+  getPropertyTypes,
+  getMonthsBack,
   OrderPropertyInterface
 } from 'api'
 import Input from 'components/common/Input'
 import CustomSelect from 'components/common/CustomSelect'
 
 interface Inputs {
-  propertyType: string
-  monthsBack: string
+  propertyTypeId: number
+  monthsBackId: number
   asOfDate: string
 }
 
 interface Error {
+  yrBuilt: string
   asOfDate: string
-  year: string
 }
 
 interface Props {
@@ -39,35 +39,35 @@ export default function EditPropertyOptions({
 
   useEffect(() => {
     const getOptions = async () => {
-      const propertyTypes = await getPropertyTypeOptions()
+      const propertyTypes = await getPropertyTypes()
       setPropertyTypeOptions(propertyTypes)
-      const monthsBack = await getMonthsBackOptions()
+      const monthsBack = await getMonthsBack()
       setMonthsBackOptions(monthsBack)
     }
     getOptions()
   }, [])
 
   useEffect(() => {
-    if (propertyTypeOptions.length && orderProps.id) {
+    if (propertyTypeOptions.length && orderProps.ordersId) {
       const propertyType = propertyTypeOptions.find(
-        opt => opt.value === orderProps.propertyType
+        opt => opt.value === orderProps.propertyTypeId
       )
       setInputs({
         ...inputs,
-        propertyType: propertyType.value,
+        propertyTypeId: propertyType.value,
         asOfDate: orderProps.asOfDate
       })
     }
   }, [propertyTypeOptions, orderProps])
 
   useEffect(() => {
-    if (monthsBackOptions.length && orderProps.id) {
+    if (monthsBackOptions.length && orderProps.ordersId) {
       const monthsBack = monthsBackOptions.find(
-        opt => opt.value === orderProps.compsBack
+        opt => opt.value === orderProps.monthsBackId
       )
       setInputs({
         ...inputs,
-        monthsBack: monthsBack.value
+        monthsBackId: monthsBack.value
       })
     }
   }, [monthsBackOptions, orderProps])
@@ -93,17 +93,17 @@ export default function EditPropertyOptions({
         label="Property Type"
         options={propertyTypeOptions}
         value={propertyTypeOptions.find(
-          opt => opt.value === inputs.propertyType
+          opt => opt.value === inputs.propertyTypeId
         )}
-        onChange={opt => handleSelect(opt, 'propertyType')}
+        onChange={opt => handleSelect(opt, 'propertyTypeId')}
         placeholder={'Select Property Type...'}
         classNamePrefix={'property-type'}
       />
       <CustomSelect
         label="Months Back"
         options={monthsBackOptions}
-        value={monthsBackOptions.find(opt => opt.value === inputs.monthsBack)}
-        onChange={opt => handleSelect(opt, 'monthsBack')}
+        value={monthsBackOptions.find(opt => opt.value === inputs.monthsBackId)}
+        onChange={opt => handleSelect(opt, 'monthsBackId')}
         placeholder={'Select months back'}
         classNamePrefix={'months-back'}
       />

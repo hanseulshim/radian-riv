@@ -37,13 +37,13 @@ export default function PropertyInfoPage() {
   const views = ['Sold', 'Listed', 'Under Contract']
 
   useEffect(() => {
-    if (order.id) {
+    if (order.ordersId) {
       const getProperties = async () => {
-        const sold = await getSoldProperties(order.id)
+        const sold = await getSoldProperties(order.ordersId)
         setSoldProperties(sold)
-        const listed = await getListedProperties(order.id)
+        const listed = await getListedProperties(order.ordersId)
         setListedProperties(listed)
-        const contract = await getContractProperties(order.id)
+        const contract = await getContractProperties(order.ordersId)
         setContractProperties(contract)
       }
       getProperties()
