@@ -55,11 +55,11 @@ export default function Listed() {
     const getChartData = async () => {
       const { chartData, tableData } = await getListedSoldListedChart({
         range,
-        state: selectedState.value,
-        county: selectedCounty?.value || null,
-        zip: selectedZip?.value || null,
-        type: selectedType?.value || null,
-        msa: selectedMsa?.value || null
+        state: selectedState.value as string,
+        county: (selectedCounty?.value as string) || null,
+        zip: (selectedZip?.value as string) || null,
+        type: (selectedType?.value as string) || null,
+        msa: (selectedMsa?.value as string) || null
       })
       setData(chartData)
       setTableData(tableData)

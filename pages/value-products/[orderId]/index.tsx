@@ -152,7 +152,7 @@ export default function PropertyInfoPage() {
         {compPhotosModal && (
           <CompPhotosModal
             closeModal={toggleCompPhotosModal}
-            orderId={order.id}
+            orderId={order.ordersId}
             view={currentView}
           />
         )}

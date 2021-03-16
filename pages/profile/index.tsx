@@ -9,11 +9,6 @@ import { useEffect, useState } from 'react'
 import { validateForm, profileRoutes } from 'utils'
 import Breadcrumbs from 'components/common/Breadcrumbs'
 
-interface State {
-  label: string
-  value: string
-}
-
 const defaultState = {
   name_first: '',
   name_last: '',
@@ -46,7 +41,7 @@ export default function Profile() {
   const [department, setDepartment] = useState('')
   const [error, setError] = useState({ ...defaultState })
   const [alert, setAlert] = useState(null)
-  const [states, setStates] = useState<State[]>([])
+  const [states, setStates] = useState([])
   const [selectedState, setSelectedState] = useState({
     label: user.state,
     value: user.state

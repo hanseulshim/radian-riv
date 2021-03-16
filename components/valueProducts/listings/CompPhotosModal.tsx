@@ -26,7 +26,7 @@ const WarningModal = ({ closeModal }: WarningProps) => {
 interface Props {
   closeModal: () => void
   view: string
-  orderId: string
+  orderId: number
 }
 
 export default function CompPhotosModal({ closeModal, view, orderId }: Props) {

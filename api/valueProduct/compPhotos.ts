@@ -70,17 +70,17 @@ const generateOrders = (): CompPhotoPropertyInterface[] => {
 }
 
 export const getSoldCompProperties = async (
-  orderId: string
+  ordersId: number
 ): Promise<CompPhotoPropertyInterface[]> => {
   return generateOrders()
 }
 export const getListedCompProperties = async (
-  orderId: string
+  ordersId: number
 ): Promise<CompPhotoPropertyInterface[]> => {
   return generateOrders()
 }
 export const getContractCompProperties = async (
-  orderId: string
+  ordersId: number
 ): Promise<CompPhotoPropertyInterface[]> => {
   return generateOrders()
 }

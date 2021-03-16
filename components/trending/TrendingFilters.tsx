@@ -33,12 +33,12 @@ export default function TrendingFilters() {
   useEffect(() => {
     if (selectedState) {
       const zipcodeFetch = async () => {
-        const zipcodes = await getZipcodes(selectedState.value)
+        const zipcodes = await getZipcodes(selectedState.value as string)
         setZipcodes(zipcodes)
       }
       zipcodeFetch()
       const fetchMSA = async () => {
-        const msas = await getMsas(selectedState.value)
+        const msas = await getMsas(selectedState.value as string)
         setMsas(msas)
       }
       fetchMSA()

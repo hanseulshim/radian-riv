@@ -38,7 +38,7 @@ function CountyLayout({ children, label }: Props) {
           const currentState = stateList.find(
             route => route.value === routerState
           )
-          const counties = await getCounties(currentState.value)
+          const counties = await getCounties(currentState.value as string)
           setCountyList(counties)
           setState(currentState)
           setSelectedState(currentState)

@@ -31,7 +31,7 @@ function State() {
           state => state.value === routerState
         )
         try {
-          const counties = await getCounties(currentState.value)
+          const counties = await getCounties(currentState.value as string)
           setCountyList(counties)
           setState(currentState)
           setSelectedState(currentState)
