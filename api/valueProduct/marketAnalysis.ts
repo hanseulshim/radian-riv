@@ -128,6 +128,36 @@ export const getFilteredMarketAnalysisData = async (
   }
 }
 
+export interface IMedianSalePrice {
+  oneMonth: {
+    contractDate: string
+    numberPendings: number
+    numberSales: number
+    medianValue: number
+  }[]
+  twoMonths: {
+    contractDate: string
+    numberSales: number
+    medianValue: number
+  }[]
+  threeMonths: {
+    contractDate: string
+    numberSales: number
+    medianValue: number
+  }[]
+}
+
+export const getMedianSalePrice = async (
+  ordersId: number
+): Promise<IMedianSalePrice> => {
+  // const data = await handleApi('/value/mediansaleprice')
+  return {
+    oneMonth: medianSaleData(),
+    twoMonths: medianSaleData(),
+    threeMonths: medianSaleData()
+  }
+}
+
 const daysData = () => {
   return [
     {
@@ -252,421 +282,24 @@ const depressedMarket = () => [
     soldsPercent: +faker.finance.amount(0, 1, 4)
   }
 ]
+const medianSaleData = () => {
+  const data = []
 
-export interface MedianSalePriceInterface {
-  oneMonth: {
-    contractDate: string
-    numberPendings: number
-    numberSales: number
-    medianValue: number
-  }[]
-  twoMonths: {
-    contractDate: string
-    numberSales: number
-    medianValue: number
-  }[]
-  threeMonths: {
-    contractDate: string
-    numberSales: number
-    medianValue: number
-  }[]
-}
-
-export const getMedianSalePrice = async (
-  ordersId: number
-): Promise<MedianSalePriceInterface> => {
-  return {
-    oneMonth: [
-      {
-        contractDate: 'Jan-19',
-        numberPendings: faker.random.number(5),
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Feb-19',
-        numberPendings: faker.random.number(5),
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Mar-19',
-        numberPendings: faker.random.number(5),
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Apr-19',
-        numberPendings: faker.random.number(5),
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'May-19',
-        numberPendings: faker.random.number(5),
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Jun-19',
-        numberPendings: faker.random.number(5),
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Jul-19',
-        numberPendings: faker.random.number(5),
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Aug-19',
-        numberPendings: faker.random.number(5),
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Sep-19',
-        numberPendings: faker.random.number(5),
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Oct-19',
-        numberPendings: faker.random.number(5),
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Nov-19',
-        numberPendings: faker.random.number(5),
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Dec-19',
-        numberPendings: faker.random.number(5),
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Jan-20',
-        numberPendings: faker.random.number(5),
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Feb-20',
-        numberPendings: faker.random.number(5),
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Mar-20',
-        numberPendings: faker.random.number(5),
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Apr-20',
-        numberPendings: faker.random.number(5),
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'May-20',
-        numberPendings: faker.random.number(5),
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Jun-20',
-        numberPendings: faker.random.number(5),
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Jul-20',
-        numberPendings: faker.random.number(5),
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Aug-20',
-        numberPendings: faker.random.number(5),
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Sep-20',
-        numberPendings: faker.random.number(5),
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Oct-20',
-        numberPendings: faker.random.number(5),
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Nov-20',
-        numberPendings: faker.random.number(5),
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Dec-20',
-        numberPendings: faker.random.number(5),
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      }
-    ],
-    twoMonths: [
-      {
-        contractDate: 'Dec - Jan-19',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Jan - Feb-19',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Feb - Mar-19',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Mar - Apr-19',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Apr - May-19',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'May - Jun-19',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Jun - Jul-19',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Jul - Aug-19',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Aug - Sep-19',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Sep - Oct-19',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Oct - Nov-19',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Nov - Dec-19',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Dec - Jan-20',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Jan - Feb-20',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Feb - Mar-20',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Mar - Apr-20',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Apr - May-20',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'May - Jun-20',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Jun - Jul-20',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Jul - Aug-20',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Aug - Sep-20',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Sep - Oct-20',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Oct - Nov-20',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Nov - Dec-20',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      }
-    ],
-    threeMonths: [
-      {
-        contractDate: 'Nov - Jan-19',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Dec - Feb-19',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Jan - Mar-19',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Feb - Apr-19',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Mar - May-19',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Apr - Jun-19',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'May - Jul-19',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Jun - Aug-19',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Jul - Sep-19',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Aug - Oct-19',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Sep - Nov-19',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Oct - Dec-19',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Nov - Jan-20',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Dec - Feb-20',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Jan - Mar-20',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Feb - Apr-20',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Mar - May-20',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Apr - Jun-20',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'May - Jul-20',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Jun - Aug-20',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Jul - Sep-20',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Aug - Oct-20',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Sep - Nov-20',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      },
-      {
-        contractDate: 'Oct - Dec-20',
-        numberSales: faker.random.number(20),
-        medianValue: faker.random.number({ min: 300000, max: 700000 })
-      }
-    ]
+  for (let i = 0; i < 12; i++) {
+    const date = new Date()
+    date.setMonth(i)
+    date.setDate(1)
+    const contractDate = `${date.toLocaleString('en-US', {
+      month: 'short'
+    })}-${date.toLocaleString('en-US', { year: '2-digit' })}`
+    data.push({
+      contractDate,
+      numberPendings: faker.random.number(5),
+      numberSales: faker.random.number(20),
+      medianValue: faker.random.number({ min: 300000, max: 700000 })
+    })
   }
+  return data
 }
 
 export type IFlipProperty = Pick<

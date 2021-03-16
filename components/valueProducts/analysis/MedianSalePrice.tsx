@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useOrder } from 'context/OrderProvider'
 import MedianSalePriceTable from './table/MedianSalePriceTable'
-import { getMedianSalePrice, MedianSalePriceInterface } from 'api'
+import { getMedianSalePrice, IMedianSalePrice } from 'api'
 
 export default function MedianSalePrice() {
-  const [data, setData] = useState<MedianSalePriceInterface>({
+  const [data, setData] = useState<IMedianSalePrice>({
     oneMonth: [],
     twoMonths: [],
     threeMonths: []
