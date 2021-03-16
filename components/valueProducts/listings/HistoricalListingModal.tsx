@@ -4,10 +4,9 @@ import HistoricalListingTable from './HistoricalListingTable'
 import GalleryModal from './GalleryModal'
 import ListingHistoryTable from './ListingHistoryTable'
 import {
-  getHistoricalListingHistory,
-  getHistoricalListingProperty,
-  HistoricalListingPropertyInterface,
-  HistoricalListingInterface
+  getHistoricalListing,
+  IHistoricalListingProperty,
+  IHistoricalListing
 } from 'api'
 import { useOrder } from 'context/OrderProvider'
 
@@ -28,7 +27,7 @@ export default function HistoricalListingModal({
   const [
     currentProperty,
     setCurrentProperty
-  ] = useState<HistoricalListingPropertyInterface>({
+  ] = useState<IHistoricalListingProperty>({
     address: null,
     bath: null,
     bed: null,
@@ -43,27 +42,18 @@ export default function HistoricalListingModal({
     zip: null,
     imageUrls: []
   })
-  const [listingHistory, setListingHistory] = useState<
-    HistoricalListingInterface[]
-  >([])
+  const [listingHistory, setListingHistory] = useState<IHistoricalListing[]>([])
 
   useEffect(() => {
-    const getCurrentProperty = async () => {
-      const property = await getHistoricalListingProperty(
+    const getListing = async () => {
+      const { property, listingHistory } = await getHistoricalListing(
         resultsId,
         order.ordersId
       )
       setCurrentProperty(property)
+      setListingHistory(listingHistory)
     }
-    getCurrentProperty()
-    const listingHistory = async () => {
-      const history = await getHistoricalListingHistory(
-        resultsId,
-        order.ordersId
-      )
-      setListingHistory(history)
-    }
-    listingHistory()
+    getListing()
   }, [])
 
   return (

@@ -1,6 +1,6 @@
 import { generateProps, IResults } from './'
 
-export type HistoricalListingPropertyInterface = Pick<
+export type IHistoricalListingProperty = Pick<
   IResults,
   | 'address'
   | 'bath'
@@ -17,29 +17,7 @@ export type HistoricalListingPropertyInterface = Pick<
   | 'imageUrls'
 >
 
-export const getHistoricalListingProperty = async (
-  resultsId: number,
-  ordersId: number
-): Promise<HistoricalListingPropertyInterface> => {
-  const obj: HistoricalListingPropertyInterface = generateProps([
-    'address',
-    'bath',
-    'bed',
-    'garage',
-    'listDate',
-    'lotSize',
-    'mlsComments',
-    'mlsName',
-    'financeTypeValue',
-    'sqft',
-    'yrBuilt',
-    'zip',
-    'imageUrls'
-  ])
-  return obj
-}
-
-export type HistoricalListingInterface = Pick<
+export type IHistoricalListing = Pick<
   IResults,
   | 'resultsId'
   | 'changeDate'
@@ -60,13 +38,33 @@ export type HistoricalListingInterface = Pick<
   selected: boolean
 }
 
-export const getHistoricalListingHistory = async (
+interface IListingHistory {
+  property: IHistoricalListingProperty
+  listingHistory: IHistoricalListing[]
+}
+
+export const getHistoricalListing = async (
   resultsId: number,
-  orderId: number
-): Promise<HistoricalListingInterface[]> => {
-  const data: HistoricalListingInterface[] = []
+  ordersId: number
+): Promise<IListingHistory> => {
+  const property: IHistoricalListingProperty = generateProps([
+    'address',
+    'bath',
+    'bed',
+    'garage',
+    'listDate',
+    'lotSize',
+    'mlsComments',
+    'mlsName',
+    'financeTypeValue',
+    'sqft',
+    'yrBuilt',
+    'zip',
+    'imageUrls'
+  ])
+  const listingHistory: IHistoricalListing[] = []
   for (let i = 1; i <= 6; i++) {
-    const obj: HistoricalListingInterface = generateProps([
+    const obj: IHistoricalListing = generateProps([
       'resultsId',
       'changeDate',
       'coeDate',
@@ -84,7 +82,7 @@ export const getHistoricalListingHistory = async (
       'compTypeValue'
     ])
     obj.selected = false
-    data.push(obj)
+    listingHistory.push(obj)
   }
-  return data
+  return { property, listingHistory }
 }

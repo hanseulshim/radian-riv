@@ -1,9 +1,9 @@
 import React, { useState, useCallback } from 'react'
 import Table from 'components/common/Table'
-import { HistoricalListingPropertyInterface } from 'api'
+import { IHistoricalListingProperty } from 'api'
 
 interface Props {
-  tableData: HistoricalListingPropertyInterface[]
+  tableData: IHistoricalListingProperty[]
 }
 
 export default function HistoricalListingTable({ tableData }: Props) {
