@@ -350,6 +350,7 @@ export interface FlipAnalysisInterface {
 export const getFlipAnalysis = async (
   ordersId: number
 ): Promise<FlipAnalysisInterface> => {
+  // const data = await handleApi('/value/flipanalysis')
   const flipSoldAnalysis = [
     'Number of Sold Flips',
     'Average Sold Price',
