@@ -7,7 +7,7 @@ describe('HistoricalListingModal', () => {
   beforeAll(() => {
     const props = {
       closeModal: () => {},
-      resultsId: '123',
+      resultsId: 123,
       title: 'SDF'
     }
     component = shallow(<HistoricalListingModal {...props} />)
